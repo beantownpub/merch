@@ -1,4 +1,4 @@
-FROM node:13.10.1-buster-slim AS build
+FROM node:buster-slim AS build
 
 RUN apt-get update  && \
     apt-get install -y \
@@ -15,7 +15,7 @@ COPY . ./
 RUN npx webpack --config webpack.config.js && \
     rm -rf node_modules
 
-FROM node:13.10.1-buster-slim
+FROM node:buster-slim
 
 ENV TINI_VERSION v0.18.0
 
