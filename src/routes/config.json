@@ -1,0 +1,92 @@
+{
+    "sections": {
+        "home": {
+            "template": "index",
+            "metadata": {
+                "title": "Jonny Graves",
+                "description": "Jonny Graves Web Presence",
+                "keywords": "tech, technology, developer, devops, software, blog"
+            }
+        },
+        "admin": {
+            "template": "merchAdmin",
+            "metadata": {
+                "title": "Merch",
+                "description": "Manage merchandise",
+                "keywords": "merchandise, tshirts, sweatshirts, hats, hoodies"
+            }
+        },
+        "merch": {
+            "template": "merch",
+            "metadata": {
+                "title": "Merch",
+                "description": "Merchandise",
+                "keywords": "merchandise, tshirts, sweatshirts, hats, hoodies"
+            }
+        },
+        "sports": {
+            "template": "sports",
+            "metadata": {
+                "title": "JAL Sports",
+                "description": "Sports Info and Stats",
+                "keywords": "nhl, nfl, standings, scores, statistics, leaders"
+            }
+        },
+        "nfl-team-stats": {
+            "template": "nflTeamStats",
+            "metadata": {
+                "title": "NFL Team Stats",
+                "description": "NFL Teams Stats",
+                "keywords": "technology, blog, developer"
+            }
+        },
+        "nfl-games": {
+            "template": "nflMatchups",
+            "metadata": {
+                "title": "NFL Games",
+                "description": "NFL Weekly Matchupds",
+                "keywords": "Football, NFL, matchups, weekly matchups, stats, statistics"
+            }
+        },
+        "nfl-standings": {
+            "template": "nflStandings",
+            "metadata": {
+                "title": "NFL Standings",
+                "description": "NFL Standings",
+                "keywords": "Football, NFL, standings, stats, statistics"
+            }
+        },
+        "nhl-games": {
+            "template": "nhlGames",
+            "metadata": {
+                "title": "NHL Games",
+                "description": "NHL Matchups and Scores",
+                "keywords": "NHL, hockey, scores, stats, statistics"
+            }
+        },
+        "nhl-standings": {
+            "template": "nhlStandings",
+            "metadata": {
+                "title": "NHL Standings",
+                "description": "NHL Standings",
+                "keywords": "NHL, hockey, standings, stats, statistics"
+            }
+        },
+        "nhl-team-stats": {
+            "template": "nhlTeamStats",
+            "metadata": {
+                "title": "NHL Team Stats",
+                "description": "NHL Team Stats",
+                "keywords": "NHL, hockey, scores, teams, team stats, stats, statistics"
+            }
+        },
+        "notes": {
+            "template": "notes",
+            "metadata": {
+                "title": "JAL Notes",
+                "description": "Small tech notes, info, and snippets",
+                "keywords": "tech, snippets, bash, docker, python, mongodb, kubernetes"
+            }
+        }
+    }
+}
