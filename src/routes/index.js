@@ -25,7 +25,7 @@ router.get('/notes', function(req, res, next) {
 router.get('/note-view', function(req, res, next) {
   console.log(req.route)
   const metadata = {
-                      title: 'Jonny Graves',
+                      title: 'Demo',
                       description: 'Jonny Graves web presence',
                       keywords: 'technology, blog, developer'
                     }

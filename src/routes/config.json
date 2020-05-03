@@ -3,7 +3,7 @@
         "home": {
             "template": "index",
             "metadata": {
-                "title": "Jonny Graves",
+                "title": "Beantown Demo",
                 "description": "Jonny Graves Web Presence",
                 "keywords": "tech, technology, developer, devops, software, blog"
             }

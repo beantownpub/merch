@@ -96,7 +96,7 @@ export const StyledTopNav = styled.div`
             letter-spacing: .15em;
             text-transform: uppercase;
             text-decoration: none;
-            color: #363636;
+            color: white;
             font-family: 'Raleway', Arial, sans-serif;
         }
         a:hover {
@@ -268,5 +268,66 @@ export const StyledSportsWidget = styled.div `
         border: 1px solid #e2e2e2;
         border-radius: .7em;
         width: max-content;
+    }
+`
+
+export const StyledInfo = styled.div`
+    margin: 2em auto;
+    padding: 2.5em 1.5em;
+    background: #fcba03;
+    background-color: ${props => props.color || "#fcba03"};
+    width: 100vw;
+    display: flex;
+    flex-flow: column wrap;
+    font-family: gotham-narrow-ultra;
+    h1 {
+        padding: .25em;
+        max-width: 80vw
+        text-align: center;
+        font-size: 3em;
+        font-family: gotham-narrow-ultra;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        color: ${props => props.fontColor || "black"};
+    }
+    h2 {
+        padding: .25em;
+        max-width: 80vw;
+        font-family: gotham;
+        font-size: 2em;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        color: ${props => props.fontColor || "black"};
+    }
+    h3 {
+        padding: .25em;
+        max-width: 80vw;
+        font-family: gotham-narrow-ultra;
+        font-size: 2em;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        color: ${props => props.fontColor || "black"};
+    }
+    h4 {
+        padding: .25em;
+        font-family: satisfy;
+        font-size: 2em;
+        color: ${props => props.fontColor || "black"};
+    }
+`
+
+export const StyledLinkButton = styled.div`
+    button {
+        padding: .5em;
+        width: 10em;
+        height: 3em;
+        border: none;
+        border-radius: .4em;
+        font-family: gotham-narrow-ultra;
+        font-size: 1.5em;
+        text-transform: uppercase;
+        letter-spacing: .2em;
+        background-color: ${props => props.buttonColor || "#383838"};
+        color: ${props => props.fontColor || "black"};
     }
 `

@@ -8,12 +8,12 @@ import NHLStandings from './components/sportsWidgets/nhlWidget/nhlStandings'
 import Sports from './components/sportsWidgets/sports'
 import Notes from './components/notesWidget/notesWidget'
 import Merch from './components/merchWidget/merch'
+import { MainInfo } from './components/mainInfo'
 import { StyledHead } from './components/Styles'
 import { TopMenuBar, LinkList, TopNavBar, linkProps } from './components/TopBar'
 const config = require('./config.json')
 const pages = config.jalgraves.pages
 const topBarMenu = document.getElementById('topBar')
-const nhlTeams = document.getElementById('nhlTeams')
 const nflWidget = document.getElementById('nflWidget')
 const nflMatchups = document.getElementById('nflMatchups')
 const nhlGames = document.getElementById('nhlGames')
@@ -47,7 +47,7 @@ const menuList = <LinkList props={linkProps(pages, 'menu_list')} />
 function navBarLogo() {
     return (
         <a href="/">
-            <img style={{position: 'absolute', padding: '.25em'}} src="/images/jal.gif"  alt="jalgraves logo" />
+            <img style={{position: 'absolute', padding: '.25em'}} src="/images/beantown.svg"  alt="beantown pub logo" />
         </a>
     );
 }
@@ -55,20 +55,27 @@ function navBarLogo() {
 ReactDOM.render(
     <TopMenuBar
         bottomMenu=''
-        fontColor='#363636'
+        fontColor='#fcebbb'
         navBarLogo={navBarLogo()}
         topMenu={topMenu()}
         menuList={menuList}
         navBar={navBar()}
-        barColor='white'
+        barColor='black'
         menuColor='#494040' />,
     topBarMenu
 )
 
-if (nhlTeams) {
+if (document.getElementById('mainInfo')) {
+    ReactDOM.render(
+        <MainInfo/>,
+        document.getElementById('mainInfo')
+    )
+}
+
+if (document.getElementById('nhlTeams')) {
     ReactDOM.render(
         <NHLTeams/>,
-        nhlTeams
+        document.getElementById('nhlTeams')
     )
 }
 

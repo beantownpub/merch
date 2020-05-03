@@ -1,5 +1,5 @@
-import React from "react"
-import { useForm } from "react-hook-form"
+import React from 'react'
+import { useForm } from 'react-hook-form'
 import MenuIcon, { getIcon } from '../Icon'
 import { ViewButton } from './buttons'
 import { StyledCheckoutForm } from './styles/formStyles'
