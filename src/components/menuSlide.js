@@ -4,12 +4,12 @@ export function menuOpen() {
     anime({
         targets: '.slide_menu',
         easing: 'easeInOutQuad',
-        translateX: '22em'
+        translateX: '25rem'
     })
     anime({
         targets: '.animate',
         easing: 'linear',
-        translateX: '17.5em',
+        translateX: '27rem',
         delay: 300
     })
 }
@@ -18,12 +18,12 @@ export function menuClose() {
     anime({
         targets: '.slide_menu',
         easing: 'easeInOutQuad',
-        translateX: '-20em'
+        translateX: '-25rem'
     })
     anime({
         targets: '.animate',
         easing: 'linear',
-        translateX: '-20em',
+        translateX: '-27rem',
     })
 }
 

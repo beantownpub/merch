@@ -13,7 +13,8 @@
     },
     "rules": {
         "semi": 0,
-        "no-unused-vars": 0
+        "no-unused-vars": 0,
+        "no-console": "off"
     },
     "extends": "eslint:recommended"
 }

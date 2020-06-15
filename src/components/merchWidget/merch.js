@@ -4,8 +4,10 @@ import Products from './products'
 import { NumCartItems, Cart } from './cart'
 import { ViewButton } from './buttons'
 import { StyledMerchContainer } from './styles/merchStyles'
+import { InfoSection } from './../common'
 
 const config = require('./merchConfig.json')
+let apiUrl = process.env.MERCH_API_URL || config.apiUrl
 
 export default class Merch extends React.Component {
     constructor(props) {
@@ -20,7 +22,7 @@ export default class Merch extends React.Component {
             sweatshirts: [],
             hats: [],
             drinkware: [],
-            showTshirts: true,
+            showTshirts: false,
             showSweatshirts: false,
             showHats: false,
             showDrinkware: false
@@ -31,8 +33,10 @@ export default class Merch extends React.Component {
     }
 
     componentDidMount() {
-        let productsUrl = config.urls.products
-        let cartItemsUrl = config.urls.cart
+        let productsUrl = `${apiUrl}${config.uris.products}`
+        let cartItemsUrl = `${apiUrl}${config.uris.cart}`
+        console.log(`PRODUCTS URL: ${productsUrl}`)
+        console.log(`CART URL: ${cartItemsUrl}`)
         fetch(`${productsUrl}/tshirts`)
             .then(response => response.json())
             .then(data => this.setState({ tshirts: data }))
@@ -62,7 +66,7 @@ export default class Merch extends React.Component {
             quantity: quantity,
             size: size
         }
-        const url = config.urls.cart
+        const url = `${apiUrl}${config.uris.cart}`
         fetch(url, {method: action, credentials: 'include', body: JSON.stringify(itemData), headers: {'Content-Type': 'application/json'}})
             .then(response => response.json())
             .then(data => this.setState({ cartItems: data, numItemsInCart: data.cart_items.length, cartTotal: data.total }))
@@ -116,8 +120,11 @@ export default class Merch extends React.Component {
                     <ViewButton clicker={this.showCategory} category='hats' text='hats' icon='faHatCowboy' />
                     <ViewButton clicker={this.showCategory} category='drinkware' text='drinkware' icon='faBeer' />
                 </div>
-                <div className='products'>
+                <InfoSection bgColor='#fcba03' textAlign='center'>
                     <h1>Merch</h1>
+                    <h2>Online Orders<br />Coming Soon!</h2>
+                </InfoSection>
+                <div className='products'>
                     {this.state.showTshirts &&
                         <div className='categoryContainer'>
                             <div className='category'>

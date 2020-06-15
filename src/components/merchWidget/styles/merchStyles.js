@@ -5,6 +5,7 @@ export const StyledMerchContainer = styled.div`
     display: flex;
     flex-flow: row wrap;
     .gutter {
+        margin-top: 2rem;
         padding: 1rem;
         display: flex;
         flex-flow: column wrap;
@@ -48,6 +49,7 @@ export const StyledMerchContainer = styled.div`
     }
     @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
         .gutter {
+            margin-top: 2rem;
             position: unset;
             bottom: unset;
             width: 100vw;

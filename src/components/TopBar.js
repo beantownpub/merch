@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyledCloseMenu, StyledHamburger, StyledSlideMenu, StyledTopNav, StyledNavBar, StyledLink } from './Styles'
-import MenuIcon, { getIcon } from './Icon'
+import MenuIcon, { getIcon } from './icons'
 
 const slide = require('./menuSlide')
 
@@ -76,6 +76,7 @@ export class TopMenuBar extends React.Component {
                             {this.props.menuList}
                         </div>
                         {closeButton()}
+                        <h2>Est. 1999</h2>
                     </div>
                 </StyledSlideMenu>
                 {openButton()}

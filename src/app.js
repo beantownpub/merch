@@ -11,7 +11,7 @@ var merchRouter = require('./routes/merch');
 
 var app = express();
 
-// var staticUrl = 'https://s3.us-east-2.amazonaws.com/static.jalgraves.com/pub/public/';
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

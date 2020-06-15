@@ -5,12 +5,13 @@ import { ViewButton } from './buttons'
 import { StyledCheckoutForm } from './styles/formStyles'
 
 const config = require('./merchConfig.json')
+const apiUrl = process.env.MERCH_API_URL || config.apiUrl
 
 export const CheckoutForm = (props) => {
     const { handleSubmit, register, errors } = useForm()
     const onSubmit = values => {
         values.cart = props.cart
-        const url = config.urls.cart
+        const url = `${apiUrl}${config.uris.cart}`
         fetch(url, {method: 'POST', credentials: 'include', body: JSON.stringify(values), headers: {'Content-Type': 'application/json'}})
             .then(response => response.json())
             .then(data => this.setState({ cartItems: data, numItemsInCart: data.cart_items.length, cartTotal: data.total }))
