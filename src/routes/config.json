@@ -1,0 +1,68 @@
+{
+    "sections": {
+        "home": {
+            "template": "index",
+            "metadata": {
+                "title": "Beantown Pub",
+                "description": "Beantown Pub. Boston's favorite spot for billiards, cocktails, beers, and fine pub dining",
+                "keywords": "bar, pub, food, dining, fine pub dining, appetizers, entrees, cocktails, beer, spirits, billiards, pool, pool stick, lobster roll, hot dogs, coffee"
+            }
+        },
+        "admin": {
+            "template": "merchAdmin",
+            "metadata": {
+                "title": "Merch",
+                "description": "Manage merchandise",
+                "keywords": "merchandise, tshirts, sweatshirts, hats, hoodies"
+            }
+        },
+        "merch": {
+            "template": "merch",
+            "metadata": {
+                "title": "Merch",
+                "description": "Merchandise",
+                "keywords": "merchandise, tshirts, sweatshirts, hats, hoodies"
+            }
+        },
+        "about": {
+            "template": "about",
+            "metadata": {
+                "title": "About Beantown",
+                "description": "",
+                "keywords": ""
+            }
+        },
+        "contact": {
+            "template": "contact",
+            "metadata": {
+                "title": "Contact Beantown",
+                "description": "",
+                "keywords": ""
+            }
+        },
+        "menu": {
+            "template": "menu",
+            "metadata": {
+                "title": "Beantown Menu",
+                "description": "Beantown food menu",
+                "keywords": ""
+            }
+        },
+        "photos": {
+            "template": "photos",
+            "metadata": {
+                "title": "Beantown Photos",
+                "description": "",
+                "keywords": ""
+            }
+        },
+        "parties": {
+            "template": "parties",
+            "metadata": {
+                "title": "Private Parties",
+                "description": "",
+                "keywords": ""
+            }
+        }
+    }
+}
