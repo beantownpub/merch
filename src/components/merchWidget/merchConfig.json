@@ -1,9 +1,0 @@
-{
-    "urls": {
-        "products": "http://localhost:5000/v1/merch/products",
-        "cart": "http://localhost:5000/v1/merch/cart",
-        "cartItems": "http://localhost:5000/v1/merch/cart",
-        "deleteItem": "http://localhost:5000/v1/merch/cart/update/",
-        "updateCart": "http://localhost:5000/v1/merch/cart/update/"
-    }
-}
