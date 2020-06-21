@@ -37,7 +37,7 @@ export const PrivateParties = () => {
                 or corporate events. Choose from spaces with single, multiple, or no pool tables. Our private event menu offers a variety of freshly
                 prepared delicious appetizers all the way up to a full buffet with several entrees.
                 </article>
-                <LinkButton url='/about'>Catering Menu</LinkButton>
+                <LinkButton color='#000000' fontColor='#fcba03' url='/about'>Catering Menu</LinkButton>
                 <ContactForm/>
             </section>
         </InfoSection>

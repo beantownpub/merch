@@ -18,7 +18,7 @@ start:
 			-v "${PWD}/dist/public/css:/app/dist/public/css" \
 			-v "${PWD}/dist/public/images:/app/dist/public/images" \
 			-e JAL_VERSION='0.0.01' \
-			merch_frontend
+			jalgraves/beantown_frontend
 
 publish: build
 		docker tag merch_frontend jalgraves/merch_frontend
