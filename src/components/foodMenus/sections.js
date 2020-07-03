@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { StyledMenuItem, StyledMenuSection } from './styles/menuStyles'
 
-const apiUrl = 'http://localhost:5004'
+const apiUrl = 'http://menu-api.default.svc.cluster.local'
 
 const MenuItem = (props) => {
     return (
