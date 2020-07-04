@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { StyledMenuItem, StyledMenuSection } from './styles/menuStyles'
 
-const apiUrl = 'https://menu-api.default.svc.cluster.local'
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0
+const apiUrl = 'https://menu-api.jalgraves.com/'
+// process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0
 
 const MenuItem = (props) => {
     return (
