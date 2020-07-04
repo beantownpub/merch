@@ -5,7 +5,8 @@ import { ViewButton } from './merchWidget/buttons'
 import { StyledContactForm } from './Styles'
 
 const config = require('../config.json')
-const apiUrl = process.env.CONTACT_API_URL || config.beantown.urls.contactApi
+// const apiUrl = process.env.CONTACT_API_URL || config.beantown.urls.contactApi
+const apiUrl = 'https://contact-api.dev.jalgraves.com'
 const contactReply = 'Request Received! We will respond to you as soon as we can. Thanks!'
 
 export const ContactForm = () => {
