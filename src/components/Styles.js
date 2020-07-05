@@ -239,7 +239,7 @@ export const StyledInfo = styled.div`
         font-family: gotham;
         font-size: 2em;
         line-height: 170%;
-        text-align:${props => props.textAlign || "initial"};
+        text-align: ${props => props.textAlign || "initial"};
         span {
             color: #c70039;
         }

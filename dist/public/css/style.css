@@ -72,6 +72,36 @@ body {
   z-index: 1002;
 }
 
+.errorContainer {
+  margin: auto;
+  padding: 10rem 1rem 10rem 4rem;
+  background: #fcba03;
+  background-color: #fcba03;
+  width: 100vw;
+  display: flex;
+  flex-flow: column wrap;
+  font-family: gotham-narrow-ultra;
+  letter-spacing: 0.12rem;
+  text-transform: uppercase;
+  color: black;
+  line-height: 170%;
+}
+.errorContainer h1 {
+  padding: 0.5rem 0;
+  max-width: 80%;
+  font-size: 3em;
+  font-family: gotham-narrow-ultra;
+  line-height: 170%;
+}
+.errorContainer h2 {
+  padding: 0.5rem 0;
+  max-width: 80vw;
+  font-family: gotham;
+  font-size: 2em;
+  line-height: 170%;
+  text-align: initial;
+}
+
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
   .title {
     font-size: 3em;

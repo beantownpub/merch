@@ -112,3 +112,17 @@ export const ContactInfo = () => {
         </div>
     )
 }
+
+export const ErrorPage = () => {
+    return (
+        <div>
+            <InfoSection bgColor='#fcba03'>
+                <section>
+                    <h1>See Yah Laatah&trade;!</h1>
+                    <h2>Sorry, somethin' aint right</h2>
+                    <h2>Requested page is nowhere to be found on the server</h2>
+                </section>
+            </InfoSection>
+        </div>
+    )
+}
