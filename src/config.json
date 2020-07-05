@@ -3,7 +3,7 @@
         "static_url": "https://static.dev.beantownpub.com",
         "urls": {
             "googleApi": "https://maps.googleapis.com/maps/api/",
-            "contactApi": "http://localhost:5012/v1/contact/beantown",
+            "contactApi": "https://contact-api.jalgraves.com/v1/contact/beantown",
             "merchApi": "https://merch-api.beantownpub.com",
             "products": "https://merch-api.beantownpub.com/v1/merch/products",
             "cart": "https://merch-api.beantownpub.com/v1/merch/cart",
@@ -52,7 +52,7 @@
                 "text": "Menu",
                 "title": "Beantown Menu",
                 "keywords": "",
-                "description": "Beantown Pub dining menu",
+                "description": "Beantown Pub menu, serving food late night",
                 "menu_list": true,
                 "top_menu": true
             },

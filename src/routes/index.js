@@ -15,6 +15,12 @@ router.get('/', function(req, res, next) {
   res.render(home.template, home.metadata)
 })
 
+router.get('/index', function(req, res, next) {
+  const home = sections.home
+  res.set('x-jalv', jalVersion)
+  res.render(home.template, home.metadata)
+})
+
 router.get('/about', function (req, res, next) {
   const about = sections.about
   res.render(about.template, about.metadata)

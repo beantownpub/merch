@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { StyledMenuItem, StyledMenuSection } from './styles/menuStyles'
 
 const apiUrl = 'https://menu-api.jalgraves.com'
-// process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0
+// const apiUrl = 'http://localhost:5004'
 
 const MenuItem = (props) => {
     return (
@@ -20,7 +20,6 @@ function menuSectionItems(menuItems) {
     const itemList = []
     let cnt = 1
     for (const item of Object.keys(menuItems)) {
-        console.log(`Item: ${menuItems[item]}`)
         itemList.push(
             <MenuItem
                 key={cnt}

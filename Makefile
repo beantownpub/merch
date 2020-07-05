@@ -7,7 +7,7 @@ stop:
 		docker rm -f frontend || true
 
 build: sass
-		docker build -t merch_frontend .
+		docker build -t beantown_frontend .
 
 start:
 		docker run \
@@ -18,8 +18,8 @@ start:
 			-v "${PWD}/dist/public/css:/app/dist/public/css" \
 			-v "${PWD}/dist/public/images:/app/dist/public/images" \
 			-e JAL_VERSION='0.0.01' \
-			jalgraves/beantown_frontend:latest
+			beantown_frontend
 
 publish: build
-		docker tag merch_frontend jalgraves/merch_frontend
-		docker push jalgraves/merch_frontend
+		docker tag merch_frontend jalgraves/beantown_frontend
+		docker push jalgraves/beantown_frontend

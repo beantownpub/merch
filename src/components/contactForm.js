@@ -17,7 +17,6 @@ export const ContactForm = () => {
         'X-JAL-Comp': 'ContactForm'
     }
     const onSubmit = (values, e) => {
-        console.log(values)
         fetch(apiUrl, {method: 'POST', credentials: 'include', body: JSON.stringify(values), headers: heads})
             .then(response => response.json())
             .then(data => setReply(data.msg))

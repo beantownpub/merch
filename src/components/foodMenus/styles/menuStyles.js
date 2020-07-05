@@ -1,11 +1,15 @@
 import styled from 'styled-components'
 
+const red = '#ed1c24'
+// const green = '#5d9732'
+const gold = '#fcba03'
 
 export const StyledFoodMenu = styled.div`
     width: 100%;
     margin-top: 5rem;
+    padding-top: 2rem;
     margin-bottom: 1rem;
-    background-color: whitesmoke;
+    background-color: beige;
     .warning {
         display: flex;
         h3 {
@@ -17,7 +21,7 @@ export const StyledFoodMenu = styled.div`
 `
 
 export const StyledMenuSection = styled.div`
-    margin: .5rem auto;
+    margin: 1rem auto;
     width: max-content;
     max-width: 95vw;
     display: flex;
@@ -27,11 +31,12 @@ export const StyledMenuSection = styled.div`
         flex-flow: row wrap;
     }
     h2 {
-        margin: .5rem auto;
+        margin: .75rem auto;
         letter-spacing: .2rem;
         text-transform: uppercase;
         font-family: gotham-ultra;
-        font-size: 1.75rem;
+        font-size: 1.95rem;
+        color: ${red};
     }
     p {
         margin: auto;
@@ -46,6 +51,7 @@ export const StyledMenuItem = styled.div`
     flex-direction: column;
     width: 30rem;
     border: .1rem solid black;
+    background-color: ghostwhite;
     border-radius: .4rem;
     .namePrice {
         padding: .5rem;
@@ -55,7 +61,12 @@ export const StyledMenuItem = styled.div`
         display: grid;
         grid-template-columns: 15rem 4rem;
         grid-column-gap: 7rem;
-        h2, h3 {
+        h2 {
+            margin: .5rem auto;
+            font-size: 1.25rem;
+            color: ${gold};
+        }
+        h3 {
             font-size: 1.25rem;
         }
     }

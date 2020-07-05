@@ -17,6 +17,12 @@ export const FoodMenu = () => {
                 category="appetizers"
             />
             <MenuSection
+                name="Title Town Wings"
+                category="wings"
+                description="Best wings in Boston! Available house battered or naked"
+                postInfo="FLAVORS: plain, buffalo, honey buffalo, XXX hot, teriyaki, bbq, sweet chili, garlic parmesan. Choose two per order"
+            />
+            <MenuSection
                 name="Soups"
                 category="soups"
             />
