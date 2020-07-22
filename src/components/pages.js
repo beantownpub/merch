@@ -3,6 +3,7 @@ import { InfoSection } from './common'
 import { Map } from './map'
 import { ContactForm } from './contactForm'
 import { LinkButton } from './common'
+import { GrubHub } from './grubhub'
 
 
 export const MainInfo = () => {
@@ -15,6 +16,7 @@ export const MainInfo = () => {
                     <h2>Open Daily</h2>
                     <h3>8:30 AM to 2:00 AM</h3>
                     <h2>Serving Food Late Night<br /><a href='/menu'><span>See menu &#10148;</span></a></h2>
+                    <GrubHub/>
                 </section>
             </InfoSection>
             <InfoSection bgColor="#383838" fontColor='#fcba03'>
