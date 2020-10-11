@@ -14,7 +14,7 @@ export const StyledFoodMenu = styled.div`
         display: flex;
         h3 {
             margin: auto;
-            font-family: gotham;
+            font-family: gotham, Raleway;
             font-size: 1rem;
         }
     }
@@ -34,7 +34,7 @@ export const StyledMenuSection = styled.div`
         margin: .75rem auto;
         letter-spacing: .2rem;
         text-transform: uppercase;
-        font-family: gotham-ultra;
+        font-family: gotham-ultra, Raleway;
         font-size: 1.95rem;
         color: ${red};
     }
@@ -55,7 +55,7 @@ export const StyledMenuItem = styled.div`
     border-radius: .4rem;
     .namePrice {
         padding: .5rem;
-        font-family: gotham-ultra;
+        font-family: gotham-ultra, Raleway;
         text-transform: uppercase;
         letter-spacing: .2rem;
         display: grid;
@@ -72,6 +72,6 @@ export const StyledMenuItem = styled.div`
     }
     p {
         padding: .5rem;
-        font-family: gotham;
+        font-family: gotham, Raleway;
     }
 `
