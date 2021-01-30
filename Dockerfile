@@ -2,6 +2,7 @@ FROM node:14.13.1-buster-slim AS build
 
 RUN apt-get update  && \
     apt-get install -y \
+        apt-utils \
         python \
         g++ \
         make \
@@ -26,7 +27,8 @@ ENV TINI_VERSION v0.18.0
 
 COPY ./package* /app/
 WORKDIR /app
-RUN npm ci --production || npm ci --production
+RUN npm install -D webpack-cli && \
+    npm ci --production || npm ci --production
 COPY . ./
 COPY --from=install /app/dist/public/js/main.js /app/dist/public/js/
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
