@@ -2,6 +2,10 @@ import React from 'react'
 import { CartButton } from './buttons'
 import { StyledProductsContainer, StyledProduct } from './styles/productStyles'
 
+// staticUrl = "https://dummyimage.com/280x420/12ff51/000000"
+// const staticPath = "https://static.dev.beantownpub.com/img/merch/"
+const staticPath = "/images/merch/"
+
 const ListSelect = ({ onSizeChange }) => (
     <div>
         <label>Size: </label>
@@ -30,6 +34,8 @@ function renderProducts(products, props) {
                 cartUpdate={props.cartUpdate}
                 oneSize={products[product].one_size}
                 sizes={products[product].sizes}
+                imgName={products[product].img_name}
+                category={products[product].category}
             />
         )
         cnt++
@@ -46,7 +52,7 @@ class Product extends React.Component {
         super(props)
         this.state = {
             quantity: 1,
-            size: '',
+            size: 'med',
         }
         this.handleSizeChange = this.handleSizeChange.bind(this)
         this.handleQuantityChange = this.handleQuantityChange.bind(this)
@@ -73,8 +79,9 @@ class Product extends React.Component {
     render() {
         return (
             <StyledProduct>
-                <div>{this.props.name}</div>
+                <div id={`#${this.props.category}`}>{this.props.name}</div>
                 <div className='description'>{this.props.description}</div>
+                <img src={`${staticPath}${this.props.imgName}`} alt={this.props.name} />
                 <div className='purchaseInfo'>
                     <div className='price'><label>{this.props.price}</label></div>
                     <div className='size'>

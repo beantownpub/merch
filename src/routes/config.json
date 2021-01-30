@@ -63,6 +63,14 @@
                 "description": "",
                 "keywords": ""
             }
+        },
+        "square": {
+            "template": "payment",
+            "metadata": {
+                "title": "WTF",
+                "description": "",
+                "keywords": ""
+            }
         }
     }
 }

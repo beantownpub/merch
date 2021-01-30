@@ -1,6 +1,7 @@
 import React from 'react'
 import { SocialNav } from './social'
 import {
+    StyledAnchor,
     StyledInfo,
     StyledLinkButton,
     StyledHero,
@@ -9,7 +10,15 @@ import {
 
 export const InfoSection = (props) => {
     return (
-        <StyledInfo color={props.bgColor} fontColor={props.fontColor} textAlign={props.textAlign}>{props.children}</StyledInfo>
+        <StyledInfo
+            color={props.bgColor}
+            fontColor={props.fontColor}
+            textAlign={props.textAlign}
+            marginTop={props.marginTop}
+            paddingTop={props.paddingTop}
+            paddingBottom={props.paddingBottom}
+            paddingLeft={props.paddingLeft}
+            paddingRight={props.paddingRight}>{props.children}</StyledInfo>
     )
 }
 
@@ -35,6 +44,14 @@ export const HeroHeader = () => {
         <StyledHero>
             <h1>The only pub in the world where you can drink a cold Sam Adams' while viewing a cold Sam Adams</h1>
         </StyledHero>
+    )
+}
+
+export const Anchor = (props) => {
+    return (
+        <StyledAnchor>
+            <a href={props.target}>{props.text}</a>
+        </StyledAnchor>
     )
 }
 

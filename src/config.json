@@ -73,8 +73,8 @@
                 "title": "Merch",
                 "keywords": "beantown pub, tshirts, sweatshirts, hats, glasses, souvenirs",
                 "description": "Beantown Pub Merch",
-                "menu_list": true,
-                "top_menu": true
+                "menu_list": false,
+                "top_menu": false
             },
             "photos": {
                 "name": "https://www.facebook.com/BeantownPubMA/",

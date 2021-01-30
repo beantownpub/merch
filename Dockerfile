@@ -8,6 +8,11 @@ RUN apt-get update  && \
         gcc
 
 FROM build AS install
+ARG square_app_id
+ARG node_env
+ENV SQUARE_APP_ID=${square_app_id}
+ENV NODE_ENV=${node_env}
+
 COPY ./package* /app/
 WORKDIR /app
 RUN npm ci --save-dev

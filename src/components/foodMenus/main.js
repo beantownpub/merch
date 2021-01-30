@@ -29,7 +29,7 @@ export const FoodMenu = () => {
             <MenuSection
                 name="Salads"
                 category="salads"
-                description="Add grilled chicken or turkey tips for 4.00"
+                description="Add grilled chicken 5, shrimp 5, lobster 10, steak 8"
                 postInfo="DRESSINGS: Italian, Creamy Italian, Ranch, Blue Cheese, Greek, Honey Mustard, Russian, Balsamic Vinaigrette, Fat Free Vinaigrette, and Oila Vinegar"
             />
             <MenuSection

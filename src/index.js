@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Merch from './components/merchWidget/merch'
+import Merch from './components/merch/merch'
+import { SquareWidget } from './components/merch/square/square'
 import { FoodMenu } from './components/foodMenus/main'
 import { MainInfo, AboutInfo, ContactInfo, PrivateParties } from './components/pages'
 import { HeroHeader, Footer } from './components/common'
@@ -111,5 +112,12 @@ if (document.getElementById('foodMenu')) {
     ReactDOM.render(
         <FoodMenu/>,
         document.getElementById('foodMenu')
+    )
+}
+
+if (document.getElementById('squareForm')) {
+    ReactDOM.render(
+        <SquareWidget/>,
+        document.getElementById('squareForm')
     )
 }

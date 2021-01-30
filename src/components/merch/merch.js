@@ -2,12 +2,12 @@
 import React from 'react'
 import Products from './products'
 import { NumCartItems, Cart } from './cart'
-import { ViewButton } from './buttons'
-import { StyledMerchContainer } from './styles/merchStyles'
-import { InfoSection } from './../common'
+import { StyledMerchContainer, StyledMerchNav } from './styles/merchStyles'
+import { InfoSection, Anchor } from './../common'
 
 const config = require('./merchConfig.json')
-let apiUrl = process.env.MERCH_API_URL || config.apiUrl
+const apiUrl = process.env.MERCH_API_URL
+
 
 export default class Merch extends React.Component {
     constructor(props) {
@@ -19,15 +19,16 @@ export default class Merch extends React.Component {
             numItemsInCart: 0,
             cartTotal: 0.00,
             tshirts: [],
-            sweatshirts: [],
+            accessories: [],
             hats: [],
             drinkware: [],
-            showTshirts: false,
-            showSweatshirts: false,
-            showHats: false,
-            showDrinkware: false
+            showTshirts: true,
+            showAccessories: true,
+            showHats: true,
+            showDrinkware: true
         }
         this.updateCart = this.updateCart.bind(this)
+        this.resetCart = this.resetCart.bind(this)
         this.showCategory = this.showCategory.bind(this)
         this.hideCategory = this.hideCategory.bind(this)
     }
@@ -35,15 +36,13 @@ export default class Merch extends React.Component {
     componentDidMount() {
         let productsUrl = `${apiUrl}${config.uris.products}`
         let cartItemsUrl = `${apiUrl}${config.uris.cart}`
-        console.log(`PRODUCTS URL: ${productsUrl}`)
-        console.log(`CART URL: ${cartItemsUrl}`)
         fetch(`${productsUrl}/tshirts`)
             .then(response => response.json())
             .then(data => this.setState({ tshirts: data }))
             .catch(error => console.log(error))
-        fetch(`${productsUrl}/sweatshirts`)
+        fetch(`${productsUrl}/accessories`)
             .then(response => response.json())
-            .then(data => this.setState({ sweatshirts: data }))
+            .then(data => this.setState({ accessories: data }))
             .catch(error => console.log(error))
         fetch(`${productsUrl}/hats`)
             .then(response => response.json())
@@ -54,6 +53,16 @@ export default class Merch extends React.Component {
             .then(data => this.setState({ drinkware: data }))
             .catch(error => console.log(error))
         fetch(cartItemsUrl, {credentials: 'include'})
+            .then(response => response.json())
+            .then(data => this.setState({ cartItems: data, numItemsInCart: data.cart_items.length, cartTotal: data.total }))
+            .catch(error => console.log(error, this.state))
+    }
+
+    resetCart() {
+        console.log('RESETTING CART')
+        let cartUrl = `${apiUrl}${config.uris.cart}`
+        console.log(cartUrl)
+        fetch(cartUrl, {credentials: 'include'})
             .then(response => response.json())
             .then(data => this.setState({ cartItems: data, numItemsInCart: data.cart_items.length, cartTotal: data.total }))
             .catch(error => console.log(error, this.state))
@@ -78,8 +87,8 @@ export default class Merch extends React.Component {
         if (category === 'tshirts') {
             this.setState({ showTshirts: true })
         }
-        if (category === 'sweatshirts') {
-            this.setState({ showSweatshirts: true })
+        if (category === 'accessories') {
+            this.setState({ showAccessories: true })
         }
         if (category === 'hats') {
             this.setState({ showHats: true })
@@ -94,8 +103,8 @@ export default class Merch extends React.Component {
         if (category === 'tshirts') {
             this.setState({ showTshirts: false })
         }
-        if (category === 'sweatshirts') {
-            this.setState({ showSweatshirts: false })
+        if (category === 'accessories') {
+            this.setState({ showAccessories: false })
         }
         if (category === 'hats') {
             this.setState({ showHats: false })
@@ -108,52 +117,65 @@ export default class Merch extends React.Component {
     render() {
         return (
             <StyledMerchContainer>
-                <div className='gutter'>
+                <StyledMerchNav id="topAnchor">
                     <Cart
                         cartItems={this.state.cartItems}
                         total={this.state.cartTotal}
                         cartUpdate={this.updateCart}
+                        resetCart={this.resetCart}
+                        numCartItems={this.state.numItemsInCart}
                     />
                     <NumCartItems total={this.state.cartTotal}>{this.state.numItemsInCart}</NumCartItems>
-                    <ViewButton clicker={this.showCategory} category='tshirts' text='tshirts' icon='faTshirt' />
-                    <ViewButton clicker={this.showCategory} category='sweatshirts' text='sweatshirts' icon='faTshirt' />
-                    <ViewButton clicker={this.showCategory} category='hats' text='hats' icon='faHatCowboy' />
-                    <ViewButton clicker={this.showCategory} category='drinkware' text='drinkware' icon='faBeer' />
-                </div>
-                <InfoSection bgColor='#fcba03' textAlign='center'>
-                    <h1>Merch</h1>
-                    <h2>Online Orders<br />Coming Soon!</h2>
+                    <div className='productNav'>
+                        <Anchor target='#shirts' text='tshirts' icon='faTshirt' borderColor='#e2e2e2' />
+                        <Anchor target='#accessories' text='accessories' icon='faTshirt' borderColor='#e2e2e2' />
+                        <Anchor target='#hats' text='hats' icon='faHatCowboy' borderColor='#e2e2e2' />
+                        <Anchor target='#drinkware' text='drinkware' icon='faBeer' borderColor='#e2e2e2' />
+                    </div>
+                </StyledMerchNav>
+                <InfoSection
+                    bgColor='#383838'
+                    textAlign='center'
+                    marginTop='2rem'
+                    paddingTop='0'
+                    paddingBottom='0'
+                    paddingLeft='0'
+                    paddingRight='0'>
+                    <div className='products'>
+                        {this.state.showTshirts &&
+                            <div className='categoryContainer'>
+                                <h1 id="#shirts">Shirts</h1>
+                                <div className='category'>
+                                    <Products products={this.state.tshirts} cartUpdate={this.updateCart} />
+                                </div>
+                                <div className="anchorButton"><a href="#topAnchor">TOP</a></div>
+                            </div>}
+                        {this.state.showHats &&
+                        <div className='categoryContainer'>
+                            <h1 id="#drinkware">Hats</h1>
+                            <div className='category'>
+                                <Products products={this.state.hats} cartUpdate={this.updateCart} sizes={false} />
+                            </div>
+                            <div className="anchorButton"><a href="#topAnchor">TOP</a></div>
+                        </div>}
+                        {this.state.showDrinkware &&
+                        <div className='categoryContainer'>
+                            <h1 id="#drinkware">Drinkware</h1>
+                            <div className='category'>
+                                <Products products={this.state.drinkware} cartUpdate={this.updateCart} sizes={false} />
+                            </div>
+                            <div className="anchorButton"><a href="#topAnchor">TOP</a></div>
+                        </div>}
+                        {this.state.accessories &&
+                            <div id="#accessories" className='categoryContainer'>
+                                <h1 id="#accessories">Accessories</h1>
+                                <div className='category'>
+                                    <Products products={this.state.accessories} cartUpdate={this.updateCart} />
+                                </div>
+                                <div className="anchorButton"><a href="#topAnchor">TOP</a></div>
+                            </div>}
+                    </div>
                 </InfoSection>
-                <div className='products'>
-                    {this.state.showTshirts &&
-                        <div className='categoryContainer'>
-                            <div className='category'>
-                                <Products products={this.state.tshirts} cartUpdate={this.updateCart} />
-                            </div>
-                            <ViewButton borderColor='#e2e2e2' clicker={this.hideCategory} category='tshirts' text='hide' icon='faTshirt' />
-                        </div>}
-                    {this.state.showSweatshirts &&
-                        <div className='categoryContainer'>
-                            <div className='category'>
-                                <Products products={this.state.sweatshirts} cartUpdate={this.updateCart} />
-                            </div>
-                            <ViewButton borderColor='#e2e2e2' clicker={this.hideCategory} category='sweatshirts' text='hide' icon='faTshirt' />
-                        </div>}
-                    {this.state.showHats &&
-                    <div className='categoryContainer'>
-                        <div className='category'>
-                            <Products products={this.state.hats} cartUpdate={this.updateCart} sizes={false} />
-                        </div>
-                            <ViewButton borderColor='#e2e2e2' clicker={this.hideCategory} category='hats' text='hide' icon='faHatCowboy' />
-                    </div>}
-                    {this.state.showDrinkware &&
-                    <div className='categoryContainer'>
-                        <div className='category'>
-                            <Products products={this.state.drinkware} cartUpdate={this.updateCart} sizes={false} />
-                        </div>
-                        <ViewButton borderColor='#e2e2e2' clicker={this.hideCategory} category='drinkware' text='hide' icon='faBeer' />
-                    </div>}
-                </div>
             </StyledMerchContainer>
         )
     }

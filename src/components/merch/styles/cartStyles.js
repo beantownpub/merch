@@ -1,16 +1,13 @@
 import styled from 'styled-components'
 
 export const StyledNumCartItems = styled.div`
-    margin: .5em auto;
-    padding: 1em;
+    padding: .25rem;
     width: max-content;
+    height: 5rem;
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: row nowrap;
     font-family: gotham-narrow-ultra;
     font-size: 1em;
-    background-color: ${props => props.bgColor || "#ffe419"};
-    border: 1px solid #ffe419;
-    border-radius: .5em;
     text-decoration: none;
     text-align: center;
     text-transform: uppercase;
@@ -22,18 +19,25 @@ export const StyledCartContainer = styled.div`
     padding: 1em;
     position: absolute;
     z-index: 1002;
-    left: -33em;
-    width: max-content;
+    left: -35em;
+    width: 365px;
     display: flex;
     background-color: white;
     flex-flow: column wrap;
     border: 1px solid #e2e2e2;
-    border-radius: .4em;
+    border-radius: 6px;
     .cartList {
         margin: auto;
         width: 30em;
         display: flex;
         flex-flow: column wrap;
+    }
+    .cartTotal {
+        padding: .5rem;
+        font-family: gotham-medium;
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: .2rem;
     }
     h1 {
         margin: 0 auto;
@@ -42,20 +46,19 @@ export const StyledCartContainer = styled.div`
     }
     h2 {
         margin: auto;
+        padding: .25em;
         font-family: gotham-narrow-ultra;
         text-transform: uppercase;
         letter-spacing: .2rem;
     }
-    .cartTotal {
-        font-family: gotham-medium;
-        font-size: 1rem;
-        text-transform: uppercase;
-        letter-spacing: .2rem;
+    span {
+        color: #ed1c24;
     }
 `
 export const StyledCartItem = styled.div`
     margin: .25em auto;
     padding: .25em;
+    width: 90%;
     display: flex;
     flex-flow: column wrap;
     background-color: ${props => props.bgColor || "white"};
@@ -65,24 +68,25 @@ export const StyledCartItem = styled.div`
     text-align: center;
     letter-spacing: .09em;
     .grid {
-        width: max-content;
         margin: auto;
         display: grid;
         grid-template-rows: auto;
-        grid-template-columns: 5em 3em 1em 3em auto;
-        grid-gap: .25em;
-        font-size: 1em;
+        grid-template-columns: min-content min-content min-content min-content min-content;
+        grid-gap: 1rem;
+        font-size: 1.25rem;
         text-align: center;
-        font-family: gotham;
+        font-family: Proxima Nova,Helvetica Neue,Helvetica,Arial,sans-serif;
     }
     .name {
         text-align: left;
-        font-family: gotham-medium;
+        font-family: Proxima Nova,Helvetica Neue,Helvetica,Arial,sans-serif;
         font-size: .75em;
+        min-width: 42px;
     }
     .size, .quantity {
         font-family: gotham-medium;
         font-size: .75em;
+        min-width: 42px;
     }
 
     .description {

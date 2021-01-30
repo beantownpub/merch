@@ -1,4 +1,6 @@
 var createError = require('http-errors');
+const bodyParser = require('body-parser');
+const crypto = require('crypto');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -11,11 +13,15 @@ var merchRouter = require('./routes/merch');
 
 var app = express();
 
-
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+// new shit
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// end new shit
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -25,7 +31,7 @@ app.use(sassMiddleware({
   src: path.join(__dirname, '../dist/public'),
   dest: path.join(__dirname, '../dist/public'),
   indentedSyntax: true, // true = .sass and false = .scss
-  sourceMap: true
+  sourceMap: false
 }));
 
 app.use(express.static(path.join(__dirname, '../dist/public')));
@@ -47,8 +53,6 @@ app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-  // console.log(logger.req)
-
   // render the error page
   res.status(err.status || 500);
   res.render('error');

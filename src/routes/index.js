@@ -1,6 +1,5 @@
 var express = require('express')
 var router = express.Router()
-
 var jalVersion = (process.env.JAL_VERSION) ? process.env.JAL_VERSION : 'unset'
 var config = require('./config.json')
 var sections = config.sections
@@ -63,6 +62,14 @@ router.get('/parties', function (req, res, next) {
 router.get('/parties.html', function (req, res, next) {
   const parties = sections.parties
   res.render(parties.template, parties.metadata)
+})
+
+router.get('/square', function(req, res, next) {
+  const square = sections['square']
+  res.set('x-jalv', jalVersion)
+  // res.set('Cookie', req.cookies.cart)
+  // res.cookie('cart', req.cookies.cart).render(merch.template, merch.metadata);
+  res.render(square.template, square.metadata);
 })
 
 module.exports = router

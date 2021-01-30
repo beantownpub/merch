@@ -31,13 +31,23 @@ export function cartOpen() {
     anime({
         targets: '.slide_cart',
         easing: 'easeInOutQuad',
-        translateX: '32em'
+        translateX: '34em'
     })
     anime({
         targets: '.animate',
         easing: 'linear',
         translateX: '26.5em',
         delay: 300
+    })
+    anime({
+        targets: '.slide_menu',
+        easing: 'easeInOutQuad',
+        translateX: '-25rem'
+    })
+    anime({
+        targets: '.animate',
+        easing: 'linear',
+        translateX: '-27rem',
     })
 }
 

@@ -214,8 +214,14 @@ export const StyledNavBar = styled.div`
 `
 
 export const StyledInfo = styled.div`
-    margin: auto;
-    padding: 2rem 1rem 2rem 4rem;
+    margin-top: ${props => props.marginTop || "auto"};
+    margin-bottom: ${props => props.marginBottom || "auto"};
+    margin-left: ${props => props.marginLeft || "auto"};
+    margin-right: ${props => props.marginRight || "auto"};
+    padding-top: ${props => props.paddingTop || "2rem"};
+    padding-bottom: ${props => props.paddingBottom || "2rem"};
+    padding-left: ${props => props.paddingLeft || "4rem"};
+    padding-right: ${props => props.paddingRight || "1rem"};
     background: #fcba03;
     background-color: ${props => props.color || "#fcba03"};
     width: 100vw;
@@ -438,5 +444,24 @@ export const StyledContactForm = styled.div`
         font-family: gotham-medium;
         font-size: .75em;
         font-style: italic;
+    }
+`
+export const StyledAnchor = styled.div`
+    display: flex;
+    a {
+        margin: .25rem;
+        padding: 1rem;
+        width: ${props => props.width || "12rem"};
+        height: min-content;
+        font-family: gotham-narrow-ultra;
+        background-color: ${props => props.bgColor || "white"};
+        border: 1px solid ${props => props.borderColor || "white"};
+        border-radius: 6px;
+        text-decoration: none;
+        font-size: 1rem;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: .2rem;
+        color: black;
     }
 `

@@ -5,26 +5,21 @@ import { CheckoutForm } from './checkoutForm'
 
 const slide = require('../menuSlide')
 
-export class NumCartItems extends React.Component {
-    constructor(props) {
-        super(props)
-    }
-    render() {
-        return (
-            <StyledNumCartItems>
-                <div>Cart Items<br /></div>
-                <div>{this.props.children}</div>
-                <div>Total<br /></div>
-                <div>${this.props.total}</div>
-                <ViewButton
-                    width='10rem'
-                    clicker={slide.cartOpen}
-                    text='view'
-                    icon='faShoppingCart'
-                />
-            </StyledNumCartItems>
-        )
-    }
+export const NumCartItems = (props) => {
+    return (
+        <StyledNumCartItems>
+            <div className="numCartItems">Cart Items<br />{props.children}</div>
+            <div className="numCartItems">Total<br />${props.total}</div>
+            <div className="numCartItemsButton">
+            <ViewButton
+                width='10rem'
+                clicker={slide.cartOpen}
+                text='view'
+                icon='faShoppingCart'
+            />
+            </div>
+        </StyledNumCartItems>
+    )
 }
 
 class CartItem extends React.Component {
@@ -34,7 +29,7 @@ class CartItem extends React.Component {
 
     render() {
         return (
-            <StyledCartItem>
+            <StyledCartItem aria-labelledby='CartItem' bgColor='#fffdeb'>
                 <div className='grid'>
                     <div className='name'>{this.props.name}</div>
                     {this.props.sizes == false &&
@@ -47,7 +42,7 @@ class CartItem extends React.Component {
                     <div className='price'>{this.props.price}</div>
                     <CartButton
                         clicker={this.props.cartUpdate}
-                        text='Remove From Cart'
+                        text='X'
                         action='DELETE'
                         sku={this.props.sku}
                         size={this.props.size}
@@ -68,7 +63,7 @@ function renderCartItems(cartItems, props) {
         if (!items.length) {
             return (
                 <div className='cartList'>
-                    <h2>Shopping Cart Empty</h2>
+                    <h2><span>Cart Empty</span></h2>
                 </div>
             )
         }
@@ -91,6 +86,7 @@ function renderCartItems(cartItems, props) {
     }
     return (
         <div className='cartList'>
+            <h2>Cart</h2>
             {itemList}
         </div>
     )
@@ -100,10 +96,12 @@ export class Cart extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            showCheckout: false
+            showCheckout: false,
+            showCartItems: true
         }
         this.showCheckout = this.showCheckout.bind(this)
         this.hideCheckout = this.hideCheckout.bind(this)
+        this.hideCartItems = this.hideCartItems.bind(this)
     }
 
     showCheckout() {
@@ -114,38 +112,64 @@ export class Cart extends React.Component {
         this.setState({ showCheckout: false })
     }
 
+    hideCartItems() {
+        this.setState({ showCartItems: false })
+    }
+
     render () {
             const slideStyle = {
                 zIndex: 1002
             }
             return (
                 <div style={slideStyle} className='slide_cart'>
-                    <StyledCartContainer>
-                        <h1>Cart</h1>
-                        {renderCartItems(this.props.cartItems, this.props)}
-                        <div className='cartTotal'>Total: {this.props.total}</div>
+                    <StyledCartContainer aria-labelledby='CartContainer'>
+                        {this.state.showCartItems &&
+                            <div>
+                            {renderCartItems(this.props.cartItems, this.props)}
+                            <div className='cartTotal'>Total: {this.props.total}</div>
+                            </div>
+                        }
+
                         <ViewButton
+                            aria-labelledby='CartButton'
                             borderColor='#e2e2e2'
                             clicker={slide.cartClose}
                             text='close'
                             icon='faShoppingCart'
                         />
-                        <ViewButton
-                            borderColor='#e2e2e2'
-                            clicker={this.showCheckout}
-                            text='checkout'
-                        />
+                        {parseInt(this.props.numCartItems) > 0 &&
+                            <ViewButton
+                                borderColor='#e2e2e2'
+                                clicker={this.showCheckout}
+                                text='checkout'
+                            />
+                        }
                         {this.state.showCheckout &&
                         <div>
-                            <CheckoutForm cart={this.props.cartItems}/>
+                            <CheckoutForm
+                                cart={this.props.cartItems}
+                                cartTotal={this.props.total}
+                                hideCheckout={this.hideCheckout}
+                                resetCart={this.props.resetCart}
+                                cartUpdate={this.props.cartUpdate}
+                            />
                             <ViewButton
                                 borderColor='#e2e2e2'
                                 clicker={this.hideCheckout}
-                                text='hide'
+                                text='hide checkout'
                             />
                         </div>}
                     </StyledCartContainer>
                 </div>
             )
     }
+}
+
+export const ComingSoon = () =>  {
+    return (
+        <StyledCartContainer aria-labelledby='CartContainer'>
+            <h3>Online ordering coming soon!</h3>
+            <h3>Please come visit us purchase items in person</h3>
+        </StyledCartContainer>
+    )
 }

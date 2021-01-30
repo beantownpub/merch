@@ -14,7 +14,7 @@ export class CartButton extends React.Component {
     }
     render() {
         return(
-            <StyledButton borderColor={this.props.borderColor} width={this.props.width}>
+            <StyledButton borderColor={this.props.borderColor} buttonWidth={this.props.width} id='CartButton'>
                 <button onClick={this.handleClick}>{this.props.text}</button>
             </StyledButton>
 		)

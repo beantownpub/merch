@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import MenuIcon, { getIcon } from './icons'
-import { ViewButton } from './merchWidget/buttons'
+import { ViewButton } from './merch/buttons'
 import { StyledContactForm } from './Styles'
 
 const config = require('../config.json')
