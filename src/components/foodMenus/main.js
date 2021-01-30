@@ -41,7 +41,7 @@ export const FoodMenu = () => {
                 name="Beantown Sandwiches"
                 category="sandwiches"
                 description="Sandwiches served on an extra large fresh roll with a pickle spear and a choice of side. Add a starter salad to any entree or sandwich for 4.95"
-                postInfo="SIDES: Fries, homemade potato salad, homemade coleslaw, black beans & rice, mashed potatos, jasmin rice, homemade potato chips, baked beans"
+                postInfo="SIDES: French Fries, Baked Beans, Jasmine Rice, Vegetable, Cole Slaw, Home Made Chips, Potato Salad"
             />
             <MenuSection
                 name="Burgers"
