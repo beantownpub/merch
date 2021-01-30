@@ -44,6 +44,10 @@ start:
 			-e API_PW=${API_PW} \
 			$(image_name):$(version)
 
-publish: build
+publish: prod_build
 		docker tag $(image_name):$(version) $(dockerhub)/$(image_name):$(version)
 		docker push $(dockerhub)/$(image_name):$(version)
+
+latest:
+		docker tag $(image_name):$(version) $(dockerhub)/$(image_name):latest
+		docker push $(dockerhub)/$(image_name):latest

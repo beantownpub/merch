@@ -19,8 +19,7 @@ WORKDIR /app
 RUN npm ci --save-dev
 COPY . ./
 
-RUN npm install -D webpack-cli && \
-    npx webpack --config webpack.config.js && \
+RUN npx webpack --config webpack.config.js && \
     rm -rf node_modules
 
 FROM node:14.13.1-buster-slim
