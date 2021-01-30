@@ -18,7 +18,9 @@ COPY ./package* /app/
 WORKDIR /app
 RUN npm ci --save-dev
 COPY . ./
-RUN npx webpack --config webpack.config.js && \
+
+RUN npm install -D webpack-cli && \
+    npx webpack --config webpack.config.js && \
     rm -rf node_modules
 
 FROM node:14.13.1-buster-slim
@@ -27,8 +29,7 @@ ENV TINI_VERSION v0.18.0
 
 COPY ./package* /app/
 WORKDIR /app
-RUN npm install -D webpack-cli && \
-    npm ci --production || npm ci --production
+RUN npm ci --production || npm ci --production
 COPY . ./
 COPY --from=install /app/dist/public/js/main.js /app/dist/public/js/
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
