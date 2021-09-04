@@ -1,11 +1,11 @@
 import React from 'react'
-import { SocialNav } from './social'
+import { SocialNav } from '../social'
 import {
     StyledAnchor,
     StyledInfo,
     StyledLinkButton,
     StyledHero,
-    StyledFooter } from './Styles'
+    StyledFooter } from './styles'
 
 
 export const InfoSection = (props) => {

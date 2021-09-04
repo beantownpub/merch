@@ -3,6 +3,8 @@ import { StyledMenuItem, StyledMenuSection } from './styles/menuStyles'
 
 const apiUrl = 'https://menu-api.jalgraves.com'
 // const apiUrl = 'http://localhost:5004'
+const AUTH = 'Basic ' + Buffer.from('jalbot:TerUBK4n4Vs8qRFQYbP64LD8Uxk6').toString('base64')
+const HEADERS = {'Content-Type': 'application/json', 'Authorization': AUTH}
 
 const MenuItem = (props) => {
     return (
@@ -42,7 +44,7 @@ export const MenuSection = (props) => {
     const uri = `/v1/menu/section/${props.category}`
 
     useEffect(() => {
-        fetch(`${apiUrl}${uri}`)
+        fetch(`${apiUrl}${uri}`, HEADERS, 'no-cors')
             .then(response => response.json())
             .then(data => setState( data ))
             .catch(error => console.log(error))

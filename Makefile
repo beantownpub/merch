@@ -1,8 +1,8 @@
 .PHONY: all test clean
 
 dockerhub ?= jalgraves
-image_name ?= beantown_frontend
-version ?= $(shell jq .version package.json)
+image_name ?= beantown
+version ?= $(shell jq -r .version package.json)
 runtime = RUNTIME
 
 merch_host ?= $(shell docker inspect merch_api | jq .[0].NetworkSettings.Networks.bridge.IPAddress || echo "no-container")
@@ -40,11 +40,11 @@ start:
 			-e MERCH_API_HOST=$(merch_host) \
 			-e SQUARE_LOCATION_ID=${SQUARE_LOCATION_ID} \
 			-e SQAURE_ACCESS_TOKEN=${SQAURE_ACCESS_TOKEN} \
-			-e API_USER=${API_USER} \
-			-e API_PW=${API_PW} \
+			-e API_USERNAME=${API_USER} \
+			-e API_PASSWORD=${API_PW} \
 			$(image_name):$(version)
 
-publish: prod_build
+publish: dev_build
 		docker tag $(image_name):$(version) $(dockerhub)/$(image_name):$(version)
 		docker push $(dockerhub)/$(image_name):$(version)
 

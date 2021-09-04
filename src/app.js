@@ -1,6 +1,5 @@
 var createError = require('http-errors');
 const bodyParser = require('body-parser');
-const crypto = require('crypto');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -8,8 +7,8 @@ var logger = require('morgan');
 var sassMiddleware = require('node-sass-middleware');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 var merchRouter = require('./routes/merch');
+var contactRouter = require('./routes/contact');
 
 var app = express();
 
@@ -40,8 +39,8 @@ app.use(express.static(path.join(__dirname, '../dist/public')));
 const urlRoot = process.env.NODE_JAL_URL_ROOT || '/'
 
 app.use(urlRoot, indexRouter);
-app.use(urlRoot + '/users', usersRouter);
 app.use(urlRoot + 'merch', merchRouter);
+app.use(urlRoot + 'contact', contactRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

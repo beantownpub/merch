@@ -1,9 +1,9 @@
 import React from 'react'
 import { InfoSection } from './common'
-import { Map } from './map'
-import { ContactForm } from './contactForm'
+import { Map } from '../map'
+import { ContactForm } from '../contact/main'
 import { LinkButton } from './common'
-import { GrubHub } from './grubhub'
+import { GrubHub } from '../grubhub'
 
 
 export const MainInfo = () => {
@@ -39,7 +39,6 @@ export const PrivateParties = () => {
                 or corporate events. Choose from spaces with single, multiple, or no pool tables. Our private event menu offers a variety of freshly
                 prepared delicious appetizers all the way up to a full buffet with several entrees.
                 </article>
-                <LinkButton color='#000000' fontColor='#fcba03' url='/about'>Catering Menu</LinkButton>
                 <ContactForm/>
             </section>
         </InfoSection>
@@ -77,7 +76,7 @@ export const AboutInfo = () => {
                     <h4>Do you have takeout?</h4>
                     <p>Yes</p>
                     <h4>How much does pool cost?</h4>
-                    <p>Pool tables are coin operated and are &#65284;2.00 a game (The same price it's always been), there are change machines located in the pool area. Pool tables are first come first serve.</p>
+                    <p>Pool tables are coin operated and are &#65284;2.50 a game, there are change machines located in the pool area. Pool tables are first come first serve.</p>
                     <h4>Can I have a job?</h4>
                     <p>If you would like to apply for a job please come see us in person.</p>
                 </section>

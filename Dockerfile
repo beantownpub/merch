@@ -1,4 +1,4 @@
-FROM node:14.13.1-buster-slim AS build
+FROM node:14.17.6-buster-slim AS build
 
 RUN apt-get update  && \
     apt-get install -y \
@@ -22,10 +22,10 @@ COPY . ./
 RUN npx webpack --config webpack.config.js && \
     rm -rf node_modules
 
-FROM node:14.13.1-buster-slim
+FROM node:14.17.6-buster-slim
 
 ENV TINI_VERSION v0.18.0
-
+RUN apt-get update && apt-get install -y curl
 COPY ./package* /app/
 WORKDIR /app
 RUN npm ci --production || npm ci --production

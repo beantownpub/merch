@@ -1,8 +1,14 @@
 import React from 'react'
-import { StyledCloseMenu, StyledHamburger, StyledSlideMenu, StyledTopNav, StyledNavBar, StyledLink } from './Styles'
-import MenuIcon, { getIcon } from './icons'
+import {
+    StyledCloseMenu,
+    StyledHamburger,
+    StyledSlideMenu,
+    StyledTopNav,
+    StyledNavBar,
+    StyledLink } from '../content/styles'
+import MenuIcon, { getIcon } from '../icons'
 
-const slide = require('./menuSlide')
+const slide = require('../menuSlide')
 
 export function linkProps(pages, menuType) {
     const props = []
@@ -17,7 +23,7 @@ export function linkProps(pages, menuType) {
 }
 
 const iconStyle = {
-    color: '#EFD73D',
+    color: '#fcba03',
     fontSize: '1em'
 }
 

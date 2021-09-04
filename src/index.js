@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom'
 import Merch from './components/merch/merch'
 import { SquareWidget } from './components/merch/square/square'
 import { FoodMenu } from './components/foodMenus/main'
-import { MainInfo, AboutInfo, ContactInfo, PrivateParties } from './components/pages'
-import { HeroHeader, Footer } from './components/common'
+import { MainInfo, AboutInfo, ContactInfo, PrivateParties } from './components/content/main'
+import { HeroHeader, Footer } from './components/content/common'
 import { FadeSlider } from './components/imgSliders/sliders'
-import { TopMenuBar, LinkList, TopNavBar, linkProps } from './components/TopBar'
+import { TopMenuBar, LinkList, TopNavBar, linkProps } from './components/topBar/main'
 require('dotenv').config()
 const config = require('./config.json')
 const pages = config.beantown.pages

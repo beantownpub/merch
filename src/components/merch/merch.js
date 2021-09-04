@@ -3,7 +3,7 @@ import React from 'react'
 import Products from './products'
 import { NumCartItems, Cart } from './cart'
 import { StyledMerchContainer, StyledMerchNav } from './styles/merchStyles'
-import { InfoSection, Anchor } from './../common'
+import { InfoSection, Anchor } from './../content/common'
 
 const config = require('./merchConfig.json')
 const apiUrl = process.env.MERCH_API_URL
