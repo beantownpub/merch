@@ -1,6 +1,6 @@
 {
   "name": "node-jal",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "private": true,
   "scripts": {
     "start": "node -r dotenv/config ./bin/server dotenv_config_path=/app/.env",

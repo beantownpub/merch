@@ -67,13 +67,14 @@ export const ContactForm = () => {
                         ref={register({ required: "Required"})}
                     ></textarea>
                     <h3>{errors.details && errors.details.message}</h3>
+                    <label htmlFor="catering">Interested in having your event catered? Check box if so</label>
                     <input
                         name="catering"
                         type="checkbox"
                         value="Yes"
                         ref={register()}
                     />
-                    <label htmlFor="catering">Interested in having your event catered?</label><br />
+                    <br />
                     <ViewButton borderColor="#e2e2e2" text="Submit" />
                 </form>
             </div>}

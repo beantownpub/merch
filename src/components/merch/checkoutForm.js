@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import MenuIcon, { getIcon } from '../Icon'
+import MenuIcon, { getIcon } from '../icons'
 import { ViewButton } from './buttons'
 import { StyledCheckoutForm } from './styles/formStyles'
 // import SquarePayment from './square/Square'

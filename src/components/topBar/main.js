@@ -5,7 +5,7 @@ import {
     StyledSlideMenu,
     StyledTopNav,
     StyledNavBar,
-    StyledLink } from '../content/styles'
+    StyledLink } from './styles'
 import MenuIcon, { getIcon } from '../icons'
 
 const slide = require('../menuSlide')
