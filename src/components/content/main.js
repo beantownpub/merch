@@ -25,6 +25,12 @@ export const MainInfo = () => {
                     <h4>Make your next private event a memorable one and book it at Beantown<br /><a href='/parties'>Learn more &#10148;</a></h4>
                 </section>
             </InfoSection>
+            <InfoSection bgColor="#fcba03">
+                <section>
+                    <h3>Want more info?<br /></h3>
+                    <h2>See our frequently asked questions<br /><a href='/about'><span>FAQ &#10148;</span></a></h2>
+                </section>
+            </InfoSection>
         </div>
     )
 }
@@ -66,7 +72,7 @@ export const AboutInfo = () => {
                     <h4>Do you take reservations?</h4>
                     <p>No, but we do offer private parties for larger gatherings.</p>
                     <h4>What time do you serve food 'til?</h4>
-                    <p>1:00 am, though subject to change based on demand.</p>
+                    <p>12:00 am, though subject to change based on demand.</p>
                     <h4>Is the bar 21 plus?</h4>
                     <p>Before 6:00 pm all ages are welcome, after 6:00 21 plus only.</p>
                     <h4>How many t.v.s do you have?</h4>
@@ -76,7 +82,7 @@ export const AboutInfo = () => {
                     <h4>Do you have takeout?</h4>
                     <p>Yes</p>
                     <h4>How much does pool cost?</h4>
-                    <p>Pool tables are coin operated and are &#65284;2.50 a game, there are change machines located in the pool area. Pool tables are first come first serve.</p>
+                    <p>Pool tables are coin operated and are &#65284;2.00 a game, there are change machines located in the pool area. Pool tables are first come first serve.</p>
                     <h4>Can I have a job?</h4>
                     <p>If you would like to apply for a job please come see us in person.</p>
                 </section>

@@ -7,17 +7,14 @@ const API_PASSWORD = process.env.API_PASSWORD
 const AUTH = 'Basic ' + Buffer.from(API_USERNAME + ':' + API_PASSWORD).toString('base64')
 const HEADERS = {'Content-Type': 'application/json', 'Authorization': AUTH}
 
-router.post('/send-message', function (req, res, next) {
-  console.log(req.body)
+function makeRequest(endpoint, res) {
   try {
-    const host = process.env.CONTACT_API_HOST
-    const protocol = process.env.CONTACT_API_PROTOCOL || 'https'
-    const api_url = `${protocol}://${host}/v1/contact/beantown`
-
+    const host = process.env.MENU_API_HOST
+    const protocol = process.env.MENU_API_PROTOCOL || 'https'
+    const api_url = `${protocol}://${host}/v1/menu/section/${endpoint}`
     axios({
-      method: 'post',
+      method: 'get',
       url: api_url,
-      data: req.body,
       headers: HEADERS
     })
       .then(response => {
@@ -25,12 +22,12 @@ router.post('/send-message', function (req, res, next) {
           console.log(response.data)
           res.status(200).json({
             'status': 200,
-            'msg': 'Request Received! We will respond to you as soon as we can. Thanks!'
+            'data': response.data
           })
         } else {
           res.status(500).json({
             'status': 500,
-            'message': 'Contact API Error'
+            'message': 'Menu API Error'
           })
         }
         res.end()
@@ -38,17 +35,22 @@ router.post('/send-message', function (req, res, next) {
       .catch(error => {
         console.error('AXIOS Error: ' + error)
         res.status(500).json({
-          'title': 'Contact Failure',
+          'title': 'Menu Failure',
           'status': 500
         })
       })
   } catch(error) {
     console.log('AUTH Error: ' + error)
     res.status(500).json({
-      'title': 'Contact auth Failure',
+      'title': 'Menu Auth Failure',
       'status': 500
     })
   }
+}
+
+router.post('/categories', function (req, res, next) {
+  console.log(req.body)
+  makeRequest(req.body['category'], res)
 })
 
 router.get('/about', function(req, res, next) {
