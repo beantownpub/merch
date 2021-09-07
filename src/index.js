@@ -7,7 +7,6 @@ import { MainInfo, AboutInfo, ContactInfo, PrivateParties } from './components/c
 import { HeroHeader, Footer } from './components/content/common'
 import { FadeSlider } from './components/imgSliders/sliders'
 import { TopMenuBar, LinkList, TopNavBar, linkProps } from './components/topBar/main'
-require('dotenv').config()
 const config = require('./config.json')
 const pages = config.beantown.pages
 const staticURL = config.beantown.static_url
