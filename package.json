@@ -3,7 +3,7 @@
   "version": "0.1.10",
   "private": true,
   "scripts": {
-    "start": "node -r dotenv/config ./bin/server dotenv_config_path=/app/.env",
+    "start": "node ./bin/server",
     "_start": "JAL_VERSION=${JAL_VERSION} node ./bin/server",
     "build": "npx webpack --env JAL_VERSION=${JAL_VERSION} --config webpack.config.js"
   },
