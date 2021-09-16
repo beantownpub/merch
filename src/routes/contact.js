@@ -51,20 +51,8 @@ router.post('/send-message', function (req, res, next) {
   }
 })
 
-router.get('/about', function(req, res, next) {
-  res.redirect('/about')
-})
-
-router.get('/menu', function(req, res, next) {
-  res.redirect('/menu')
-})
-
-router.get('/parties', function(req, res, next) {
-  res.redirect('/parties')
-})
-
-router.get('/contact', function(req, res, next) {
-  res.redirect('/contact')
+router.get('/:page', function(req, res, next) {
+  res.redirect(`/${req.params['page']}`)
 })
 
 module.exports = router

@@ -1,39 +1,29 @@
 var express = require('express')
 var router = express.Router()
-const squareConnect = require('square-connect');
+const squareConnect = require('square-connect')
 var config = require('./config.json')
 var sections = config.sections
 
-var jalVersion = (process.env.JAL_VERSION) ? process.env.JAL_VERSION : 'unset'
 
-router.get('/items', function(req, res, next) {
-  const merch = sections['merch']
-  res.set('x-jalv', jalVersion)
+function setCookie(res, req) {
   res.set('Cookie', req.cookies.cart)
-  res.cookie('cart', req.cookies.cart).render(merch.template, merch.metadata);
+  res.cookie('cart', req.cookies.cart)
+}
+
+
+router.get('/:section', function(req, res, next) {
+  const merch = sections[req.params['section']]
+  setCookie(res, req).render(merch.template, merch.metadata)
 })
 
-router.get('/merch', function(req, res, next) {
-  const merch = sections['merch']
-  res.set('x-jalv', jalVersion)
-  res.set('Cookie', req.cookies.cart)
-  res.cookie('cart', req.cookies.cart).render(merch.template, merch.metadata);
-})
-
-router.get('/admin', function(req, res, next) {
-  const merch = sections['admin']
-  res.set('x-jalv', jalVersion)
-  res.set('Cookie', req.cookies.cart)
-  res.cookie('cart', req.cookies.cart).render(merch.template, merch.metadata);
-})
 
 const apiUser = process.env.API_USER
 const apiPw = process.env.API_PW
 const locationId = process.env.SQUARE_LOCATION_ID
 const accessToken = process.env.SQAURE_ACCESS_TOKEN
-const defaultClient = squareConnect.ApiClient.instance;
+const defaultClient = squareConnect.ApiClient.instance
 const oauth2 = defaultClient.authentications['oauth2']
-oauth2.accessToken = accessToken;
+oauth2.accessToken = accessToken
 
 defaultClient.basePath = 'https://connect.squareupsandbox.com'
 
@@ -84,7 +74,7 @@ function sendOrder(data) {
     })
 
     response.on('end', function () {
-      console.log(`END: ${str}`);
+      console.log(`END: ${str}`)
     })
   }
   try {
@@ -99,7 +89,7 @@ function sendOrder(data) {
 router.post('/process-order', async (req, res) => {
   console.log(req.body)
   try {
-    const response = await sendOrder(req.body);
+    const response = await sendOrder(req.body)
     res.status(200).json({
       'title': 'Payment Successful',
       'result': response
@@ -112,22 +102,8 @@ router.post('/process-order', async (req, res) => {
   }
 })
 
-// TODO fix routing so these routes aren't needed
-
-router.get('/about', function(req, res, next) {
-  res.redirect('/about')
-})
-
-router.get('/menu', function(req, res, next) {
-  res.redirect('/menu')
-})
-
-router.get('/parties', function(req, res, next) {
-  res.redirect('/parties')
-})
-
-router.get('/contact', function(req, res, next) {
-  res.redirect('/contact')
+router.get('/:page', function(req, res, next) {
+  res.redirect(`/${req.params['page']}`)
 })
 
 module.exports = router
