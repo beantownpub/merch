@@ -1,10 +1,20 @@
 import React, { useState } from "react"
 import { useForm } from "react-hook-form"
 import MenuIcon, { getIcon } from "../icons"
-import { ViewButton } from "./buttons"
 import { StyledContactForm } from "./styles"
 
 const contactReply = "Request Received! We will respond to you as soon as we can. Thanks!"
+
+const SubmitButton = (props) => {
+    
+    return (
+        <StyledButton borderColor={props.borderColor} width={props.width}>
+            <button onClick={handleClick}>
+                {props.icon &&
+                    <MenuIcon style={iconStyle} name={getIcon(props.icon)} />}{props.text}</button>
+        </StyledButton>
+    )
+}
 
 export const ContactForm = () => {
     const [reply, setReply] = useState("")
@@ -75,7 +85,7 @@ export const ContactForm = () => {
                         ref={register()}
                     />
                     <br />
-                    <ViewButton borderColor="#e2e2e2" text="Submit" />
+                    <SubmitButton borderColor="#e2e2e2" text="Submit" />
                 </form>
             </div>}
         </StyledContactForm>
