@@ -8,6 +8,14 @@
                 "keywords": "bar, pub, food, dining, fine pub dining, appetizers, entrees, cocktails, beer, spirits, billiards, pool, pool stick, lobster roll, hot dogs, coffee"
             }
         },
+        "index": {
+            "template": "index",
+            "metadata": {
+                "title": "Beantown Pub",
+                "description": "Beantown Pub. Boston's favorite spot for billiards, cocktails, beers, and fine pub dining",
+                "keywords": "bar, pub, food, dining, fine pub dining, appetizers, entrees, cocktails, beer, spirits, billiards, pool, pool stick, lobster roll, hot dogs, coffee"
+            }
+        },
         "admin": {
             "template": "merchAdmin",
             "metadata": {

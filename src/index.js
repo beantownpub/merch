@@ -1,12 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Merch from './components/merch/merch'
 import { SquareWidget } from './components/merch/square/square'
-import { FoodMenu } from './components/foodMenus/main'
-import { MainInfo, AboutInfo, ContactInfo, PrivateParties } from './components/content/main'
 import { HeroHeader, Footer } from './components/content/common'
 import { FadeSlider } from './components/imgSliders/sliders'
 import { TopMenuBar, LinkList, TopNavBar, linkProps } from './components/topBar/main'
+import Routes from './reactRoutes'
 const config = require('./config.json')
 const pages = config.beantown.pages
 const staticURL = config.beantown.static_url
@@ -58,6 +56,11 @@ ReactDOM.render(
     document.getElementById('footer')
 )
 
+ReactDOM.render(
+    <Routes />,
+    document.getElementById('app')
+)
+
 if (document.getElementById('heroHeader')) {
     ReactDOM.render(
         <HeroHeader/>,
@@ -69,48 +72,6 @@ if (document.getElementById('mainSlider')) {
     ReactDOM.render(
         <FadeSlider/>,
         document.getElementById('mainSlider')
-    )
-}
-
-if (document.getElementById('aboutInfo')) {
-    ReactDOM.render(
-        <AboutInfo/>,
-        document.getElementById('aboutInfo')
-    )
-}
-
-if (document.getElementById('contactInfo')) {
-    ReactDOM.render(
-        <ContactInfo/>,
-        document.getElementById('contactInfo')
-    )
-}
-
-if (document.getElementById('mainInfo')) {
-    ReactDOM.render(
-        <MainInfo/>,
-        document.getElementById('mainInfo')
-    )
-}
-
-if (document.getElementById('merch')) {
-    ReactDOM.render(
-        <Merch/>,
-        document.getElementById('merch')
-    )
-}
-
-if (document.getElementById('privateParties')) {
-    ReactDOM.render(
-        <PrivateParties/>,
-        document.getElementById('privateParties')
-    )
-}
-
-if (document.getElementById('foodMenu')) {
-    ReactDOM.render(
-        <FoodMenu/>,
-        document.getElementById('foodMenu')
     )
 }
 

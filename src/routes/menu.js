@@ -19,7 +19,6 @@ function makeRequest(endpoint, res) {
     })
       .then(response => {
         if (response.status === 200) {
-          console.log(response.data)
           res.status(200).json({
             'status': 200,
             'data': response.data

@@ -19,7 +19,6 @@ router.get('/:section', function(req, res, next) {
 
 router.get('/square', function(req, res, next) {
   const square = sections['square']
-  res.set('x-jalv', jalVersion)
   // res.set('Cookie', req.cookies.cart)
   // res.cookie('cart', req.cookies.cart).render(merch.template, merch.metadata);
   res.render(square.template, square.metadata);

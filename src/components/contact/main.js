@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { useForm } from "react-hook-form"
 import MenuIcon, { getIcon } from "../icons"
-import { StyledContactForm } from "./styles"
+import { StyledContactForm, StyledButton } from "./styles"
 
 const contactReply = "Request Received! We will respond to you as soon as we can. Thanks!"
 
@@ -9,9 +9,9 @@ const SubmitButton = (props) => {
     
     return (
         <StyledButton borderColor={props.borderColor} width={props.width}>
-            <button onClick={handleClick}>
+            <button>
                 {props.icon &&
-                    <MenuIcon style={iconStyle} name={getIcon(props.icon)} />}{props.text}</button>
+                    <MenuIcon style={props.iconStyle} name={getIcon(props.icon)} />}{props.text}</button>
         </StyledButton>
     )
 }

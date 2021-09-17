@@ -37,7 +37,7 @@ export const MainInfo = () => {
 
 export const PrivateParties = () => {
     return (
-        <InfoSection bgColor='#fcba03'>
+        <InfoSection bgColor='#fcba03' marginTop='3rem'>
             <section>
                 <h1>Private Parties</h1>
                 <article>
@@ -54,7 +54,7 @@ export const PrivateParties = () => {
 export const AboutInfo = () => {
     return (
         <div>
-            <InfoSection bgColor='#fcba03'>
+            <InfoSection bgColor='#fcba03' marginTop='3rem'>
                 <section>
                     <h1>See Yah Laatah&trade;!</h1>
                     <article>
@@ -95,7 +95,7 @@ export const ContactInfo = () => {
     const api_key = "AIzaSyAXB15L0ZUglrIv_DlWz7XrVSQ0g6lGiwI"
     return (
         <div>
-        <InfoSection bgColor='#fcba03'>
+        <InfoSection bgColor='#fcba03' marginTop='3rem'>
             <section>
                 <h1>Contact Beantown</h1>
                 <h3>Call</h3>
