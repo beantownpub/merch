@@ -4,7 +4,6 @@ const CONFIG = require('./config.json')
 const COLORS = CONFIG.colors
 
 const FAQ = () => {
-    const dollarSign = '&#65284;'
     return (
         <section>
             <h3>Frequently Asked Questions</h3>
@@ -23,7 +22,7 @@ const FAQ = () => {
             <h4>Do you have takeout?</h4>
             <p>Yes</p>
             <h4>How much does pool cost?</h4>
-            <p>Pool tables are coin operated and are {dollarSign}2.00 a game, there are change machines located in the pool area. Pool tables are first come first serve.</p>
+            <p>Pool tables are coin operated and are &#36;2.00 a game, there are change machines located in the pool area. Pool tables are first come first serve.</p>
             <h4>Can I have a job?</h4>
             <p>If you would like to apply for a job please come see us in person.</p>
         </section>
@@ -31,12 +30,11 @@ const FAQ = () => {
 }
 
 export const AboutInfo = () => {
-    const tradeMark = '&trade;'
     return (
         <div>
             <InfoSection bgColor={COLORS.yellow} marginTop='3rem'>
                 <section>
-                    <h1>See Yah Laatah{tradeMark}!</h1>
+                    <h1>See Yah Laatah&trade;!</h1>
                     <article>
                         Nestled in the heart of downtown Boston and conveniently located on the famous Freedom Trail, Beantown is a classic American pub
                         offering a casual drinking atmosphere and fine pub dining. Whether you’re looking for an ice cold beer after work, a great place
