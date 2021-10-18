@@ -1,6 +1,6 @@
 import React from 'react'
-import { CartButton } from './buttons'
-import { StyledProductsContainer, StyledProduct } from './styles/productStyles'
+import { CartButton } from '../buttons'
+import { StyledProductsContainer, StyledProduct } from './styles'
 
 // staticUrl = "https://dummyimage.com/280x420/12ff51/000000"
 // const staticPath = "https://static.dev.beantownpub.com/img/merch/"
@@ -33,8 +33,8 @@ function renderProducts(products, props) {
                 price={products[product].price}
                 cartUpdate={props.cartUpdate}
                 oneSize={products[product].one_size}
-                sizes={products[product].sizes}
-                imgName={products[product].img_name}
+                sizes={products[product].has_sizes}
+                imgName={products[product].image_name}
                 category={products[product].category}
             />
         )

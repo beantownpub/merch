@@ -1,8 +1,11 @@
 var express = require('express')
 var router = express.Router()
 const squareConnect = require('square-connect')
+const getRequest = require('../utils/request')
 var config = require('./config.json')
 var sections = config.sections
+
+var HEADERS = require('../utils/auth')
 
 
 function setCookie(res, req) {
@@ -11,16 +14,33 @@ function setCookie(res, req) {
 }
 
 
-router.get('/:section', function(req, res, next) {
-  const merch = sections[req.params['section']]
-  setCookie(res, req).render(merch.template, merch.metadata)
+// router.get('/:section', function(req, res, next) {
+//   const merch = sections[req.params['section']]
+//   setCookie(res, req).render(merch.template, merch.metadata)
+// })
+
+router.get('/items', function(req, res, next) {
+  const merch = sections['merch']
+  res.set('Cookie', req.cookies.cart)
+  res.cookie('cart', req.cookies.cart).render(merch.template, merch.metadata);
 })
 
+router.get('/merch', function(req, res, next) {
+  const merch = sections['merch']
+  res.set('Cookie', req.cookies.cart)
+  res.cookie('cart', req.cookies.cart).render(merch.template, merch.metadata);
+})
+
+router.get('/admin', function(req, res, next) {
+  const merch = sections['admin']
+  res.set('Cookie', req.cookies.cart)
+  res.cookie('cart', req.cookies.cart).render(merch.template, merch.metadata);
+})
 
 const apiUser = process.env.API_USER
-const apiPw = process.env.API_PW
-const locationId = process.env.SQUARE_LOCATION_ID
-const accessToken = process.env.SQAURE_ACCESS_TOKEN
+const apiPw = process.env.API_PASSWORD
+const locationId = process.env.SQUARE_LOCATION_ID || 'BJKZX9JBKW67E'
+const accessToken = process.env.SQAURE_ACCESS_TOKEN || 'EAAAEM0Rm1iVa_hMKSaQgaaCo594hlMl42540VCI6I7_Y-PENd9LlTI9gU3l6I2N'
 const defaultClient = squareConnect.ApiClient.instance
 const oauth2 = defaultClient.authentications['oauth2']
 oauth2.accessToken = accessToken
@@ -65,7 +85,7 @@ function sendOrder(data) {
     path: '/v1/merch/orders',
     port: 5000,
     method: 'POST',
-    headers: {'Content-Type': 'application/json', 'Authorization': auth}
+    headers: HEADERS
   }
   callback = function(response) {
     var str = ''
@@ -86,6 +106,21 @@ function sendOrder(data) {
   }
 }
 
+function makeRequest(endpoint, res) {
+  try {
+    const host = process.env.MERCH_API_HOST
+    const protocol = process.env.MERCH_API_PROTOCOL || 'http'
+    const apiUrl = `${protocol}://${host}/v1/merch/products/${endpoint}`
+    getRequest(apiUrl, res)
+  } catch(error) {
+    console.log('Request Error: ' + error)
+    res.status(500).json({
+      'title': 'Request Failure',
+      'status': 500
+    })
+  }
+}
+
 router.post('/process-order', async (req, res) => {
   console.log(req.body)
   try {
@@ -100,6 +135,11 @@ router.post('/process-order', async (req, res) => {
       'result': error.response.text
     })
   }
+})
+
+router.get('/categories/:category', function (req, res, next) {
+  console.log('Category: ' + req.params['category'])
+  makeRequest(req.params['category'], res)
 })
 
 router.get('/:page', function(req, res, next) {

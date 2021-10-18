@@ -4,7 +4,10 @@ import {
     Switch,
     Route
 } from "react-router-dom"
-import { MainInfo, AboutInfo, ContactInfo, PrivateParties } from './components/content/main'
+import { AboutInfo } from './components/content/about'
+import { ContactInfo } from './components/content/contact'
+import { MainInfo } from './components/content/main'
+import { PrivateParties } from './components/content/parties'
 import { FoodMenu } from './components/foodMenus/main'
 import Merch from './components/merch/merch'
 
@@ -27,7 +30,7 @@ export default function Routes() {
                 <Route path="/menu">
                     <FoodMenu />
                 </Route>
-                <Route path="/merch">
+                <Route path="/merch/items">
                     <Merch />
                 </Route>
                 <Route path="/parties">

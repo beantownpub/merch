@@ -8,7 +8,7 @@ import {
     StyledLink } from './styles'
 import MenuIcon, { getIcon } from '../icons'
 
-const slide = require('../menuSlide')
+const slide = require('../../utils/menuSlide')
 
 export function linkProps(pages, menuType) {
     const props = []

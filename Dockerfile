@@ -24,13 +24,14 @@ RUN npx webpack --config webpack.config.js && \
 
 FROM node:14.17.6-buster-slim
 
-ENV TINI_VERSION v0.18.0
+ENV TINI_VERSION v0.19.0
 RUN apt-get update && apt-get install -y curl
 COPY ./package* /app/
 WORKDIR /app
 RUN npm ci --production || npm ci --production
 COPY . ./
 COPY --from=install /app/dist/public/js/main.js /app/dist/public/js/
+RUN chown -R node:node /app/dist/public/
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
 RUN chmod +x /tini
 ENTRYPOINT ["/tini", "-s", "--"]

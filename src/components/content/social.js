@@ -1,7 +1,7 @@
 import React from 'react'
-import { SocialIcon } from './icons'
+import { SocialIcon } from '../icons'
 
-const config = require('./../config.json')
+const config = require('../../config.json')
 const urls = config.beantown.urls
 
 const iconStyle = {

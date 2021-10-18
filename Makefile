@@ -8,7 +8,7 @@ runtime = RUNTIME
 merch_host ?= $(shell docker inspect merch_api | jq .[0].NetworkSettings.Networks.bridge.IPAddress || echo "no-container")
 
 sass:
-		sass ${PWD}/src/sass/jal.sass ${PWD}/dist/public/css/style.css
+		sass ${PWD}/src/sass/style.sass ${PWD}/dist/public/css/style.css
 
 host:
 		echo $(merch_host)
