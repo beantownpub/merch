@@ -52,6 +52,7 @@ router.post('/send-message', function (req, res, next) {
 })
 
 router.get('/:page', function(req, res, next) {
+  console.log(`Redirecting /${req.params['page']}`)
   res.redirect(`/${req.params['page']}`)
 })
 

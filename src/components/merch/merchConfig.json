@@ -1,5 +1,5 @@
 {
-    "apiUrl": "https://merch-api.jalgraves.com",
+    "apiUrl": "http://localhost:5000",
     "uris": {
         "products": "/v1/merch/products",
         "cart": "/v1/merch/cart",

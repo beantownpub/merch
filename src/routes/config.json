@@ -32,6 +32,14 @@
                 "keywords": "merchandise, tshirts, sweatshirts, hats, hoodies"
             }
         },
+        "items": {
+            "template": "merch",
+            "metadata": {
+                "title": "Merch",
+                "description": "Merchandise",
+                "keywords": "merchandise, tshirts, sweatshirts, hats, hoodies"
+            }
+        },
         "about": {
             "template": "about",
             "metadata": {

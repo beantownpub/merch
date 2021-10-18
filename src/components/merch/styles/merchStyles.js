@@ -1,7 +1,10 @@
 import styled from 'styled-components'
 
 export const StyledMerchContainer = styled.div`
-    margin: auto;
+    margin-top: 5rem;
+    margin-right: auto;
+    margin-bottom: auto;
+    margin-left: auto;
     display: flex;
     flex-flow: row wrap;
     .products {

@@ -1,12 +1,12 @@
 // import React, { useState, useEffect } from 'react'
 import React from 'react'
-import Products from './products'
-import { NumCartItems, Cart } from './cart'
+import Products from './products/main'
+import { NumCartItems, Cart } from './cart/main'
 import { StyledMerchContainer, StyledMerchNav } from './styles/merchStyles'
 import { InfoSection, Anchor } from './../content/common'
 
 const config = require('./merchConfig.json')
-const apiUrl = process.env.MERCH_API_URL
+const apiUrl = config.apiUrl
 
 
 export default class Merch extends React.Component {
@@ -34,23 +34,23 @@ export default class Merch extends React.Component {
     }
 
     componentDidMount() {
-        let productsUrl = `${apiUrl}${config.uris.products}`
+        // let productsUrl = `${apiUrl}${config.uris.products}`
         let cartItemsUrl = `${apiUrl}${config.uris.cart}`
-        fetch(`${productsUrl}/tshirts`)
+        fetch('categories/tshirts')
             .then(response => response.json())
-            .then(data => this.setState({ tshirts: data }))
+            .then(data => this.setState({ tshirts: data.data }))
             .catch(error => console.log(error))
-        fetch(`${productsUrl}/accessories`)
+        fetch('categories/accessories')
             .then(response => response.json())
-            .then(data => this.setState({ accessories: data }))
+            .then(data => this.setState({ accessories: data.data }))
             .catch(error => console.log(error))
-        fetch(`${productsUrl}/hats`)
+        fetch('categories/hats')
             .then(response => response.json())
-            .then(data => this.setState({ hats: data  }))
+            .then(data => this.setState({ hats: data.data  }))
             .catch(error => console.log(error))
-        fetch(`${productsUrl}/drinkware`)
+        fetch('categories/drinkware')
             .then(response => response.json())
-            .then(data => this.setState({ drinkware: data }))
+            .then(data => this.setState({ drinkware: data.data }))
             .catch(error => console.log(error))
         fetch(cartItemsUrl, {credentials: 'include'})
             .then(response => response.json())
@@ -136,7 +136,7 @@ export default class Merch extends React.Component {
                 <InfoSection
                     bgColor='#383838'
                     textAlign='center'
-                    marginTop='2rem'
+                    marginTop='3rem'
                     paddingTop='0'
                     paddingBottom='0'
                     paddingLeft='0'

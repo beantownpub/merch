@@ -1,9 +1,9 @@
 import React from 'react'
-import { CartButton, ViewButton } from './buttons'
-import { StyledNumCartItems, StyledCartContainer, StyledCartItem } from './styles/cartStyles'
+import { CartButton, ViewButton } from '../buttons'
+import { StyledNumCartItems, StyledCartContainer, StyledCartItem } from './styles'
 import { CheckoutForm } from './checkoutForm'
 
-const slide = require('../menuSlide')
+const slide = require('../../../utils/menuSlide')
 
 export const NumCartItems = (props) => {
     return (
@@ -22,38 +22,32 @@ export const NumCartItems = (props) => {
     )
 }
 
-class CartItem extends React.Component {
-    constructor(props) {
-        super(props)
-    }
-
-    render() {
-        return (
-            <StyledCartItem aria-labelledby='CartItem' bgColor='#fffdeb'>
-                <div className='grid'>
-                    <div className='name'>{this.props.name}</div>
-                    {this.props.sizes == false &&
-                        <div className='size'>n/a</div>
-                    }
-                    {this.props.sizes == true &&
-                        <div className='size'>{this.props.size}</div>
-                    }
-                    <div className='quantity'>{this.props.quantity}</div>
-                    <div className='price'>{this.props.price}</div>
-                    <CartButton
-                        clicker={this.props.cartUpdate}
-                        text='X'
-                        action='DELETE'
-                        sku={this.props.sku}
-                        size={this.props.size}
-                        quantity={this.props.quantity}
-                        borderColor='#e2e2e2'
-                        width='min-content'
-                    />
-                </div>
-            </StyledCartItem>
-        )
-    }
+const CartItem = (props) => {
+    return (
+        <StyledCartItem aria-labelledby='CartItem' bgColor='#fffdeb'>
+            <div className='grid'>
+                <div className='name'>{props.name}</div>
+                {props.sizes == false &&
+                    <div className='size'>n/a</div>
+                }
+                {props.sizes == true &&
+                    <div className='size'>{props.size}</div>
+                }
+                <div className='quantity'>{props.quantity}</div>
+                <div className='price'>{props.price}</div>
+                <CartButton
+                    clicker={props.cartUpdate}
+                    text='X'
+                    action='DELETE'
+                    sku={props.sku}
+                    size={props.size}
+                    quantity={props.quantity}
+                    borderColor='#e2e2e2'
+                    width='min-content'
+                />
+            </div>
+        </StyledCartItem>
+    )
 }
 
 function renderCartItems(cartItems, props) {

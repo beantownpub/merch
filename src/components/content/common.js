@@ -1,5 +1,5 @@
 import React from 'react'
-import { SocialNav } from '../social'
+import { SocialNav } from './social'
 import {
     StyledAnchor,
     StyledInfo,

@@ -31,6 +31,7 @@ WORKDIR /app
 RUN npm ci --production || npm ci --production
 COPY . ./
 COPY --from=install /app/dist/public/js/main.js /app/dist/public/js/
+RUN chown -R node:node /app/dist/public/
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
 RUN chmod +x /tini
 ENTRYPOINT ["/tini", "-s", "--"]

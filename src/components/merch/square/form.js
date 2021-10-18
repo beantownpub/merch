@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { ViewButton } from '../buttons'
 import { StyledSquareForm } from '../styles/squareStyles'
 
-const slide = require('../../menuSlide')
-const appId = process.env.SQUARE_APP_ID
+const slide = require('../../../utils/menuSlide')
+const appId = 'sandbox-sq0idb-joMinPnPEfYAgQPEfc13Cw'
 const formStyles = [{
     fontSize: '16px',
     lineHeight: '24px',

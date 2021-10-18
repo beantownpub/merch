@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import MenuIcon, { getIcon } from '../icons'
-import { ViewButton } from './buttons'
-import { StyledCheckoutForm } from './styles/formStyles'
+import MenuIcon, { getIcon } from '../../icons'
+import { ViewButton } from '../buttons'
+import { StyledCheckoutForm } from './styles'
 // import SquarePayment from './square/Square'
-import { SquareWidget } from './square/square'
+import { SquareWidget } from '../square/square'
 
 
-const config = require('./merchConfig.json')
+const config = require('../merchConfig.json')
 const apiUrl = process.env.MERCH_API_URL || config.apiUrl
 
 const stateVerify = {

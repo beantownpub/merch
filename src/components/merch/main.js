@@ -1,7 +1,7 @@
 // import React, { useState, useEffect } from 'react'
 import React, { useState, useEffect } from 'react'
-import Products from './products'
-import { NumCartItems, Cart } from './cart'
+import Products from './products/main'
+import { NumCartItems, Cart } from './cart/main'
 import { StyledMerchContainer, StyledMerchNav } from './styles/merchStyles'
 import { InfoSection, Anchor } from './../content/common'
 

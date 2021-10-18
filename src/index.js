@@ -2,8 +2,9 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { SquareWidget } from './components/merch/square/square'
 import { HeroHeader, Footer } from './components/content/common'
-import { FadeSlider } from './components/imgSliders/sliders'
+import { FadeSlider } from './components/imageSliders/sliders'
 import { TopMenuBar, LinkList, TopNavBar, linkProps } from './components/topBar/main'
+// import Merch from './components/merch/merch'
 import Routes from './reactRoutes'
 const config = require('./config.json')
 const pages = config.beantown.pages
@@ -74,6 +75,13 @@ if (document.getElementById('mainSlider')) {
         document.getElementById('mainSlider')
     )
 }
+
+// if (document.getElementById('merch')) {
+//     ReactDOM.render(
+//         <Merch/>,
+//         document.getElementById('merch')
+//     )
+// }
 
 if (document.getElementById('squareForm')) {
     ReactDOM.render(

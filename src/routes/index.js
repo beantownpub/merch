@@ -8,11 +8,13 @@ router.use(function (req, res, next) {
 })
 
 router.get('/', function(req, res, next) {
+  console.log(`Req: ${req}`)
   const home = sections.home
   res.render(home.template, home.metadata)
 })
 
 router.get('/:section', function(req, res, next) {
+  console.log(`Section: /${req.params['section']}`)
   const page = sections[req.params['section']]
   res.render(page.template, page.metadata)
 })
