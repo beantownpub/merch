@@ -29,7 +29,7 @@ export const FoodMenu = () => {
             <MenuSection
                 name="Salads"
                 category="salads"
-                description="Add grilled chicken 5, shrimp 5, lobster 10, steak 8"
+                description="Add grilled chicken 6, shrimp 7, lobster 14, steak 11"
                 postInfo="DRESSINGS: Italian, Creamy Italian, Ranch, Blue Cheese, Greek, Honey Mustard, Russian, Balsamic Vinaigrette, Fat Free Vinaigrette, and Oila Vinegar"
             />
             <MenuSection
@@ -41,12 +41,16 @@ export const FoodMenu = () => {
                 name="Beantown Sandwiches"
                 category="sandwiches"
                 description="Sandwiches served on an extra large fresh roll with a pickle spear and a choice of side. Add a starter salad to any entree or sandwich for 4.95"
-                postInfo="SIDES: French Fries, Baked Beans, Jasmine Rice, Vegetable, Cole Slaw, Home Made Chips, Potato Salad"
+                postInfo="SIDES: French Fries, Baked Beans, Jasmine Rice, Vegetable, Cole Slaw, Home Made Chips, Potato Salad, Mashed Potatoes"
             />
             <MenuSection
                 name="Burgers"
                 category="burgers"
                 description="Add a starter salad to any burger for 4.95"
+            />
+            <MenuSection
+                name="Desserts"
+                category="desserts"
             />
             <div className="warning">
                 <h3>*These items are cooked to order. There is a risk associated with consuming undercooked meat products</h3>

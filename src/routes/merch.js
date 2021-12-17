@@ -78,7 +78,6 @@ router.post('/process-payment', async (req, res) => {
 function sendOrder(data) {
   console.log('Sending DATA')
   var http = require('http')
-  var auth = 'Basic ' + Buffer.from(apiUser + ':' + apiPw).toString('base64')
 
   var options = {
     host: process.env.MERCH_API_HOST,

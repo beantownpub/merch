@@ -26,4 +26,9 @@ router.get('/square', function(req, res, next) {
   res.render(square.template, square.metadata);
 })
 
+router.get('/healthz', function(req, res, next) {
+  console.log(`Req: ${req}`)
+  res.status(200).send(200)
+})
+
 module.exports = router
