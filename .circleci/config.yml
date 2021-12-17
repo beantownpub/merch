@@ -4,8 +4,12 @@ jobs:
     docker:
       - image: cimg/node:14.17.6
         auth:
-          username: jalgraves
-          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+          username: ${DOCKER_USERNAME}
+          password: ${DOCKER_PASSWORD}
     steps:
       - checkout # check out the code in the project directory
-      - run: npm ci --save-dev && webpack --config webpack.config.js
+      - run:
+          command: |
+            export NODE_ENV=development && \
+              npm ci --save-dev && \
+              webpack --config webpack.config.js
