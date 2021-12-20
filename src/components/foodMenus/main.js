@@ -1,19 +1,12 @@
 import React from 'react'
-import { StyledFoodMenu } from './styles/menuStyles'
+import { StyledContentContainer, StyledMenuWarning } from './styles/main'
 import { MenuSection } from './sections'
-
-
-const MenuContainer = (props) => {
-    return (
-        <StyledFoodMenu>{props.children}</StyledFoodMenu>
-    )
-}
 
 export const FoodMenu = () => {
     return (
-        <MenuContainer>
+        <StyledContentContainer aria-labelledby="Menu content container" backgroundColor="beige" margin="5rem auto 1rem auto">
             <MenuSection
-                name="Beantown Beginnings"
+                name="Appetizers"
                 category="appetizers"
             />
             <MenuSection
@@ -33,12 +26,12 @@ export const FoodMenu = () => {
                 postInfo="DRESSINGS: Italian, Creamy Italian, Ranch, Blue Cheese, Greek, Honey Mustard, Russian, Balsamic Vinaigrette, Fat Free Vinaigrette, and Oila Vinegar"
             />
             <MenuSection
-                name="Beantown Entrees"
+                name="Entrees"
                 category="entrees"
                 description="Add a starter salad to any entree or sandwich for 4.95"
             />
             <MenuSection
-                name="Beantown Sandwiches"
+                name="Sandwiches"
                 category="sandwiches"
                 description="Sandwiches served on an extra large fresh roll with a pickle spear and a choice of side. Add a starter salad to any entree or sandwich for 4.95"
                 postInfo="SIDES: French Fries, Baked Beans, Jasmine Rice, Vegetable, Cole Slaw, Home Made Chips, Potato Salad, Mashed Potatoes"
@@ -52,9 +45,9 @@ export const FoodMenu = () => {
                 name="Desserts"
                 category="desserts"
             />
-            <div className="warning">
-                <h3>*These items are cooked to order. There is a risk associated with consuming undercooked meat products</h3>
-            </div>
-        </MenuContainer>
+            <StyledMenuWarning aria-labelledby="Menu warning">
+                <h3><span>*</span>These items are cooked to order. There is a risk associated with consuming undercooked meat products</h3>
+            </StyledMenuWarning>
+            </StyledContentContainer>
     )
 }

@@ -10,15 +10,15 @@ const OPTIONS = {
 const RESPONSES = {
     apiError: {
         'status': 500,
-        'message': 'Merch API Error'
+        'message': 'Fuckin Shit API Error'
     },
     axiosError: {
         'status': 500,
-        'message': 'Axios Error'
+        'message': 'Axios Failure'
     },
-    authError: {
+    uncaughtError: {
         'status': 500,
-        'message': 'Auth Failure'
+        'message': 'No idea what caused this :('
     }
 }
 
@@ -28,19 +28,27 @@ function makeRequest(url, res) {
         axios(OPTIONS)
         .then(response => {
             if (response.status === 200) {
-            res.status(200).json({'status': 200, 'data': response.data})
+                console.log('URL - ' + OPTIONS.url)
+                console.log('Axios Response Status - ' + response.status)
+                console.log('Axios Data - ' + response.data)
+                res.status(200).json({'status': 200, 'data': response.data})
             } else {
-            res.status(500).json(RESPONSES.apiError)
+                res.status(500).json(RESPONSES.apiError)
             }
             res.end()
         })
         .catch(error => {
-            console.error('AXIOS Error: ' + error)
-            res.status(500).json(RESPONSES.axiosError)
+            console.error('Axios Response Status - ' + error.response.status)
+            if (error.response.status === 404) {
+                res.status(200).json({'status': 200, 'data': []})
+            } else {
+                console.log('Axios Message - ' + error.message)
+                res.status(500).json(RESPONSES.apiError)
+            }
         })
     } catch(error) {
-        console.log('AUTH Error: ' + error)
-        res.status(500).json(RESPONSES.authError)
+        console.log('Uncaught Error - ' + error)
+        res.status(500).json(RESPONSES.uncaughtError)
     }
 }
 

@@ -51,7 +51,6 @@ export const PrivateParties = () => {
                 prepared delicious appetizers all the way up to a full buffet with several entrees.
                 </article>
                 <ContactForm/>
-                
             </section>
             <ImageSlider images={images} imagePath="/images/imgSlider" sliderSettings={sliderSettings} sliderStyles={sliderStyles} />
         </InfoSection>

@@ -1,14 +1,23 @@
 {
     "colors": {
+        "borderGray": "#dbd9d9",
+        "boxShadowGray": "rgb(126 137 140 / 20%)",
         "yellow": "#fcba03",
         "gray": "#494040",
-        "red": "#c70039",
+        "red": "#ed1c24",
         "navBarBlue": "rgba(5,46,102,0.90)",
         "blue": "#1f6696",
         "lightGray": "#F3F4F4",
         "darkGray": "#383838",
+        "dimGray": "#696969",
+        "shadowGray": "rgb(147 147 147 / 25%)",
+        "dodgerBlue": "#1e90ff",
         "cyan": "#3fc5f0",
         "black": "#000000",
         "white": "whitesmoke"
+    },
+    "fonts": {
+        "lato": "'Lato', sans-serif",
+        "poppins": "'Poppins', sans-serif"
     }
 }

@@ -13,6 +13,16 @@ router.get('/', function(req, res, next) {
   res.render(home.template, home.metadata)
 })
 
+router.get('/healthz', function(req, res, next) {
+  console.log(`Req: ${req.path}`)
+  res.sendStatus('ok')
+})
+
+router.get('/favicon.ico', function(req, res, next) {
+  console.log(`Req: ${req}`)
+  res.sendStatus(404)
+})
+
 router.get('/:section', function(req, res, next) {
   console.log(`Section: /${req.params['section']}`)
   const page = sections[req.params['section']]
@@ -26,9 +36,5 @@ router.get('/square', function(req, res, next) {
   res.render(square.template, square.metadata);
 })
 
-router.get('/healthz', function(req, res, next) {
-  console.log(`Req: ${req}`)
-  res.status(200).send(200)
-})
 
 module.exports = router

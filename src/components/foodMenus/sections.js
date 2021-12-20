@@ -1,22 +1,29 @@
 import React, { useState, useEffect } from 'react'
-import { StyledMenuItem, StyledMenuSection } from './styles/menuStyles'
+import { StyledMenuItem } from './styles/menuItem'
+import { StyledMenuSection } from './styles/menuSection'
 
 const MenuItem = (props) => {
     return (
-        <StyledMenuItem>
-            <div className="namePrice">
-                <div><h2>{props.name}</h2></div>
-                <div><h3>{props.price}</h3></div>
-            </div>
+        <StyledMenuItem aria-labelledby="Menu item container">
+            <table>
+                <tbody>
+                    <tr>
+                        <td className="itemName">{props.name}</td>
+                        <td className="itemPrice">{props.price}</td>
+                    </tr>
+                </tbody>
+            </table>
             <p>{props.description}</p>
         </StyledMenuItem>
     )
 }
 
 function menuSectionItems(menuItems) {
+    console.log('Menu Items: ' + menuItems)
     const itemList = []
     let cnt = 1
     for (const item of Object.keys(menuItems)) {
+        console.log('Item: ' + menuItems[item])
         itemList.push(
             <MenuItem
                 key={cnt}
@@ -28,9 +35,9 @@ function menuSectionItems(menuItems) {
         cnt++
     }
     return (
-        <section>
+        <div className="sectionItems">
             {itemList}
-        </section>
+        </div>
     )
 }
 
@@ -52,11 +59,11 @@ export const MenuSection = (props) => {
     }, [])
 
     return (
-        <StyledMenuSection>
-            <h2>{props.name}</h2>
-            {props.description && <p>{props.description}</p>}
+        <StyledMenuSection aria-labelledby="Menu section">
+            <h2 className="sectionTitle">{props.name}</h2>
+            {props.description && <div className="sectionText"><p>{props.description}</p></div>}
             {menuSectionItems(state)}
-            {props.postInfo && <p>{props.postInfo}</p>}
+            {props.postInfo && <div className="sectionText"><p>{props.postInfo}</p></div>}
         </StyledMenuSection>
     )
 }

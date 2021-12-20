@@ -1,11 +1,12 @@
 import React from 'react'
 import { InfoSection } from './common'
 import { GrubHub } from '../grubhub'
+import { StyledContentContainer } from './styles'
 
 
 export const MainInfo = () => {
     return (
-        <div>
+        <StyledContentContainer aria-labelledby="Content container" backgroundColor="beige">
             <InfoSection bgColor='#fcba03'>
                 <section>
                     <h1>Billiards, Cocktails, Beer, And Fine Pub Dining</h1>
@@ -28,13 +29,13 @@ export const MainInfo = () => {
                     <h2>See our frequently asked questions<br /><a href='/about'><span>FAQ &#10148;</span></a></h2>
                 </section>
             </InfoSection>
-        </div>
+        </StyledContentContainer>
     )
 }
 
 export const ErrorPage = () => {
     return (
-        <div>
+        <StyledContentContainer aria-labelledby="Content container">
             <InfoSection bgColor='#fcba03'>
                 <section>
                     <h1>See Yah Laatah&trade;!</h1>
@@ -42,6 +43,6 @@ export const ErrorPage = () => {
                     <h2>Requested page is nowhere to be found on the server</h2>
                 </section>
             </InfoSection>
-        </div>
+        </StyledContentContainer>
     )
 }
