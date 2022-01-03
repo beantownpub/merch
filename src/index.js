@@ -6,7 +6,7 @@ import { FadeSlider } from './components/imageSliders/sliders'
 import { TopMenuBar, LinkList, TopNavBar, linkProps } from './components/topBar/main'
 // import Merch from './components/merch/merch'
 import Routes from './reactRoutes'
-const config = require('./config.json')
+const config = require('./utils/config.json')
 const pages = config.beantown.pages
 const staticURL = config.beantown.static_url
 

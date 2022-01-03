@@ -148,7 +148,7 @@ export const StyledHero = styled.div`
     width: 100%;
     height: 420px;
     display: flex;
-    background-image: url(${props => props.image || "https://static.dev.beantownpub.com/img/main_bg.jpg"});
+    background-image: url(${props => props.image || "https://static.dev.beantownpub.com/img/sign_and_graveyard_heroheader.jpeg"});
     background-size: cover;
     background-position: center;
     h1 {

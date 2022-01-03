@@ -4,15 +4,15 @@ const COLORS = CONFIG.colors
 const FONTS = CONFIG.fonts
 
 export const StyledMenuItem = styled.div`
-    margin: .5rem;
+    background-color: whitesmoke;
+    border: .1rem solid ${COLORS.borderGray};
+    box-shadow: ${props => props.boxShadow || `0px 5px 20px 0px ${COLORS.boxShadowGray}`};
+    border-radius: .4rem;
     display: flex;
     flex-basis: 30rem;
     flex-flow: column nowrap;
+    margin: .5rem;
     max-width: 90vw;
-    box-shadow: ${props => props.boxShadow || `0px 5px 20px 0px ${COLORS.boxShadowGray}`};
-    border: .1rem solid ${COLORS.borderGray};
-    background-color: whitesmoke;
-    border-radius: .4rem;
     table {
         padding: .5rem;
         width: 100%;

@@ -1,5 +1,6 @@
 {
     "colors": {
+        "backgroundWhite": "whitesmoke",
         "borderGray": "#dbd9d9",
         "boxShadowGray": "rgb(126 137 140 / 20%)",
         "yellow": "#fcba03",
@@ -17,6 +18,7 @@
         "white": "whitesmoke"
     },
     "fonts": {
+        "headers": "'Poppins', sans-sefif",
         "lato": "'Lato', sans-serif",
         "poppins": "'Poppins', sans-serif"
     }

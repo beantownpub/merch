@@ -2,38 +2,31 @@
 
 dockerhub ?= jalgraves
 image_name ?= beantown
-version ?= $(shell jq -r .version package.json)
+version ?= $(shell jq -r .version package.json | tr -d '"')
 hash = $(shell git rev-parse --short HEAD)
 
 ifeq ($(env),dev)
-	image_tag = "$(version)-$(hash)"
-else
+	image_tag = $(version)-$(hash)
+	environment = development
+else ifeq ($(env), prod)
 	image_tag = $(version)
+	environment = production
 endif
 
 
 sass:
-		sass ${PWD}/src/sass/style.sass ${PWD}/dist/public/css/style.css
+	sass ${PWD}/src/sass/style.sass ${PWD}/dist/public/css/style.css
 
-stop:
-		docker rm -f frontend || true
+build: sass
+	docker build \
+		-t $(image_name):$(image_tag) \
+		--build-arg square_app_id=${SQUARE_APP_ID} \
+		--build-arg node_env=$(environment) .
 
-prod_build: sass
-		docker build \
-			-t $(image_name):$(image_tag) \
-			--build-arg square_app_id=${SQUARE_APP_ID} \
-			--build-arg node_env=production .
-
-dev_build: sass
-		docker build \
-			-t $(image_name):$(image_tag) \
-			--build-arg square_app_id=${SQUARE_APP_ID} \
-			--build-arg node_env=development .
-
-publish: dev_build
-		docker tag $(image_name):$(image_tag) $(dockerhub)/$(image_name):$(image_tag)
-		docker push $(dockerhub)/$(image_name):$(image_tag)
+publish: build
+	docker tag $(image_name):$(image_tag) $(dockerhub)/$(image_name):$(image_tag)
+	docker push $(dockerhub)/$(image_name):$(image_tag)
 
 latest:
-		docker tag $(image_name):$(version) $(dockerhub)/$(image_name):latest
-		docker push $(dockerhub)/$(image_name):latest
+	docker tag $(image_name):$(version) $(dockerhub)/$(image_name):latest
+	docker push $(dockerhub)/$(image_name):latest

@@ -10,7 +10,7 @@ const OPTIONS = {
 const RESPONSES = {
     apiError: {
         'status': 500,
-        'message': 'Fuckin Shit API Error'
+        'message': 'API Error'
     },
     axiosError: {
         'status': 500,
@@ -28,9 +28,8 @@ function makeRequest(url, res) {
         axios(OPTIONS)
         .then(response => {
             if (response.status === 200) {
-                console.log('URL - ' + OPTIONS.url)
                 console.log('Axios Response Status - ' + response.status)
-                console.log('Axios Data - ' + response.data)
+                console.log('Axios KEYS - ' + Object.keys(response.data))
                 res.status(200).json({'status': 200, 'data': response.data})
             } else {
                 res.status(500).json(RESPONSES.apiError)

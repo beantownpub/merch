@@ -8,18 +8,18 @@ router.use(function (req, res, next) {
 })
 
 router.get('/', function(req, res, next) {
-  console.log(`Req: ${req}`)
+  console.log(`[GET] Index | Path: ${req.path}`)
   const home = sections.home
   res.render(home.template, home.metadata)
 })
 
 router.get('/healthz', function(req, res, next) {
-  console.log(`Req: ${req.path}`)
+  console.log(`[GET] Health | ${req.path}`)
   res.sendStatus('ok')
 })
 
 router.get('/favicon.ico', function(req, res, next) {
-  console.log(`Req: ${req}`)
+  console.log(`[GET] Favicon | Req: ${req}`)
   res.sendStatus(404)
 })
 

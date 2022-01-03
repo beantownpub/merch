@@ -8,6 +8,7 @@ import { AboutInfo } from './components/content/about'
 import { ContactInfo } from './components/content/contact'
 import { MainInfo } from './components/content/main'
 import { PrivateParties } from './components/content/parties'
+// import { FoodMenu } from './components/foodMenus/new'
 import { FoodMenu } from './components/foodMenus/main'
 import Merch from './components/merch/merch'
 

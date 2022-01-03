@@ -16,7 +16,7 @@ ENV NODE_ENV=${node_env}
 
 COPY ./package* /app/
 WORKDIR /app
-RUN npm ci --save-dev
+RUN npm ci --save-dev --production=false
 COPY . ./
 
 RUN npx webpack --config webpack.config.js && \
