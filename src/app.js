@@ -1,46 +1,54 @@
-var createError = require('http-errors');
-const bodyParser = require('body-parser');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var sassMiddleware = require('node-sass-middleware');
-
-var indexRouter = require('./routes/index');
-var merchRouter = require('./routes/merch');
-var contactRouter = require('./routes/contact');
+var createError = require('http-errors')
+const bodyParser = require('body-parser')
+var compression = require('compression')
+var express = require('express')
+var path = require('path')
+var cookieParser = require('cookie-parser')
+var logger = require('morgan')
+var sassMiddleware = require('node-sass-middleware')
+var session = require('express-session')
+var indexRouter = require('./routes/index')
+var merchRouter = require('./routes/merch')
+var contactRouter = require('./routes/contact')
 var menuRouter = require('./routes/menu')
+var app = express()
 
-var app = express();
+const { v4: uuidv4 } = require('uuid')
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'))
+app.set('view engine', 'ejs')
 
-// new shit
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-
-// end new shit
-
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(compression())
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(logger('dev'))
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
+app.use(cookieParser())
 app.use(sassMiddleware({
   src: path.join(__dirname, '../dist/public'),
   dest: path.join(__dirname, '../dist/public'),
   indentedSyntax: true, // true = .sass and false = .scss
   sourceMap: false
-}));
-
-app.use(express.static(path.join(__dirname, '../dist/public')));
+}))
+app.use(session({
+  genid: function(req) {
+    return uuidv4() // use UUIDs for session IDs
+  },
+	secret: process.env.SESSION_SECRET || 'secret',
+	resave: true,
+  saveUninitialized: true,
+  cookie: { maxAge: 6000000 },
+  name: "cartId"
+}))
+app.use(express.static(path.join(__dirname, '../dist/public')))
 // app.use(express.static(staticUrl));
 
 const urlRoot = process.env.NODE_JAL_URL_ROOT || '/'
 
-app.use(urlRoot, indexRouter);
-app.use(urlRoot + 'merch', merchRouter);
+app.use(urlRoot, indexRouter)
+app.use(urlRoot + 'merch', merchRouter)
 app.use(urlRoot + 'contact', contactRouter)
 app.use(urlRoot + 'menu', menuRouter)
 
@@ -61,4 +69,4 @@ app.use(function(err, req, res, next) {
   res.render('error')
 })
 
-module.exports = app;
+module.exports = app

@@ -1,54 +1,13 @@
-import React from 'react'
-import { CartButton, ViewButton } from '../buttons'
-import { StyledNumCartItems, StyledCartContainer, StyledCartItem } from './styles'
-import { CheckoutForm } from './checkoutForm'
+import React, { useState } from 'react'
+import { ToggleButton } from '../../elements/buttons/main'
+import { StyledCartContainer } from './styles'
+import { CheckoutForm } from './forms/main'
+import { CartItem, ItemsContainer } from './items'
+import { ShippingInfo } from './content'
+import { cartClose } from '../../../utils/menuSlide'
+import { config } from '../../../utils/main'
 
-const slide = require('../../../utils/menuSlide')
-
-export const NumCartItems = (props) => {
-    return (
-        <StyledNumCartItems>
-            <div className="numCartItems">Cart Items<br />{props.children}</div>
-            <div className="numCartItems">Total<br />${props.total}</div>
-            <div className="numCartItemsButton">
-            <ViewButton
-                width='10rem'
-                clicker={slide.cartOpen}
-                text='view'
-                icon='faShoppingCart'
-            />
-            </div>
-        </StyledNumCartItems>
-    )
-}
-
-const CartItem = (props) => {
-    return (
-        <StyledCartItem aria-labelledby='CartItem' bgColor='#fffdeb'>
-            <div className='grid'>
-                <div className='name'>{props.name}</div>
-                {props.sizes == false &&
-                    <div className='size'>n/a</div>
-                }
-                {props.sizes == true &&
-                    <div className='size'>{props.size}</div>
-                }
-                <div className='quantity'>{props.quantity}</div>
-                <div className='price'>{props.price}</div>
-                <CartButton
-                    clicker={props.cartUpdate}
-                    text='X'
-                    action='DELETE'
-                    sku={props.sku}
-                    size={props.size}
-                    quantity={props.quantity}
-                    borderColor='#e2e2e2'
-                    width='min-content'
-                />
-            </div>
-        </StyledCartItem>
-    )
-}
+const COLORS = config.colors
 
 function renderCartItems(cartItems, props) {
     const itemList = []
@@ -63,14 +22,16 @@ function renderCartItems(cartItems, props) {
         }
         let cnt = 1
         for (const item of Object.keys(items)) {
+            console.log(`CART Item: ${items[item]}`)
+            // TODO: fix sizes prop
             itemList.push(
                 <CartItem
                     key={cnt}
                     name={items[item].name}
                     sku={items[item].sku}
                     size={items[item].size}
-                    sizes={items[item].sizes}
-                    quantity={items[item].quantity || 1}
+                    sizes={items[item].sizes || true}
+                    quantity={items[item].quantity}
                     price={items[item].price}
                     cartUpdate={props.cartUpdate}
                 />
@@ -79,91 +40,43 @@ function renderCartItems(cartItems, props) {
         }
     }
     return (
-        <div className='cartList'>
-            <h2>Cart</h2>
-            {itemList}
-        </div>
+        <ItemsContainer itemList={itemList} />
     )
 }
 
-export class Cart extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            showCheckout: false,
-            showCartItems: true
-        }
-        this.showCheckout = this.showCheckout.bind(this)
-        this.hideCheckout = this.hideCheckout.bind(this)
-        this.hideCartItems = this.hideCartItems.bind(this)
+export const Cart = (props) => {
+    const [checkout, setCheckout] = useState({ showCheckout: false })
+    const [cartItems, setCartItems] = useState({ showCartItems: true })
+
+    function showCheckout() {
+        setCheckout({ showCheckout: true })
     }
 
-    showCheckout() {
-        this.setState({ showCheckout: true })
+    function hideCheckout() {
+        setCheckout({ showCheckout: false })
     }
 
-    hideCheckout() {
-        this.setState({ showCheckout: false })
-    }
-
-    hideCartItems() {
-        this.setState({ showCartItems: false })
-    }
-
-    render () {
-            const slideStyle = {
-                zIndex: 1002
-            }
-            return (
-                <div style={slideStyle} className='slide_cart'>
-                    <StyledCartContainer aria-labelledby='CartContainer'>
-                        {this.state.showCartItems &&
-                            <div>
-                            {renderCartItems(this.props.cartItems, this.props)}
-                            <div className='cartTotal'>Total: {this.props.total}</div>
-                            </div>
-                        }
-
-                        <ViewButton
-                            aria-labelledby='CartButton'
-                            borderColor='#e2e2e2'
-                            clicker={slide.cartClose}
-                            text='close'
-                            icon='faShoppingCart'
-                        />
-                        {parseInt(this.props.numCartItems) > 0 &&
-                            <ViewButton
-                                borderColor='#e2e2e2'
-                                clicker={this.showCheckout}
-                                text='checkout'
-                            />
-                        }
-                        {this.state.showCheckout &&
-                        <div>
-                            <CheckoutForm
-                                cart={this.props.cartItems}
-                                cartTotal={this.props.total}
-                                hideCheckout={this.hideCheckout}
-                                resetCart={this.props.resetCart}
-                                cartUpdate={this.props.cartUpdate}
-                            />
-                            <ViewButton
-                                borderColor='#e2e2e2'
-                                clicker={this.hideCheckout}
-                                text='hide checkout'
-                            />
-                        </div>}
-                    </StyledCartContainer>
-                </div>
-            )
-    }
-}
-
-export const ComingSoon = () =>  {
     return (
-        <StyledCartContainer aria-labelledby='CartContainer'>
-            <h3>Online ordering coming soon!</h3>
-            <h3>Please come visit us purchase items in person</h3>
+        <StyledCartContainer aria-labelledby='CartContainer' className='slide_cart'>
+            {cartItems.showCartItems &&
+                <div aria-labelledby='Cart items'>
+                    {renderCartItems(props.cartItems, props)}
+                    <ShippingInfo shippingPrice="5.99" />
+                    <div className='cartTotal'>Subtotal: {props.total}</div>
+                </div>
+            }
+            <ToggleButton bgColor={COLORS.dodgerBlue} icon='faShoppingCart' runFunction={cartClose} buttonText="Close"/>
+            {parseInt(props.numCartItems) > 0 &&
+                <ToggleButton bgColor={COLORS.dodgerBlue} runFunction={showCheckout} buttonText="Checkout"/>
+            }
+            {checkout.showCheckout &&
+                <CheckoutForm
+                    cart={props.cartItems}
+                    cartTotal={props.total}
+                    hideCheckout={hideCheckout}
+                    resetCart={props.resetCart}
+                    cartUpdate={props.cartUpdate}
+                />}
         </StyledCartContainer>
     )
 }

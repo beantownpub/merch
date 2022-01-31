@@ -2,8 +2,8 @@ import React from 'react'
 import { InfoSection } from './common'
 import { ContactForm } from '../contact/main'
 import { ImageSlider } from '../imageSliders/main'
-const CONFIG = require('./config.json')
-const COLORS = CONFIG.colors
+import { config } from '../../utils/main'
+const COLORS = config.colors
 
 
 const images = [

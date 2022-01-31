@@ -1,7 +1,7 @@
 var express = require('express')
 var router = express.Router()
-var config = require('./config.json')
-var sections = config.sections
+var config = require('../utils/config.json')
+var pages = config.pages
 
 router.use(function (req, res, next) {
   next()
@@ -9,8 +9,8 @@ router.use(function (req, res, next) {
 
 router.get('/', function(req, res, next) {
   console.log(`[GET] Index | Path: ${req.path}`)
-  const home = sections.home
-  res.render(home.template, home.metadata)
+  const home = pages.index
+  res.render("main", home.metadata)
 })
 
 router.get('/healthz', function(req, res, next) {
@@ -25,15 +25,15 @@ router.get('/favicon.ico', function(req, res, next) {
 
 router.get('/:section', function(req, res, next) {
   console.log(`Section: /${req.params['section']}`)
-  const page = sections[req.params['section']]
-  res.render(page.template, page.metadata)
+  const page = pages[req.params['section']]
+  res.render("main", page.metadata)
 })
 
 router.get('/square', function(req, res, next) {
-  const square = sections['square']
+  const square = pages['square']
   // res.set('Cookie', req.cookies.cart)
   // res.cookie('cart', req.cookies.cart).render(merch.template, merch.metadata);
-  res.render(square.template, square.metadata);
+  res.render("main", square.metadata);
 })
 
 

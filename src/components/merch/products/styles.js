@@ -1,81 +1,128 @@
 import styled from 'styled-components'
+import { config } from '../../../utils/main'
+const COLORS = config.colors
+const FONTS = config.fonts
 
-export const StyledProductsContainer = styled.div`
-    margin: .5rem auto;
+export const StyledMerchSection = styled.div`
     display: flex;
-    flex-flow: column wrap;
-    .productList {
+    flex-flow: row wrap;
+    margin: 1rem auto;
+    order: ${props => props.orderNumber || "0"};
+    width: 95vw;
+    .sectionTitle {
+        display: flex;
+        flex-flow: column nowrap;
         margin: auto;
+        padding: 1.5rem 0;
+        text-align: center;
+        width: 100%;
+    }
+    .sectionText {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        margin: auto;
+        padding: .5rem 0;
+        text-align: center;
+        width: 100%;
+        p {
+            font-size: 1.5rem;
+        }
+    }
+    .sectionItems {
         display: flex;
         flex-flow: row wrap;
+        justify-content: center;
+        margin: auto;
+    }
+    h2 {
+        letter-spacing: .2rem;
+        text-transform: uppercase;
+        font-family: ${FONTS.headline};
+        font-size: 1.95rem;
+        color: ${COLORS.red};
+    }
+    h3 {
+        font-family: ${FONTS.content};
+        font-size: 1.25rem;
+        line-height: 125%;
+        margin: auto;
+        padding: .5rem 0;
+        text-align: center;
+        width: 100%;
+    }
+    p {
+        font-family: ${FONTS.content};
+        font-size: 1.25rem;
+        line-height: 125%;
+        margin: auto;
     }
 `
-export const StyledProduct = styled.div`
-    margin: .5rem;
-    padding: .5rem;
-    width: 300px;
+
+export const StyledMerchItem = styled.div`
+    background-color: whitesmoke;
+    border: .1rem solid ${COLORS.borderGray};
+    box-shadow: ${props => props.boxShadow || `0px 5px 20px 0px ${COLORS.boxShadowGray}`};
+    border-radius: .4rem;
     display: flex;
-    flex-flow: column wrap;
-    font-family: gotham-narrow-ultra;
-    background-color: ${props => props.bgColor || "white"};
-    border-left: 1px solid #e2e2e2;
-    border-top: 1px solid #e2e2e2;
-    border-right: 1px solid #e2e2e2;
-    border-bottom: 1px solid #e2e2e2;
-    border-radius: 6px;
-    text-decoration: none;
-    font-size: 1.5rem;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: .09rem;
-    img {
-        margin: .5rem auto;
-        border-radius: 6px;
+    flex-basis: 30rem;
+    flex-flow: column nowrap;
+    margin: .5rem;
+    max-width: 90vw;
+    padding: 1rem;
+    label {
+        font-family: ${FONTS.content};
+        font-size: 1.25rem;
+        font-weight: 900;
+        padding: .5rem;
     }
-    .description {
-        text-transform: none;
-        font-family: Proxima Nova,Helvetica Neue,Helvetica,Arial,sans-serif;
-        font-size: 14px;
-    }
-    .purchaseInfo {
-        margin: auto;
-        padding: 1rem;
-        display: flex;
-        flex-flow: row wrap;
-        width: max-content;
-        label {
-            margin: auto;
-            font-family: gotham-medium;
-            font-size: 1rem;
-        }
-        input {
+    table {
+        padding: .5rem;
+        width: 100%;
+        td {
+            line-height: 125%;
             padding: .25rem;
-            border: 1px solid #e2e2e2;
-            border-radius: .2rem;
-            font-size: .75rem;
-            font-weight: bold;
         }
+    }
+    .itemName {
+        color: ${COLORS.yellow};
+        font-family: ${FONTS.headline};
+        font-size: 1.5rem;
+        font-weight: 700;
+        letter-spacing: .15rem;
+        text-align: left;
+        text-transform: uppercase;
+    }
+    .itemPrice {
+        color: ${COLORS.black};
+        font-family: ${FONTS.content};
+        font-size: 1.5rem;
+        font-weight: 600;
+        letter-spacing: .15rem;
+        text-align: right;
+        text-transform: uppercase;
+    }
+    .size  {
+        padding: .5rem 0;
         select {
-            border: none;
+            border: .05rem solid ${COLORS.borderGray};
+            border-radius: 4px;
+            padding: .5rem;
         }
-    }
-    .price {
-        margin: auto;
-        font-size: 14px;
-        font-weight: bold;
-        color: green;
-        width: 5rem;
-        text-align: left
-    }
-    .size {
-        margin: auto .5rem;
     }
     .qty {
-        margin: auto .5rem;
+        padding: .5rem 0;
+        input {
+            border: .05rem solid ${COLORS.borderGray};
+            border-radius: 4px;
+            padding: .5rem;
+        }
     }
-`
-export const StyledInventoryContainer = styled.div`
-    margin: auto;
-    display: flex;
-    flex-flow: column wrapp;
+    p {
+        font-family: ${FONTS.content};
+        font-size: 1.25rem;
+        line-height: 125%;
+        padding: 1rem;
+        max-width: 30rem;
+    }
 `

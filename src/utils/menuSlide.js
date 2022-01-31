@@ -31,7 +31,7 @@ export function cartOpen() {
     anime({
         targets: '.slide_cart',
         easing: 'easeInOutQuad',
-        translateX: '34em'
+        translateX: '35em'
     })
     anime({
         targets: '.animate',

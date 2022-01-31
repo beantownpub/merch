@@ -1,12 +1,11 @@
 var express = require('express')
 var router = express.Router()
 const getRequest = require('../utils/request')
+const network = require('../utils/network')
 
 function makeRequest(uri, res) {
   try {
-    const host = process.env.MENU_API_HOST
-    const protocol = process.env.MENU_API_PROTOCOL || 'https'
-    const apiUrl = `${protocol}://${host}${uri}`
+    const apiUrl = `${network.urls.menuApi}${uri}`
     getRequest(apiUrl, res)
   } catch(error) {
     console.log('Request Error: ' + error)

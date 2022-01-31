@@ -1,7 +1,8 @@
 import React from 'react'
 import { InfoSection } from './common'
-const CONFIG = require('./config.json')
-const COLORS = CONFIG.colors
+import { config } from '../../utils/main'
+const COLORS = config.colors
+
 
 const FAQ = () => {
     return (

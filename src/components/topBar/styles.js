@@ -1,6 +1,7 @@
 import styled from 'styled-components'
-const CONFIG = require('../content/config.json')
-const COLORS = CONFIG.colors
+import { config } from '../../utils/main'
+const COLORS = config.colors
+const FONTS = config.fonts
 
 export const StyledHamburger = styled.div`
     .hamburger {
@@ -84,12 +85,12 @@ export const StyledTopNav = styled.div`
         a {
             padding: 1em 1.25em;
             font-size: 1.75em;
-            font-weight: 700;
+            font-weight: 900;
             letter-spacing: .15em;
             text-transform: uppercase;
             text-decoration: none;
             color: ${COLORS.white};
-            font-family: 'Raleway', Arial, sans-serif;
+            font-family: ${FONTS.content}
         }
         a:hover {
             color: ${COLORS.red};
@@ -158,7 +159,7 @@ export const StyledSlideMenu = styled.div`
             letter-spacing: .15em;
             text-decoration: none;
             color: ${COLORS.yellow};
-            font-family: satisfy;
+            font-family: ${FONTS.script};
         }
     }
     .menu_list {
@@ -184,7 +185,7 @@ export const StyledNavBar = styled.div`
     background-color: ${props => props.barColor || "red"};
     position: fixed;
     border-bottom: 2px solid ${COLORS.yellow};
-    box-shadow: 1px 1px 3px ${COLORS.darkGray};
+    box-shadow: 1px 1px 3px ${COLORS.borderShadow};
     img {
         margin: .5em auto;
         padding: 1em 0;
@@ -206,7 +207,7 @@ export const StyledLink = styled.div`
         letter-spacing: .15em;
         text-transform: uppercase;
         left: -17em;
-        font-family: 'Raleway', Arial, sans-serif;
+        font-family: ${FONTS.content};
         color: white;
         text-decoration: none;
     }

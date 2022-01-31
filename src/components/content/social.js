@@ -1,8 +1,8 @@
 import React from 'react'
 import { SocialIcon } from '../icons'
 
-const config = require('../../config.json')
-const urls = config.beantown.urls
+import { config } from '../../utils/main'
+const URLS = config.urls
 
 const iconStyle = {
 	padding: '0 .25em',
@@ -13,9 +13,9 @@ const iconStyle = {
 export const SocialNav = () => {
     return (
         <nav style={{margin: '1rem auto'}}>
-            <a href={urls["facebook"]}><SocialIcon iconName="faFacebook" style={iconStyle} /></a>
-            <a href={urls["instagram"]}><SocialIcon iconName="faInstagram" style={iconStyle} /></a>
-            <a href={urls["twitter"]}><SocialIcon iconName="faTwitter" style={iconStyle} /></a>
+            <a href={URLS["facebook"]}><SocialIcon iconName="faFacebook" style={iconStyle} /></a>
+            <a href={URLS["instagram"]}><SocialIcon iconName="faInstagram" style={iconStyle} /></a>
+            <a href={URLS["twitter"]}><SocialIcon iconName="faTwitter" style={iconStyle} /></a>
         </nav>
     )
 }

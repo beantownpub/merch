@@ -1,14 +1,12 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import MenuIcon, { getIcon } from '../../icons'
-import { ViewButton } from '../buttons'
+import MenuIcon, { getIcon } from '../../../icons'
+import { SubmitButton, ToggleButton } from '../../../elements/buttons/main'
 import { StyledCheckoutForm } from './styles'
-// import SquarePayment from './square/Square'
-import { SquareWidget } from '../square/square'
+import { PaymentForm } from '../../square/forms/main'
+import { config } from '../../../../utils/main'
 
-
-const config = require('../merchConfig.json')
-const apiUrl = process.env.MERCH_API_URL || config.apiUrl
+const COLORS = config.colors
 
 const stateVerify = {
     required: 'Required',
@@ -43,7 +41,7 @@ export const CheckoutForm = (props) => {
         showPayment: false,
         showShipping: false,
         sameShippingAndBilling: true,
-        cartVaules: {}
+        cartValues: {}
     })
     const { handleSubmit, register, errors, reset } = useForm()
 
@@ -59,13 +57,13 @@ export const CheckoutForm = (props) => {
             setCheckout({
                 showPayment: true,
                 showShipping: false,
-                cartVaules: values
+                cartValues: values
             })
         } else {
             setCheckout({
                 showPayment: true,
                 showShipping: true,
-                cartVaules: values
+                cartValues: values
             })
         }
     }
@@ -78,21 +76,22 @@ export const CheckoutForm = (props) => {
 
     return (
         <div>
-        <StyledCheckoutForm>
-            <h2>
-                <MenuIcon
-                    style={{fontSize: '.75rem', margin: 'auto'}}
-                    name={getIcon('faLock')}
-                /> Secure Checkout
-            </h2>
-            <div className='billingAddress'>Billing Address</div>
+        <StyledCheckoutForm aria-labelledby="Checkout form">
             <form onSubmit={handleSubmit(onSubmit)}>
+                <h2>
+                    <MenuIcon
+                        style={{fontSize: '.75rem', margin: 'auto'}}
+                        name={getIcon('faLock')}
+                    /> Secure Checkout
+                </h2>
+                <div className='billingAddress'>Billing Address</div>
                 <input name='firstName' placeholder='First Name' ref={register(required)} />
                 <h3>{errors.firstName && errors.firstName.message}</h3>
                 <input name='lastName' placeholder='Last Name' ref={register(required)} />
                 <h3>{errors.lastName && errors.lastName.message}</h3>
                 <input name='street' placeholder='Street' ref={register(required)} />
                 <h3>{errors.street && errors.street.message}</h3>
+                <input name='unit' placeholder='unit/apt' ref={register()} />
                 <input name='city' placeholder='City' ref={register(required)} />
                 <h3>{errors.city && errors.city.message}</h3>
 
@@ -128,6 +127,7 @@ export const CheckoutForm = (props) => {
                     <h3>{errors.shippingLastName && errors.shippingLastName.message}</h3>
                     <input name='shippingStreet' placeholder='Street' ref={register(required)}/>
                     <h3>{errors.street && errors.street.message}</h3>
+                    <input name='shiipingUnit' placeholder='unit/apt' ref={register()} />
                     <input name='shippingCity' placeholder='City' ref={register(required)} />
                     <h3>{errors.city && errors.city.message}</h3>
 
@@ -141,21 +141,24 @@ export const CheckoutForm = (props) => {
                     </div>
                 </div>
             }
+            {checkout.showPayment &&
+                <PaymentForm
+                    formReset={reset}
+                    hideCheckout={props.hideCheckout}
+                    resetCart={props.resetCart}
+                    cartUpdate={props.cartUpdate}
+                    unloadSquare={props.unloadSquare}
+                    hideSquare={hideSquare}
+                    cartValues={checkout.cartValues}></PaymentForm>
+            }
             {!checkout.showPayment &&
-                <ViewButton borderColor='#e2e2e2' text='Proceed to Payment' />
+                <div className="payButtons">
+                <SubmitButton bgColor={COLORS.dodgerBlue} buttonText="Proceed to payment" />
+                <ToggleButton bgColor={COLORS.dodgerBlue} runFunction={props.hideCheckout} buttonText="hide checkout"/>
+                </div>
             }
             </form>
         </StyledCheckoutForm>
-        {checkout.showPayment &&
-            <SquareWidget
-                formReset={reset}
-                hideCheckout={props.hideCheckout}
-                resetCart={props.resetCart}
-                cartUpdate={props.cartUpdate}
-                unloadSquare={props.unloadSquare}
-                hideSquare={hideSquare}
-                cartValues={checkout.cartVaules}>{props.cartTotal}</SquareWidget>
-        }
         </div>
     )
 }
