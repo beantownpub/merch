@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { SquarePaymentsForm, CreditCardInput } from "react-square-web-payments-sdk"
 import { StyledPaymentForm } from "./styles"
 import { config, reqHeaders, uuidv4 } from "../../../../utils/main"
-import { OrderConfirmation } from "../../cart/content"
+// import { OrderConfirmation } from "../../cart/content"
 import { cartClose } from "../../../../utils/menuSlide"
 import { ToggleButton } from "../../../elements/buttons/main"
 
@@ -17,11 +17,13 @@ export const PaymentForm = (props) => {
         paymentInfo: {}
     })
 
+    const [orderComplete, setOrderComplete] = useState({ orderId: "" })
+
     useEffect(() => {
         if (props.cartValues) {
             console.log(`Total: ${props.cartValues.cart.total}`)
             setState({
-                paymentAmount: Math.ceil(props.cartValues.cart.total * 100),
+                paymentAmount: Math.ceil(props.cartTotal * 100),
                 showSquareForm: true
             })
         }
@@ -29,6 +31,10 @@ export const PaymentForm = (props) => {
 
     const completePayment = (data) => {
         console.log(`Completeing payment ${Object.keys(data)}`)
+        console.log(`Order keys ${Object.keys(data.order)}`)
+        console.log(`Result keys ${Object.keys(data.result.payment)}`)
+        console.log(`Result values ${Object.values(data.result.payment)}`)
+        console.log(`Order ID: ${data.result.payment.order_id}`)
         const order = {
             order: data.order,
             payment: data.result.payment
@@ -38,6 +44,7 @@ export const PaymentForm = (props) => {
             paymentInfo: data.result.payment,
             showSquareForm: false
         })
+        setOrderComplete({ orderId: data.result.payment.order_id})
         console.log(`Payment Info: ${state.paymentInfo}`)
         fetch('process-order', {
             method: 'POST',
@@ -51,10 +58,15 @@ export const PaymentForm = (props) => {
             if (response.status != 200) {
                 return response.json().then(
                 errorInfo => Promise.reject(errorInfo)) //UPDATE HERE
+            } else {
+                props.formReset()
+                props.resetCart()
+                props.hideForm()
+                if (orderComplete.orderId) {
+                    console.log(`Order ID updated ${orderComplete.orderId}`)
+                }
+                props.paymentComplete(props.cartValues.email, data.result.payment.order_id)
             }
-            console.log(`Complete payment response: ${response.status}`)
-            props.formReset()
-            props.resetCart()
         })
         .catch(err => {
             console.error(err)
@@ -64,11 +76,14 @@ export const PaymentForm = (props) => {
     }
 
     function makePayment(nonce) {
+        console.log(`NONCE: ${nonce}`)
+        console.log(`SQUARE APP ID: ${process.env.SQUARE_APP_ID}`)
+        console.log(`SQUARE LOCATION ID: ${process.env.SQUARE_LOCATION_ID}`)
         fetch('process-payment', {
             method: 'POST',
             headers: reqHeaders,
             body: JSON.stringify({
-                nonce: nonce,
+                source_id: nonce,
                 idempotency_key: uuidv4(),
                 total: state.paymentAmount,
                 amount_money: {
@@ -114,16 +129,12 @@ export const PaymentForm = (props) => {
                         makePayment(token["token"])
                     }}
                 >
-                    <CreditCardInput text={`Pay ${props.cartValues.cart.total}`} />
+                    <CreditCardInput text={`Pay ${props.cartTotal}`} />
                 </SquarePaymentsForm>
             </StyledPaymentForm>
         }
         {state.paymentComplete &&
             <div className="orderComplete">
-                <OrderConfirmation
-                    confirmationCode={state.paymentInfo.order_id.slice(0,7)}
-                    email={props.cartValues.email}
-                />
                 <ToggleButton bgColor={COLORS.dodgerBlue} icon='faShoppingCart' runFunction={cartClose} buttonText="Close"/>
             </div>
         }

@@ -3,7 +3,7 @@ import { ToggleButton } from '../../elements/buttons/main'
 import { StyledCartContainer } from './styles'
 import { CheckoutForm } from './forms/main'
 import { CartItem, ItemsContainer } from './items'
-import { ShippingInfo } from './content'
+import { ShippingInfo, OrderConfirmation } from './content'
 import { cartClose } from '../../../utils/menuSlide'
 import { config } from '../../../utils/main'
 
@@ -47,6 +47,10 @@ function renderCartItems(cartItems, props) {
 export const Cart = (props) => {
     const [checkout, setCheckout] = useState({ showCheckout: false })
     const [cartItems, setCartItems] = useState({ showCartItems: true })
+    const [shippingInfo, setShippingInfo] = useState({ show: true })
+    const [payment, setPayment] = useState({ emailAddress: "", confirmationCode: "", paymentComplete: false })
+    const shippingPrice = props.shippingPrice || "0.00"
+    const cartTotal = Math.round((parseFloat(shippingPrice) + props.total) * 100) / 100
 
     function showCheckout() {
         setCheckout({ showCheckout: true })
@@ -56,13 +60,29 @@ export const Cart = (props) => {
         setCheckout({ showCheckout: false })
     }
 
+    function paymentComplete(email, confirmation) {
+        console.log(`COMPLETING ORDER: ${email} ${confirmation}`)
+        setPayment({ emailAddress: email, confirmationCode: confirmation, paymentComplete: true })
+        setShippingInfo({ show: false })
+    }
+
     return (
         <StyledCartContainer aria-labelledby='CartContainer' className='slide_cart'>
             {cartItems.showCartItems &&
-                <div aria-labelledby='Cart items'>
+                <div className="cartItems" aria-labelledby="Cart items">
                     {renderCartItems(props.cartItems, props)}
-                    <ShippingInfo shippingPrice="5.99" />
                     <div className='cartTotal'>Subtotal: {props.total}</div>
+                    {shippingInfo.show &&
+                    <div>
+                        <ShippingInfo shippingPrice={shippingPrice} />
+                        {cartTotal > parseFloat(shippingPrice) &&
+                        <div className='cartTotal'>Total: {cartTotal}</div>
+                        }
+                    </div>
+                    }
+                    {payment.paymentComplete &&
+                        <OrderConfirmation email={payment.emailAddress} confirmationCode={payment.confirmationCode}/>
+                    }
                 </div>
             }
             <ToggleButton bgColor={COLORS.dodgerBlue} icon='faShoppingCart' runFunction={cartClose} buttonText="Close"/>
@@ -70,13 +90,15 @@ export const Cart = (props) => {
                 <ToggleButton bgColor={COLORS.dodgerBlue} runFunction={showCheckout} buttonText="Checkout"/>
             }
             {checkout.showCheckout &&
+                <div className="checkoutForm">
                 <CheckoutForm
                     cart={props.cartItems}
-                    cartTotal={props.total}
+                    cartTotal={cartTotal}
                     hideCheckout={hideCheckout}
                     resetCart={props.resetCart}
                     cartUpdate={props.cartUpdate}
-                />}
+                    paymentComplete={paymentComplete}
+                /><img src="https://static.prod.beantownpub.com/img/square_payment.png" alt="Square payments"/></div>}
         </StyledCartContainer>
     )
 }

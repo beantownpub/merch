@@ -20,7 +20,7 @@ const ListSelect = ({ onSizeChange }) => (
 )
 
 export const ProductCard = (props) => {
-    const staticPath = "/images/merch/"
+    const staticPath = "https://static.prod.beantownpub.com/img/merch/"
     const [size, setSize] = useState({ size: 'med' })
     const [quantity, setQuantity] = useState({ quantity: 1 })
 

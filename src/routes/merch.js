@@ -31,8 +31,9 @@ defaultClient.basePath = squareUtils.url
 
 router.post('/process-payment', async (req, res) => {
   const requestParams = req.body
-  console.log(`Params: ${requestParams}`)
-  console.log(`Total: ${requestParams.total}`)
+  console.log(requestParams)
+  console.log(`Square APP ID: ${process.env.SQUARE_APP_ID}`)
+  console.log(`Square Location ID: ${process.env.SQUARE_LOCATION_ID}`)
   // Charge the customer's card
   const paymentsApi = new squareConnect.PaymentsApi()
   const requestBody = squareUtils.squareRequestBody(requestParams)
@@ -43,6 +44,7 @@ router.post('/process-payment', async (req, res) => {
       'result': response
     });
   } catch(error) {
+    console.log(error.response.text)
     res.status(500).json({
       'title': 'Payment Failure',
       'result': error.response.text

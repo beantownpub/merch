@@ -4,11 +4,12 @@ const COLORS = config.colors
 const FONTS = config.fonts
 
 export const StyledFooter = styled.div`
-    margin: auto;
-    padding: 2rem 0;
-    width: 100%;
-    display: flex;
     border-top: .2rem solid ${COLORS.yellow};
+    display: flex;
+    margin: 12rem auto;
+    padding: 2rem 0;
+    position: relative;
+    width: 100%;
     footer {
         margin: auto;
         font-family: ${FONTS.footer};

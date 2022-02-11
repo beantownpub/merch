@@ -41,10 +41,11 @@ export const StyledCartContainer = styled.div`
     flex-flow: column nowrap;
     font-family: ${FONTS.headline};
     height: -webkit-fill-available;
-    height: -moz-available;
+    height: 100vh;
     left: -35em;
     margin: auto;
     max-width: 99vw;
+    min-width: 300px;
     overflow: scroll;
     padding: 1.5em;
     position: fixed;
@@ -54,6 +55,23 @@ export const StyledCartContainer = styled.div`
         font-family: ${FONTS.content};
         font-size: 1.25em;
         font-weight: 900;
+        padding: .5rem;
+    }
+    .cartList {
+        display: flex;
+        h2 {
+            border-bottom: 2px solid ${COLORS.dodgerBlue};
+            margin: auto;
+            padding: .5rem;
+        }
+    }
+    .checkoutForm {
+        display: flex;
+        flex-flow: column nowrap;
+        img {
+            margin: 2rem auto;
+            max-width: 5rem;
+        }
     }
 `
 
@@ -63,7 +81,9 @@ export const StyledItemsTable = styled.div`
     display: flex;
     flex-flow: column wrap;
     h2 {
-        padding: 1rem;
+        border-bottom: 1.5px solid ${COLORS.dodgerBlue};
+        margin: .5rem auto;
+        padding: .5rem;
     }
     table {
         border: 1px solid ${COLORS.shadowGray};
@@ -89,14 +109,32 @@ export const StyledItemsTable = styled.div`
 `
 
 export const StyledContentContainer = styled.div`
-    border: ${props => props.border || "unset" };
-    border-radius: ${props => props.borderRadius || "unset"};
+    border: ${props => props.border || ".75px solid black" };
+    border-radius: ${props => props.borderRadius || "4px"};
+    box-shadow: ${props => props.boxShadow || `.25rem .25rem 1rem .5rem ${COLORS.boxShadowGray}`};
     display: flex;
     flex-flow: column wrap;
-    font-family: poppins;
-    margin: 1rem auto;
+    margin: ${props => props.margin || "1rem auto"};
+    padding: ${props => props.padding || "2rem"};
     width: ${props => props.width || "100%" };
     h1 {
-        color: ${props => props.h1Color || COLORS.black};
+        color: ${props => props.h1Color || COLORS.orderCompleteGreen};
+        font-family: ${FONTS.headline};
+        letter-spacing: .25rem;
+        margin: auto;
+        padding: 1rem;
+        text-transform: uppercase;
+    }
+    h2 {
+        border-bottom: 1.5px solid ${COLORS.red};
+        margin: auto;
+        padding: .5rem;
+    }
+    p {
+        font-family: ${FONTS.content};
+        font-size: 125%;
+        margin: auto;
+        padding: .5rem;
+        max-width: 300px;
     }
 `

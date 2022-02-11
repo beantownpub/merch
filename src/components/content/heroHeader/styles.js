@@ -8,7 +8,7 @@ margin: 5rem auto 0 auto;
 width: 100%;
 height: 420px;
 display: flex;
-background-image: url(${props => props.image || "https://static.dev.beantownpub.com/img/sign_and_graveyard_heroheader.jpeg"});
+background-image: url(${props => props.image || "https://static.prod.beantownpub.com/img/hero_header.jpg"});
 background-size: cover;
 background-position: center;
 h1 {
@@ -16,6 +16,7 @@ h1 {
     max-width: 80%;
     font-family: ${FONTS.button};
     font-size: 3.5rem;
+    font-weight: 900;
     text-transform: uppercase;
     letter-spacing: .2em;
     color: ${COLORS.white};

@@ -56,3 +56,24 @@ export const StyledMerchNav = styled.div`
     top: 5rem;
     width: 100%;
 `
+
+export const StyledNoContentContainer = styled.div`
+    background-color: ${COLORS.yellow};
+    border-radius: 6px;
+    color: ${COLORS.black};
+    display: flex;
+    flex-flow: row wrap;
+    margin: 10rem auto 3rem;
+    max-width: 90vw;
+    padding: 1rem;
+    width: 300px;
+    h1 {
+        border: 1.5px solid ${COLORS.black};
+        border-radius: 6px;
+        font-family: ${FONTS.headline};
+        font-size: 200%;
+        line-height: 1.3;
+        margin: auto;
+        padding: 5rem;
+    }
+`

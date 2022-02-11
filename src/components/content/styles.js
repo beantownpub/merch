@@ -49,15 +49,15 @@ export const StyledInfo = styled.div`
     line-height: 170%;
     h1 {
         padding: .5rem 0;
-        max-width: 80%;
         font-size: 3em;
-        font-family: ${FONTS.headline};
+        font-family: ${FONTS.button};
+        font-weight: 900;
         line-height: 170%;
     }
     h2 {
         padding: .5rem 0;
         max-width: 80vw;
-        font-family: gotham;
+        font-family: ${FONTS.content};
         font-size: 2em;
         line-height: 170%;
         text-align: ${props => props.textAlign || "initial"};
@@ -101,7 +101,7 @@ export const StyledInfo = styled.div`
     a {
         text-decoration: none;
         color: #3fc5f0;
-        font-family: gotham-medium;
+        font-family: ${FONTS.content};
         text-transform: capitalize;
     }
     article {
@@ -135,7 +135,7 @@ export const StyledLinkButton = styled.div`
         width: 10rem;
         border: none;
         border-radius: .3rem;
-        font-family: ${FONTS.button};
+        font-family: ${FONTS.headline};
         font-size: 1.5em;
         text-transform: uppercase;
         letter-spacing: .2em;
@@ -151,7 +151,7 @@ export const StyledAnchor = styled.div`
         padding: 1rem;
         width: ${props => props.width || "12rem"};
         height: min-content;
-        font-family: ${FONTS.button};
+        font-family: ${FONTS.headline};
         background-color: ${props => props.bgColor || COLORS.white};
         border: 1px solid ${props => props.borderColor || COLORS.white};
         border-radius: 6px;

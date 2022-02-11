@@ -16,7 +16,8 @@
             "metadata": {
                 "title": "Beantown Pub",
                 "description": "The only pub in the world where you can drink a cold Sam Adams while viewing a cold Sam Adams",
-                "keywords": "bar, cocktails, beer, wine, freedom trail, boston, masssachusetts, pub, pool"
+                "keywords": "bar, cocktails, beer, wine, freedom trail, boston, masssachusetts, pub, pool",
+                "themeColor": "#fcba03"
             }
         },
         "about": {
@@ -28,7 +29,8 @@
             "metadata": {
                 "title": "About Beantown",
                 "description": "The only pub in the world where you can drink a cold Sam Adams while viewing a cold Sam Adams",
-                "keywords": "bar, cocktails, beer, wine, freedom trail, boston, masssachusetts, pub, pool"
+                "keywords": "bar, cocktails, beer, wine, freedom trail, boston, masssachusetts, pub, pool",
+                "themeColor": "#fcba03"
             }
         },
         "contact": {
@@ -40,7 +42,8 @@
             "metadata": {
                 "title": "Beantown Pub",
                 "description": "Contact information for Beantown Pub",
-                "keywords": ""
+                "keywords": "",
+                "themeColor": "#fcba03"
             }
         },
         "menu": {
@@ -52,10 +55,11 @@
             "metadata": {
                 "title": "Beantown Pub",
                 "description": "Pub dining menu for Beantown Pub",
-                "keywords": ""
+                "keywords": "",
+                "themeColor": "#fcba03"
             }
         },
-        "private parties": {
+        "parties": {
             "name": "parties",
             "icon": "faCalendar",
             "text": "Private Parties",
@@ -64,7 +68,8 @@
             "metadata": {
                 "title": "Private Events",
                 "description": "Private parties at Beantown Pub",
-                "keywords": ""
+                "keywords": "",
+                "themeColor": "#fcba03"
             }
         },
         "merch": {
@@ -76,7 +81,8 @@
             "metadata": {
                 "title": "Beantown Merch",
                 "description": "Beantown Pub merchandise for online purchase",
-                "keywords": ""
+                "keywords": "",
+                "themeColor": "#fcba03"
             }
         },
         "photos": {
@@ -133,10 +139,10 @@
         "borderGray": "#dbd9d9",
         "borderShadow": "#383838",
         "boxShadowGray": "rgb(126 137 140 / 20%)",
-        "yellow": "#fcba03",
         "gray": "#494040",
         "red": "#ed1c24",
         "navBarBlue": "rgba(5,46,102,0.90)",
+        "orderCompleteGreen": "#00cc00",
         "blue": "#1f6696",
         "lightGray": "#e2e2e2",
         "darkGray": "#383838",
@@ -145,10 +151,11 @@
         "dodgerBlue": "#1e90ff",
         "cyan": "#3fc5f0",
         "black": "#000000",
-        "white": "whitesmoke"
+        "white": "whitesmoke",
+        "yellow": "#fcba03"
     },
     "fonts": {
-        "button": "'gotham-narrow-ultra', sans-serif",
+        "button": "'gotham-narrow-ultra', Poppins, sans-serif",
         "content": "'Lato', sans-serif",
         "footer": "'Raleway', Arial, sans-serif",
         "headline": "'Poppins', sans-sefif",

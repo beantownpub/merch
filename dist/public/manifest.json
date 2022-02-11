@@ -1,0 +1,8 @@
+{
+    "name": "Beantown Pub",
+    "short_name": "Beantown",
+    "theme_color": "#fcba03",
+    "start_url": ".",
+    "display": "standalone",
+    "icons": []
+}

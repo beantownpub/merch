@@ -44,6 +44,9 @@ export const CheckoutForm = (props) => {
         cartValues: {}
     })
     const { handleSubmit, register, errors, reset } = useForm()
+    const [checkoutForm, setCheckoutForm] = useState({
+        showForm: true
+    })
 
     const toggleShipping = event => {
         setCheckout({
@@ -69,14 +72,23 @@ export const CheckoutForm = (props) => {
     }
 
     function hideSquare() {
+        console.log("HIDING SQUARE")
         setCheckout({
             showPayment: false
+        })
+    }
+
+    function hideForm() {
+        console.log("HIDING FORM")
+        setCheckoutForm({
+            showForm: false
         })
     }
 
     return (
         <div>
         <StyledCheckoutForm aria-labelledby="Checkout form">
+        {checkoutForm.showForm &&
             <form onSubmit={handleSubmit(onSubmit)}>
                 <h2>
                     <MenuIcon
@@ -143,13 +155,15 @@ export const CheckoutForm = (props) => {
             }
             {checkout.showPayment &&
                 <PaymentForm
+                    cartTotal={props.cartTotal}
                     formReset={reset}
+                    hideForm={hideForm}
                     hideCheckout={props.hideCheckout}
                     resetCart={props.resetCart}
                     cartUpdate={props.cartUpdate}
-                    unloadSquare={props.unloadSquare}
                     hideSquare={hideSquare}
-                    cartValues={checkout.cartValues}></PaymentForm>
+                    cartValues={checkout.cartValues}
+                    paymentComplete={props.paymentComplete}></PaymentForm>
             }
             {!checkout.showPayment &&
                 <div className="payButtons">
@@ -158,6 +172,7 @@ export const CheckoutForm = (props) => {
                 </div>
             }
             </form>
+            }
         </StyledCheckoutForm>
         </div>
     )

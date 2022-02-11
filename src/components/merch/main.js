@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { StyledContentContainer, StyledDashContainer, StyledMerchNav } from './styles/main'
+import { StyledNoContentContainer, StyledDashContainer, StyledMerchNav } from './styles/main'
 import { CategoryCards } from './products/main'
 import { Cart } from './cart/main'
 import { NumCartItems } from './cart/items'
-import { config, getOptions } from '../../utils/main'
-const COLORS = config.colors
+import { getOptions } from '../../utils/main'
+// const COLORS = config.colors
 
 export const MerchDash = () => {
     const [state, setState] = useState({ categories: [] })
@@ -71,9 +71,9 @@ export const MerchDash = () => {
                     </StyledMerchNav>
                     <CategoryCards categories={state.categories} cartUpdate={updateCart} />
                 </StyledDashContainer> :
-                <StyledContentContainer margin="10rem auto 3rem auto" fontColor={COLORS.white} backgroundColor={COLORS.black} maxWidth="30rem">
-                    <h1>Online merchandise is currently unavailable. Stop by the pub and purchase in person!</h1>
-                </StyledContentContainer>
+                <StyledNoContentContainer aria-labelledby="No merchandise">
+                    <h1>Sorry, online merchandise is currently unavailable. Stop by the pub and purchase in person!</h1>
+                </StyledNoContentContainer>
             }
         </div>
     )
