@@ -123,7 +123,6 @@ export const StyledContentContainer = styled.div`
         letter-spacing: .25rem;
         margin: auto;
         padding: 1rem;
-        text-transform: uppercase;
     }
     h2 {
         border-bottom: 1.5px solid ${COLORS.red};

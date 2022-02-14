@@ -76,21 +76,18 @@ export const PaymentForm = (props) => {
     }
 
     function makePayment(nonce) {
-        console.log(`NONCE: ${nonce}`)
-        console.log(`SQUARE APP ID: ${process.env.SQUARE_APP_ID}`)
-        console.log(`SQUARE LOCATION ID: ${process.env.SQUARE_LOCATION_ID}`)
         fetch('process-payment', {
             method: 'POST',
             headers: reqHeaders,
             body: JSON.stringify({
                 source_id: nonce,
                 idempotency_key: uuidv4(),
-                total: state.paymentAmount,
+                // total: state.paymentAmount,
                 amount_money: {
                     amount: state.paymentAmount,
                     currency: "USD"
-                },
-                buyer_email_address: props.cartValues.email
+                }
+                // buyer_email_address: props.cartValues.email
             })
         })
         .catch(err => {
@@ -111,9 +108,11 @@ export const PaymentForm = (props) => {
             completePayment(data)
         })
         .catch(err => {
-            console.error(err)
+            console.log('Payment Error:')
+            console.error(JSON.parse(err.result))
             setState({ paymentFailed: true })
-            alert('Payment failed to complete!')
+            props.hideForm()
+            props.paymentFailed()
         })
     }
 
@@ -125,9 +124,21 @@ export const PaymentForm = (props) => {
                     applicationId={process.env.SQUARE_APP_ID}
                     locationId={process.env.SQUARE_LOCATION_ID}
                     cardTokenizeResponseReceived={(token, buyer) => {
-                        console.info("TOKEN: " + token["token"])
                         makePayment(token["token"])
                     }}
+                    createVerificationDetails={() => ({
+                        amount: '1.00',
+                        /* collected from the buyer */
+                        billingContact: {
+                            addressLines: [props.cartValues.street, props.cartValues.unit],
+                            familyName: props.cartValues.firstName,
+                            givenName: props.cartValues.lastName,
+                            countryCode: 'USA',
+                            city: props.cartValues.city,
+                        },
+                        currencyCode: 'USD',
+                        intent: 'CHARGE',
+                    })}
                 >
                     <CreditCardInput text={`Pay ${props.cartTotal}`} />
                 </SquarePaymentsForm>

@@ -28,7 +28,7 @@ export const MerchDash = () => {
             .then(response => response.json())
             .then(data => data.data)
             .then(data => setCart({ cartId: data.cart_id, cartItems: data, numItemsInCart: data.cart_items.length, cartTotal: data.total }))
-            .catch(error => console.log(error, cart))
+            .catch(error => console.log(error))
     }, [])
 
     function resetCart() {
@@ -57,7 +57,7 @@ export const MerchDash = () => {
 
     return (
         <div>
-            {state.categories ?
+            {state.categories && state.categories.length > 0 ?
                 <StyledDashContainer aria-labelledby="Merch Dash">
                     <Cart
                         cartItems={cart.cartItems}
@@ -72,7 +72,7 @@ export const MerchDash = () => {
                     <CategoryCards categories={state.categories} cartUpdate={updateCart} />
                 </StyledDashContainer> :
                 <StyledNoContentContainer aria-labelledby="No merchandise">
-                    <h1>Sorry, online merchandise is currently unavailable. Stop by the pub and purchase in person!</h1>
+                    <h1>Online merchandise coming soon! For now stop by the pub and purchase in person!</h1>
                 </StyledNoContentContainer>
             }
         </div>

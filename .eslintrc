@@ -14,7 +14,8 @@
     "rules": {
         "semi": 0,
         "no-unused-vars": 0,
-        "no-console": "off"
+        "no-console": "off",
+        "arrow-body-style": ["as-needed"]
     },
     "extends": "eslint:recommended"
 }

@@ -11,7 +11,12 @@ var indexRouter = require('./routes/index')
 var merchRouter = require('./routes/merch')
 var contactRouter = require('./routes/contact')
 var menuRouter = require('./routes/menu')
+const redis = require('redis')
+const redisStore = require('connect-redis')(session)
 var app = express()
+
+let redisClient = redis.createClient({ legacyMode: true })
+redisClient.connect().catch(console.error)
 
 const { v4: uuidv4 } = require('uuid')
 
@@ -39,8 +44,9 @@ app.use(session({
 	secret: process.env.SESSION_SECRET || 'secret',
 	resave: true,
   saveUninitialized: true,
-  cookie: { maxAge: 6000000 },
-  name: "cartId"
+  cookie: { maxAge: 6000000, path: '/merch/cart' },
+  name: "cartId",
+  store: new redisStore({ host: 'localhost', port: 6379, client: redisClient, ttl: 86400 }),
 }))
 app.use(express.static(path.join(__dirname, '../dist/public')))
 // app.use(express.static(staticUrl));
@@ -51,11 +57,12 @@ app.use(urlRoot, indexRouter)
 app.use(urlRoot + 'merch', merchRouter)
 app.use(urlRoot + 'contact', contactRouter)
 app.use(urlRoot + 'menu', menuRouter)
+// app.use(urlRoot + 'cart', cartRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
-});
+})
 
 // error handler
 app.use(function(err, req, res, next) {

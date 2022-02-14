@@ -3,7 +3,7 @@ import { ToggleButton } from '../../elements/buttons/main'
 import { StyledCartContainer } from './styles'
 import { CheckoutForm } from './forms/main'
 import { CartItem, ItemsContainer } from './items'
-import { ShippingInfo, OrderConfirmation } from './content'
+import { ShippingInfo, OrderConfirmation, OrderFailed } from './content'
 import { cartClose } from '../../../utils/menuSlide'
 import { config } from '../../../utils/main'
 
@@ -48,7 +48,7 @@ export const Cart = (props) => {
     const [checkout, setCheckout] = useState({ showCheckout: false })
     const [cartItems, setCartItems] = useState({ showCartItems: true })
     const [shippingInfo, setShippingInfo] = useState({ show: true })
-    const [payment, setPayment] = useState({ emailAddress: "", confirmationCode: "", paymentComplete: false })
+    const [payment, setPayment] = useState({ emailAddress: "", confirmationCode: "", paymentComplete: false, paymentFailed: false })
     const shippingPrice = props.shippingPrice || "0.00"
     const cartTotal = Math.round((parseFloat(shippingPrice) + props.total) * 100) / 100
 
@@ -64,6 +64,10 @@ export const Cart = (props) => {
         console.log(`COMPLETING ORDER: ${email} ${confirmation}`)
         setPayment({ emailAddress: email, confirmationCode: confirmation, paymentComplete: true })
         setShippingInfo({ show: false })
+    }
+
+    function paymentFailed() {
+        setPayment({ paymentFailed: true })
     }
 
     return (
@@ -83,6 +87,9 @@ export const Cart = (props) => {
                     {payment.paymentComplete &&
                         <OrderConfirmation email={payment.emailAddress} confirmationCode={payment.confirmationCode}/>
                     }
+                    {payment.paymentFailed &&
+                        <OrderFailed email="beantownpubbost@gmail.com" h1Color={COLORS.red} />
+                    }
                 </div>
             }
             <ToggleButton bgColor={COLORS.dodgerBlue} icon='faShoppingCart' runFunction={cartClose} buttonText="Close"/>
@@ -98,6 +105,7 @@ export const Cart = (props) => {
                     resetCart={props.resetCart}
                     cartUpdate={props.cartUpdate}
                     paymentComplete={paymentComplete}
+                    paymentFailed={paymentFailed}
                 /><img src="https://static.prod.beantownpub.com/img/square_payment.png" alt="Square payments"/></div>}
         </StyledCartContainer>
     )

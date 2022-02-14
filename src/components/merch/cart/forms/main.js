@@ -163,7 +163,8 @@ export const CheckoutForm = (props) => {
                     cartUpdate={props.cartUpdate}
                     hideSquare={hideSquare}
                     cartValues={checkout.cartValues}
-                    paymentComplete={props.paymentComplete}></PaymentForm>
+                    paymentComplete={props.paymentComplete}
+                    paymentFailed={props.paymentFailed}></PaymentForm>
             }
             {!checkout.showPayment &&
                 <div className="payButtons">

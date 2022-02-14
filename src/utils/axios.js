@@ -20,7 +20,10 @@ const RESPONSES = {
 
 function cartRequest(options, cartId, res) {
     authHeaders['Content-Type'] = 'application/json'
-    authHeaders['Cart-ID'] = cartId.split(':')[1].split('.')[0] || 'foo'
+    console.log(`Cart ID: ${cartId}`)
+    if (cartId) {
+        authHeaders['Cart-ID'] = cartId
+    }
     options.headers = authHeaders
     console.log(`makeRequest | METHOD: ${options.method} | URL | ${options.url}`)
     try {

@@ -46,6 +46,9 @@ latest:
 	docker tag $(image_name):$(version) $(dockerhub)/$(image_name):latest
 	docker push $(dockerhub)/$(image_name):latest
 
+exec_pod: context
+	${HOME}/github/helm/scripts/exec_pod.sh $(env) $(name)
+
 kill_pod: context
 	${HOME}/github/helm/scripts/kill_pod.sh $(env) $(name)
 
