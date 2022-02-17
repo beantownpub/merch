@@ -2,14 +2,10 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: cimg/node:14.17.6
-        auth:
-          username: ${DOCKER_USERNAME}
-          password: ${DOCKER_PASSWORD}
+      - image: docker:17.05.0-ce-git
     steps:
-      - checkout # check out the code in the project directory
+      - checkout
       - run:
+          name: Build application Docker image
           command: |
-            export NODE_ENV=development && \
-              npm ci --save-dev --production=false && \
-              webpack --config webpack.config.js
+            docker build --build-arg node_env=development -t frontend .
