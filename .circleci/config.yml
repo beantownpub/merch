@@ -11,5 +11,5 @@ jobs:
       - run:
           command: |
             export NODE_ENV=development && \
-              npm ci --save-dev && \
+              npm ci --save-dev --production=false && \
               webpack --config webpack.config.js
