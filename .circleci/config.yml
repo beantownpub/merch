@@ -1,15 +1,14 @@
 version: 2.1
 jobs:
   build:
-    docker:
-      - image: cimg/node:14.17.6
-        auth:
-          username: ${DOCKER_USERNAME}
-          password: ${DOCKER_PASSWORD}
+    machine:
+      image: ubuntu-1604:202007-01
+    environment:
+      DOCKER_BUILDKIT: 1
+      BUILDX_PLATFORMS: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/386,linux/arm/v7,linux/arm/v6
     steps:
-      - checkout # check out the code in the project directory
+      - checkout
       - run:
+          name: Build from dockerfile
           command: |
-            export NODE_ENV=development && \
-              npm ci --save-dev && \
-              webpack --config webpack.config.js
+            docker build --build-arg node_env=development -t frontend .
