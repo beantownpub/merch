@@ -1,11 +1,14 @@
 version: 2.1
 jobs:
   build:
-    docker:
-      - image: docker:17.05.0-ce-git
+    machine:
+      image: ubuntu-1604:202007-01
+    environment:
+      DOCKER_BUILDKIT: 1
+      BUILDX_PLATFORMS: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/386,linux/arm/v7,linux/arm/v6
     steps:
       - checkout
       - run:
-          name: Build application Docker image
+          name: Build from dockerfile
           command: |
             docker build --build-arg node_env=development -t frontend .
