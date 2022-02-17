@@ -2,8 +2,8 @@ import React from 'react'
 import { InfoSection } from './common'
 import { ContactForm } from '../contact/main'
 import { ImageSlider } from '../imageSliders/main'
-const CONFIG = require('./config.json')
-const COLORS = CONFIG.colors
+import { config } from '../../utils/main'
+const COLORS = config.colors
 
 
 const images = [
@@ -40,6 +40,7 @@ const sliderSettings = {
 
 
 export const PrivateParties = () => {
+    const imagePath = "https://static.prod.beantownpub.com/img/slider"
     return (
         <div>
         <InfoSection bgColor={COLORS.yellow} marginTop='3rem'>
@@ -52,7 +53,7 @@ export const PrivateParties = () => {
                 </article>
                 <ContactForm/>
             </section>
-            <ImageSlider images={images} imagePath="/images/imgSlider" sliderSettings={sliderSettings} sliderStyles={sliderStyles} />
+            <ImageSlider images={images} imagePath={imagePath} sliderSettings={sliderSettings} sliderStyles={sliderStyles} />
         </InfoSection>
         </div>
     )

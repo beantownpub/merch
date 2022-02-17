@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { StyledContentContainer } from './styles/main'
 import { CategoryCards } from './categories/main'
-const UTILS = require('../../utils/main')
-const COLORS = UTILS.config.colors
+import { config, getOptions } from '../../utils/main'
+const COLORS = config.colors
 
 
 export const FoodMenu = () => {
@@ -12,7 +12,7 @@ export const FoodMenu = () => {
         sides: []
     })
     useEffect(() => {
-        fetch(`/menu/categories`, UTILS.getOptions)
+        fetch(`/menu/categories`, getOptions)
             .then(response => response.json())
             .then(data => setState({ categories: data.data['categories'], sides: data.data['sides'] }))
             .catch(error => console.log(error))

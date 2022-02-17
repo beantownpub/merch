@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
-const CONFIG = require('../../content/config.json')
-const COLORS = CONFIG.colors
-const FONTS = CONFIG.fonts
+import { config } from '../../../utils/main'
+const COLORS = config.colors
+const FONTS = config.fonts
 
 export const StyledCategoryCard = styled.div`
     background-color: ${props => props.backgroundColor || COLORS.categoryCardBackground };

@@ -9,9 +9,13 @@ RUN apt-get update  && \
         gcc
 
 FROM build AS install
-ARG square_app_id
+ARG google_api_key
 ARG node_env
+ARG square_app_id
+ARG square_location_id
+ENV GOOGLE_API_KEY=${google_api_key}
 ENV SQUARE_APP_ID=${square_app_id}
+ENV SQUARE_LOCATION_ID=${square_location_id}
 ENV NODE_ENV=${node_env}
 
 COPY ./package* /app/
@@ -24,7 +28,14 @@ RUN npx webpack --config webpack.config.js && \
 
 FROM node:14.17.6-buster-slim
 
+ARG node_env
+ARG square_app_id
+ARG square_location_id
+ENV SQUARE_APP_ID=${square_app_id}
+ENV SQUARE_LOCATION_ID=${square_location_id}
+ENV NODE_ENV=${node_env}
 ENV TINI_VERSION v0.19.0
+
 RUN apt-get update && apt-get install -y curl
 COPY ./package* /app/
 WORKDIR /app

@@ -1,164 +1,139 @@
 import styled from 'styled-components'
+import { config } from '../../../utils/main'
+const COLORS = config.colors
+const FONTS = config.fonts
 
 export const StyledNumCartItems = styled.div`
-    padding: .25rem;
-    width: max-content;
-    height: 5rem;
+    color: ${COLORS.black};
     display: flex;
     flex-flow: row nowrap;
-    font-family: gotham-narrow-ultra;
+    font-family: ${FONTS.headline};
     font-size: 1em;
+    letter-spacing: .09em;
     text-decoration: none;
     text-align: center;
     text-transform: uppercase;
-    letter-spacing: .09em;
-    color: black;
+    .numCartItemsButton {
+        margin: auto;
+    }
+    .merchNav {
+        background-color: ${COLORS.black};
+        border-radius: 4px;
+        color: ${COLORS.yellow};
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: center;
+        margin: .5rem;
+        padding: .75rem;
+        width: min-content;
+        h3 {
+            font-weight: 900;
+            text-align: center;
+            width: 100%;
+        }
+    }
 `
 export const StyledCartContainer = styled.div`
-    margin-top: 3rem;
-    margin-right: auto;
-    margin-bottom: auto;
-    margin-left: auto;
-    padding: 1em;
-    position: absolute;
-    z-index: 1002;
-    left: -35em;
-    width: 365px;
+    background-color: ${COLORS.white};
+    border: 1px solid ${COLORS.borderGray};
+    border-radius: 4px;
     display: flex;
-    background-color: white;
-    flex-flow: column wrap;
-    border: 1px solid #e2e2e2;
-    border-radius: 6px;
-    .cartList {
-        margin: auto;
-        width: 30em;
-        display: flex;
-        flex-flow: column wrap;
-    }
+    flex-flow: column nowrap;
+    font-family: ${FONTS.headline};
+    height: -webkit-fill-available;
+    height: 100vh;
+    left: -35em;
+    margin: auto;
+    max-width: 99vw;
+    min-width: 300px;
+    overflow: scroll;
+    padding: 1.5em;
+    position: fixed;
+    top: 0;
+    z-index: 1002;
     .cartTotal {
+        font-family: ${FONTS.content};
+        font-size: 1.25em;
+        font-weight: 900;
         padding: .5rem;
-        font-family: gotham-medium;
-        font-size: 1rem;
-        text-transform: uppercase;
-        letter-spacing: .2rem;
     }
+    .cartList {
+        display: flex;
+        h2 {
+            border-bottom: 2px solid ${COLORS.dodgerBlue};
+            margin: auto;
+            padding: .5rem;
+        }
+    }
+    .checkoutForm {
+        display: flex;
+        flex-flow: column nowrap;
+        img {
+            margin: 2rem auto;
+            max-width: 5rem;
+        }
+    }
+`
+
+
+export const StyledItemsTable = styled.div`
+    margin: 1rem auto;
+    display: flex;
+    flex-flow: column wrap;
+    h2 {
+        border-bottom: 1.5px solid ${COLORS.dodgerBlue};
+        margin: .5rem auto;
+        padding: .5rem;
+    }
+    table {
+        border: 1px solid ${COLORS.shadowGray};
+        border-radius: .5rem;
+        box-shadow: ${props => props.boxShadow || `.25rem .25rem 1rem .5rem ${COLORS.boxShadowGray}`};
+        font-family: ${FONTS.content};
+        font-weight: 900;
+        margin: auto;
+        padding: .25rem;
+        width: 100%;
+        th {
+            background: ${COLORS.yellow};
+            border: 1px solid ${COLORS.black};
+            font-weight: 900;
+            padding: .25rem;
+        }
+        td {
+            border: 1px solid ${COLORS.black};
+            padding: .25rem;
+            text-align: center;
+        }
+    }
+`
+
+export const StyledContentContainer = styled.div`
+    border: ${props => props.border || ".75px solid black" };
+    border-radius: ${props => props.borderRadius || "4px"};
+    box-shadow: ${props => props.boxShadow || `.25rem .25rem 1rem .5rem ${COLORS.boxShadowGray}`};
+    display: flex;
+    flex-flow: column wrap;
+    margin: ${props => props.margin || "1rem auto"};
+    padding: ${props => props.padding || "2rem"};
+    width: ${props => props.width || "100%" };
     h1 {
-        margin: 0 auto;
-        font-size: .25rem;
-        width: min-content;
+        color: ${props => props.h1Color || COLORS.orderCompleteGreen};
+        font-family: ${FONTS.headline};
+        letter-spacing: .25rem;
+        margin: auto;
+        padding: 1rem;
     }
     h2 {
+        border-bottom: 1.5px solid ${COLORS.red};
         margin: auto;
-        padding: .25em;
-        font-family: gotham-narrow-ultra;
-        text-transform: uppercase;
-        letter-spacing: .2rem;
+        padding: .5rem;
     }
-    span {
-        color: #ed1c24;
-    }
-`
-export const StyledCartItem = styled.div`
-    margin: .25em auto;
-    padding: .25em;
-    width: 90%;
-    display: flex;
-    flex-flow: column wrap;
-    background-color: ${props => props.bgColor || "white"};
-    border: 1px solid #e2e2e2;
-    border-radius: .4em;
-    font-size: 1em;
-    text-align: center;
-    letter-spacing: .09em;
-    .grid {
+    p {
+        font-family: ${FONTS.content};
+        font-size: 125%;
         margin: auto;
-        display: grid;
-        grid-template-rows: auto;
-        grid-template-columns: min-content min-content min-content min-content min-content;
-        grid-gap: 1rem;
-        font-size: 1.25rem;
-        text-align: center;
-        font-family: Proxima Nova,Helvetica Neue,Helvetica,Arial,sans-serif;
-    }
-    .name {
-        text-align: left;
-        font-family: Proxima Nova,Helvetica Neue,Helvetica,Arial,sans-serif;
-        font-size: .75em;
-        min-width: 42px;
-    }
-    .size, .quantity {
-        font-family: gotham-medium;
-        font-size: .75em;
-        min-width: 42px;
-    }
-
-    .description {
-        text-transform: none;
-        font-family: gotham;
-    }
-    .menu_list {
-        display: none;
-    }
-`
-
-export const StyledCheckoutForm = styled.div`
-    margin: auto auto 2rem auto;
-    display: flex;
-    flex-flow: column wrap;
-    width: 355px;
-    form {
-        display: flex;
-        flex-flow: column wrap;
-        input {
-            margin: .5rem 0;
-            padding: .5rem;
-            width: 350px;
-            height: 40px;
-            border: .05rem solid #e2e2e2;
-            border-radius: 6px;
-        }
-        label {
-            margin: auto .25rem;
-            font-family: gotham-narrow-ultra;
-            letter-spacing: .25rem;
-            text-transform: uppercase;
-        }
-    }
-    h3 {
-        padding: .25rem;
-        font-size: .5rem;
-        color: red;
-        font-family: gotham;
-        font-weight: bold;
-        text-transform: uppercase;
-    }
-    .stateZip {
-        width: 350px;
-        display: flex;
-        flex-flow: row nowrap;
-        input:first-of-type {
-            width: 50px;
-        }
-        input:nth-of-type(2) {
-            width: 100px;
-        }
-    }
-    .billingAddress {
-        margin: auto;
-        font-family: gotham-medium;
-        font-size: 1em;
-        font-style: italic;
-    }
-    .sameAsBillingAddress {
-        display: flex;
-        flex-flow: row no wrap;
-        input:first-of-type {
-            width: 15px;
-            height: 15px;
-        }
-    }
-    .shippingAddress {
-        display: flex;
-        flex-flow: column wrap;
+        padding: .5rem;
+        max-width: 300px;
     }
 `

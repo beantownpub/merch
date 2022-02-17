@@ -11,6 +11,7 @@ import MenuIcon, { getIcon } from '../icons'
 const slide = require('../../utils/menuSlide')
 
 export function linkProps(pages, menuType) {
+    // console.log(`Pages: ${pages} | Menu Type: ${menuType}`)
     const props = []
     let id = 0
     for (const page of Object.keys(pages)) {

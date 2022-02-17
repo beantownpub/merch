@@ -6,3 +6,7 @@ README.md
 .gitignore
 .eslintrc
 .eslint.json
+.editorconfig
+.tool-versions
+.envrc
+src/static/

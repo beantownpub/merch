@@ -1,144 +1,164 @@
 {
-    "beantown": {
-        "static_url": "https://static.dev.beantownpub.com",
-        "urls": {
-            "googleApi": "https://maps.googleapis.com/maps/api/",
-            "contactApi": "https://contact-api.jalgraves.com/v1/contact/beantown",
-            "merchApi": "https://merch-api.beantownpub.com",
-            "products": "https://merch-api.beantownpub.com/v1/merch/products",
-            "cart": "https://merch-api.beantownpub.com/v1/merch/cart",
-            "cartItems": "https://merch-api.beantownpub.com/v1/merch/cart",
-            "deleteItem": "https://merch-api.beantownpub.com/v1/merch/cart/update/",
-            "updateCart": "https://merch-api.beantownpub.com/v1/merch/cart/update/",
-            "static": "https://static.dev.beantownpub.com",
-            "facebook": "https://www.facebook.com/BeantownPubMA/",
-            "instagram": "https://www.instagram.com/explore/locations/392955632/beantown-pub/?hl=en",
-            "twitter": "https://twitter.com/BeantownPub"
-        },
-        "pages": {
-            "index": {
-                "name": "index",
-                "icon": "faBeer",
-                "text": "Home",
+    "urls": {
+        "googleApi": "https://maps.googleapis.com/maps/api/",
+        "static": "https://static.dev.beantownpub.com",
+        "facebook": "https://www.facebook.com/BeantownPubMA/",
+        "instagram": "https://www.instagram.com/explore/locations/392955632/beantown-pub/?hl=en",
+        "twitter": "https://twitter.com/BeantownPub"
+    },
+    "pages": {
+        "index": {
+            "name": "index",
+            "icon": "faBeer",
+            "text": "Home",
+            "menu_list": true,
+            "top_menu": false,
+            "metadata": {
                 "title": "Beantown Pub",
-                "keywords": "",
-                "description": "",
-                "menu_list": true,
-                "top_menu": false
-            },
-            "about": {
-                "name": "about",
-                "icon": "faInfo",
-                "text": "About",
-                "title": "About Beantown",
-                "keywords": "",
-                "description": "Information about Beantown Pub",
-                "menu_list": true,
-                "top_menu": true
-            },
-            "contact": {
-                "name": "contact",
-                "icon": "faEnvelope",
-                "text": "Contact",
-                "title": "Contact Beantown",
-                "keywords": "",
-                "description": "Contact information for Beantown Pub",
-                "menu_list": true,
-                "top_menu": true
-            },
-            "menu": {
-                "name": "menu",
-                "icon": "faUtensils",
-                "text": "Menu",
-                "title": "Beantown Menu",
-                "keywords": "",
-                "description": "Beantown Pub menu, serving food late night",
-                "menu_list": true,
-                "top_menu": true
-            },
-            "private parties": {
-                "name": "parties",
-                "icon": "faCalendar",
-                "text": "Private Parties",
-                "title": "Private Parties",
-                "keywords": "",
-                "description": "Beantown Pub private parties",
-                "menu_list": true,
-                "top_menu": true
-            },
-            "merch": {
-                "name": "/merch/items",
-                "icon": "faTshirt",
-                "text": "Merch",
-                "title": "Merch",
-                "keywords": "beantown pub, tshirts, sweatshirts, hats, glasses, souvenirs",
-                "description": "Beantown Pub Merch",
-                "menu_list": false,
-                "top_menu": false
-            },
-            "photos": {
-                "name": "https://www.facebook.com/BeantownPubMA/",
-                "icon": "faCamera",
-                "text": "Photos",
-                "title": "Beantown Photos",
-                "keywords": "",
-                "description": "Beantown Pub photos",
-                "menu_list": true,
-                "top_menu": false
-            },
-            "facebook": {
-                "name": "https://www.facebook.com/BeantownPubMA/",
-                "icon": "faFacebook",
-                "text": "Facebook",
-                "title": "",
-                "keywords": "",
-                "description": "",
-                "menu_list": true,
-                "top_menu": false
-            },
-            "instagram": {
-                "name": "https://www.instagram.com/explore/tags/beantownpub/?hl=en",
-                "icon": "faInstagram",
-                "text": "Instagram",
-                "title": "",
-                "keywords": "",
-                "description": "",
-                "menu_list": true,
-                "top_menu": false
-            },
-            "twitter": {
-                "name": "https://twitter.com/BeantownPub",
-                "icon": "faTwitter",
-                "text": "Twitter",
-                "title": "",
-                "keywords": "",
-                "description": "",
-                "menu_list": true,
-                "top_menu": false
+                "description": "The only pub in the world where you can drink a cold Sam Adams while viewing a cold Sam Adams",
+                "keywords": "bar, cocktails, beer, wine, freedom trail, boston, masssachusetts, pub, pool",
+                "themeColor": "#fcba03"
             }
         },
-        "colors": {
-            "backgroundWhite": "whitesmoke",
-            "borderGray": "#dbd9d9",
-            "boxShadowGray": "rgb(126 137 140 / 20%)",
-            "yellow": "#fcba03",
-            "gray": "#494040",
-            "red": "#ed1c24",
-            "navBarBlue": "rgba(5,46,102,0.90)",
-            "blue": "#1f6696",
-            "lightGray": "#F3F4F4",
-            "darkGray": "#383838",
-            "dimGray": "#696969",
-            "shadowGray": "rgb(147 147 147 / 25%)",
-            "dodgerBlue": "#1e90ff",
-            "cyan": "#3fc5f0",
-            "black": "#000000",
-            "white": "whitesmoke"
+        "about": {
+            "name": "about",
+            "icon": "faInfo",
+            "text": "About",
+            "menu_list": true,
+            "top_menu": true,
+            "metadata": {
+                "title": "About Beantown",
+                "description": "The only pub in the world where you can drink a cold Sam Adams while viewing a cold Sam Adams",
+                "keywords": "bar, cocktails, beer, wine, freedom trail, boston, masssachusetts, pub, pool",
+                "themeColor": "#fcba03"
+            }
         },
-        "fonts": {
-            "headers": "'Poppins', sans-sefif",
-            "lato": "'Lato', sans-serif",
-            "poppins": "'Poppins', sans-serif"
+        "contact": {
+            "name": "contact",
+            "icon": "faEnvelope",
+            "text": "Contact",
+            "menu_list": true,
+            "top_menu": true,
+            "metadata": {
+                "title": "Beantown Pub",
+                "description": "Contact information for Beantown Pub",
+                "keywords": "",
+                "themeColor": "#fcba03"
+            }
+        },
+        "menu": {
+            "name": "menu",
+            "icon": "faUtensils",
+            "text": "Menu",
+            "menu_list": true,
+            "top_menu": true,
+            "metadata": {
+                "title": "Beantown Pub",
+                "description": "Pub dining menu for Beantown Pub",
+                "keywords": "",
+                "themeColor": "#fcba03"
+            }
+        },
+        "parties": {
+            "name": "parties",
+            "icon": "faCalendar",
+            "text": "Private Parties",
+            "menu_list": true,
+            "top_menu": true,
+            "metadata": {
+                "title": "Private Events",
+                "description": "Private parties at Beantown Pub",
+                "keywords": "",
+                "themeColor": "#fcba03"
+            }
+        },
+        "merch": {
+            "name": "/merch/items",
+            "icon": "faTshirt",
+            "text": "Merch",
+            "menu_list": false,
+            "top_menu": true,
+            "metadata": {
+                "title": "Beantown Merch",
+                "description": "Beantown Pub merchandise for online purchase",
+                "keywords": "",
+                "themeColor": "#fcba03"
+            }
+        },
+        "photos": {
+            "name": "https://www.facebook.com/BeantownPubMA/",
+            "icon": "faCamera",
+            "text": "Photos",
+            "menu_list": true,
+            "top_menu": false,
+            "metadata": {
+                "title": "Beantown Pub",
+                "description": "",
+                "keywords": ""
+            }
+        },
+        "facebook": {
+            "name": "https://www.facebook.com/BeantownPubMA/",
+            "icon": "faFacebook",
+            "text": "Facebook",
+            "menu_list": true,
+            "top_menu": false,
+            "metadata": {
+                "title": "Beantown Pub",
+                "description": "",
+                "keywords": ""
+            }
+        },
+        "instagram": {
+            "name": "https://www.instagram.com/explore/tags/beantownpub/?hl=en",
+            "icon": "faInstagram",
+            "text": "Instagram",
+            "menu_list": true,
+            "top_menu": false,
+            "metadata": {
+                "title": "Beantown Pub",
+                "description": "",
+                "keywords": ""
+            }
+        },
+        "twitter": {
+            "name": "https://twitter.com/BeantownPub",
+            "icon": "faTwitter",
+            "text": "Twitter",
+            "menu_list": true,
+            "top_menu": false,
+            "metadata": {
+                "title": "Beantown Pub",
+                "description": "",
+                "keywords": ""
+            }
         }
+    },
+    "colors": {
+        "backgroundWhite": "whitesmoke",
+        "borderGray": "#dbd9d9",
+        "borderShadow": "#383838",
+        "boxShadowGray": "rgb(126 137 140 / 20%)",
+        "gray": "#494040",
+        "red": "#ed1c24",
+        "navBarBlue": "rgba(5,46,102,0.90)",
+        "orderCompleteGreen": "#00cc00",
+        "blue": "#1f6696",
+        "lightGray": "#e2e2e2",
+        "darkGray": "#383838",
+        "dimGray": "#696969",
+        "shadowGray": "rgb(147 147 147 / 25%)",
+        "dodgerBlue": "#1e90ff",
+        "cyan": "#3fc5f0",
+        "black": "#000000",
+        "white": "whitesmoke",
+        "yellow": "#fcba03"
+    },
+    "fonts": {
+        "button": "'gotham-narrow-ultra', Poppins, sans-serif",
+        "content": "'Lato', sans-serif",
+        "footer": "'Raleway', Arial, sans-serif",
+        "headline": "'Poppins', sans-sefif",
+        "script": "'Satisfy', cursive;"
     }
 }

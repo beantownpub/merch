@@ -8,9 +8,8 @@ import { AboutInfo } from './components/content/about'
 import { ContactInfo } from './components/content/contact'
 import { MainInfo } from './components/content/main'
 import { PrivateParties } from './components/content/parties'
-// import { FoodMenu } from './components/foodMenus/new'
 import { FoodMenu } from './components/foodMenus/main'
-import Merch from './components/merch/merch'
+import { MerchDash } from './components/merch/main'
 
 export default function Routes() {
     return (
@@ -32,7 +31,7 @@ export default function Routes() {
                     <FoodMenu />
                 </Route>
                 <Route path="/merch/items">
-                    <Merch />
+                    <MerchDash />
                 </Route>
                 <Route path="/parties">
                     <PrivateParties />

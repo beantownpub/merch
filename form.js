@@ -166,7 +166,6 @@ export const SquareForm = (props) => {
                     clicker={slide.cartClose}
                     text='close'
                     icon='faShoppingCart'
-                    borderColor='#e2e2e2'
                 />
                 </div>
             }

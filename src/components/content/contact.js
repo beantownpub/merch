@@ -3,7 +3,7 @@ import { InfoSection } from './common'
 import { Map } from './map'
 
 export const ContactInfo = () => {
-    const api_key = "AIzaSyAXB15L0ZUglrIv_DlWz7XrVSQ0g6lGiwI"
+    const apiKey = process.env.GOOGLE_API_KEY
     return (
         <div>
         <InfoSection bgColor='#fcba03' marginTop='3rem'>
@@ -21,7 +21,7 @@ export const ContactInfo = () => {
         <InfoSection bgColor='#383838'>
             <Map
                 isMarkerShown
-                googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${api_key}&v=3.exp&libraries=geometry,drawing,places`}
+                googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${apiKey}&v=3.exp&libraries=geometry,drawing,places`}
                 loadingElement={<div style={{ height: `100%` }} />}
                 containerElement={<div style={{ height: `225px`, maxWidth: `80%` }} />}
                 mapElement={<div style={{ height: `100%` }} />}

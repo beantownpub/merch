@@ -20,6 +20,6 @@ export const StyledImageSlider = styled.div`
     and (max-width: 768px)
     and (orientation: portrait)
     and (-webkit-min-device-pixel-ratio: 2) {
-        margin-right, margin-left: auto 
+        margin-right, margin-left: auto
     }
 `
