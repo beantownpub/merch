@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import { Footer } from './components/content/footer/main'
 import { FadeSlider } from './components/imageSliders/sliders'
 import { TopMenuBar, LinkList, TopNavBar, linkProps } from './components/topBar/main'
-import Routes from './reactRoutes'
+import ReactRoutes from './reactRoutes'
 import { config } from './utils/main'
 const PAGES = config.pages
 const STATIC_URL = config.urls.static
@@ -56,7 +56,7 @@ ReactDOM.render(
 )
 
 ReactDOM.render(
-    <Routes />,
+    <ReactRoutes />,
     document.getElementById('app')
 )
 
