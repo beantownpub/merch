@@ -14,7 +14,7 @@ const ImageList = (props) => {
 
 export const ImageSlider = (props) => {
     return (
-        <StyledImageSlider styles={props.sliderStyles}>
+        <StyledImageSlider styles={props.sliderStyles} aria-labelledby="Image slider container">
             <ImageList settings={props.sliderSettings} images={props.images} imagePath={props.imagePath} />
         </StyledImageSlider>
     )

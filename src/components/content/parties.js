@@ -1,5 +1,5 @@
 import React from 'react'
-import { InfoSection } from './common'
+import { StyledPartiesContainer } from './styles'
 import { ContactForm } from '../contact/main'
 import { ImageSlider } from '../imageSliders/main'
 import { config } from '../../utils/main'
@@ -42,19 +42,15 @@ const sliderSettings = {
 export const PrivateParties = () => {
     const imagePath = "https://static.prod.beantownpub.com/img/slider"
     return (
-        <div>
-        <InfoSection bgColor={COLORS.yellow} marginTop='3rem'>
-            <section>
-                <h1>Private Parties</h1>
-                <article>
-                Make your next private event a memorable one. Beantown Pub offers a variety of spaces that are perfect for accomadating small gatherings
-                or corporate events. Choose from spaces with single, multiple, or no pool tables. Our private event menu offers a variety of freshly
-                prepared delicious appetizers all the way up to a full buffet with several entrees.
-                </article>
-                <ContactForm/>
-            </section>
+        <StyledPartiesContainer backgroundColor={COLORS.yellow} aria-labelledby="Parties container">
+            <h1>Private Parties</h1>
+            <article>
+            Make your next private event a memorable one. Beantown Pub offers a variety of spaces that are perfect for accomadating small gatherings
+            or corporate events. Choose from spaces with single, multiple, or no pool tables. Our private event menu offers a variety of freshly
+            prepared delicious appetizers all the way up to a full buffet with several entrees.
+            </article>
+            <ContactForm/>
             <ImageSlider images={images} imagePath={imagePath} sliderSettings={sliderSettings} sliderStyles={sliderStyles} />
-        </InfoSection>
-        </div>
+        </StyledPartiesContainer>
     )
 }

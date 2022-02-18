@@ -18,7 +18,7 @@ export const StyledItem = styled.div`
     h2 {
         border: unset;
         color: ${COLORS.headerRed};
-        font-family: ${FONTS.poppins};
+        font-family: ${FONTS.headline};
         font-weight: 800;
         letter-spacing: .25rem;
         margin: auto;

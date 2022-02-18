@@ -8,15 +8,57 @@ export const StyledContentContainer = styled.div`
     color: ${props => props.fontColor || "unset"};
     display: flex;
     flex-flow: column wrap;
-    font-family: ${props => props.fontFamily || "unset"};
+    font-family: ${props => props.fontFamily || FONTS.content};
     margin: ${props => props.margin || "unset"};
     padding: ${props => props.padding || "0"};
     text-transform: ${props => props.textTransform || "unset"};
     width: ${props => props.width || "100%"};
+    article {
+        font-size: 1rem;
+    }
     h1 {
         letter-spacing: .25rem;
         line-height: 170%;
         margin: 2rem auto 2rem auto;
+    }
+    @media (min-width: 320px)
+    and (max-width: 768px)
+    and (orientation: portrait)
+    and (-webkit-min-device-pixel-ratio: 2) {
+        h1 {
+            font-size: 2rem;
+        }
+    }
+`
+
+export const StyledPartiesContainer = styled.div`
+    background-color: ${props => props.backgroundColor || "beige"};
+    color: ${props => props.fontColor || "unset"};
+    display: flex;
+    flex-flow: column wrap;
+    font-family: ${props => props.fontFamily || FONTS.content};
+    margin: ${props => props.margin || "5rem auto 2rem auto"};
+    max-width: 99vw;
+    padding: ${props => props.padding || "2rem"};
+    text-transform: ${props => props.textTransform || "unset"};
+    width: ${props => props.width || "100%"};
+    article {
+        font-size: 150%;
+        font-weight: 600;
+        line-height: 150%;
+        max-width: 80%;
+        margin: auto;
+        padding: .25rem;
+    }
+    h1 {
+        font-family: ${props => props.h1FontFamily || FONTS.button};
+        font-size: ${props => props.h1FontSize || "3rem"};
+        font-weight: ${props => props.h1FontWeight || "900"};
+        letter-spacing: .25rem;
+        line-height: ${props => props.h1LineHeight || "170%"};
+        margin: ${props => props.h1Margin || "3rem auto 2rem auto"};
+        padding: ${props => props.h1Padding || ".5rem 0"};
+        text-transform: uppercase;
     }
     @media (min-width: 320px)
     and (max-width: 768px)
@@ -105,10 +147,13 @@ export const StyledInfo = styled.div`
         text-transform: capitalize;
     }
     article {
-        padding: 2rem 0 0 0;
-        max-width: 50rem;
-        text-transform: none;
         font-family: ${FONTS.content};
+        font-size: 150%;
+        font-weight: 600;
+        line-height: 150%;
+        padding: 2rem 0 0 0;
+        max-width: 80vw;
+        text-transform: none;
     }
     p {
         padding: .5rem 0;

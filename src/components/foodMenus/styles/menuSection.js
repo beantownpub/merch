@@ -41,12 +41,12 @@ export const StyledMenuSection = styled.div`
     h2 {
         letter-spacing: .2rem;
         text-transform: uppercase;
-        font-family: ${FONTS.poppins};
+        font-family: ${FONTS.headline};
         font-size: 1.95rem;
         color: ${COLORS.red};
     }
     h3 {
-        font-family: ${FONTS.lato};
+        font-family: ${FONTS.content};
         font-size: 1.25rem;
         line-height: 125%;
         margin: auto;
@@ -55,7 +55,7 @@ export const StyledMenuSection = styled.div`
         width: 100%;
     }
     p {
-        font-family: ${FONTS.lato};
+        font-family: ${FONTS.headline};
         font-size: 1.25rem;
         line-height: 125%;
         margin: auto;

@@ -11,7 +11,7 @@ export const StyledCategoryCard = styled.div`
     box-shadow: ${props => props.boxShadow || `0px 5px 20px 0px ${COLORS.boxShadowGray}`};
     display: flex;
     flex-flow: column wrap;
-    font-family: ${props => props.font || FONTS.poppins};
+    font-family: ${props => props.font || FONTS.headline};
     font-weight: ${props => props.fontWeight || "700"};
     margin: 1rem auto;
     padding: .5rem;
@@ -41,7 +41,7 @@ export const StyledCategoryCard = styled.div`
     h2 {
         color: ${props => props.h2Color || COLORS.red };
         margin: 0 auto;
-        font-family: ${props => props.font || FONTS.poppins};
+        font-family: ${props => props.font || FONTS.headline};
         font-size: 1.25rem;
         letter-spacing: .25rem;
         text-align: center;
@@ -50,7 +50,7 @@ export const StyledCategoryCard = styled.div`
         min-width: 20rem;
     }
     h4 {
-        font-family: ${props => props.font || FONTS.poppins};
+        font-family: ${props => props.font || FONTS.headline};
         font-size: 1.25rem;
         color: ${COLORS.black};
         letter-spacing: .25rem;

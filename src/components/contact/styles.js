@@ -1,4 +1,7 @@
 import styled from 'styled-components'
+import { config } from '../../utils/main'
+
+const FONTS = config.fonts
 
 export const iconStyle = {
     margin: 'auto .5rem',
@@ -11,7 +14,7 @@ export const StyledButton = styled.div`
         margin: .25rem auto;
         padding: 1rem;
         width: ${props => props.buttonWidth || "12rem"};
-        font-family: gotham-narrow-ultra;
+        font-family: ${FONTS.headline};
         background-color: ${props => props.bgColor || "white"};
         border: 1px solid ${props => props.borderColor || "white"};
         border-radius: 6px;
@@ -25,9 +28,11 @@ export const StyledButton = styled.div`
 `
 
 export const StyledContactForm = styled.div`
-    width: 20rem;
     display: flex;
     flex-flow: column wrap;
+    margin: auto;
+    max-width: 80vw;
+    padding: 1rem;
     form {
         display: flex;
         flex-flow: column wrap;
@@ -39,7 +44,7 @@ export const StyledContactForm = styled.div`
         }
         label {
             margin: auto .25rem;
-            font-family: gotham-narrow-ultra;
+            font-family: ${FONTS.headline};
             letter-spacing: .25rem;
             text-transform: uppercase;
         }
@@ -50,12 +55,15 @@ export const StyledContactForm = styled.div`
     }
     h2 {
         font-size: 1.5rem;
+        margin: auto;
+        padding: 1rem;
+        text-transform: uppercase;
     }
     h3 {
         padding: .25rem;
         font-size: .5rem;
         color: #000000;
-        font-family: gotham-narrow-ultra;
+        font-family: ${FONTS.headline};
         text-transform: uppercase;
     }
     .stateZip {
@@ -68,7 +76,7 @@ export const StyledContactForm = styled.div`
         }
     }
     .billingAddress {
-        font-family: gotham-medium;
+        font-family: ${FONTS.content};
         font-size: .75em;
         font-style: italic;
     }
