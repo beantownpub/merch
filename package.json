@@ -48,7 +48,7 @@
     "react-loader-spinner": "^5.1.4",
     "react-router": "^6.2.1",
     "react-router-dom": "^6.2.1",
-    "styled-components": "^5.0.0",
+    "styled-components": "^5.3.3",
     "universal-cookie": "^4.0.3",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.12"
