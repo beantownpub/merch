@@ -6,7 +6,6 @@ import { StyledContactForm, StyledButton } from "./styles"
 const contactReply = "Request Received! We will respond to you as soon as we can. Thanks!"
 
 const SubmitButton = (props) => {
-    
     return (
         <StyledButton borderColor={props.borderColor} width={props.width}>
             <button>
@@ -33,7 +32,7 @@ export const ContactForm = () => {
     }
 
     return (
-        <StyledContactForm>
+        <StyledContactForm aria-labelledby="Contact form container">
             {reply &&
                 <p>{reply}</p>}
             {reply != contactReply &&

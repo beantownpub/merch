@@ -14,6 +14,7 @@ export const StyledMenuItem = styled.div`
     margin: .5rem;
     max-width: 90vw;
     table {
+        font-family: ${FONTS.headline};
         padding: .5rem;
         width: 100%;
         td {
@@ -23,7 +24,7 @@ export const StyledMenuItem = styled.div`
     }
     .itemName {
         color: ${COLORS.yellow};
-        font-family: ${FONTS.poppins};
+        font-family: ${FONTS.headline};
         font-size: 1.5rem;
         font-weight: 700;
         letter-spacing: .15rem;
@@ -32,7 +33,7 @@ export const StyledMenuItem = styled.div`
     }
     .itemPrice {
         color: ${COLORS.black};
-        font-family: ${FONTS.lato};
+        font-family: ${FONTS.content};
         font-size: 1.5rem;
         font-weight: 600;
         letter-spacing: .15rem;
@@ -40,7 +41,7 @@ export const StyledMenuItem = styled.div`
         text-transform: uppercase;
     }
     p {
-        font-family: ${FONTS.lato};
+        font-family: ${FONTS.content};
         font-size: 1.25rem;
         line-height: 125%;
         padding: 1rem;

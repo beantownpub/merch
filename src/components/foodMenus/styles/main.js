@@ -43,7 +43,7 @@ export const StyledMenuWarning = styled.div`
     order: 99;
     h3 {
         color: ${COLORS.dimGray};
-        font-family: ${FONTS.lato};
+        font-family: ${FONTS.headline};
         font-size: 1.25rem;
         font-weight: 600;
         line-height: 150%;
@@ -72,13 +72,13 @@ export const StyledSideSection = styled.div`
         color: ${COLORS.red};
         letter-spacing: .2rem;
         text-transform: uppercase;
-        font-family: ${FONTS.poppins};
+        font-family: ${FONTS.headline};
         font-size: 1.95rem;
         margin: .5rem auto;
     }
     p {
         color: ${COLORS.black};
-        font-family: ${FONTS.lato};
+        font-family: ${FONTS.headline};
         font-size: 1.25rem;
         font-weight: 600;
         line-height: 150%;
