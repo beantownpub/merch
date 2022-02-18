@@ -23,7 +23,7 @@
     "react-slideshow-image": "^1.4.2",
     "react-square-web-payments-sdk": "^2.2.3",
     "redis": "^4.0.3",
-    "square-connect": "^4.20201028.5",
+    "square-connect": "^6.20201216.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
