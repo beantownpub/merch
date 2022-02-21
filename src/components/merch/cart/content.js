@@ -20,7 +20,7 @@ export const OrderFailed = (props) => {
             <h1>Order Failed</h1>
             <p>We're sorry but there was an issue processing your payment</p>
             <p>You have not been charged</p>
-            <p>Refresh page to try again or later or contact us at</p>
+            <p>Refresh page to try again later or contact us at</p>
             <p>{props.email}</p>
         </StyledContentContainer>
     )

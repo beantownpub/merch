@@ -19,8 +19,7 @@ export const ContactForm = () => {
     const [reply, setReply] = useState("")
     const { handleSubmit, register, errors, reset } = useForm()
     const heads = {
-        "Content-Type": "application/json",
-        "X-JAL-Comp": "ContactForm"
+        "Content-Type": "application/json"
     }
     const onSubmit = (values, e) => {
         console.log(values)

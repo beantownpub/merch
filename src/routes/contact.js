@@ -1,24 +1,21 @@
 var express = require('express')
 var router = express.Router()
 const axios = require('axios')
+const utils = require('../utils/main')
+const network = require('../utils/network')
 
-const API_USERNAME = process.env.API_USERNAME
-const API_PASSWORD = process.env.API_PASSWORD
-const AUTH = 'Basic ' + Buffer.from(API_USERNAME + ':' + API_PASSWORD).toString('base64')
-const HEADERS = {'Content-Type': 'application/json', 'Authorization': AUTH}
 
 router.post('/send-message', function (req, res, next) {
+  console.log(network)
   console.log(req.body)
   try {
-    const host = process.env.CONTACT_API_HOST
-    const protocol = process.env.CONTACT_API_PROTOCOL || 'https'
-    const api_url = `${protocol}://${host}/v1/contact/beantown`
-
+    const api_url = `${network.urls.contactApi}/v1/contact/beantown`
+    console.log(`Contact ${api_url}`)
     axios({
       method: 'post',
       url: api_url,
       data: req.body,
-      headers: HEADERS
+      headers: utils.authHeaders
     })
       .then(response => {
         if (response.status === 200) {
@@ -36,7 +33,7 @@ router.post('/send-message', function (req, res, next) {
         res.end()
       })
       .catch(error => {
-        console.error('AXIOS Error: ' + error)
+        console.error('Contact Axios: ' + error)
         res.status(500).json({
           'title': 'Contact Failure',
           'status': 500

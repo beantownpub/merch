@@ -7,7 +7,8 @@ module.exports = env => {
       new webpack.DefinePlugin({
         "process.env.GOOGLE_API_KEY": JSON.stringify(process.env.GOOGLE_API_KEY),
         "process.env.SQUARE_APP_ID": JSON.stringify(process.env.SQUARE_APP_ID),
-        "process.env.SQUARE_LOCATION_ID": JSON.stringify(process.env.SQUARE_LOCATION_ID)
+        "process.env.SQUARE_LOCATION_ID": JSON.stringify(process.env.SQUARE_LOCATION_ID),
+        "process.env.STATIC_PATH": JSON.stringify(process.env.STATIC_PATH)
       })
     ],
     mode: process.env.NODE_ENV,

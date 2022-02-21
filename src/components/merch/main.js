@@ -4,7 +4,9 @@ import { CategoryCards } from './products/main'
 import { Cart } from './cart/main'
 import { NumCartItems } from './cart/items'
 import { getOptions } from '../../utils/main'
-// const COLORS = config.colors
+import { LinkButton } from '../elements/buttons/main'
+import { config } from '../../utils/main'
+const COLORS = config.colors
 
 export const MerchDash = () => {
     const [state, setState] = useState({ categories: [] })
@@ -70,6 +72,7 @@ export const MerchDash = () => {
                         <NumCartItems total={cart.cartTotal}>{cart.numItemsInCart}</NumCartItems>
                     </StyledMerchNav>
                     <CategoryCards categories={state.categories} cartUpdate={updateCart} />
+                    <LinkButton url="/returns" buttonText="Return &amp; Refund Policy" textColor={COLORS.black}/>
                 </StyledDashContainer> :
                 <StyledNoContentContainer aria-labelledby="No merchandise">
                     <h1>Online merchandise coming soon! For now stop by the pub and purchase in person!</h1>

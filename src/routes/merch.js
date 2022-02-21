@@ -39,10 +39,16 @@ router.post('/process-payment', async (req, res) => {
   } catch(error) {
     console.log('PAYMENT Error')
     console.log(requestBody)
-    console.log(JSON.parse(error.response.text))
-    let foo = JSON.parse(error.response.text)
-    let bar = squareUtils.parseError(foo)
-    console.log(bar)
+    let msg = JSON.parse(error.response.text)
+    let body = {
+      channel: "#test-notifications",
+      message: msg
+    }
+    let contactUrl = "http://contact-api:5012/v1/contact/slack"
+    let options = {method: "POST", credentials: "include", body: JSON.stringify(body), url: contactUrl}
+    console.log(options)
+    // const notify = await request.slackRequest(options)
+    // console.log(notify)
     res.status(500).json({
       'title': 'Payment Failure',
       'result': error.response.text
@@ -52,7 +58,7 @@ router.post('/process-payment', async (req, res) => {
 
 function sendRequest(options, cookie, res) {
   try {
-    request(options, cookie, res)
+    request.cartRequest(options, cookie, res)
   } catch(error) {
     console.log('Request Error: ' + error)
     res.status(500).json({

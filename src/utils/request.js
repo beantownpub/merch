@@ -1,6 +1,6 @@
 const axios = require('axios')
 const authHeaders = require('./auth')
-
+const notify = require('./axios')
 const OPTIONS = {
     method: 'get',
     headers: authHeaders,
@@ -32,6 +32,13 @@ function makeRequest(url, res) {
                 console.log('Axios KEYS - ' + Object.keys(response.data))
                 res.status(200).json({'status': 200, 'data': response.data})
             } else {
+                let body = {
+                    channel: "#test-notifications",
+                    message: error
+                }
+                let contactUrl = "http://contact-api:5012/v1/contact/slack"
+                let options = {method: "POST", credentials: "include", body: JSON.stringify(body), url: contactUrl}
+                notify.slackRequest(options)
                 res.status(500).json(RESPONSES.apiError)
             }
             res.end()

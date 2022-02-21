@@ -47,4 +47,29 @@ function cartRequest(options, cartId, res) {
     }
 }
 
-module.exports = cartRequest
+function slackRequest(options) {
+    authHeaders['Content-Type'] = 'application/json'
+    options.headers = authHeaders
+    console.log(`slackRequest | Body: ${options.body} | URL | ${options.url}`)
+    try {
+        axios(options)
+        .then(response => {
+            console.log(`makeRequest | Response: ${response.status}`)
+            if (OK_RESPONSES.includes(response.status)) {
+                res.status(200).json({'status': 200, 'data': response.data})
+            } else {
+                res.status(500).json(RESPONSES.apiError)
+            }
+            res.end()
+        })
+        .catch(error => {
+            console.error('AXIOS Error: ' + error)
+            res.status(500).json(RESPONSES.axiosError)
+        })
+    } catch(error) {
+        console.log('AUTH Error: ' + error)
+        res.status(500).json(RESPONSES.authError)
+    }
+}
+
+module.exports = { cartRequest, slackRequest }

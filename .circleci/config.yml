@@ -1,4 +1,35 @@
 version: 2.1
+executors:
+  build_machine:
+    machine:
+      image: ubuntu-1604:202007-01
+    environment:
+      DOCKER_BUILDKIT: 1
+      BUILDX_PLATFORMS: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/386,linux/arm/v7,linux/arm/v6
+
+commands:
+  install_k8s_dependencies:
+    description: Install dependencies for deploying to K8s cluster
+    steps:
+      - run:
+          name: Install kubectl
+          command: |
+            apt-get update -y && apt-get install -y curl
+            curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+            install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+            kubectl config set-credentials jalbot --token=$JALBOT_TOKEN
+            kubectl config set-cluster prod --server=$K8S_SERVER --insecure-skip-tls-verify=true
+            kubectl config set-context jalbot --cluster=prod --user=jalbot
+            kubectl config use-context jalbot
+      - run:
+          name: Install helm
+          command: |
+            apt-get install apt-transport-https gnupg2 --yes
+            curl https://baltocdn.com/helm/signing.asc | apt-key add -
+            echo "deb https://baltocdn.com/helm/stable/debian/ all main" | tee /etc/apt/sources.list.d/helm-stable-debian.list
+            apt-get update
+            apt-get install -y helm
+
 jobs:
   build:
     machine:
@@ -9,6 +40,13 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Build from dockerfile
+          name: Build Image
           command: |
-            docker build --build-arg node_env=development -t frontend .
+            export BEANTOWN_VERSION=$(jq -r .version package.json | tr -d '"')
+            docker build \
+              -t beantown:$BEANTOWN_VERSION \
+              --build-arg google_api_key=$GOOGLE_API_KEY \
+              --build-arg square_app_id=$SQUARE_APP_ID \
+              --build-arg square_location_id=$SQUARE_LOCATION_ID \
+              --build-arg static_path=$BEANTOWN_STATIC_PATH \
+              --build-arg node_env=production .

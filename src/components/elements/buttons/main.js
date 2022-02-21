@@ -19,6 +19,7 @@ export const Button = (props) => {
             borderRadius={props.buttonStyles.borderRadius}
             fontFamily={props.buttonStyles.fontFamily}
             fontSize={props.buttonStyles.fontSize}
+            hoverBackgroundColor={props.buttonStyles.hoverBackgroundColor}
             letterSpacing={props.buttonStyles.letterSpacing}
             margin={props.buttonStyles.margin}
             maxWidth={props.buttonStyles.maxWidth}

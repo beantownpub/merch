@@ -26,4 +26,7 @@ export const StyledButton = styled.div`
         text-transform: ${props => props.textTransform || "uppercase"};
         width: ${props => props.width || "12rem"};
     }
+    button:hover {
+        background-color: ${props => props.hoverBackgroundColor || COLORS.red};
+    }
 `

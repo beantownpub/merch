@@ -17,6 +17,8 @@ ENV GOOGLE_API_KEY=${google_api_key}
 ENV SQUARE_APP_ID=${square_app_id}
 ENV SQUARE_LOCATION_ID=${square_location_id}
 ENV NODE_ENV=${node_env}
+ARG static_path
+ENV STATIC_PATH=${static_path}
 
 COPY ./package* /app/
 WORKDIR /app
@@ -35,6 +37,7 @@ ENV SQUARE_APP_ID=${square_app_id}
 ENV SQUARE_LOCATION_ID=${square_location_id}
 ENV NODE_ENV=${node_env}
 ENV TINI_VERSION v0.19.0
+
 
 RUN apt-get update && apt-get install -y curl
 COPY ./package* /app/

@@ -36,6 +36,7 @@ build: sass
 		--build-arg google_api_key=${GOOGLE_API_KEY} \
 		--build-arg square_app_id=$(square_app_id) \
 		--build-arg square_location_id=$(square_location_id) \
+		--build-arg static_path=${BEANTOWN_STATIC_PATH} \
 		--build-arg node_env=$(node_env) .
 
 publish: build

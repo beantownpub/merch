@@ -97,6 +97,19 @@
                 "keywords": ""
             }
         },
+        "returns": {
+            "name": "/returns",
+            "icon": "faTshirt",
+            "text": "Returns",
+            "menu_list": false,
+            "top_menu": false,
+            "metadata": {
+                "title": "Return and Refund Policy",
+                "description": "Beantownpub.com's return and refund policy",
+                "keywords": "",
+                "themeColor": "#fcba03"
+            }
+        },
         "facebook": {
             "name": "https://www.facebook.com/BeantownPubMA/",
             "icon": "faFacebook",

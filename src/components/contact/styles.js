@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { config } from '../../utils/main'
 
+const COLORS = config.colors
 const FONTS = config.fonts
 
 export const iconStyle = {
@@ -52,6 +53,16 @@ export const StyledContactForm = styled.div`
             border: .05rem solid #e2e2e2;
             border-radius: .4rem;
         }
+    }
+    p {
+        background-color: ${COLORS.white};
+        border: 1px solid ${COLORS.black};
+        border-radius: 6px;
+        font-family: ${FONTS.content};
+        font-size: 125%;
+        font-weight: 600;
+        line-height: 125%;
+        padding: 1.5rem;
     }
     h2 {
         font-size: 1.5rem;

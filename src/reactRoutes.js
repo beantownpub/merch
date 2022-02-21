@@ -6,6 +6,7 @@ import { MainInfo } from './components/content/main'
 import { PrivateParties } from './components/content/parties'
 import { FoodMenu } from './components/foodMenus/main'
 import { MerchDash } from './components/merch/main'
+import { ReturnPolicy } from './components/merch/content/main'
 
 export default function ReactRoutes() {
     return (
@@ -18,6 +19,7 @@ export default function ReactRoutes() {
                 <Route path="/menu" element={<FoodMenu/>} />
                 <Route path="/merch/items" element={<MerchDash/>} />
                 <Route path="/parties" element={<PrivateParties/>} />
+                <Route path="/returns" element={<ReturnPolicy/>} />
             </Routes>
         </BrowserRouter>
     )

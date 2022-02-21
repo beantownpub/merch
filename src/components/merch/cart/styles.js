@@ -51,6 +51,15 @@ export const StyledCartContainer = styled.div`
     position: fixed;
     top: 0;
     z-index: 1002;
+    a {
+        color: ${COLORS.dodgerBlue};
+        font-family: ${FONTS.content};
+        font-size: 125%;
+        font-weight: 600;
+        margin: auto;
+        text-decoration: none;
+    }
+    a:hover { color: ${COLORS.red}; }
     .cartTotal {
         font-family: ${FONTS.content};
         font-size: 1.25em;

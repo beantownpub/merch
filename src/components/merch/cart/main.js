@@ -6,6 +6,7 @@ import { CartItem, ItemsContainer } from './items'
 import { ShippingInfo, OrderConfirmation, OrderFailed } from './content'
 import { cartClose } from '../../../utils/menuSlide'
 import { config } from '../../../utils/main'
+import { LinkButton } from '../../elements/buttons/main'
 
 const COLORS = config.colors
 
@@ -107,6 +108,7 @@ export const Cart = (props) => {
                     paymentComplete={paymentComplete}
                     paymentFailed={paymentFailed}
                 /><img src="https://static.prod.beantownpub.com/img/square_payment.png" alt="Square payments"/></div>}
+            <a href="/returns">Return &amp; Refund Policy</a>
         </StyledCartContainer>
     )
 }

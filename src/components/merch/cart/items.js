@@ -20,6 +20,7 @@ export const NumCartItems = (props) => {
             </div>
             <div className="numCartItemsButton">
             <ToggleButton
+                hoverBackgroundColor={COLORS.darkGray}
                 bgColor={COLORS.white}
                 buttonText='view'
                 icon='faShoppingCart'
