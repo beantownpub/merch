@@ -32,6 +32,13 @@ commands:
             echo "deb https://baltocdn.com/helm/stable/debian/ all main" | tee /etc/apt/sources.list.d/helm-stable-debian.list
             apt-get update
             apt-get install -y helm
+  install_jq:
+    description: Install jq for getting package.json version
+    steps:
+      - run:
+          name: Install jq
+          command: |
+            apt-get update && apt-get install -y jq
   check_tags:
     description: Check if git tag matches package.json version
     steps:
@@ -75,6 +82,7 @@ jobs:
     executor: debian
     steps:
       - checkout
+      - install_jq
       - check_tags
       - install_k8s_dependencies
       - run:
