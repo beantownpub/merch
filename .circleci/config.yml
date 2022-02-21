@@ -97,10 +97,10 @@ jobs:
           command: |
             export BEANTOWN_VERSION=$(jq -r .version package.json | tr -d '"')
             helm repo update
-            helm upgrade --install contact-api beantown/beantown \
-              --version $BEANTOWN_VERSION \
+            helm upgrade --install beantown beantown/beantown \
               --namespace prod \
               --set global.env=prod \
+              --set image.tag=$BEANTOWN_VERSION \
               --debug
 
 workflows:
