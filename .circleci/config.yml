@@ -6,6 +6,7 @@ executors:
     environment:
       DOCKER_BUILDKIT: 1
       BUILDX_PLATFORMS: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/386,linux/arm/v7,linux/arm/v6
+    resource_class: large
   debian:
     docker:
     - image: python:3.7-slim-buster
@@ -32,13 +33,13 @@ commands:
             echo "deb https://baltocdn.com/helm/stable/debian/ all main" | tee /etc/apt/sources.list.d/helm-stable-debian.list
             apt-get update
             apt-get install -y helm
-  install_jq:
-    description: Install jq for getting package.json version
+  install_version_dependencies:
+    description: Install dependencies for versioning
     steps:
       - run:
-          name: Install jq
+          name: Install dependencies
           command: |
-            apt-get update && apt-get install -y jq
+            apt-get update && apt-get install -y git jq
   check_tags:
     description: Check if git tag matches package.json version
     steps:
@@ -82,7 +83,7 @@ jobs:
     executor: debian
     steps:
       - checkout
-      - install_jq
+      - install_version_dependencies
       - check_tags
       - install_k8s_dependencies
       - run:
