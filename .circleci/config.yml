@@ -31,12 +31,8 @@ commands:
             apt-get install -y helm
 
 jobs:
-  build:
-    machine:
-      image: ubuntu-1604:202007-01
-    environment:
-      DOCKER_BUILDKIT: 1
-      BUILDX_PLATFORMS: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/386,linux/arm/v7,linux/arm/v6
+  build_and_publish:
+    executor: build_machine
     steps:
       - checkout
       - run:
@@ -50,3 +46,25 @@ jobs:
               --build-arg square_location_id=$SQUARE_LOCATION_ID \
               --build-arg static_path=$BEANTOWN_STATIC_PATH \
               --build-arg node_env=production .
+      - run:
+          name: Check tag
+          command: |
+            BEANTOWN_VERSION=$(jq -r .version package.json | tr -d '"')
+            GIT_TAG=$(git describe --abbrev=0)
+            echo "Version: $BEANTOWN_VERSION | Tag: $GIT_TAG"
+            if [ "$BEANTOWN_VERSION" != "$GIT_TAG" ]; then
+                circleci-agent step halt
+            fi
+      - run:
+          name: Publish Image
+          command: |
+            export BEANTOWN_VERSION=$(jq -r .version package.json | tr -d '"')
+            echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
+            docker tag contact_api:$BEANTOWN_VERSION $DOCKER_USERNAME/contact_api:$BEANTOWN_VERSION
+            docker push $DOCKER_USERNAME/contact_api:$BEANTOWN_VERSION
+
+workflows:
+  version: 2
+  beantown_frontend:
+    jobs:
+      - build_and_publish
