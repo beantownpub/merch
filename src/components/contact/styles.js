@@ -38,15 +38,16 @@ export const StyledContactForm = styled.div`
         display: flex;
         flex-flow: column wrap;
         input {
-            margin: .5rem 0;
-            padding: .5rem;
             border: .05rem solid #e2e2e2;
             border-radius: .4em;
+            margin: .5rem 0;
+            padding: .5rem;
         }
         label {
-            margin: auto .25rem;
-            font-family: ${FONTS.headline};
+            font-family: ${FONTS.content};
+            font-weight: 900;
             letter-spacing: .25rem;
+            margin: auto .25rem;
             text-transform: uppercase;
         }
         textarea {

@@ -29,6 +29,18 @@ commands:
             echo "deb https://baltocdn.com/helm/stable/debian/ all main" | tee /etc/apt/sources.list.d/helm-stable-debian.list
             apt-get update
             apt-get install -y helm
+  check_tags:
+    description: Check if git tag matches package.json version
+    steps:
+      - run:
+          name: Check tags
+          command: |
+            BEANTOWN_VERSION=$(jq -r .version package.json | tr -d '"')
+            GIT_TAG=$(git describe)
+            echo "Version: ${BEANTOWN_VERSION} | Tag: ${GIT_TAG}"
+            if [ "$BEANTOWN_VERSION" != "$GIT_TAG" ]; then
+                circleci-agent step halt
+            fi
 
 jobs:
   build_and_publish:
@@ -46,25 +58,44 @@ jobs:
               --build-arg square_location_id=$SQUARE_LOCATION_ID \
               --build-arg static_path=$BEANTOWN_STATIC_PATH \
               --build-arg node_env=production .
-      - run:
-          name: Check tag
-          command: |
-            BEANTOWN_VERSION=$(jq -r .version package.json | tr -d '"')
-            GIT_TAG=$(git describe --abbrev=0)
-            echo "Version: $BEANTOWN_VERSION | Tag: $GIT_TAG"
-            if [ "$BEANTOWN_VERSION" != "$GIT_TAG" ]; then
-                circleci-agent step halt
-            fi
+      - check_tags
       - run:
           name: Publish Image
           command: |
             export BEANTOWN_VERSION=$(jq -r .version package.json | tr -d '"')
             echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
-            docker tag contact_api:$BEANTOWN_VERSION $DOCKER_USERNAME/contact_api:$BEANTOWN_VERSION
-            docker push $DOCKER_USERNAME/contact_api:$BEANTOWN_VERSION
+            docker tag beantown:$BEANTOWN_VERSION $DOCKER_USERNAME/beantown:$BEANTOWN_VERSION
+            docker push $DOCKER_USERNAME/beantown:$BEANTOWN_VERSION
+
+  deploy:
+    circleci_ip_ranges: true
+    executor: debian
+    steps:
+      - checkout
+      - check_tags
+      - install_k8s_dependencies
+      - run:
+          name: Add Helm repo
+          command: |
+            helm repo add beantown $HELM_REPO
+            kubectl config get-contexts
+            kubectl get pods -n prod
+      - run:
+          name: Deploy bentown-frontend
+          command: |
+            export BEANTOWN_VERSION=$(jq -r .version package.json | tr -d '"')
+            helm repo update
+            helm upgrade --install contact-api beantown/beantown \
+              --version $BEANTOWN_VERSION \
+              --namespace prod \
+              --set global.env=prod \
+              --debug
 
 workflows:
   version: 2
   beantown_frontend:
     jobs:
       - build_and_publish
+      - deploy:
+          requires:
+            - build_and_publish
