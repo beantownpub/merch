@@ -65,7 +65,7 @@ jobs:
           name: Install dependencies & run lint
           command: |
             npm install
-            npm eslint .
+            npx eslint .
   build_and_publish:
     executor: build_machine
     steps:
