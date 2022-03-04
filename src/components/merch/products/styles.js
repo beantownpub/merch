@@ -125,4 +125,7 @@ export const StyledMerchItem = styled.div`
         padding: 1rem;
         max-width: 30rem;
     }
+    img {
+        .5rem solid ${COLORS.black};
+    }
 `

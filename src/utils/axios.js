@@ -56,19 +56,17 @@ function slackRequest(options) {
         .then(response => {
             console.log(`makeRequest | Response: ${response.status}`)
             if (OK_RESPONSES.includes(response.status)) {
-                res.status(200).json({'status': 200, 'data': response.data})
+                response.status(200).json({'status': 200, 'data': response.data})
             } else {
-                res.status(500).json(RESPONSES.apiError)
+                response.status(500).json(RESPONSES.apiError)
             }
-            res.end()
+            response.end()
         })
         .catch(error => {
-            console.error('AXIOS Error: ' + error)
-            res.status(500).json(RESPONSES.axiosError)
+            console.error('Slack AXIOS: ' + error)
         })
     } catch(error) {
-        console.log('AUTH Error: ' + error)
-        res.status(500).json(RESPONSES.authError)
+        console.log('Slack Error: ' + error)
     }
 }
 

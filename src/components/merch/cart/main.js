@@ -6,7 +6,6 @@ import { CartItem, ItemsContainer } from './items'
 import { ShippingInfo, OrderConfirmation, OrderFailed } from './content'
 import { cartClose } from '../../../utils/menuSlide'
 import { config } from '../../../utils/main'
-import { LinkButton } from '../../elements/buttons/main'
 
 const COLORS = config.colors
 
@@ -62,7 +61,7 @@ export const Cart = (props) => {
     }
 
     function paymentComplete(email, confirmation) {
-        console.log(`COMPLETING ORDER: ${email} ${confirmation}`)
+        // console.log(`COMPLETING ORDER: ${email} ${confirmation}`)
         setPayment({ emailAddress: email, confirmationCode: confirmation, paymentComplete: true })
         setShippingInfo({ show: false })
     }

@@ -18,7 +18,6 @@ function makeRequest(uri, res) {
 
 router.get('/categories', function (req, res, next) {
   const uri = `/v1/menu?location=beantown`
-  console.log(`CATEGORIES | GET | ${uri}`)
   makeRequest(uri, res)
 })
 

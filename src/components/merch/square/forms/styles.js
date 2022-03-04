@@ -12,5 +12,6 @@ export const StyledPaymentForm = styled.div`
     flex-flow: column wrap;
     margin: 2rem auto;
     padding: 1rem;
+    pointer-events: ${props => props.pointerEvents};
     position: relative;
 `

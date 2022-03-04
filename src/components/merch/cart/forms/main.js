@@ -87,7 +87,7 @@ export const CheckoutForm = (props) => {
 
     return (
         <div>
-        <StyledCheckoutForm aria-labelledby="Checkout form">
+        <StyledCheckoutForm aria-labelledby="Checkout form" id="checkoutForm">
         {checkoutForm.showForm &&
             <form onSubmit={handleSubmit(onSubmit)}>
                 <h2>
@@ -164,7 +164,9 @@ export const CheckoutForm = (props) => {
                     hideSquare={hideSquare}
                     cartValues={checkout.cartValues}
                     paymentComplete={props.paymentComplete}
-                    paymentFailed={props.paymentFailed}></PaymentForm>
+                    paymentFailed={props.paymentFailed}
+                    showSquare={true}>
+                </PaymentForm>
             }
             {!checkout.showPayment &&
                 <div className="payButtons">

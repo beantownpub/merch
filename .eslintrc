@@ -4,6 +4,7 @@
         "browser": true,
         "node": true
     },
+    "parser": "@babel/eslint-parser",
     "parserOptions": {
         "ecmaVersion": 6,
         "sourceType": "module",
@@ -11,11 +12,19 @@
             "jsx": true
         }
     },
+    "plugins": [
+        "react-hooks"
+    ],
     "rules": {
         "semi": 0,
         "no-unused-vars": 0,
         "no-console": "off",
-        "arrow-body-style": ["as-needed"]
+        "arrow-body-style": 0,
+        "react-hooks/rules-of-hooks": 1,
+        "react-hooks/exhaustive-deps": 2
     },
-    "extends": "eslint:recommended"
+    "extends": [
+        "eslint:recommended",
+        "plugin:react-hooks/recommended"
+    ]
 }

@@ -21,6 +21,5 @@ const urls = {
 }
 
 console.log(urls)
-console.log(process.env.STATIC_PATH || "no path")
 
 module.exports = { urls }

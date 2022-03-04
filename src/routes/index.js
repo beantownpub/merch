@@ -8,9 +8,16 @@ router.use(function (req, res, next) {
 })
 
 router.get('/', function(req, res, next) {
-  // console.log(req)
   const home = pages.index
   res.render("main", home.metadata)
+})
+
+router.get('/index.html', function(req, res, next) {
+  res.redirect('/')
+})
+
+router.get('/menu.html', function(req, res, next) {
+  res.redirect('/menu')
 })
 
 router.get('/healthz', function(req, res, next) {

@@ -46,7 +46,7 @@ router.post('/process-payment', async (req, res) => {
     }
     let contactUrl = "http://contact-api:5012/v1/contact/slack"
     let options = {method: "POST", credentials: "include", body: JSON.stringify(body), url: contactUrl}
-    console.log(options)
+    // console.log(options)
     // const notify = await request.slackRequest(options)
     // console.log(notify)
     res.status(500).json({
@@ -71,7 +71,7 @@ function sendRequest(options, cookie, res) {
 router.post('/process-order', function (req, res, next) {
   console.log(`Processing order: ${Object.keys(req.body)}`)
   const apiUrl = `${network.urls.merchApi}/v1/merch/orders`
-  console.log(`ITEMS | POST | Path: ${req.path}`)
+  // console.log(`ITEMS | POST | Path: ${req.path}`)
   const options = {
     url: apiUrl,
     method: 'post',
@@ -81,15 +81,15 @@ router.post('/process-order', function (req, res, next) {
 })
 
 router.get('/cart', function (req, res, next) {
-  console.log(`Cart Session ID: ${req.sessionID}`)
+  // console.log(`Cart Session ID: ${req.sessionID}`)
   if (!req.sessionID) {
-    console.log('CART GET Generating new session')
+    // console.log('CART GET Generating new session')
     req.session.regenerate(function(err) {
       console.log(`Generating session ${err}`)
     })
   }
   const apiUrl = `${network.urls.merchApi}/v1/merch/cart`
-  console.log(`Cart | GET | URL | ${apiUrl}`)
+  // console.log(`Cart | GET | URL | ${apiUrl}`)
   const options = {
     url: apiUrl,
     method: 'get'
@@ -99,16 +99,16 @@ router.get('/cart', function (req, res, next) {
 })
 
 router.post('/cart', function (req, res, next) {
-  console.log(req.cookie)
+  // console.log(req.cookie)
   const apiUrl = `${network.urls.merchApi}/v1/merch/cart`
-  console.log(`Post Cart Session ID: ${req.sessionID}`)
+  // console.log(`Post Cart Session ID: ${req.sessionID}`)
   if (!req.sessionID) {
-    console.log('CART POST Generating new session')
+    // console.log('CART POST Generating new session')
     req.session.regenerate(function(err) {
-      console.log(`What the fuck ${err}`)
+      console.log(`POST /cart ${err}`)
     })
   }
-  console.log(`Post Cart Session ID: ${req.sessionID}`)
+  // console.log(`Post Cart Session ID: ${req.sessionID}`)
   const options = {
     url: apiUrl,
     method: 'post',
@@ -120,7 +120,7 @@ router.post('/cart', function (req, res, next) {
 
 router.delete('/cart', function (req, res, next) {
   const apiUrl = `${network.urls.merchApi}/v1/merch/cart`
-  console.log(`Cart | DELETE | URL | ${apiUrl}`)
+  // console.log(`Cart | DELETE | URL | ${apiUrl}`)
   const options = {
     url: apiUrl,
     method: 'delete',
@@ -133,7 +133,7 @@ router.delete('/cart', function (req, res, next) {
 router.delete('/cart/empty', function (req, res, next) {
   const cartId = req.body['id']
   const apiUrl = `${network.urls.merchApi}/v2/cart/empty?cart_id=${cartId}`
-  console.log(`Cart | DELETE | ID: ${cartId}`)
+  // console.log(`Cart | DELETE | ID: ${cartId}`)
   const options = {
     url: apiUrl,
     method: 'delete'
@@ -144,7 +144,7 @@ router.delete('/cart/empty', function (req, res, next) {
 
 router.get('/merchandise', function (req, res, next) {
   const apiUrl = `${network.urls.merchApi}/v2/merch`
-  console.log('Merchandise | ' + apiUrl)
+  // console.log('Merchandise | ' + apiUrl)
   const options = {
     url: apiUrl,
     method: 'get'

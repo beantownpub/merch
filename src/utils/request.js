@@ -34,7 +34,7 @@ function makeRequest(url, res) {
             } else {
                 let body = {
                     channel: "#test-notifications",
-                    message: error
+                    message: response.error
                 }
                 let contactUrl = "http://contact-api:5012/v1/contact/slack"
                 let options = {method: "POST", credentials: "include", body: JSON.stringify(body), url: contactUrl}

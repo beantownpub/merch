@@ -10,6 +10,7 @@ export const OrderConfirmation = (props) => {
             <p>{props.email}</p>
             <p><strong>Order ID:</strong></p>
             <p>{props.confirmationCode}</p>
+            <p>Refresh page to start a new order</p>
         </StyledContentContainer>
     )
 }

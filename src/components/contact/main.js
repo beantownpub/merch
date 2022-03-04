@@ -22,7 +22,7 @@ export const ContactForm = () => {
         "Content-Type": "application/json"
     }
     const onSubmit = (values, e) => {
-        console.log(values)
+        // console.log(values)
         fetch("contact/send-message", {method: "POST", credentials: "include", body: JSON.stringify(values), headers: heads})
             .then(response => response.json())
             .then(data => setReply(data.msg))

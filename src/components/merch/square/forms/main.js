@@ -1,40 +1,47 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { SquarePaymentsForm, CreditCardInput } from "react-square-web-payments-sdk"
 import { StyledPaymentForm } from "./styles"
 import { config, reqHeaders, uuidv4 } from "../../../../utils/main"
 // import { OrderConfirmation } from "../../cart/content"
 import { cartClose } from "../../../../utils/menuSlide"
 import { ToggleButton } from "../../../elements/buttons/main"
+import { Spinner } from "../spinner"
 
 const COLORS = config.colors
 
 export const PaymentForm = (props) => {
+    // document.addEventListener("click", disableButton)
     const [state, setState] = useState({
         paymentComplete: false,
         paymentFailed: false,
         paymentAmount: Math.ceil(0 * 100),
-        showSquareForm: false,
+        showSquareForm: true,
         paymentInfo: {}
     })
 
+    const [spinner, setSpinner] = useState({ showSpinner: false })
+    const [buttonClick, setPointerEvents] = useState({ pointerEvents: "all" })
     const [orderComplete, setOrderComplete] = useState({ orderId: "" })
+    // const mountedRef = useRef(true)
 
-    useEffect(() => {
-        if (props.cartValues) {
-            console.log(`Total: ${props.cartValues.cart.total}`)
-            setState({
-                paymentAmount: Math.ceil(props.cartTotal * 100),
-                showSquareForm: true
-            })
-        }
-    }, [])
+    // useEffect(() => {
+    //     setState({ showSquareForm: props.showSquare })
+    //     let button = document.getElementById("squareButton")
+    //     if (button) {
+    //         console.log('Button Found')
+    //         // button.addEventListener("click", disableButton)
+    //     }
+    //     return () => {
+    //         mountedRef.current = false
+    //     }
+    // }, [])
 
     const completePayment = (data) => {
-        console.log(`Completeing payment ${Object.keys(data)}`)
-        console.log(`Order keys ${Object.keys(data.order)}`)
-        console.log(`Result keys ${Object.keys(data.result.payment)}`)
-        console.log(`Result values ${Object.values(data.result.payment)}`)
-        console.log(`Order ID: ${data.result.payment.order_id}`)
+        // console.log(`Completeing payment ${Object.keys(data)}`)
+        // console.log(`Order keys ${Object.keys(data.order)}`)
+        // console.log(`Result keys ${Object.keys(data.result.payment)}`)
+        // console.log(`Result values ${Object.values(data.result.payment)}`)
+        // console.log(`Order ID: ${data.result.payment.order_id}`)
         const order = {
             order: data.order,
             payment: data.result.payment
@@ -45,7 +52,7 @@ export const PaymentForm = (props) => {
             showSquareForm: false
         })
         setOrderComplete({ orderId: data.result.payment.order_id})
-        console.log(`Payment Info: ${state.paymentInfo}`)
+        // console.log(`Payment Info: ${state.paymentInfo}`)
         fetch('process-order', {
             method: 'POST',
             headers: reqHeaders,
@@ -74,8 +81,22 @@ export const PaymentForm = (props) => {
             alert('Error sending order notification! ' + err)
         })
     }
+    function disableButton(event) {
+        // console.log(event)
+        // setPointerEvents({ pointerEvents: "none" })
+        const button = event.target
+        if (button.id === "squareButton") {
+          setState({ showSpinner: true })
+          button.disabled = true
+          document.getElementById("checkoutForm").disabled = true
+        } else {
+          console.log(`Element ID: ${button.id}`)
+        }
+    }
 
     function makePayment(nonce) {
+        setState({ showSquareForm: false })
+        setSpinner({ showSpinner: true })
         fetch('process-payment', {
             method: 'POST',
             headers: reqHeaders,
@@ -84,7 +105,8 @@ export const PaymentForm = (props) => {
                 idempotency_key: uuidv4(),
                 // total: state.paymentAmount,
                 amount_money: {
-                    amount: state.paymentAmount,
+                    // amount: state.paymentAmount,
+                    amount: Math.ceil(props.cartTotal * 100),
                     currency: "USD"
                 }
                 // buyer_email_address: props.cartValues.email
@@ -101,25 +123,22 @@ export const PaymentForm = (props) => {
             return response.json() //UPDATE HERE
         })
         .then(data => {
-            console.log(`DATA: ${Object.keys(data.result.payment)}`)
             setState({ paymentInfo: data.result.payment })
-            console.log(`Success! Payment Info: ${state.paymentInfo}`) //UPDATE HERE
             data.order = props.cartValues
             completePayment(data)
         })
         .catch(err => {
-            console.log('Payment Error:')
-            console.error(JSON.parse(err.result))
-            setState({ paymentFailed: true })
-            props.hideForm()
-            props.paymentFailed()
+          setState({ paymentFailed: true })
+          props.hideForm()
+          props.paymentFailed()
         })
     }
 
     return (
         <div>
         {state.showSquareForm &&
-            <StyledPaymentForm aria-labelledby="Payment form">
+            <StyledPaymentForm aria-labelledby="Payment form" pointerEvents={buttonClick.pointerEvents}>
+                <Spinner />
                 <SquarePaymentsForm
                     applicationId={process.env.SQUARE_APP_ID}
                     locationId={process.env.SQUARE_LOCATION_ID}
@@ -140,7 +159,7 @@ export const PaymentForm = (props) => {
                         intent: 'CHARGE',
                     })}
                 >
-                    <CreditCardInput text={`Pay ${props.cartTotal}`} />
+                    <CreditCardInput text={`Pay ${props.cartTotal}`} submitButtonId="squareButton"/>
                 </SquarePaymentsForm>
             </StyledPaymentForm>
         }

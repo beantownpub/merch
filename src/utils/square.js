@@ -28,15 +28,10 @@ function squareRequestBody(params) {
 
 function parseError(error) {
     if (error.errors.length === 1) {
-        error_code = error.errors[0].code
-        return error_code
+        return error.errors[0].code
     }
 }
 
 console.log(`Node Env: ${process.env.NODE_ENV}`)
-console.log(`Square URL: ${url}`)
-console.log(`Square Token: ${accessToken}`)
-console.log(`Square Location ID: ${process.env.SQUARE_LOCATION_ID}`)
-console.log(`Square App ID: ${process.env.SQUARE_APP_ID}`)
 
 module.exports = { accessToken, squareRequestBody, url, parseError }

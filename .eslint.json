@@ -9,6 +9,6 @@
     "rules": {
         "semi": "error",
         "no-console": "off",
-        "arrow-body-style": ["error", "always"]
+        "arrow-body-style": 0
     }
 }

@@ -10,6 +10,9 @@ executors:
   debian:
     docker:
     - image: python:3.7-slim-buster
+  node:
+    docker:
+      - image: cimg/node:14.17.6
 
 commands:
   install_k8s_dependencies:
@@ -54,6 +57,15 @@ commands:
             fi
 
 jobs:
+  lint:
+    executor: node
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies & run lint
+          command: |
+            npm install
+            npm eslint .
   build_and_publish:
     executor: build_machine
     steps:
@@ -101,12 +113,19 @@ jobs:
               --namespace prod \
               --set global.env=prod \
               --set image.tag=$BEANTOWN_VERSION \
+              --set session_secret=${SESSION_SECRET} \
+              --set square_access_token_dev=${SQUARE_ACCESS_TOKEN_DEV} \
+              --set square_access_token_prod=${SQUARE_ACCESS_TOKEN_PROD} \
+              --set square_application_id_sandbox=${SQUARE_APPLICATION_ID_SANDBOX} \
+              --set square_url=${SQUARE_URL} \
+              --set logLevel=prod \
               --debug
 
 workflows:
   version: 2
   beantown_frontend:
     jobs:
+      - lint
       - build_and_publish
       - deploy:
           requires:

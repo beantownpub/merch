@@ -71,7 +71,6 @@ export const SubmitButton = (props) => {
 }
 
 export const LinkButton = (props) => {
-    console.log('Link URL: ' + props.url)
     const handleClick = () => {
         window.location.href = props.url
     }
