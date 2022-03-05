@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { useForm } from "react-hook-form"
-import { Icon } from "../content/icons/index"
+import { Icon } from "../elements/icons/main"
 import { SubmitButton } from "../elements/buttons/main"
 import { StyledContactForm } from "./styles"
 import { config } from "../../utils/main"

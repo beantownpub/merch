@@ -1,6 +1,6 @@
 {
   "name": "node-jal",
-  "version": "0.1.26",
+  "version": "0.1.27",
   "private": true,
   "scripts": {
     "start": "DEBUG=express-session node --trace-warnings --unhandled-rejections=strict ./bin/server",
