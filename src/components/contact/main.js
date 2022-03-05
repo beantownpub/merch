@@ -1,24 +1,13 @@
 import React, { useState } from "react"
 import { useForm } from "react-hook-form"
 import { Icon } from "../content/icons/index"
-import { StyledContactForm, StyledButton } from "./styles"
+import { SubmitButton } from "../elements/buttons/main"
+import { StyledContactForm } from "./styles"
+import { config } from "../../utils/main"
+
+const COLORS = config.colors
 
 const contactReply = "Request Received! We will respond to you as soon as we can. Thanks!"
-
-const SubmitButton = (props) => {
-  return (
-    <StyledButton borderColor={props.borderColor} width={props.width}>
-      <button>
-        {props.icon &&
-          <Icon
-            style={{fontSize: '.85rem', margin: 'auto'}}
-            iconName={props.icon}
-          />
-        }
-      </button>
-    </StyledButton>
-  )
-}
 
 export const ContactForm = () => {
   const [reply, setReply] = useState("")
@@ -43,7 +32,7 @@ export const ContactForm = () => {
         <div>
           <h2>
           <Icon
-            style={{fontSize: '.85rem', margin: 'auto'}}
+            style={{fontSize: '1rem', margin: 'auto'}}
             iconName={'faEnvelope'}
           /> Request Info
           </h2>
@@ -88,7 +77,12 @@ export const ContactForm = () => {
               ref={register()}
             />
             <br />
-            <SubmitButton borderColor="#e2e2e2" text="Submit" />
+            <SubmitButton
+              buttonText="Submit"
+              textColor={COLORS.black}
+              hoverBackgroundColor={COLORS.black}
+              hoverTextColor={COLORS.white}
+            />
           </form>
         </div>
       }
