@@ -23,6 +23,8 @@ else ifeq ($(env), prod)
 	namespace = ${PROD_NAMESPACE}
 endif
 
+lint:
+	npx eslint .
 
 context:
 	kubectl config use-context $(context)

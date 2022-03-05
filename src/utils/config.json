@@ -1,7 +1,10 @@
 {
+    "orders": {
+        "shippingPrice": 5.99
+    },
     "urls": {
         "googleApi": "https://maps.googleapis.com/maps/api/",
-        "static": "https://static.dev.beantownpub.com",
+        "static": "https://static.prod.beantownpub.com",
         "facebook": "https://www.facebook.com/BeantownPubMA/",
         "instagram": "https://www.instagram.com/explore/locations/392955632/beantown-pub/?hl=en",
         "twitter": "https://twitter.com/BeantownPub"
@@ -110,6 +113,19 @@
                 "themeColor": "#fcba03"
             }
         },
+        "privacy": {
+            "name": "/privacy",
+            "icon": "faLock",
+            "text": "Privacy",
+            "menu_list": false,
+            "top_menu": false,
+            "metadata": {
+                "title": "Privacy Policy",
+                "description": "Beantownpub.com's privacy policy",
+                "keywords": "",
+                "themeColor": "#fcba03"
+            }
+        },
         "facebook": {
             "name": "https://www.facebook.com/BeantownPubMA/",
             "icon": "faFacebook",
@@ -161,9 +177,11 @@
         "darkGray": "#383838",
         "dimGray": "#696969",
         "shadowGray": "rgb(147 147 147 / 25%)",
+        "spinnerBlue": "#00BFFF",
         "dodgerBlue": "#1e90ff",
         "cyan": "#3fc5f0",
         "black": "#000000",
+        "topMenuBackground": "#494040",
         "white": "whitesmoke",
         "yellow": "#fcba03"
     },

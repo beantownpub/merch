@@ -3,7 +3,7 @@ import { config } from '../../../utils/main'
 const COLORS = config.colors
 const FONTS = config.fonts
 
-export const StyledRefundContainer = styled.div`
+export const StyledPolicyContainer = styled.div`
     background-color: ${COLORS.yellow};
     border: unset;
     border-radius: unset;
@@ -48,5 +48,35 @@ export const StyledRefundContainer = styled.div`
         a:hover {
             color: ${COLORS.red};
         }
+    }
+`
+
+export const StyledContentContainer = styled.div`
+    border: ${props => props.border || `.75px solid ${COLORS.boxShadowGray}` };
+    border-radius: ${props => props.borderRadius || "4px"};
+    box-shadow: ${props => props.boxShadow || `.25rem .25rem 1rem .5rem ${COLORS.boxShadowGray}`};
+    display: flex;
+    flex-flow: column wrap;
+    margin: ${props => props.margin || "1rem auto"};
+    padding: ${props => props.padding || "2rem"};
+    width: ${props => props.width || "100%" };
+    h1 {
+        color: ${props => props.h1Color || COLORS.orderCompleteGreen};
+        font-family: ${FONTS.headline};
+        letter-spacing: .25rem;
+        margin: auto;
+        padding: 1rem;
+    }
+    h2 {
+        border-bottom: 1.5px solid ${COLORS.red};
+        margin: auto;
+        padding: .5rem;
+    }
+    p {
+        font-family: ${FONTS.content};
+        font-size: 125%;
+        margin: auto;
+        padding: .5rem;
+        max-width: 300px;
     }
 `

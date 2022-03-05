@@ -6,21 +6,22 @@ import { MainInfo } from './components/content/main'
 import { PrivateParties } from './components/content/parties'
 import { FoodMenu } from './components/foodMenus/main'
 import { MerchDash } from './components/merch/main'
-import { ReturnPolicy } from './components/merch/content/main'
+import { PrivacyPolicy, ReturnPolicy } from './components/merch/content/index'
 
 export default function ReactRoutes() {
-    return (
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<MainInfo/>} />
-                <Route path="/index" element={<MainInfo/>} />
-                <Route path="/about" element={<AboutInfo/>} />
-                <Route path="/contact" element={<ContactInfo/>} />
-                <Route path="/menu" element={<FoodMenu/>} />
-                <Route path="/merch/items" element={<MerchDash/>} />
-                <Route path="/parties" element={<PrivateParties/>} />
-                <Route path="/returns" element={<ReturnPolicy/>} />
-            </Routes>
-        </BrowserRouter>
-    )
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MainInfo/>} />
+        <Route path="/index" element={<MainInfo/>} />
+        <Route path="/about" element={<AboutInfo/>} />
+        <Route path="/contact" element={<ContactInfo/>} />
+        <Route path="/menu" element={<FoodMenu/>} />
+        <Route path="/merch/items" element={<MerchDash/>} />
+        <Route path="/parties" element={<PrivateParties/>} />
+        <Route path="/returns" element={<ReturnPolicy/>} />
+        <Route path="/privacy" element={<PrivacyPolicy/>} />
+      </Routes>
+    </BrowserRouter>
+  )
 }

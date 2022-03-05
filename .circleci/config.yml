@@ -66,6 +66,7 @@ jobs:
           command: |
             npm install
             npx eslint .
+
   build_and_publish:
     executor: build_machine
     steps:

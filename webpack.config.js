@@ -8,7 +8,8 @@ module.exports = env => {
         "process.env.GOOGLE_API_KEY": JSON.stringify(process.env.GOOGLE_API_KEY),
         "process.env.SQUARE_APP_ID": JSON.stringify(process.env.SQUARE_APP_ID),
         "process.env.SQUARE_LOCATION_ID": JSON.stringify(process.env.SQUARE_LOCATION_ID),
-        "process.env.STATIC_PATH": JSON.stringify(process.env.STATIC_PATH)
+        "process.env.STATIC_PATH": JSON.stringify(process.env.STATIC_PATH),
+        "process.env.ENV": JSON.stringify(process.env.NODE_ENV)
       })
     ],
     mode: process.env.NODE_ENV,
