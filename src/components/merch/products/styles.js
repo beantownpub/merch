@@ -126,6 +126,7 @@ export const StyledMerchItem = styled.div`
         max-width: 30rem;
     }
     img {
-        .5rem solid ${COLORS.black};
+        border: .25rem solid ${COLORS.black};
+        border-radius: 4px;
     }
 `

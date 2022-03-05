@@ -28,5 +28,7 @@ export const StyledButton = styled.div`
     }
     button:hover {
         background-color: ${props => props.hoverBackgroundColor || COLORS.red};
+        border: ${props => props.hoverBorder || "unset"};
+        color: ${props => props.hoverTextColor || COLORS.white};
     }
 `

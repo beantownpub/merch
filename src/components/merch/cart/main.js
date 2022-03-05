@@ -44,7 +44,7 @@ function renderCartItems(cartItems, props) {
 }
 
 export const Cart = (props) => {
-  const [checkout, setCheckout] = useState({ showCheckout: false })
+  const [checkout, setCheckout] = useState({ showCheckout: false, showCheckoutButton: true })
   const [cartItems, setCartItems] = useState({ showCartItems: true })
   const [shippingInfo, setShippingInfo] = useState({ show: true })
   const [payment, setPayment] = useState({ emailAddress: "", confirmationCode: "", paymentComplete: false, paymentFailed: false })
@@ -52,11 +52,11 @@ export const Cart = (props) => {
   const cartTotal = Math.round((parseFloat(shippingPrice) + props.total) * 100) / 100
 
   function showCheckout() {
-    setCheckout({ showCheckout: true })
+    setCheckout({ showCheckout: true, showCheckoutButton: false })
   }
 
   function hideCheckout() {
-    setCheckout({ showCheckout: false })
+    setCheckout({ showCheckout: false, showCheckoutButton: true })
   }
 
   function paymentComplete(email, confirmation) {
@@ -87,12 +87,12 @@ export const Cart = (props) => {
             <OrderConfirmation email={payment.emailAddress} confirmationCode={payment.confirmationCode}/>
           }
           {payment.paymentFailed &&
-            <OrderFailed email="beantownpubbost@gmail.com" h1Color={COLORS.red} />
+            <OrderFailed email={process.env.SUPPORT_EMAIL} h1Color={COLORS.red} />
           }
         </div>
       }
       <ToggleButton bgColor={COLORS.dodgerBlue} icon='faShoppingCart' runFunction={cartClose} buttonText="Close"/>
-      {parseInt(props.numCartItems) > 0 &&
+      {parseInt(props.numCartItems) > 0 && checkout.showCheckoutButton &&
         <ToggleButton bgColor={COLORS.dodgerBlue} runFunction={showCheckout} buttonText="Checkout"/>
       }
       {checkout.showCheckout &&

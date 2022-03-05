@@ -9,7 +9,8 @@ module.exports = env => {
         "process.env.SQUARE_APP_ID": JSON.stringify(process.env.SQUARE_APP_ID),
         "process.env.SQUARE_LOCATION_ID": JSON.stringify(process.env.SQUARE_LOCATION_ID),
         "process.env.STATIC_PATH": JSON.stringify(process.env.STATIC_PATH),
-        "process.env.ENV": JSON.stringify(process.env.NODE_ENV)
+        "process.env.ENV": JSON.stringify(process.env.NODE_ENV),
+        "process.env.SUPPORT_EMAIL": JSON.stringify(process.env.SUPPORT_EMAIL)
       })
     ],
     mode: process.env.NODE_ENV,

@@ -20,6 +20,8 @@ export const Button = (props) => {
             fontFamily={props.buttonStyles.fontFamily}
             fontSize={props.buttonStyles.fontSize}
             hoverBackgroundColor={props.buttonStyles.hoverBackgroundColor}
+            hoverBorder={props.buttonStyles.hoverBorder}
+            hoverTextColor={props.buttonStyles.hoverTextColor}
             letterSpacing={props.buttonStyles.letterSpacing}
             margin={props.buttonStyles.margin}
             maxWidth={props.buttonStyles.maxWidth}
@@ -55,19 +57,34 @@ export const ToggleButton = (props) => {
     )
 }
 
+export const CartButton = (props) => {
+  const handleClick = () => {
+      if (props.runFunction) {
+          props.runFunction(props.sku, props.quantity, props.size, props.action)
+      }
+  }
+  return (
+    <Button
+      clickHandler={handleClick}
+      buttonStyles={props}
+      buttonText={props.buttonText}
+    />
+  )
+}
+
 export const SubmitButton = (props) => {
-    const handleClick = () => {
-        if (props.runFunction) {
-            props.runFunction()
-        }
-    }
-    return (
-        <Button
-            clickHandler={handleClick}
-            buttonStyles={props}
-            buttonText={props.buttonText}
-        />
-    )
+  const handleClick = () => {
+      if (props.runFunction) {
+        props.runFunction()
+      }
+  }
+  return (
+    <Button
+      clickHandler={handleClick}
+      buttonStyles={props}
+      buttonText={props.buttonText}
+    />
+  )
 }
 
 export const LinkButton = (props) => {

@@ -1,7 +1,6 @@
 import React from 'react'
-import { CartButton } from '../buttons'
+import { CartButton, ToggleButton } from '../../elements/buttons/main'
 import { StyledItemsTable, StyledNumCartItems } from './styles'
-import { ToggleButton } from '../../elements/buttons/main'
 import { cartOpen } from '../../../utils/menuSlide'
 import { config } from '../../../utils/main'
 
@@ -20,14 +19,14 @@ export const NumCartItems = (props) => {
             </div>
             <div className="numCartItemsButton">
             <ToggleButton
-                hoverBackgroundColor={COLORS.darkGray}
-                bgColor={COLORS.white}
-                buttonText='view'
-                icon='faShoppingCart'
-                iconColor={COLORS.yellow}
-                runFunction={cartOpen}
-                textColor={COLORS.black}
-                width='10rem'
+              hoverBackgroundColor={COLORS.darkGray}
+              bgColor={COLORS.white}
+              buttonText='view'
+              icon='faShoppingCart'
+              iconColor={COLORS.yellow}
+              runFunction={cartOpen}
+              textColor={COLORS.black}
+              width='10rem'
             />
             </div>
         </StyledNumCartItems>
@@ -36,41 +35,41 @@ export const NumCartItems = (props) => {
 
 export const CartItem = (props) => {
     return (
-        <tr>
-            <td>{props.name}</td>
-            <td>{props.size}</td>
-            <td>{props.quantity}</td>
-            <td>{props.price}</td>
-            <td>
-            <CartButton
-                clicker={props.cartUpdate}
-                text='X'
-                action='DELETE'
-                sku={props.sku}
-                size={props.size}
-                quantity={props.quantity}
-                bgColor='red'
-                border='1px solid black'
-                textColor='white'
-                width='min-content'
-            />
-            </td>
-        </tr>
+      <tr>
+        <td>{props.name}</td>
+        <td>{props.size}</td>
+        <td>{props.quantity}</td>
+        <td>{props.price}</td>
+        <td>
+        <CartButton
+          runFunction={props.cartUpdate}
+          buttonText='X'
+          action='DELETE'
+          sku={props.sku}
+          size={props.size}
+          quantity={props.quantity}
+          bgColor={COLORS.red}
+          border={`1px solid ${COLORS.black}`}
+          textColor={COLORS.white}
+          width='min-content'
+        />
+        </td>
+      </tr>
     )
 }
 
 export const ItemsContainer = (props) => {
-    return (
-        <StyledItemsTable aria-labelledby="Cart items table">
-            <h2>My Cart</h2>
-            <table>
-                <thead>
-                    <tr><th>Name</th><th>Size</th><th>Quantity</th><th>Price</th><th>Remove</th></tr>
-                </thead>
-                <tbody>
-                    {props.itemList}
-                </tbody>
-            </table>
-        </StyledItemsTable>
-    )
+  return (
+    <StyledItemsTable aria-labelledby="Cart items table">
+      <h2>My Cart</h2>
+      <table>
+        <thead>
+          <tr><th>Name</th><th>Size</th><th>Quantity</th><th>Price</th><th>Remove</th></tr>
+        </thead>
+        <tbody>
+          {props.itemList}
+        </tbody>
+      </table>
+    </StyledItemsTable>
+  )
 }

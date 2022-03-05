@@ -13,9 +13,11 @@ ARG google_api_key
 ARG node_env
 ARG square_app_id
 ARG square_location_id
+ARG support_email
 ENV GOOGLE_API_KEY=${google_api_key}
 ENV SQUARE_APP_ID=${square_app_id}
 ENV SQUARE_LOCATION_ID=${square_location_id}
+ENV SUPPORT_EMAIL=${support_email}
 ENV NODE_ENV=${node_env}
 ARG static_path
 ENV STATIC_PATH=${static_path}

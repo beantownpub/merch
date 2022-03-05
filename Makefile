@@ -14,6 +14,7 @@ ifeq ($(env),dev)
 	square_location_id = ${SQUARE_LOCATION_ID_DEV}
 	context = ${DEV_CONTEXT}
 	namespace = ${DEV_NAMESPACE}
+	support_email = ${TEST_SUPPORT_EMAIL}
 else ifeq ($(env), prod)
 	image_tag = $(version)
 	node_env = production
@@ -21,6 +22,7 @@ else ifeq ($(env), prod)
 	square_location_id = ${SQUARE_LOCATION_ID_PROD}
 	context = ${PROD_CONTEXT}
 	namespace = ${PROD_NAMESPACE}
+	support_email = ${BEANTOWN_SUPPORT_EMAIL}
 endif
 
 lint:
@@ -39,6 +41,7 @@ build: sass
 		--build-arg square_app_id=$(square_app_id) \
 		--build-arg square_location_id=$(square_location_id) \
 		--build-arg static_path=${BEANTOWN_STATIC_PATH} \
+		--build-arg support_email=$(support_email) \
 		--build-arg node_env=$(node_env) .
 
 publish: build

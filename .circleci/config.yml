@@ -81,6 +81,7 @@ jobs:
               --build-arg square_app_id=$SQUARE_APP_ID \
               --build-arg square_location_id=$SQUARE_LOCATION_ID \
               --build-arg static_path=$BEANTOWN_STATIC_PATH \
+              --build-arg support_email=$BEANTOWN_SUPPORT_EMAIL \
               --build-arg node_env=production .
       - check_tags
       - run:
@@ -119,8 +120,7 @@ jobs:
               --set square_access_token_prod=${SQUARE_ACCESS_TOKEN_PROD} \
               --set square_application_id_sandbox=${SQUARE_APPLICATION_ID_SANDBOX} \
               --set square_url=${SQUARE_URL} \
-              --set logLevel=prod \
-              --debug
+              --set logLevel=prod
 
 workflows:
   version: 2

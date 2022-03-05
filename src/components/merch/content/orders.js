@@ -22,6 +22,7 @@ export const OrderConfirmation = (props) => {
       <p><strong>Order ID:</strong></p>
       <p>{props.confirmationCode}</p>
       <p>Refresh page to start a new order</p>
+      <p>If you have any questions or concerns please <a href="/contact">contact us</a></p>
     </Container>
   )
 }

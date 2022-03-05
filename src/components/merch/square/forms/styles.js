@@ -5,7 +5,7 @@ const COLORS = config.colors
 
 export const StyledPaymentContainer = styled.div`
   .paymentProcessing {
-    background-color: ${COLORS.borderGray};
+    background-color: ${COLORS.orderCompleteGreen};
     border: 1px solid ${COLORS.boxShadowGray};
     border-radius: .25rem;
     box-shadow: ${props => props.boxShadow || `.25rem .25rem .75rem .5rem ${COLORS.boxShadowGray}`};

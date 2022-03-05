@@ -34,7 +34,7 @@ export const MerchDash = () => {
     }, [])
 
     function resetCart() {
-        console.log(`Cart reset: ${cart.cartId}`)
+        // console.log(`Cart reset: ${cart.cartId}`)
         const itemData = { id: cart.cartId }
         fetch('cart/empty', {method: "DELETE", credentials: "include", headers: {'Content-Type': 'application/json'}, body: JSON.stringify(itemData)})
             .then(response => response.json())
@@ -44,7 +44,6 @@ export const MerchDash = () => {
     }
 
     function updateCart(sku, quantity, size, action) {
-        console.log(`updateCart | Sku: ${sku} | Quantity: ${quantity} | Size: ${size} | Action: ${action}`)
         const itemData = {
             sku: sku,
             quantity: quantity,
