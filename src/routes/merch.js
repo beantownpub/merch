@@ -143,7 +143,7 @@ router.delete('/cart/empty', function (req, res, next) {
 })
 
 router.get('/merchandise', function (req, res, next) {
-  const apiUrl = `${network.urls.merchApi}/v2/merch`
+  const apiUrl = `${network.urls.merchApi}/v2/merch?location=beantown`
   // console.log('Merchandise | ' + apiUrl)
   const options = {
     url: apiUrl,

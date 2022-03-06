@@ -19,7 +19,7 @@ let redisClient = redis.createClient({ legacyMode: true })
 redisClient.connect().catch(console.error)
 
 const { v4: uuidv4 } = require('uuid')
-const logLevel = process.env.LOG_LEVEL || 'prod'
+const logLevel = process.env.LOG_LEVEL || 'tiny'
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
@@ -28,7 +28,13 @@ app.set('view engine', 'ejs')
 app.use(compression())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
-app.use(logger(logLevel))
+if (process.env.NODE_ENV === "development") {
+  app.use(logger(logLevel))
+} else {
+  app.use(logger(logLevel, {
+    skip: function (req, res) { return res.statusCode < 400 }
+  }))
+}
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())

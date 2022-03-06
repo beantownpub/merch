@@ -2,6 +2,8 @@ import React from 'react';
 import { faFacebook, faTwitter, faInstagram, faGithub } from '@fortawesome/free-brands-svg-icons';
 import {
   faBeer,
+  faShoppingCart,
+  faCashRegister,
   faUserCircle,
   faComment,
   faInfo,
@@ -20,6 +22,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 export const Icon = (props) => {
   const icons = {
     "faBeer": faBeer,
+    "faShoppingCart": faShoppingCart,
+    "faCashRegister": faCashRegister,
     "faUsers": faUsers,
     "faUserCircle": faUserCircle,
     "faComment": faComment,

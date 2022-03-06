@@ -3,8 +3,7 @@
   "version": "0.1.27",
   "private": true,
   "scripts": {
-    "start": "DEBUG=express-session node --trace-warnings --unhandled-rejections=strict ./bin/server",
-    "_start": "JAL_VERSION=${JAL_VERSION} node ./bin/server",
+    "start": "node --trace-warnings --unhandled-rejections=strict ./bin/server",
     "build": "npx webpack --config webpack.config.js"
   },
   "dependencies": {

@@ -21,16 +21,12 @@ router.get('/menu.html', function(req, res, next) {
 })
 
 router.get('/healthz', function(req, res, next) {
-  console.log(`[GET] Health | ${req.path}`)
+  // console.log(`[GET] Health | ${req.path}`)
   res.sendStatus('ok')
 })
 
-router.get('/favicon.ico', function(req, res, next) {
-  res.sendStatus(404)
-})
-
 router.get('/:section', function(req, res, next) {
-  console.log(`Section: /${req.params['section']}`)
+  // console.log(`Section: /${req.params['section']}`)
   const page = pages[req.params['section']]
   res.render("main", page.metadata)
 })
