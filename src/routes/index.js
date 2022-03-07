@@ -20,6 +20,10 @@ router.get('/menu.html', function(req, res, next) {
   res.redirect('/menu')
 })
 
+router.get('/events.html', function(req, res, next) {
+  res.redirect('/parties')
+})
+
 router.get('/healthz', function(req, res, next) {
   // console.log(`[GET] Health | ${req.path}`)
   res.sendStatus('ok')
@@ -28,7 +32,11 @@ router.get('/healthz', function(req, res, next) {
 router.get('/:section', function(req, res, next) {
   // console.log(`Section: /${req.params['section']}`)
   const page = pages[req.params['section']]
-  res.render("main", page.metadata)
+  if (page) {
+    res.render("main", page.metadata)
+  } else {
+    res.sendStatus(404)
+  }
 })
 
 module.exports = router

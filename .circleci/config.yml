@@ -120,7 +120,7 @@ jobs:
               --set square_access_token_prod=${SQUARE_ACCESS_TOKEN_PROD} \
               --set square_application_id_sandbox=${SQUARE_APPLICATION_ID_SANDBOX} \
               --set square_url=${SQUARE_URL} \
-              --set logLevel=prod
+              --set logLevel=tiny
 
 workflows:
   version: 2

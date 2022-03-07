@@ -79,8 +79,8 @@
             "name": "/merch/items",
             "icon": "faTshirt",
             "text": "Merch",
-            "menu_list": false,
-            "top_menu": false,
+            "menu_list": true,
+            "top_menu": true,
             "metadata": {
                 "title": "Beantown Merch",
                 "description": "Beantown Pub merchandise for online purchase",
