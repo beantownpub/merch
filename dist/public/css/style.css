@@ -21,16 +21,12 @@ html {
 }
 
 body {
+  background: #fcba03;
   margin: auto;
   width: 100vw;
   padding: 0;
   display: flex;
   flex-flow: column wrap;
-  background: #383838;
-}
-
-.error {
-  margin: 1em auto;
 }
 
 /*# sourceMappingURL=style.css.map */

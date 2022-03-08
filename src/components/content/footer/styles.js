@@ -4,20 +4,25 @@ const COLORS = config.colors
 const FONTS = config.fonts
 
 export const StyledFooter = styled.div`
-    border-top: .2rem solid ${COLORS.yellow};
     display: flex;
-    margin: 12rem auto;
-    padding: 2rem 0;
-    position: relative;
-    width: 100%;
+    flex-flow: column wrap;
+    height: 0;
     footer {
-        margin: auto;
-        font-family: ${FONTS.footer};
-        text-transform: uppercase;
-        color: ${COLORS.white};
-        text-align: center;
-        text-shadow: .1em .15em .35em ${COLORS.black};
-        letter-spacing: .2em;
+      background: ${COLORS.darkGray};
+      border-radius: 4px;
+      color: ${COLORS.white};
+      font-family: ${FONTS.footer};
+      letter-spacing: .2em;
+      line-height: 200%;
+      margin: auto;
+      outline: 2px solid ${COLORS.yellow};
+      outline-offset:-1.5rem;
+      padding: 5rem;
+      position: relative;
+      text-transform: uppercase;
+      text-align: center;
+      text-shadow: .1em .15em .35em ${COLORS.black};
+      width: 100%;
     }
     img {
         margin: auto;

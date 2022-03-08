@@ -8,9 +8,9 @@ function makeRequest(uri, res) {
     const apiUrl = `${network.urls.menuApi}${uri}`
     getRequest(apiUrl, res)
   } catch(error) {
-    console.log('Request Error: ' + error)
+    console.log('makeRequest Error: ' + error)
     res.status(500).json({
-      'title': 'Request Failure',
+      'title': 'makeRequest Failure',
       'status': 500
     })
   }

@@ -38,11 +38,11 @@ function cartRequest(options, cartId, res) {
       res.end()
     })
     .catch(error => {
-      console.error('AXIOS Error: ' + error)
+      console.error('cartRequest Axios: ' + error)
       res.status(500).json(RESPONSES.axiosError)
     })
   } catch(error) {
-    console.log('AUTH Error: ' + error)
+    console.error('cartRequest Unknown Error: ' + error)
     res.status(500).json(RESPONSES.authError)
   }
 }

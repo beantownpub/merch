@@ -1,7 +1,6 @@
 import React from "react"
 import ReactDOM from "react-dom"
 import { Footer } from "./components/content/footer/main"
-// import { FadeSlider } from "./components/imageSliders/sliders"
 import ReactRoutes from "./reactRoutes"
 import { config } from "./utils/main"
 import { MainMenuBar } from "./components/topBar/index"
@@ -28,10 +27,3 @@ ReactDOM.render(
   <ReactRoutes />,
   document.getElementById("app")
 )
-
-// if (document.getElementById("mainSlider")) {
-//   ReactDOM.render(
-//     <FadeSlider/>,
-//     document.getElementById("mainSlider")
-//   )
-// }

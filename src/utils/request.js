@@ -28,8 +28,8 @@ function makeRequest(url, res) {
         axios(OPTIONS)
         .then(response => {
             if (response.status === 200) {
-                console.log('Axios Response Status - ' + response.status)
-                console.log('Axios KEYS - ' + Object.keys(response.data))
+                // console.log('Axios Response Status - ' + response.status)
+                // console.log('Axios KEYS - ' + Object.keys(response.data))
                 res.status(200).json({'status': 200, 'data': response.data})
             } else {
                 let body = {
@@ -44,11 +44,11 @@ function makeRequest(url, res) {
             res.end()
         })
         .catch(error => {
-            console.error('Axios Response Status - ' + error.response.status)
+            console.error('Axios Response Error - ' + error.response.status)
             if (error.response.status === 404) {
                 res.status(200).json({'status': 200, 'data': []})
             } else {
-                console.log('Axios Message - ' + error.message)
+                console.log('Axios Unrecognized Response - ' + error.message)
                 res.status(500).json(RESPONSES.apiError)
             }
         })

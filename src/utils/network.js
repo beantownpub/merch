@@ -20,6 +20,8 @@ const urls = {
     merchApi: makeUrl(MERCH_API_PORT, MERCH_API_PROTOCOL, MERCH_API_HOST)
 }
 
-console.log(urls)
+if (process.env.NODE_ENV === "development") {
+  console.log(urls)
+}
 
 module.exports = { urls }

@@ -161,6 +161,19 @@
                 "description": "",
                 "keywords": ""
             }
+        },
+        "error": {
+            "name": "/error",
+            "icon": "faBeer",
+            "text": "Error",
+            "menu_list": false,
+            "top_menu": false,
+            "metadata": {
+                "title": "Beantown Error",
+                "description": "Beantownpub.com's error page",
+                "keywords": "",
+                "themeColor": "#fcba03"
+            }
         }
     },
     "colors": {

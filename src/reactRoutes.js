@@ -7,6 +7,7 @@ import { PrivateParties } from './components/content/parties'
 import { FoodMenu } from './components/foodMenus/main'
 import { MerchDash } from './components/merch/main'
 import { PrivacyPolicy, ReturnPolicy } from './components/merch/content/index'
+import { ErrorPage } from './components/content/index'
 
 export default function ReactRoutes() {
   return (
@@ -21,6 +22,7 @@ export default function ReactRoutes() {
         <Route path="/parties" element={<PrivateParties/>} />
         <Route path="/returns" element={<ReturnPolicy/>} />
         <Route path="/privacy" element={<PrivacyPolicy/>} />
+        <Route path="*" element={<ErrorPage/>} />
       </Routes>
     </BrowserRouter>
   )

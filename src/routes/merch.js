@@ -12,11 +12,8 @@ router.get('/items', function(req, res, next) {
   res.render("main", merch.metadata)
 })
 
-
 router.get('/merch', function(req, res, next) {
   const merch = pages['merch']
-  // res.set('Cookie', req.cookies.cart)
-  // res.cookie('cart', req.cookies.cart).render(merch.template, merch.metadata);
   res.render(merch.template, merch.metadata);
 })
 
@@ -27,7 +24,7 @@ defaultClient.basePath = squareUtils.url
 
 router.post('/process-payment', async (req, res) => {
   // Charge customer's card via Square API
-  console.log('PROCESSING PAYMENT')
+  console.log('POST process-payment')
   const paymentsApi = new squareConnect.PaymentsApi()
   const requestBody = squareUtils.squareRequestBody(req.body)
   try {
@@ -37,15 +34,15 @@ router.post('/process-payment', async (req, res) => {
       'result': response
     });
   } catch(error) {
-    console.log('PAYMENT Error')
-    console.log(requestBody)
-    let msg = JSON.parse(error.response.text)
-    let body = {
-      channel: "#test-notifications",
-      message: msg
-    }
-    let contactUrl = "http://contact-api:5012/v1/contact/slack"
-    let options = {method: "POST", credentials: "include", body: JSON.stringify(body), url: contactUrl}
+    console.error('ERROR /process-payment')
+    console.error(requestBody)
+    // let msg = JSON.parse(error.response.text)
+    // let body = {
+    //   channel: "#test-notifications",
+    //   message: msg
+    // }
+    // let contactUrl = "http://contact-api:5012/v1/contact/slack"
+    // let options = {method: "POST", credentials: "include", body: JSON.stringify(body), url: contactUrl}
     // console.log(options)
     // const notify = await request.slackRequest(options)
     // console.log(notify)
@@ -69,9 +66,9 @@ function sendRequest(options, cookie, res) {
 }
 
 router.post('/process-order', function (req, res, next) {
-  console.log(`Processing order: ${Object.keys(req.body)}`)
+  console.log("POST /process-order")
+  console.log(req.body["order"])
   const apiUrl = `${network.urls.merchApi}/v1/merch/orders`
-  // console.log(`ITEMS | POST | Path: ${req.path}`)
   const options = {
     url: apiUrl,
     method: 'post',
@@ -81,20 +78,16 @@ router.post('/process-order', function (req, res, next) {
 })
 
 router.get('/cart', function (req, res, next) {
-  // console.log(`Cart Session ID: ${req.sessionID}`)
   if (!req.sessionID) {
-    // console.log('CART GET Generating new session')
     req.session.regenerate(function(err) {
       console.log(`Generating session ${err}`)
     })
   }
   const apiUrl = `${network.urls.merchApi}/v1/merch/cart`
-  // console.log(`Cart | GET | URL | ${apiUrl}`)
   const options = {
     url: apiUrl,
     method: 'get'
   }
-  // sendRequest(options, req.cookies.cartId, res)
   sendRequest(options, req.sessionID, res)
 })
 
@@ -114,7 +107,6 @@ router.post('/cart', function (req, res, next) {
     method: 'post',
     data: req.body
   }
-  // sendRequest(options, req.cookies.cartId, res)
   sendRequest(options, req.sessionID, res)
 })
 
@@ -126,7 +118,6 @@ router.delete('/cart', function (req, res, next) {
     method: 'delete',
     data: req.body
   }
-  // sendRequest(options, req.cookies.cartId, res)
   sendRequest(options, req.sessionID, res)
 })
 
@@ -138,7 +129,6 @@ router.delete('/cart/empty', function (req, res, next) {
     url: apiUrl,
     method: 'delete'
   }
-  // sendRequest(options, req.cookies.cartId, res)
   sendRequest(options, req.sessionID, res)
 })
 
@@ -149,7 +139,6 @@ router.get('/merchandise', function (req, res, next) {
     url: apiUrl,
     method: 'get'
   }
-  // sendRequest(options, req.cookies.cartId, res)
   sendRequest(options, req.sessionID, res)
 })
 

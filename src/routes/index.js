@@ -16,6 +16,10 @@ router.get('/index.html', function(req, res, next) {
   res.redirect('/')
 })
 
+router.get('/about.html', function(req, res, next) {
+  res.redirect('/about')
+})
+
 router.get('/menu.html', function(req, res, next) {
   res.redirect('/menu')
 })
@@ -25,17 +29,16 @@ router.get('/events.html', function(req, res, next) {
 })
 
 router.get('/healthz', function(req, res, next) {
-  // console.log(`[GET] Health | ${req.path}`)
   res.sendStatus('ok')
 })
 
 router.get('/:section', function(req, res, next) {
-  // console.log(`Section: /${req.params['section']}`)
   const page = pages[req.params['section']]
   if (page) {
     res.render("main", page.metadata)
   } else {
-    res.sendStatus(404)
+    res.render("main", pages["error"]["metadata"])
+    // res.sendStatus(404)
   }
 })
 
