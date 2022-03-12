@@ -25,6 +25,7 @@ export const MainInfo = () => {
             <InfoSection bgColor={COLORS.darkGray} fontColor={COLORS.yellow}>
                 <section>
                     <h3>Gift Cards and Merchandise Available<br /></h3>
+                    <h4><a href='/merch/items'><span>See merch &#10148;</span></a></h4>
                     <h4>Make your next private event a memorable one and book it at Beantown<br /><a href='/parties'>Learn more &#10148;</a></h4>
                 </section>
             </InfoSection>

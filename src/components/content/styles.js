@@ -146,6 +146,9 @@ export const StyledInfo = styled.div`
         font-family: ${FONTS.content};
         text-transform: capitalize;
     }
+    a:hover {
+      color: ${COLORS.dodgerBlue};
+    }
     article {
         font-family: ${FONTS.content};
         font-size: 150%;

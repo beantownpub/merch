@@ -6,8 +6,6 @@ import { config } from '../../../utils/main'
 const COLORS = config.colors
 
 const ListSelect = (props, { onSizeChange }) => {
-  console.log('ListSelect')
-  console.log(Object.keys(props))
   return (
     <div>
       <label>Size: </label>
@@ -18,8 +16,12 @@ const ListSelect = (props, { onSizeChange }) => {
         {props.inventory.medium > 0 &&
           <option onChange={onSizeChange} value="medium">Medium</option>
         }
-        <option onChange={onSizeChange} value="lg">Large</option>
-        <option onChange={onSizeChange} value="xl">XL</option>
+        {props.inventory.large > 0 &&
+          <option onChange={onSizeChange} value="lg">Large</option>
+        }
+        {props.inventory.xl > 0 &&
+          <option onChange={onSizeChange} value="xl">XL</option>
+        }
         {props.inventory.xxl > 0 &&
           <option onChange={onSizeChange} value="xxl">XXL</option>
         }
@@ -30,8 +32,6 @@ const ListSelect = (props, { onSizeChange }) => {
 }
 
 export const ProductCard = (props) => {
-  console.log('INVENTORY')
-  console.log(Object.keys(props.inventory))
   const staticPath = `${config.urls.static}/img/merch/`
   const [size, setSize] = useState({ size: 'med' })
   const [quantity, setQuantity] = useState({ quantity: 1 })
