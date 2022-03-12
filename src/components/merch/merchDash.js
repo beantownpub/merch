@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { StyledNoContentContainer, StyledDashContainer, StyledMerchNav } from './styles/main'
-import { CategoryCards } from './products/main'
-import { Cart } from './cart/main'
-import { NumCartItems } from './cart/items'
+import { CategoryCards } from './products/index'
+import { Cart } from './cart/index'
+import { NumCartItems } from './cart/index'
 import { getOptions } from '../../utils/main'
 import { LinkButton } from '../elements/buttons/main'
 import { config } from '../../utils/main'
@@ -57,26 +57,26 @@ export const MerchDash = () => {
     }
 
     return (
-        <div>
-            {state.categories && state.categories.length > 0 ?
-                <StyledDashContainer aria-labelledby="Merch Dash">
-                    <Cart
-                        cartItems={cart.cartItems}
-                        total={cart.cartTotal}
-                        cartUpdate={updateCart}
-                        resetCart={resetCart}
-                        numCartItems={cart.numItemsInCart}
-                    />
-                    <StyledMerchNav aria-labelledby="Merch Nav">
-                        <NumCartItems total={cart.cartTotal}>{cart.numItemsInCart}</NumCartItems>
-                    </StyledMerchNav>
-                    <CategoryCards categories={state.categories} cartUpdate={updateCart} />
-                    <LinkButton url="/returns" buttonText="Return &amp; Refund Policy" textColor={COLORS.black}/>
-                </StyledDashContainer> :
-                <StyledNoContentContainer aria-labelledby="No merchandise">
-                    <h1>Online merchandise coming soon! For now stop by the pub and purchase in person!</h1>
-                </StyledNoContentContainer>
-            }
-        </div>
+      <div>
+        {state.categories && state.categories.length > 0 ?
+          <StyledDashContainer aria-labelledby="Merch Dash">
+            <Cart
+              cartItems={cart.cartItems}
+              total={cart.cartTotal}
+              cartUpdate={updateCart}
+              resetCart={resetCart}
+              numCartItems={cart.numItemsInCart}
+            />
+            <StyledMerchNav aria-labelledby="Merch Nav">
+              <NumCartItems total={cart.cartTotal}>{cart.numItemsInCart}</NumCartItems>
+            </StyledMerchNav>
+            <CategoryCards categories={state.categories} cartUpdate={updateCart} />
+            <LinkButton url="/returns" buttonText="Return &amp; Refund Policy" textColor={COLORS.black}/>
+          </StyledDashContainer> :
+          <StyledNoContentContainer aria-labelledby="No merchandise">
+              <h1>Online merchandise coming soon! For now stop by the pub and purchase in person!</h1>
+          </StyledNoContentContainer>
+        }
+      </div>
     )
 }

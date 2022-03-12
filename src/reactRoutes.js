@@ -5,7 +5,7 @@ import { ContactInfo } from './components/content/contact'
 import { MainInfo } from './components/content/main'
 import { PrivateParties } from './components/content/parties'
 import { FoodMenu } from './components/foodMenus/main'
-import { MerchDash } from './components/merch/main'
+import { MerchDash } from './components/merch/index'
 import { PrivacyPolicy, ReturnPolicy } from './components/merch/content/index'
 import { ErrorPage } from './components/content/index'
 

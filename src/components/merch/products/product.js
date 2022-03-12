@@ -5,21 +5,33 @@ import { config } from '../../../utils/main'
 
 const COLORS = config.colors
 
-const ListSelect = ({ onSizeChange }) => (
-  <div>
-    <label>Size: </label>
-    <select onChange={onSizeChange} defaultValue="med">
-      <option onChange={onSizeChange} value="sma">Small</option>
-      <option onChange={onSizeChange} value="med">Medium</option>
-      <option onChange={onSizeChange} value="lg">Large</option>
-      <option onChange={onSizeChange} value="xl">XL</option>
-      <option onChange={onSizeChange} value="xxl">XXL</option>
-    </select>
-    <br />
-  </div>
-)
+const ListSelect = (props, { onSizeChange }) => {
+  console.log('ListSelect')
+  console.log(Object.keys(props))
+  return (
+    <div>
+      <label>Size: </label>
+      <select onChange={onSizeChange} defaultValue="med">
+        {props.inventory.small > 0 &&
+          <option onChange={onSizeChange} value="sma">Small</option>
+        }
+        {props.inventory.medium > 0 &&
+          <option onChange={onSizeChange} value="medium">Medium</option>
+        }
+        <option onChange={onSizeChange} value="lg">Large</option>
+        <option onChange={onSizeChange} value="xl">XL</option>
+        {props.inventory.xxl > 0 &&
+          <option onChange={onSizeChange} value="xxl">XXL</option>
+        }
+      </select>
+      <br />
+    </div>
+  )
+}
 
 export const ProductCard = (props) => {
+  console.log('INVENTORY')
+  console.log(Object.keys(props.inventory))
   const staticPath = `${config.urls.static}/img/merch/`
   const [size, setSize] = useState({ size: 'med' })
   const [quantity, setQuantity] = useState({ quantity: 1 })
@@ -48,6 +60,7 @@ export const ProductCard = (props) => {
           {props.sizes == true &&
               <ListSelect
                   onSizeChange={handleSizeChange}
+                  inventory={props.inventory}
                   name={props.name}
               />}
       </div>
