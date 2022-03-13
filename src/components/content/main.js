@@ -10,7 +10,7 @@ const COLORS = config.colors
 export const MainInfo = () => {
     return (
         <div>
-            <HeroHeader>The only pub in the world where you can drink a cold Sam Adams' while viewing a cold Sam Adams</HeroHeader>
+            <HeroHeader image="granary_heroheader.jpeg">The only pub in the world where you can drink a cold Sam Adams' while viewing a cold Sam Adams</HeroHeader>
         <StyledContentContainer aria-labelledby="Content container" backgroundColor="beige">
             <InfoSection bgColor={COLORS.yellow}>
                 <section>

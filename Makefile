@@ -35,6 +35,8 @@ sass:
 	sass ${PWD}/src/static/sass/style.sass ${PWD}/dist/public/css/style.css
 
 build: sass
+	@echo "\033[1;32m. . . Building $(image_name):$(image_tag)  . . .\033[1;37m\n"
+	@echo "\033[1;32mNode Env: $(node_env)\033[1;37m\n"
 	docker build \
 		-t $(image_name):$(image_tag) \
 		--build-arg google_api_key=${GOOGLE_API_KEY} \
@@ -45,6 +47,7 @@ build: sass
 		--build-arg node_env=$(node_env) .
 
 publish: build
+	@echo "\033[1;32m. . . Publishing $(image_name):$(image_tag) . . .\033[1;37m\n"
 	docker tag $(image_name):$(image_tag) $(dockerhub)/$(image_name):$(image_tag)
 	docker push $(dockerhub)/$(image_name):$(image_tag)
 

@@ -1,14 +1,16 @@
 import styled from 'styled-components'
 import { config } from '../../../utils/main'
+
 const COLORS = config.colors
 const FONTS = config.fonts
+const STATIC_URL = config.urls.static
 
 export const StyledHero = styled.div`
 margin: 5rem auto 0 auto;
 width: 100%;
 height: 420px;
 display: flex;
-background-image: url(${props => props.image || "https://static.prod.beantownpub.com/img/hero_header.jpg"});
+background-image: url(${props => `${STATIC_URL}/img/${props.image}`});
 background-size: cover;
 background-position: center;
 h1 {
@@ -20,7 +22,7 @@ h1 {
     text-transform: uppercase;
     letter-spacing: .2em;
     color: ${COLORS.white};
-    text-shadow: 2px 2px 8px #000000;
+    text-shadow: 2px 2px 8px ${COLORS.black};
     line-height: 150%;
 }
 @media (min-width: 320px)

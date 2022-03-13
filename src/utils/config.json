@@ -177,6 +177,7 @@
         }
     },
     "colors": {
+        "backgroundGray": "#383838",
         "backgroundWhite": "whitesmoke",
         "borderGray": "#dbd9d9",
         "borderShadow": "#383838",

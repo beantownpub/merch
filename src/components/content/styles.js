@@ -142,12 +142,12 @@ export const StyledInfo = styled.div`
     }
     a {
         text-decoration: none;
-        color: #3fc5f0;
+        color: ${COLORS.dodgerBlue};
         font-family: ${FONTS.content};
         text-transform: capitalize;
     }
     a:hover {
-      color: ${COLORS.dodgerBlue};
+      color: ${COLORS.red};
     }
     article {
         font-family: ${FONTS.content};
@@ -187,7 +187,7 @@ export const StyledLinkButton = styled.div`
         font-size: 1.5em;
         text-transform: uppercase;
         letter-spacing: .2em;
-        background-color: ${props => props.buttonColor || "#383838"};
+        background-color: ${props => props.buttonColor || COLORS.backgroundGray};
         color: ${props => props.fontColor || COLORS.black};
     }
 `
@@ -208,6 +208,6 @@ export const StyledAnchor = styled.div`
         text-align: center;
         text-transform: uppercase;
         letter-spacing: .2rem;
-        color: black;
+        color: ${COLORS.black};
     }
 `

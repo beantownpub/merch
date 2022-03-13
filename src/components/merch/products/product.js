@@ -2,41 +2,18 @@ import React, { useState } from 'react'
 import { CartButton } from '../../elements/buttons/main'
 import { StyledMerchItem } from './styles'
 import { config } from '../../../utils/main'
+import { SizeSelect } from './sizeSelect'
 
 const COLORS = config.colors
 
-const ListSelect = (props, { onSizeChange }) => {
-  return (
-    <div>
-      <label>Size: </label>
-      <select onChange={onSizeChange} defaultValue="med">
-        {props.inventory.small > 0 &&
-          <option onChange={onSizeChange} value="sma">Small</option>
-        }
-        {props.inventory.medium > 0 &&
-          <option onChange={onSizeChange} value="medium">Medium</option>
-        }
-        {props.inventory.large > 0 &&
-          <option onChange={onSizeChange} value="lg">Large</option>
-        }
-        {props.inventory.xl > 0 &&
-          <option onChange={onSizeChange} value="xl">XL</option>
-        }
-        {props.inventory.xxl > 0 &&
-          <option onChange={onSizeChange} value="xxl">XXL</option>
-        }
-      </select>
-      <br />
-    </div>
-  )
-}
-
 export const ProductCard = (props) => {
   const staticPath = `${config.urls.static}/img/merch/`
-  const [size, setSize] = useState({ size: 'med' })
+  const [size, setSize] = useState({ size: 'medium' })
   const [quantity, setQuantity] = useState({ quantity: 1 })
 
   function handleSizeChange(event) {
+    console.log('Handling size change')
+    console.log(event.target.value)
     setSize({ size: event.target.value })
   }
 
@@ -58,10 +35,10 @@ export const ProductCard = (props) => {
       <p>{props.description}</p>
       <div className='size'>
           {props.sizes == true &&
-              <ListSelect
+              <SizeSelect
                   onSizeChange={handleSizeChange}
                   inventory={props.inventory}
-                  name={props.name}
+                  size={size.size}
               />}
       </div>
       <div className='qty'>

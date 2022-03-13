@@ -68,7 +68,7 @@ function sendRequest(options, cookie, res) {
 router.post('/process-order', function (req, res, next) {
   console.log("POST /process-order")
   console.log(req.body["order"])
-  const apiUrl = `${network.urls.merchApi}/v1/merch/orders`
+  const apiUrl = `${network.urls.merchApi}/v1/merch/orders?location=beantown`
   const options = {
     url: apiUrl,
     method: 'post',
@@ -134,7 +134,7 @@ router.delete('/cart/empty', function (req, res, next) {
 
 router.get('/merchandise', function (req, res, next) {
   const apiUrl = `${network.urls.merchApi}/v2/merch?location=beantown`
-  // console.log('Merchandise | ' + apiUrl)
+  console.log('Merchandise | ' + apiUrl)
   const options = {
     url: apiUrl,
     method: 'get'

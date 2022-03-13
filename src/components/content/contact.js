@@ -1,12 +1,15 @@
 import React from 'react'
 import { InfoSection } from './common'
 import { Map } from './map'
+import { config } from '../../utils/main'
+
+const COLORS = config.colors
 
 export const ContactInfo = () => {
     const apiKey = process.env.GOOGLE_API_KEY
     return (
         <div>
-        <InfoSection bgColor='#fcba03' marginTop='3rem'>
+        <InfoSection bgColor={COLORS.yellow} marginTop='3rem'>
             <section>
                 <h1>Contact Beantown</h1>
                 <h3>Call</h3>
@@ -18,7 +21,7 @@ export const ContactInfo = () => {
                 <h6>Bosworth Place Inc. Beantown Pub DBA</h6>
             </section>
         </InfoSection>
-        <InfoSection bgColor='#383838'>
+        <InfoSection bgColor={COLORS.backgroundGray}>
             <Map
                 isMarkerShown
                 googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${apiKey}&v=3.exp&libraries=geometry,drawing,places`}
