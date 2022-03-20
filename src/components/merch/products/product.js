@@ -1,19 +1,94 @@
 import React, { useState } from 'react'
-import { CartButton } from '../../elements/buttons/main'
+import { CartButton } from '../../elements/index'
 import { StyledMerchItem } from './styles'
 import { config } from '../../../utils/main'
 import { SizeSelect } from './sizeSelect'
+import { ImageSlider } from '../../imageSliders/main'
 
 const COLORS = config.colors
+const STATIC_PATH = `${config.urls.static}/img/merch`
+
+const InfoTable = (props) => (
+  <table>
+    <tbody>
+      <tr>
+        <td className="itemName">{props.name}</td>
+        <td className="itemPrice">{props.price}</td>
+      </tr>
+    </tbody>
+  </table>
+)
+
+const SizeList = (props) => (
+  <div className='size'>
+    {props.hasSizes == true &&
+      <SizeSelect
+          onSizeChange={props.onChange}
+          inventory={props.inventory}
+          size={props.size}
+      />
+    }
+  </div>
+)
+
+const Quantity = (props) => (
+  <div className='qty'>
+    <label>Qty:</label>
+    <input
+      name='quantity'
+      value={props.quantity}
+      onChange={props.onChange}
+      placeholder='1'
+      size='2'
+    />
+  </div>
+)
+
+const AddToCart = (props) => (
+  <CartButton
+    runFunction={props.runFunction}
+    buttonText='Add To Cart'
+    action='POST'
+    size={props.size}
+    quantity={props.qty}
+    sku={props.sku}
+    bgColor={COLORS.yellow}
+    border={`1px solid ${COLORS.lightGray}`}
+    hoverBorder={`1px solid ${COLORS.yellow}`}
+    hoverBackgroundColor={COLORS.black}
+    hoverTextColor={COLORS.yellow}
+    outerMargin='auto'
+    textColor={COLORS.black}
+  />
+)
+
+const sliderStyles = {
+  marginTop: "1rem",
+  marginRight: "unset",
+  marginLeft: "unset",
+  img: {}
+}
+
+const sliderSettings = {
+  dots: true,
+  autoplay: true,
+  speed: 1000,
+  autoplaySpeed: 8500,
+  pauseOnHover: false,
+  swipeToSlide: true,
+  fade: true,
+  infinite: true,
+  arrows: true,
+  slidesToShow: 1,
+  slidesToScroll: 1
+}
 
 export const ProductCard = (props) => {
-  const staticPath = `${config.urls.static}/img/merch/`
+  console.log(props.images)
   const [size, setSize] = useState({ size: 'medium' })
   const [quantity, setQuantity] = useState({ quantity: 1 })
 
   function handleSizeChange(event) {
-    console.log('Handling size change')
-    console.log(event.target.value)
     setSize({ size: event.target.value })
   }
 
@@ -23,50 +98,12 @@ export const ProductCard = (props) => {
 
   return (
     <StyledMerchItem aria-labelledby="Merch item container">
-      <table>
-        <tbody>
-          <tr>
-            <td className="itemName">{props.name}</td>
-            <td className="itemPrice">{props.price}</td>
-          </tr>
-        </tbody>
-      </table>
-      <img src={`${staticPath}${props.imgName}`} alt={props.name} />
+      <InfoTable name={props.name} price={props.price} />
+      <ImageSlider images={props.images} imagePath={STATIC_PATH} sliderSettings={sliderSettings} sliderStyles={sliderStyles} />
       <p>{props.description}</p>
-      <div className='size'>
-          {props.sizes == true &&
-              <SizeSelect
-                  onSizeChange={handleSizeChange}
-                  inventory={props.inventory}
-                  size={size.size}
-              />}
-      </div>
-      <div className='qty'>
-        <label>Qty:</label>
-        <input
-          name='quantity'
-          value={quantity.quantity}
-          onChange={handleQuantityChange}
-          placeholder='1'
-          size='2'
-        />
-      </div>
-      <CartButton
-        runFunction={props.cartUpdate}
-        buttonText='Add To Cart'
-        action='POST'
-        size={size.size}
-        quantity={quantity.quantity}
-        sku={props.sku}
-        noSize={props.sizes}
-        bgColor={COLORS.yellow}
-        border={`1px solid ${COLORS.lightGray}`}
-        hoverBorder={`1px solid ${COLORS.yellow}`}
-        hoverBackgroundColor={COLORS.black}
-        hoverTextColor={COLORS.yellow}
-        outerMargin='auto'
-        textColor={COLORS.black}
-      />
+      <SizeList onChange={handleSizeChange} inventory={props.inventory} size={size.size} hasSizes={props.sizes}/>
+      <Quantity onChange={handleQuantityChange} quanity={quantity.quantity} />
+      <AddToCart runFunction={props.cartUpdate} size={size.size} sku={props.sku} qty={quantity.quantity}/>
     </StyledMerchItem>
   )
 }

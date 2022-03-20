@@ -2,24 +2,28 @@ import React from 'react'
 import { StyledMerchSection } from './styles'
 import { ProductCard } from './product'
 
+const Product = (props) => (
+  <ProductCard
+    inventory={props.item.inventory}
+    name={props.item.name}
+    price={props.item.price}
+    description={props.item.description}
+    sku={props.item.id}
+    cartUpdate={props.cartUpdate}
+    images={props.item.images}
+    imgName={props.item.image_name}
+    category={props.item.category_id}
+    sizes={props.hasSizes}
+  />
+)
+
 export const CategoryCard = (props) => {
   const renderItems = (items) => {
     const productList = []
     for (const item of Object.values(items)) {
       if (item.inventory.total > 0) {
         productList.push(
-          <ProductCard
-            inventory={item.inventory}
-            key={item.id}
-            name={item.name}
-            price={item.price}
-            description={item.description}
-            sku={item.id}
-            cartUpdate={props.cartUpdate}
-            imgName={item.image_name}
-            category={item.category_id}
-            sizes={props.hasSizes}
-          />
+          <Product key={item.id} item={item} cartUpdate={props.cartUpdate} hasSizes={props.hasSizes} />
         )
       }
     }

@@ -3,11 +3,10 @@ import { CategoryCard } from './category'
 import { StyledContentContainer } from '../styles/index'
 
 export const CategoryCards = (props) => {
-  const categories = props.categories
   const categoryList = []
-  if (categories) {
+  if (props.categories) {
     let cnt = 1
-    for (const category of Object.values(categories)) {
+    for (const category of Object.values(props.categories)) {
       categoryList.push(
         <CategoryCard
           description={category['description']}
