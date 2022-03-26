@@ -42,8 +42,7 @@ export const StyledDashContainer = styled.div`
   display: flex;
   flex-flow: column wrap;
   line-height: 150%;
-  position: relative;
-  top: 12rem;
+  position: ${props => props.position || "unset"};
 `
 
 export const StyledMerchNav = styled.div`
@@ -58,7 +57,7 @@ export const StyledMerchNav = styled.div`
   z-index: 998;
 `
 
-export const StyledNoContentContainer = styled.div`
+export const StyledNoInventoryContainer = styled.div`
   background-color: ${COLORS.yellow};
   border-radius: 6px;
   color: ${COLORS.black};

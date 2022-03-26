@@ -1,6 +1,6 @@
 {
     "orders": {
-        "shippingPrice": 5.99
+        "shippingPrice": 7.99
     },
     "urls": {
         "googleApi": "https://maps.googleapis.com/maps/api/",
