@@ -3,6 +3,7 @@ import { StyledPartiesContainer } from './styles'
 import { ContactForm } from '../contact/main'
 import { ImageSlider } from '../imageSliders/main'
 import { config } from '../../utils/main'
+import { sendEvent } from '../kafka/index'
 const COLORS = config.colors
 
 
@@ -40,17 +41,20 @@ const sliderSettings = {
 
 
 export const PrivateParties = () => {
-    const imagePath = "https://static.prod.beantownpub.com/img/slider"
-    return (
-        <StyledPartiesContainer backgroundColor={COLORS.yellow} aria-labelledby="Parties container">
-            <h1>Private Parties</h1>
-            <article>
-            Make your next private event a memorable one. Beantown Pub offers a variety of spaces that are perfect for accomadating small gatherings
-            or corporate events. Choose from spaces with single, multiple, or no pool tables. Our private event menu offers a variety of freshly
-            prepared delicious appetizers all the way up to a full buffet with several entrees.
-            </article>
-            <ContactForm/>
-            <ImageSlider images={images} imagePath={imagePath} sliderSettings={sliderSettings} sliderStyles={sliderStyles} />
-        </StyledPartiesContainer>
-    )
+  window.addEventListener('click', (event) => {
+    sendEvent(event)
+  })
+  const imagePath = "https://static.prod.beantownpub.com/img/slider"
+  return (
+    <StyledPartiesContainer id="privatePartiesContainer" backgroundColor={COLORS.yellow} aria-details="Parties container">
+      <h1>Private Parties</h1>
+      <article id="privatePartiesArticle">
+      Make your next private event a memorable one. Beantown Pub offers a variety of spaces that are perfect for accomadating small gatherings
+      or corporate events. Choose from spaces with single, multiple, or no pool tables. Our private event menu offers a variety of freshly
+      prepared delicious appetizers all the way up to a full buffet with several entrees.
+      </article>
+      <ContactForm/>
+      <ImageSlider images={images} imagePath={imagePath} sliderSettings={sliderSettings} sliderStyles={sliderStyles} />
+    </StyledPartiesContainer>
+  )
 }

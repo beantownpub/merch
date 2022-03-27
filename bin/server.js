@@ -7,9 +7,9 @@
 var app = require('../src/app');
 var debug = require('debug')('node-jal:server');
 var http = require('http');
-const kafka = require('../src/utils/kafka')
+// const kafka = require('../src/utils/kafka')
 
-const producer = kafka.producer()
+// const producer = kafka.producer()
 
 /**
  * Get port from environment and store in Express.
@@ -27,29 +27,7 @@ var server = http.createServer(app);
 /**
  * Listen on provided port, on all network interfaces.
  */
-server.on('package:publish', async event => {
-  console.log('FOOOOO')
-  console.log(event)
-  try {
-    const responses = await producer.send({
-      topic: 'click',
-      messages: [{
-        // Name of the published package as key, to make sure that we process events in order
-        key: event.name,
 
-        // The message value is just bytes to Kafka, so we need to serialize our JavaScript
-        // object to a JSON string. Other serialization methods like Avro are available.
-        value: JSON.stringify({
-          package: event.name,
-          version: event.version
-        })
-      }]
-    })
-    console.log('Published message', { responses })
-  } catch (error) {
-    console.error('Error publishing message', error)
-  }
-})
 
 server.listen(port, () => console.log(`listening on - http://localhost:${port}`));
 server.on('error', onError);
@@ -107,10 +85,10 @@ function onError(error) {
  */
 
 function onListening() {
-  const main = async () => {
-    await producer.connect()
-  }
-  main()
+  // const main = async () => {
+  //  await producer.connect()
+  // }
+  // main()
   var addr = server.address();
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr

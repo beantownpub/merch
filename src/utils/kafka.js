@@ -6,17 +6,34 @@ const { Kafka } = require('kafkajs')
 
 // This creates a client instance that is configured to connect to the Kafka broker provided by
 // the environment variable KAFKA_BOOTSTRAP_SERVER
-const kafka = new Kafka({
+const brokers = new Kafka({
   clientId: 'jalbot',
   brokers: [process.env.KAFKA_BOOTSTRAP_SERVER],
   ssl: true,
   sasl: {
     mechanism: 'plain', // scram-sha-256 or scram-sha-512
-    //username: process.env.KAFKA_USERNAME,
-    //password: process.env.KAFKA_PASSWORD
-    username: 'WGK2VM3PUME5ELK6',
-    password: 'hh3pAiaTQj9yo2pJG8jUyLVk5Ak6go9MlGwLX3gu51sRqwQkKP/BY/W3LbdbBC+6'
+    username: process.env.KAFKA_USERNAME,
+    password: process.env.KAFKA_PASSWORD
   }
 })
 
-module.exports = kafka
+async function sendToStream(producer, topic, key, data) {
+  try {
+    await producer.connect()
+    const responses = await producer.send({
+      topic: topic,
+      messages: [{
+        // Name of the published package as key, to make sure that we process events in order
+        key: key,
+        // The message value is just bytes to Kafka, so we need to serialize our JavaScript
+        // object to a JSON string. Other serialization methods like Avro are available.
+        value: JSON.stringify({ data })
+      }]
+    })
+    console.log('Published message', { responses })
+  } catch (error) {
+    console.error('Error publishing message', error)
+  }
+}
+
+module.exports = { brokers, sendToStream }

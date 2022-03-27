@@ -8,34 +8,17 @@ var config = require('../utils/config.json')
 var pages = config.pages
 const kafka = require('../utils/kafka')
 
-const producer = kafka.producer()
+const PRODUCER = kafka.brokers.producer()
 
-async function foo() {
-  console.log('Runnning foo')
-  try {
-    await producer.connect()
-    const responses = await producer.send({
-      topic: 'clicks',
-      messages: [{
-        // Name of the published package as key, to make sure that we process events in order
-        key: 'foo',
-
-        // The message value is just bytes to Kafka, so we need to serialize our JavaScript
-        // object to a JSON string. Other serialization methods like Avro are available.
-        value: JSON.stringify({
-          package: 'foo',
-          version: 'bar'
-        })
-      }]
-    })
-    console.log('Published message', { responses })
-  } catch (error) {
-    console.error('Error publishing message', error)
-  }
-}
+router.post('/event', function(req, res, next) {
+  console.log(req.body)
+  kafka.sendToStream(PRODUCER, 'clicks', 'events', req.body)
+  res.sendStatus(200)
+})
 
 router.get('/items', function(req, res, next) {
-  foo()
+  // console.log(req)
+  kafka.sendToStream(PRODUCER, 'requests', 'reqs', req.headers)
   const merch = pages['merch']
   res.render("main", merch.metadata)
 })

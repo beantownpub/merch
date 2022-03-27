@@ -70,7 +70,7 @@ export const Cart = (props) => {
   }
 
   return (
-    <StyledCartContainer aria-labelledby='CartContainer' className='slide_cart'>
+    <StyledCartContainer id="cartContainer" aria-details='CartContainer' className='slide_cart'>
       {cartItems.showCartItems &&
         <div className="cartItems" aria-labelledby="Cart items">
           {renderCartItems(props.cartItems, props)}
@@ -91,9 +91,9 @@ export const Cart = (props) => {
           }
         </div>
       }
-      <ToggleButton bgColor={COLORS.dodgerBlue} icon='faShoppingCart' runFunction={cartClose} buttonText="Close"/>
+      <ToggleButton bgColor={COLORS.dodgerBlue} icon='faShoppingCart' runFunction={cartClose} buttonText="Close" slug="close" />
       {parseInt(props.numCartItems) > 0 && checkout.showCheckoutButton &&
-        <ToggleButton bgColor={COLORS.dodgerBlue} runFunction={showCheckout} buttonText="Checkout"/>
+        <ToggleButton bgColor={COLORS.dodgerBlue} runFunction={showCheckout} buttonText="Checkout" slug="checkout" />
       }
       {checkout.showCheckout &&
         <div className="checkoutForm">

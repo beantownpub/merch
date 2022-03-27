@@ -24,7 +24,7 @@ export const ContactForm = () => {
   }
 
   return (
-    <StyledContactForm aria-labelledby="Contact form container">
+    <StyledContactForm id="contactForm" aria-details="Contact form container">
       {reply &&
         <p>{reply}</p>
       }
@@ -38,12 +38,14 @@ export const ContactForm = () => {
           </h2>
           <form onSubmit={handleSubmit(onSubmit)}>
             <input
+              id="contactNameInput"
               name="name"
               placeholder="Name"
               ref={register({ required: "Required"})}
             />
             <h3>{errors.name && errors.name.message}</h3>
             <input
+              id="contactEmailInput"
               name="email"
               placeholder="Email"
               ref={register({
@@ -82,6 +84,7 @@ export const ContactForm = () => {
               textColor={COLORS.black}
               hoverBackgroundColor={COLORS.black}
               hoverTextColor={COLORS.white}
+              slug="contact-form"
             />
           </form>
         </div>

@@ -2,9 +2,19 @@ var express = require('express')
 var router = express.Router()
 var config = require('../utils/config.json')
 var pages = config.pages
+const kafka = require('../utils/kafka')
+
+const PRODUCER = kafka.brokers.producer()
+
 
 router.use(function (req, res, next) {
   next()
+})
+
+router.post('/event', function(req, res, next) {
+  console.log(req.body)
+  kafka.sendToStream(PRODUCER, 'clicks', 'events', req.body)
+  res.sendStatus(200)
 })
 
 router.get('/', function(req, res, next) {

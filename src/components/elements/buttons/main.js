@@ -35,7 +35,7 @@ export const Button = (props) => {
       textTransform={props.buttonStyles.textTransform}
       width={props.buttonStyles.width}
     >
-    <button onClick={props.clickHandler}>
+    <button id={`${props.slug}-button`} onClick={props.clickHandler}>
       {props.icon &&
         <Icon style={iconStyle} iconName={props.icon} />}{props.buttonText}
     </button>
@@ -54,6 +54,7 @@ export const ToggleButton = (props) => {
             buttonText={props.buttonText}
             icon={props.icon}
             iconColor={props.iconColor}
+            slug={props.slug}
         />
     )
 }
@@ -66,9 +67,10 @@ export const CartButton = (props) => {
   }
   return (
     <Button
-      clickHandler={handleClick}
       buttonStyles={props}
       buttonText={props.buttonText}
+      clickHandler={handleClick}
+      slug={props.slug}
     />
   )
 }
@@ -84,6 +86,7 @@ export const SubmitButton = (props) => {
       clickHandler={handleClick}
       buttonStyles={props}
       buttonText={props.buttonText}
+      slug={props.slug || "submit"}
     />
   )
 }
@@ -97,6 +100,7 @@ export const LinkButton = (props) => {
             clickHandler={handleClick}
             buttonStyles={props}
             buttonText={props.buttonText}
+            slug={props.slug}
         />
     )
 }

@@ -25,6 +25,7 @@ export const NumCartItems = (props) => {
               icon='faShoppingCart'
               iconColor={COLORS.yellow}
               runFunction={cartOpen}
+              slug="view-cart"
               textColor={COLORS.black}
               width='10rem'
             />
@@ -52,6 +53,7 @@ export const CartItem = (props) => {
           border={`1px solid ${COLORS.black}`}
           textColor={COLORS.white}
           width='min-content'
+          slug={`${props.sku}-delete-from-cart`}
         />
         </td>
       </tr>
