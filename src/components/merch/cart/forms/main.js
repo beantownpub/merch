@@ -38,61 +38,57 @@ const required = {
 
 export const CheckoutForm = (props) => {
   const [checkout, setCheckout] = useState({
-      showPayment: false,
-      showShipping: false,
-      sameShippingAndBilling: true,
-      cartValues: {}
+    showPayment: false,
+    showShipping: false,
+    sameShippingAndBilling: true,
+    cartValues: {}
   })
   const { handleSubmit, register, errors, reset } = useForm()
   const [checkoutForm, setCheckoutForm] = useState({
-      showForm: true
+    showForm: true
   })
 
   const toggleShipping = event => {
-      setCheckout({
-          showShipping: event.target.checked
-      })
+    setCheckout({
+      showShipping: event.target.checked
+    })
   }
 
   const onSubmit = values => {
-      values.cart = props.cart
-      if (!checkout.showShipping) {
-          setCheckout({
-              showPayment: true,
-              showShipping: false,
-              cartValues: values
-          })
-      } else {
-          setCheckout({
-              showPayment: true,
-              showShipping: true,
-              cartValues: values
-          })
-      }
+    values.cart = props.cart
+    if (!checkout.showShipping) {
+      setCheckout({
+        showPayment: true,
+        showShipping: false,
+        cartValues: values
+      })
+    } else {
+      setCheckout({
+        showPayment: true,
+        showShipping: true,
+        cartValues: values
+      })
+    }
   }
 
   function hideSquare() {
-      setCheckout({
-          showPayment: false
-      })
+    setCheckout({ showPayment: false })
   }
 
   function hideForm() {
-      setCheckoutForm({
-          showForm: false
-      })
+    setCheckoutForm({ showForm: false })
   }
 
   return (
     <div>
-      <StyledCheckoutForm aria-labelledby="Checkout form" id="checkoutForm">
+      <StyledCheckoutForm aria-details="Checkout form" id="checkoutForm">
         {checkoutForm.showForm &&
           <form onSubmit={handleSubmit(onSubmit)}>
             <h2>
-                <Icon
-                    style={{fontSize: ".75rem", margin: "auto"}}
-                    iconName="faLock"
-                /> Secure Checkout
+              <Icon
+                style={{fontSize: ".75rem", margin: "auto"}}
+                iconName="faLock"
+              /> Secure Checkout
             </h2>
             <div className="billingAddress">Billing Address</div>
             <input name="firstName" placeholder="First Name" ref={register(required)} />
@@ -121,12 +117,12 @@ export const CheckoutForm = (props) => {
             <div className="sameAsBillingAddress">
               <label htmlFor="sameAsBillingAddress">Same As Billing</label>
               <input
-                  type="checkbox"
-                  id="sameAsBillingAddress"
-                  name="sameAsBillingAddress"
-                  defaultChecked={false}
-                  ref={register}
-                  onClick={(value) => toggleShipping(value)}
+                type="checkbox"
+                id="sameAsBillingAddress"
+                name="sameAsBillingAddress"
+                defaultChecked={false}
+                ref={register}
+                onClick={(value) => toggleShipping(value)}
               />
             </div>
           {!checkout.showShipping &&
@@ -168,10 +164,10 @@ export const CheckoutForm = (props) => {
           }
           {!checkout.showPayment &&
             <div className="payButtons">
-            <SubmitButton bgColor={COLORS.dodgerBlue} buttonText="Proceed to payment" />
+            <SubmitButton bgColor={COLORS.dodgerBlue} buttonText="Proceed to payment" slug="proceed-to-payment" />
             </div>
           }
-          <ToggleButton bgColor={COLORS.dodgerBlue} runFunction={props.hideCheckout} buttonText="Hide checkout"/>
+          <ToggleButton bgColor={COLORS.dodgerBlue} runFunction={props.hideCheckout} buttonText="Hide checkout" slug="hide-checkout" />
           </form>
         }
       </StyledCheckoutForm>

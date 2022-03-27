@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react"
 
 export const SizeSelect = (props) => {
   return (
@@ -6,19 +6,19 @@ export const SizeSelect = (props) => {
       <label>Size: </label>
       <select onChange={props.onSizeChange} defaultValue={props.size}>
         {props.inventory.small > 0 &&
-          <option onChange={props.onSizeChante} value="small">Small</option>
+          <option onChange={props.onSizeChange} value="small">Small</option>
         }
         {props.inventory.medium > 0 &&
-          <option onChange={props.onSizeChante} value="medium">Medium</option>
+          <option onChange={props.onSizeChange} value="medium">Medium</option>
         }
         {props.inventory.large > 0 &&
-          <option onChange={props.onSizeChante} value="large">Large</option>
+          <option onChange={props.onSizeChange} value="large">Large</option>
         }
         {props.inventory.xl > 0 &&
-          <option onChange={props.onSizeChante} value="xl">XL</option>
+          <option onChange={props.onSizeChange} value="xl">XL</option>
         }
         {props.inventory.xxl > 0 &&
-          <option onChange={props.onSizeChante} value="xxl">XXL</option>
+          <option onChange={props.onSizeChange} value="xxl">XXL</option>
         }
       </select>
       <br />

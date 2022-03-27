@@ -1,6 +1,6 @@
-import React from 'react'
-import { StyledMerchSection } from './styles'
-import { ProductCard } from './product'
+import React from "react"
+import { StyledMerchSection } from "./styles"
+import { ProductCard } from "./product"
 
 const Product = (props) => (
   <ProductCard
@@ -14,6 +14,7 @@ const Product = (props) => (
     imgName={props.item.image_name}
     category={props.item.category_id}
     sizes={props.hasSizes}
+    slug={props.item.slug}
   />
 )
 
@@ -29,7 +30,7 @@ export const CategoryCard = (props) => {
     }
     return (
       <div className="sectionItems" aria-labelledby="Category card items Container">
-          {productList}
+        {productList}
       </div>
     )
   }

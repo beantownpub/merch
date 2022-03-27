@@ -13,10 +13,10 @@ const iconStyle = {
 
 export const SocialNav = () => {
   return (
-    <nav style={{margin: '1rem auto'}}>
-      <a href={URLS["facebook"]}><Icon iconName="faFacebook" style={iconStyle} /></a>
-      <a href={URLS["instagram"]}><Icon iconName="faInstagram" style={iconStyle} /></a>
-      <a href={URLS["twitter"]}><Icon iconName="faTwitter" style={iconStyle} /></a>
+    <nav style={{margin: '1rem auto'}} id="socialNav">
+      <a id="facebookLink" href={URLS["facebook"]}><Icon iconName="faFacebook" style={iconStyle} /></a>
+      <a id="instagramLink" href={URLS["instagram"]}><Icon iconName="faInstagram" style={iconStyle} /></a>
+      <a id="twitterLink" href={URLS["twitter"]}><Icon iconName="faTwitter" style={iconStyle} /></a>
     </nav>
   )
 }

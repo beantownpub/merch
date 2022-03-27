@@ -128,5 +128,6 @@ export const StyledMerchItem = styled.div`
     img {
         border: .25rem solid ${COLORS.black};
         border-radius: 4px;
+        min-width: 200px;
     }
 `

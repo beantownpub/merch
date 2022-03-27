@@ -10,6 +10,7 @@ export const InfoSection = (props) => {
         <StyledInfo
             color={props.bgColor}
             fontColor={props.fontColor}
+            id={`${props.slug}-div`}
             textAlign={props.textAlign}
             marginTop={props.marginTop}
             paddingTop={props.paddingTop}
