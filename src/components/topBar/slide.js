@@ -20,7 +20,7 @@ export function toggleMenu(action) {
 
 export const SlideMenuLogo = () => {
   return (
-    <div >
+    <div id="slideMenuLogo">
       <img src={`${STATIC_URL}/img/logos/beantown_script_logo.svg`}  alt="Beantown logo" />
     </div>
   )

@@ -12,7 +12,6 @@ router.use(function (req, res, next) {
 })
 
 router.post('/event', function(req, res, next) {
-  console.log(req.body)
   kafka.sendToStream(PRODUCER, 'clicks', 'events', req.body)
   res.sendStatus(200)
 })

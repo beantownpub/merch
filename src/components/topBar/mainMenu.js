@@ -28,7 +28,7 @@ function SlideMenuItems(props) {
   const sliderItems = props.pages.map((page) =>
     <StyledLink key={page.id}>
     {page.iconName &&
-      <a href={page.name} className="animate">
+      <a id={`${page.text}-mobile-link`} href={page.name} className="animate">
       <Icon iconName={page.iconName} style={iconStyle} /> {page.text}</a>
     }
     </StyledLink>

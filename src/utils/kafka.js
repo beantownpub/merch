@@ -25,7 +25,7 @@ async function sendToStream(producer, topic, key, data) {
         value: JSON.stringify({ data })
       }]
     })
-    console.log('Published message', { responses })
+    // console.log('Published message', { responses })
   } catch (error) {
     console.error('Error publishing message', error)
   }

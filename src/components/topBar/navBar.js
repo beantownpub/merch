@@ -17,7 +17,7 @@ export const NavBarLogo = () => {
 
 function TopNavBar(props) {
   const navBar = props.props.map((prop) =>
-    <a key={prop.id} href={prop.name}>{prop.text}</a>
+    <a id={`${prop.text}-link`} key={prop.id} href={prop.name}>{prop.text}</a>
   )
   return (
     <StyledTopNav hoverColor={props.hoverColor} fontColor={props.fontColor}>

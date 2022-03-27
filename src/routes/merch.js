@@ -11,7 +11,6 @@ const kafka = require('../utils/kafka')
 const PRODUCER = kafka.brokers.producer()
 
 router.post('/event', function(req, res, next) {
-  console.log(req.body)
   kafka.sendToStream(PRODUCER, 'clicks', 'events', req.body)
   res.sendStatus(200)
 })
