@@ -85,10 +85,6 @@ function onError(error) {
  */
 
 function onListening() {
-  // const main = async () => {
-  //  await producer.connect()
-  // }
-  // main()
   var addr = server.address();
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr

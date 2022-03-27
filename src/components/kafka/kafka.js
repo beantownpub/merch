@@ -1,5 +1,5 @@
 export async function sendEvent(data) {
-  console.log(data)
+  // console.log(data)
   const eventData = {
     class: data.target.className,
     pointerType: data.pointerType,

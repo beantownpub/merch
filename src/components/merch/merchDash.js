@@ -9,26 +9,6 @@ import { config } from '../../utils/main'
 import { sendEvent } from '../kafka/index'
 const COLORS = config.colors
 
-// async function sendEvent(data) {
-//   console.log(data)
-//   const eventData = {
-//     class: data.target.className,
-//     type: data.type,
-//     pointerType: data.pointerType,
-//     element: data.target.nodeName,
-//     id: data.target.id
-//   }
-//   const shit = JSON.stringify(eventData)
-//   console.log(shit)
-//   try {
-//     await fetch('event', {method: "POST", credentials: "include", body: JSON.stringify(eventData), headers: {"Content-Type": "application/json"}})
-//       .then(response => {})
-//       .catch(error => console.log(error))
-//   } catch (error) {
-//     console.error('Error sending event ', error)
-//   }
-// }
-
 export const MerchDash = () => {
   window.addEventListener('click', (event) => {
     sendEvent(event)
