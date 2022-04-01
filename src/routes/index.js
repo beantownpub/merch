@@ -37,6 +37,10 @@ router.get('/events.html', function(req, res, next) {
   res.redirect('/parties')
 })
 
+router.get('/merch', function(req, res, next) {
+  res.redirect('/merch/items')
+})
+
 router.get('/healthz', function(req, res, next) {
   res.sendStatus('ok')
 })
@@ -46,6 +50,7 @@ router.get('/:section', function(req, res, next) {
   if (page) {
     res.render("main", page.metadata)
   } else {
+    console.log(`404 index | ${req.path}`)
     res.render("main", pages["error"]["metadata"])
     // res.sendStatus(404)
   }

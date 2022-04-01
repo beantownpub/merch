@@ -5,9 +5,35 @@ import { StyledContentContainer } from './styles'
 import { HeroHeader } from './heroHeader/main'
 import { config } from '../../utils/main'
 import { sendEvent } from '../kafka/index'
+import { ImageSlider } from '../imageSliders/main'
 const COLORS = config.colors
+const STATIC_PATH = `${config.urls.static}/img/merch`
+const SLIDER_STYLES = {
+  buttonColor: COLORS.yellow,
+  margin: "unset",
+  img: {
+    borderRadius: "6px"
+  }
+}
 
-
+const SLIDER_SETTINGS = {
+  dots: true,
+  autoplay: true,
+  speed: 1000,
+  autoplaySpeed: 8500,
+  pauseOnHover: false,
+  swipeToSlide: true,
+  fade: true,
+  infinite: true,
+  arrows: true,
+  slidesToShow: 1,
+  slidesToScroll: 1
+}
+const SLIDER_IMAGES = [
+  "new_sam_adams_shirt_back.png",
+  "scripted_one_side_small.png",
+  "old_sam_adams_shirt_back.png"
+]
 export const MainInfo = () => {
   window.addEventListener('click', (event) => {
     sendEvent(event)
@@ -29,6 +55,7 @@ export const MainInfo = () => {
         <InfoSection bgColor={COLORS.darkGray} fontColor={COLORS.yellow} slug="gift-cards-merch-section">
           <section id="giftCardsMerchSection">
             <h3>Gift Cards and Merchandise Available<br /></h3>
+            <ImageSlider images={SLIDER_IMAGES} imagePath={STATIC_PATH} sliderSettings={SLIDER_SETTINGS} sliderStyles={SLIDER_STYLES} />
             <h4><a id="merchRef" href='/merch/items'><span>Shop now &#10148;</span></a></h4>
             <h4>Make your next private event a memorable one and book it at Beantown<br /><a id="partiesRef" href='/parties'>Learn more &#10148;</a></h4>
           </section>

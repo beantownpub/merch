@@ -12,6 +12,7 @@ export const StyledImageSlider = styled.div`
   img {
     margin: ${props => props.styles.img.margin || "auto"};
     max-width: ${props => props.styles.img.maxWidth || "250px"};
+    border-radius: ${props => props.styles.img.borderRadius || "unset"};
   }
   .slick-next:before {
     color: ${props => props.styles.buttonColor || COLORS.black};
