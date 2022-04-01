@@ -17,7 +17,7 @@ const SLIDER_STYLES = {
 }
 
 const SLIDER_SETTINGS = {
-  dots: true,
+  dots: false,
   autoplay: true,
   speed: 1000,
   autoplaySpeed: 8500,
@@ -30,8 +30,8 @@ const SLIDER_SETTINGS = {
   slidesToScroll: 1
 }
 const SLIDER_IMAGES = [
-  "new_sam_adams_shirt_back.png",
-  "scripted_one_side_small.png",
+  "new_sam_adams_shirt_back_small.png",
+  "scripted_one_side_shirt_small.png",
   "old_sam_adams_shirt_back.png"
 ]
 export const MainInfo = () => {
