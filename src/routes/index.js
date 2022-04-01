@@ -37,6 +37,10 @@ router.get('/events.html', function(req, res, next) {
   res.redirect('/parties')
 })
 
+router.get('/event', function(req, res, next) {
+  res.redirect('/parties')
+})
+
 router.get('/merch', function(req, res, next) {
   res.redirect('/merch/items')
 })
