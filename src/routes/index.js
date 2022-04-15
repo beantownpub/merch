@@ -21,15 +21,15 @@ router.get('/', function(req, res, next) {
   res.render("main", home.metadata)
 })
 
-router.get('/index.html', function(req, res, next) {
+router.get(/^\/index\.(.*)\/?$/i, function(req, res, next) {
   res.redirect('/')
 })
 
-router.get('/about.html', function(req, res, next) {
+router.get(/^\/about\.(.*)\/?$/i, function(req, res, next) {
   res.redirect('/about')
 })
 
-router.get('/menu.html', function(req, res, next) {
+router.get(/^\/menu\.(.*)\/?$/i, function(req, res, next) {
   res.redirect('/menu')
 })
 
@@ -39,6 +39,14 @@ router.get('/events.html', function(req, res, next) {
 
 router.get('/event', function(req, res, next) {
   res.redirect('/parties')
+})
+
+router.get(/^\/parties\.(.*)\/?$/i, function(req, res, next) {
+  res.redirect('/parties')
+})
+
+router.get(/^\/merch\.(.*)\/?$/i, function(req, res, next) {
+  res.redirect('/merch/items')
 })
 
 router.get('/merch', function(req, res, next) {
@@ -56,7 +64,6 @@ router.get('/:section', function(req, res, next) {
   } else {
     console.log(`404 index | ${req.path}`)
     res.render("main", pages["error"]["metadata"])
-    // res.sendStatus(404)
   }
 })
 
