@@ -1,4 +1,4 @@
-FROM node:14.17.6-buster-slim AS build
+FROM node:16.13.0-buster-slim AS build
 
 RUN apt-get update  && \
     apt-get install -y \
@@ -9,18 +9,20 @@ RUN apt-get update  && \
         gcc
 
 FROM build AS install
-ARG google_api_key
+ARG git_hash
 ARG node_env
 ARG square_app_id
 ARG square_location_id
 ARG support_email
-ENV GOOGLE_API_KEY=${google_api_key}
+ARG version
+ENV GIT_HASH=${git_hash}
 ENV SQUARE_APP_ID=${square_app_id}
 ENV SQUARE_LOCATION_ID=${square_location_id}
 ENV SUPPORT_EMAIL=${support_email}
 ENV NODE_ENV=${node_env}
 ARG static_path
 ENV STATIC_PATH=${static_path}
+ENV VERSION=${version}
 
 COPY ./package* /app/
 WORKDIR /app
@@ -30,7 +32,7 @@ COPY . ./
 RUN npx webpack --config webpack.config.js && \
     rm -rf node_modules
 
-FROM node:14.17.6-buster-slim
+FROM node:16.13.0-buster-slim
 
 ARG node_env
 ARG square_app_id

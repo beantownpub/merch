@@ -9,4 +9,7 @@ README.md
 .editorconfig
 .tool-versions
 .envrc
+.circleci/
+.sass-cache/
 src/static/
+node_modules/

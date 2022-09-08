@@ -1,5 +1,6 @@
 import styled from 'styled-components'
-import { config } from '../../utils/main'
+// import { config } from '../../utils/main'
+const config = require('../../utils/config.json')
 const COLORS = config.colors
 const FONTS = config.fonts
 

@@ -1,6 +1,5 @@
 import React from 'react'
 import { InfoSection } from './common'
-import { Map } from './map'
 import { config } from '../../utils/main'
 import { sendEvent } from '../kafka/index'
 
@@ -10,7 +9,6 @@ export const ContactInfo = () => {
   window.addEventListener('click', (event) => {
     sendEvent(event)
   })
-  const apiKey = process.env.GOOGLE_API_KEY
   return (
     <div id="contactInfo">
       <InfoSection bgColor={COLORS.yellow} marginTop='3rem' slug="contact-info">
@@ -24,15 +22,6 @@ export const ContactInfo = () => {
           <h2>BeantownPubBoston@gmail.com</h2>
           <h6>Bosworth Place Inc. Beantown Pub DBA</h6>
         </section>
-      </InfoSection>
-      <InfoSection bgColor={COLORS.backgroundGray}>
-        <Map
-            isMarkerShown
-            googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${apiKey}&v=3.exp&libraries=geometry,drawing,places`}
-            loadingElement={<div style={{ height: `100%` }} />}
-            containerElement={<div style={{ height: `225px`, maxWidth: `80%` }} />}
-            mapElement={<div style={{ height: `100%` }} />}
-        />
       </InfoSection>
     </div>
   )

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { config } from '../../../utils/main'
+const config = require('../../../utils/config.json')
 const COLORS = config.colors
 const FONTS = config.fonts
 
@@ -40,10 +40,11 @@ export const StyledFooter = styled.div`
     h4 {
         margin: auto;
         padding: 1rem 0;
-        font-family: ${FONTS.script};
-        font-size: 2rem;
-        color: ${COLORS.yellow};
+        font-family: ${FONTS.footer};
+        font-size: 1rem;
+        color: ${COLORS.darkGray};
         text-transform: capitalize;
         letter-spacing: none;
+        text-shadow: none;
     }
 `

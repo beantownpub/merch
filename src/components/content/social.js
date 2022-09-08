@@ -1,7 +1,8 @@
 import React from 'react'
 import { Icon } from "./icons/index"
 
-import { config } from '../../utils/main'
+// import { config } from '../../utils/main'
+const config = require('../../utils/config.json')
 const URLS = config.urls
 const COLORS = config.colors
 

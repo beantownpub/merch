@@ -5,7 +5,7 @@ import { config, reqHeaders, uuidv4 } from "../../../../utils/main"
 import { cartClose } from "../../../../utils/menuSlide"
 import { ToggleButton } from "../../../elements/buttons/main"
 import { TailSpin } from "react-loader-spinner"
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
+// import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 
 const COLORS = config.colors
 

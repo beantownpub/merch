@@ -107,3 +107,11 @@ typings/
 credentials.yaml
 
 .scrap/
+
+.sass-cache/
+
+
+# Ignore DevSpace cache and log folder
+.devspace/
+
+dist/public/js/main.*

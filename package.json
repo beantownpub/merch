@@ -1,7 +1,10 @@
 {
-  "name": "node-jal",
-  "version": "0.1.38",
+  "name": "beantown",
+  "version": "0.1.39",
   "private": true,
+  "engines": {
+    "node": ">=14.17.6 <18"
+  },
   "scripts": {
     "start": "node --trace-warnings --unhandled-rejections=strict ./bin/server",
     "build": "npx webpack --config webpack.config.js"
@@ -19,7 +22,6 @@
     "http-errors": ">=1.7.1",
     "kafkajs": "^1.16.0",
     "morgan": "~1.9.1",
-    "node-sass-middleware": "0.11.0",
     "react-promise-tracker": "^2.1.0",
     "react-slick": "^0.25.2",
     "react-slideshow-image": "^1.4.2",
@@ -49,14 +51,13 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-google-maps": "^9.4.5",
     "react-hook-form": "^5.1.1",
-    "react-loader-spinner": "^5.1.4",
+    "react-loader-spinner": "^5.3.4",
     "react-router": "^6.2.1",
     "react-router-dom": "^6.2.1",
     "styled-components": "^5.0.0",
     "universal-cookie": "^4.0.3",
-    "webpack": "^4.41.5",
+    "webpack": "^5.74.0",
     "webpack-cli": "^3.3.12"
   }
 }

@@ -49,10 +49,10 @@ commands:
       - run:
           name: Check tags
           command: |
-            BEANTOWN_VERSION=$(jq -r .version package.json | tr -d '"')
+            VERSION=$(jq -r .version package.json | tr -d '"')
             GIT_TAG=$(git describe)
-            echo "Version: ${BEANTOWN_VERSION} | Tag: ${GIT_TAG}"
-            if [ "$BEANTOWN_VERSION" != "$GIT_TAG" ]; then
+            echo "Version: ${VERSION} | Tag: ${GIT_TAG}"
+            if [ "$VERSION" != "$GIT_TAG" ]; then
                 circleci-agent step halt
             fi
 
@@ -74,23 +74,24 @@ jobs:
       - run:
           name: Build Image
           command: |
-            export BEANTOWN_VERSION=$(jq -r .version package.json | tr -d '"')
+            export VERSION=$(jq -r .version package.json | tr -d '"')
             docker build \
-              -t beantown:$BEANTOWN_VERSION \
-              --build-arg google_api_key=$GOOGLE_API_KEY \
+              -t beantown:$VERSION \
               --build-arg square_app_id=$SQUARE_APP_ID \
               --build-arg square_location_id=$SQUARE_LOCATION_ID \
               --build-arg static_path=$BEANTOWN_STATIC_PATH \
               --build-arg support_email=$BEANTOWN_SUPPORT_EMAIL \
+              --build-arg git_hash=$CIRCLE_SHA1 \
+              --build-arg version=$VERSION \
               --build-arg node_env=production .
       - check_tags
       - run:
           name: Publish Image
           command: |
-            export BEANTOWN_VERSION=$(jq -r .version package.json | tr -d '"')
+            export VERSION=$(jq -r .version package.json | tr -d '"')
             echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
-            docker tag beantown:$BEANTOWN_VERSION $DOCKER_USERNAME/beantown:$BEANTOWN_VERSION
-            docker push $DOCKER_USERNAME/beantown:$BEANTOWN_VERSION
+            docker tag beantown:$VERSION $DOCKER_USERNAME/beantown:$VERSION
+            docker push $DOCKER_USERNAME/beantown:$VERSION
 
   deploy:
     circleci_ip_ranges: false
@@ -109,12 +110,12 @@ jobs:
       - run:
           name: Deploy bentown-frontend
           command: |
-            export BEANTOWN_VERSION=$(jq -r .version package.json | tr -d '"')
+            export VERSION=$(jq -r .version package.json | tr -d '"')
             helm repo update
             helm upgrade --install beantown beantown/beantown \
               --namespace prod \
               --set global.env=prod \
-              --set image.tag=$BEANTOWN_VERSION \
+              --set image.tag=$VERSION \
               --set kafka_bootstrap_server=${KAFKA_BOOTSTRAP_SERVER} \
               --set kafka_password=${KAFKA_PASSWORD} \
               --set kafka_username=${KAFKA_USERNAME} \

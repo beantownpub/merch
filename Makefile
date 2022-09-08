@@ -6,6 +6,7 @@ name ?= beantown
 port ?= 3000
 version ?= $(shell jq -r .version package.json | tr -d '"')
 hash = $(shell git rev-parse --short HEAD)
+git_hash = $(shell git rev-parse --short HEAD)
 
 ifeq ($(env),dev)
 	image_tag = $(version)-$(hash)
@@ -38,13 +39,15 @@ build: sass
 	@echo "\033[1;32m. . . Building $(image_name):$(image_tag)  . . .\033[1;37m\n"
 	@echo "\033[1;32mNode Env: $(node_env)\033[1;37m\n"
 	docker build \
+		--platform linux/x86_64 \
 		-t $(image_name):$(image_tag) \
-		--build-arg google_api_key=${GOOGLE_API_KEY} \
 		--build-arg square_app_id=$(square_app_id) \
 		--build-arg square_location_id=$(square_location_id) \
 		--build-arg static_path=${BEANTOWN_STATIC_PATH} \
 		--build-arg support_email=$(support_email) \
-		--build-arg node_env=$(node_env) .
+		--build-arg node_env=$(node_env) \
+		--build-arg git_hash=$(git_hash) \
+		--build-arg version=$(version) .
 
 publish: build
 	@echo "\033[1;32m. . . Publishing $(image_name):$(image_tag) . . .\033[1;37m\n"
@@ -67,3 +70,6 @@ kill_port_forward: context
 redeploy: build restart
 
 restart: kill_pod kill_port_forward
+
+clean:
+	rm -rf node_modules/
