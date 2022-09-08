@@ -131,7 +131,9 @@ workflows:
   beantown_frontend:
     jobs:
       - lint
-      - build_and_publish
+      - build_and_publish:
+          requires:
+            - lint
       - deploy:
           requires:
             - build_and_publish
