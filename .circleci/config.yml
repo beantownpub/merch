@@ -1,18 +1,11 @@
 version: 2.1
 executors:
-  build_machine:
-    machine:
-      image: ubuntu-2004:202201-02
-    environment:
-      DOCKER_BUILDKIT: 1
-      BUILDX_PLATFORMS: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/386,linux/arm/v7,linux/arm/v6
-    resource_class: large
   debian:
     docker:
-    - image: python:3.7-slim-buster
+    - image: cimg/python:3.7
   node:
     docker:
-      - image: cimg/node:14.17.6
+      - image: cimg/node:16.13.0
 
 commands:
   install_k8s_dependencies:
@@ -21,7 +14,7 @@ commands:
       - run:
           name: Install kubectl
           command: |
-            apt-get update -y && apt-get install -y curl
+            sudo apt-get update -y && sudo apt-get install -y curl
             curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
             install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
             kubectl config set-credentials jalbot --token=$JALBOT_TOKEN
@@ -31,18 +24,18 @@ commands:
       - run:
           name: Install helm
           command: |
-            apt-get install apt-transport-https gnupg2 --yes
+            sudo apt-get install apt-transport-https gnupg2 --yes
             curl https://baltocdn.com/helm/signing.asc | apt-key add -
             echo "deb https://baltocdn.com/helm/stable/debian/ all main" | tee /etc/apt/sources.list.d/helm-stable-debian.list
-            apt-get update
-            apt-get install -y helm
+            sudo apt-get update
+            sudo apt-get install -y helm
   install_version_dependencies:
     description: Install dependencies for versioning
     steps:
       - run:
           name: Install dependencies
           command: |
-            apt-get update && apt-get install -y git jq
+            sudo apt-get update && sudo apt-get install -y git jq
   check_tags:
     description: Check if git tag matches package.json version
     steps:
@@ -59,6 +52,7 @@ commands:
 jobs:
   lint:
     executor: node
+    resource_class: large
     steps:
       - checkout
       - run:
@@ -68,12 +62,17 @@ jobs:
             npx eslint .
 
   build_and_publish:
-    executor: build_machine
+    executor: debian
+    resource_class: large
     steps:
+      - setup_remote_docker:
+          version: 20.10.14
+          docker_layer_caching: true
       - checkout
       - run:
           name: Build image
           command: |
+            sudo apt-get update && sudo apt-get install -y git jq
             export VERSION=$(jq -r .version package.json | tr -d '"')
             docker build \
               -t beantown:$VERSION \
@@ -84,6 +83,8 @@ jobs:
               --build-arg git_hash=$CIRCLE_SHA1 \
               --build-arg version=$VERSION \
               --build-arg node_env=production .
+          environment:
+            DOCKER_BUILDKIT: 1
       - check_tags
       - run:
           name: Publish image
