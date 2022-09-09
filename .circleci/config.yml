@@ -68,13 +68,17 @@ jobs:
             npx eslint .
 
   build_and_publish:
-    executor: build_machine
+    executor: debian
     steps:
+      - setup_remote_docker:
+          version: 20.10.2
+          docker_layer_caching: true
       - checkout
       - run:
           name: Build image
           command: |
             export VERSION=$(jq -r .version package.json | tr -d '"')
+            export DOCKER_BUILDKIT=1
             docker build \
               -t beantown:$VERSION \
               --build-arg square_app_id=$SQUARE_APP_ID \
