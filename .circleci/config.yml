@@ -69,10 +69,12 @@ jobs:
 
   build_and_publish:
     executor: debian
+    resource_class: large
     steps:
       - setup_remote_docker:
           version: 20.10.2
           docker_layer_caching: true
+      - install_version_dependencies
       - checkout
       - run:
           name: Build image
