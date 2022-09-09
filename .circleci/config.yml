@@ -62,7 +62,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install dependencies & run lint
+          name: Install dependencies and run lint
           command: |
             npm install
             npx eslint .
@@ -72,7 +72,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Build Image
+          name: Build image
           command: |
             export VERSION=$(jq -r .version package.json | tr -d '"')
             docker build \
@@ -86,7 +86,7 @@ jobs:
               --build-arg node_env=production .
       - check_tags
       - run:
-          name: Publish Image
+          name: Publish image
           command: |
             export VERSION=$(jq -r .version package.json | tr -d '"')
             echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
@@ -108,7 +108,7 @@ jobs:
             kubectl config get-contexts
             kubectl get pods -n prod
       - run:
-          name: Deploy bentown-frontend
+          name: Deploy beantown to prod
           command: |
             export VERSION=$(jq -r .version package.json | tr -d '"')
             helm repo update
@@ -128,7 +128,7 @@ jobs:
 
 workflows:
   version: 2
-  beantown_frontend:
+  on_commit:
     jobs:
       - lint
       - build_and_publish:
