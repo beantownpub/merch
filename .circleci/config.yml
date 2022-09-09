@@ -9,10 +9,10 @@ executors:
     resource_class: large
   debian:
     docker:
-    - image: python:3.7-slim-buster
+    - image: cimg/python:3.7
   node:
     docker:
-      - image: cimg/node:14.17.6
+      - image: cimg/node:16.13.0
 
 commands:
   install_k8s_dependencies:
@@ -80,7 +80,6 @@ jobs:
           name: Build image
           command: |
             export VERSION=$(jq -r .version package.json | tr -d '"')
-            export DOCKER_BUILDKIT=1
             docker build \
               -t beantown:$VERSION \
               --build-arg square_app_id=$SQUARE_APP_ID \
@@ -90,6 +89,8 @@ jobs:
               --build-arg git_hash=$CIRCLE_SHA1 \
               --build-arg version=$VERSION \
               --build-arg node_env=production .
+          environment:
+            DOCKER_BUILDKIT: 1
       - check_tags
       - run:
           name: Publish image
