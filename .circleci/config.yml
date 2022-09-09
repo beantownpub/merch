@@ -74,11 +74,11 @@ jobs:
       - setup_remote_docker:
           version: 20.10.2
           docker_layer_caching: true
-      - install_version_dependencies
       - checkout
       - run:
           name: Build image
           command: |
+            sudo apt-get update && sudo apt-get install -y git jq
             export VERSION=$(jq -r .version package.json | tr -d '"')
             docker build \
               -t beantown:$VERSION \
