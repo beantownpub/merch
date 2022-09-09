@@ -21,7 +21,7 @@ commands:
       - run:
           name: Install kubectl
           command: |
-            apt-get update -y && apt-get install -y curl
+            sudo apt-get update -y && sudo apt-get install -y curl
             curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
             install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
             kubectl config set-credentials jalbot --token=$JALBOT_TOKEN
@@ -31,18 +31,18 @@ commands:
       - run:
           name: Install helm
           command: |
-            apt-get install apt-transport-https gnupg2 --yes
+            sudo apt-get install apt-transport-https gnupg2 --yes
             curl https://baltocdn.com/helm/signing.asc | apt-key add -
             echo "deb https://baltocdn.com/helm/stable/debian/ all main" | tee /etc/apt/sources.list.d/helm-stable-debian.list
-            apt-get update
-            apt-get install -y helm
+            sudo apt-get update
+            sudo apt-get install -y helm
   install_version_dependencies:
     description: Install dependencies for versioning
     steps:
       - run:
           name: Install dependencies
           command: |
-            apt-get update && apt-get install -y git jq
+            sudo apt-get update && sudo apt-get install -y git jq
   check_tags:
     description: Check if git tag matches package.json version
     steps:
@@ -59,6 +59,7 @@ commands:
 jobs:
   lint:
     executor: node
+    resource_class: large
     steps:
       - checkout
       - run:
