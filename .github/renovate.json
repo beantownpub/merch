@@ -1,0 +1,30 @@
+{
+  "extends": ["config:base", "helpers:disableTypesNodeMajor", ":ignoreUnstable"],
+  "packageRules": [
+    {
+      "matchDepTypes": ["dependencies"],
+      "matchPackagePatterns": ["*"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "all non-major dependencies",
+      "groupSlug": "all-minor-patch",
+      "labels": ["dependencies:npm"],
+      "semanticCommits": "enabled",
+      "vulnerabilityAlerts": {
+        "enabled": true,
+        "labels": ["dependencies:security"]
+      }
+    },
+    {
+      "matchDepTypes": ["devDependencies"],
+      "matchPackagePatterns": ["*"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "all development non-major dependencies",
+      "groupSlug": "all-development-minor-patch",
+      "labels": ["dependencies:npm"],
+      "semanticCommits": "enabled",
+      "automerge": true,
+      "automergeType": "pr"
+    }
+  ],
+  "reviewersFromCodeOwners": true
+}
