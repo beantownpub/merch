@@ -78,6 +78,11 @@ export const StyledContactForm = styled.div`
         font-family: ${FONTS.headline};
         text-transform: uppercase;
     }
+    .catering {
+      display: flex;
+      flex-flow: row nowrap;
+      width: 100%;
+  }
     .stateZip {
         display: flex;
         flex-flow: row nowrap;

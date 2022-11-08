@@ -113,7 +113,7 @@ jobs:
           command: |
             export VERSION=$(jq -r .version package.json | tr -d '"')
             helm repo update
-            helm upgrade --install beantown beantown/beantown \
+            helm upgrade --install beantown helm/beantown/ \
               --namespace prod \
               --set global.env=prod \
               --set image.tag=$VERSION \

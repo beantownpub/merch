@@ -1,19 +1,22 @@
 var express = require('express')
 var router = express.Router()
 const axios = require('axios')
-const utils = require('../utils/main')
 const network = require('../utils/network')
+const authHeaders = require('../utils/auth')
+
+
 
 
 router.post('/send-message', function (req, res, next) {
-  // console.log(req.body)
+  console.log(req.url)
+  console.log(`Contact API: ${network.urls.contactApi}`)
   try {
     const api_url = `${network.urls.contactApi}/v1/contact/beantown`
     axios({
       method: 'post',
       url: api_url,
       data: req.body,
-      headers: utils.authHeaders
+      headers: authHeaders
     })
       .then(response => {
         if (response.status === 200) {
@@ -25,7 +28,7 @@ router.post('/send-message', function (req, res, next) {
         } else {
           res.status(500).json({
             'status': 500,
-            'message': 'Contact API Error'
+            'msg': 'Contact API Error'
           })
         }
         res.end()
@@ -33,14 +36,14 @@ router.post('/send-message', function (req, res, next) {
       .catch(error => {
         console.error('Contact POST Axios: ' + error)
         res.status(500).json({
-          'title': 'Contact Failure',
+          'msg': 'Sorry, there was an error sending your request. Please send an email directly to beantownpubboston@gmail.com',
           'status': 500
         })
       })
   } catch(error) {
     console.log('Contact Unknown Error: ' + error)
     res.status(500).json({
-      'title': 'Contact unknown error',
+      'masg': 'Contact unknown error',
       'status': 500
     })
   }

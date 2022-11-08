@@ -54,7 +54,8 @@ router.get('/merch', function(req, res, next) {
 })
 
 router.get('/healthz', function(req, res, next) {
-  res.sendStatus('ok')
+  // console.log(req.url)
+  res.sendStatus(200)
 })
 
 router.get('/:section', function(req, res, next) {

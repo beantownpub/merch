@@ -19,7 +19,7 @@ export const ContactForm = () => {
     fetch("contact/send-message", {method: "POST", credentials: "include", body: JSON.stringify(values), headers: heads})
       .then(response => response.json())
       .then(data => setReply(data.msg))
-      .catch(error => console.log(error))
+      .catch(error => setReply(error))
     e.target.reset()
   }
 
@@ -71,6 +71,7 @@ export const ContactForm = () => {
               ref={register({ required: "Required"})}
             ></textarea>
             <h3>{errors.details && errors.details.message}</h3>
+            <div className="catering">
             <label htmlFor="catering">Interested in having your event catered? Check box if so</label>
             <input
               name="catering"
@@ -78,6 +79,7 @@ export const ContactForm = () => {
               value="Yes"
               ref={register()}
             />
+            </div>
             <br />
             <SubmitButton
               buttonText="Submit"
