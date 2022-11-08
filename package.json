@@ -23,7 +23,7 @@
     "kafkajs": "^1.16.0",
     "morgan": "~1.9.1",
     "react-promise-tracker": "^2.1.0",
-    "react-slick": "^0.25.2",
+    "react-slick": "^0.29.0",
     "react-slideshow-image": "^1.4.2",
     "react-square-web-payments-sdk": "^2.2.3",
     "redis": "^4.0.3",
