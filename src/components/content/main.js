@@ -47,7 +47,7 @@ export const MainInfo = () => {
             <h1>Billiards, Cocktails, Beer, And Fine Pub Dining</h1>
             <h5>Serving the heart of historic downtown Boston</h5>
             <h2>Open Daily</h2>
-            <h3>8:30 AM to 2:00 AM</h3>
+            <h3>9:00 AM to 2:00 AM</h3>
             <h2>Serving Food Late Night<br /><a href='/menu'><span>See menu &#10148;</span></a></h2>
             <GrubHub/>
           </section>
