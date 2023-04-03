@@ -1,6 +1,6 @@
 {
   "name": "beantown",
-  "version": "0.1.40",
+  "version": "0.1.41",
   "private": true,
   "engines": {
     "node": ">=14.17.6 <18"
