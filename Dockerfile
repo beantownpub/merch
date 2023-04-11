@@ -1,4 +1,4 @@
-FROM node:16.13.0-buster-slim AS build
+FROM node:19.9.0-buster-slim AS build
 
 RUN apt-get update  && \
     apt-get install -y \
@@ -32,7 +32,7 @@ COPY . ./
 RUN npx webpack --config webpack.config.js && \
     rm -rf node_modules
 
-FROM node:16.13.0-buster-slim
+FROM node:19.9.0-buster-slim
 
 ARG node_env
 ARG square_app_id
