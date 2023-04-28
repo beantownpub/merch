@@ -87,7 +87,8 @@ template:
 
 .ONESHELL: port_forward
 
-port_forward:
+## Start port forwarding
+helm/port_forward:
 	kubectl port-forward --namespace $(namespace) svc/$(name) $(port):$(port)
 
 

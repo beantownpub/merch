@@ -3,6 +3,6 @@ name: beantown
 description: Beantown Pub frontend deployment
 type: application
 version: 0.1.3
-appVersion: 0.1.40
+appVersion: 0.1.42-42c322b
 sources:
 - https://github.com/beantownpub/frontend
