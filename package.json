@@ -20,7 +20,7 @@
     "express": ">=4.17.1",
     "express-session": "^1.17.2",
     "http-errors": ">=1.7.1",
-    "kafkajs": "^1.16.0",
+    "kafkajs": "^2.0.0",
     "morgan": "~1.9.1",
     "react-promise-tracker": "^2.1.0",
     "react-slick": "^0.25.2",
