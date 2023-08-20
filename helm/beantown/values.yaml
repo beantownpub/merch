@@ -12,12 +12,4 @@ ingress:
 logLevel: tiny
 
 nodeEnv: ""
-
-kafka_bootstrap_server:
-kafka_password:
-kafka_username:
-session_secret:
-square_access_token_dev:
-square_access_token_prod:
-square_application_id_sandbox:
-square_url:
+regionCode:
