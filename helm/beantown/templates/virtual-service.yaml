@@ -11,7 +11,7 @@ spec:
   - "www.beantownpub.com"
 
   gateways:
-  - istio-ingress/web-gateway
+  - istio-system/web-gateway
   - mesh # applies to all the sidecars in the mesh
   http:
   - route:
