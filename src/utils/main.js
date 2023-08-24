@@ -1,13 +1,13 @@
-const config = require('./config.json')
+import * as configObj from "./config.js"
 
 const getOptions = {
-    method: 'GET',
-    headers: {'Content-Type': 'application/json'}
+  method: 'GET',
+  headers: {'Content-Type': 'application/json'}
 }
 
 const reqHeaders = {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json'
+  'Accept': 'application/json',
+  'Content-Type': 'application/json'
 }
 
 function uuidv4() {
@@ -17,4 +17,6 @@ function uuidv4() {
   })
 }
 
-module.exports = {config, getOptions, reqHeaders, uuidv4 }
+const config = configObj.default
+
+export { config, getOptions, reqHeaders, uuidv4 }

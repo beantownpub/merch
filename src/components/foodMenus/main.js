@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { StyledContentContainer } from './styles/main'
-import { CategoryCards } from './categories/main'
-import { config, getOptions } from '../../utils/main'
+import { StyledContentContainer } from './styles/main.js'
+import { CategoryCards } from './categories/main.js'
+import { config, getOptions } from '../../utils/main.js'
 const COLORS = config.colors
 
 

@@ -1,9 +1,9 @@
 import React from 'react'
-import { StyledPartiesContainer } from './styles'
-import { ContactForm } from '../contact/main'
-import { ImageSlider } from '../imageSliders/main'
-import { config } from '../../utils/main'
-import { sendEvent } from '../kafka/index'
+import { StyledPartiesContainer } from './styles.js'
+import { ContactForm } from '../contact/main.js'
+import { ImageSlider } from '../imageSliders/main.js'
+import { config } from '../../utils/main.js'
+import { sendEvent } from '../kafka/index.js'
 const COLORS = config.colors
 
 

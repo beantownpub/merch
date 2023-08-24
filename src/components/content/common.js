@@ -2,7 +2,7 @@ import React from 'react'
 import {
     StyledAnchor,
     StyledInfo,
-    StyledLinkButton } from './styles'
+    StyledLinkButton } from './styles.js'
 
 
 export const InfoSection = (props) => {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { ApplePay, GooglePay, SquarePaymentsForm, CreditCardInput } from "react-square-web-payments-sdk"
-import { StyledPaymentContainer, StyledPaymentForm } from "./styles"
+import { StyledPaymentContainer, StyledPaymentForm } from "./styles.js"
 import { config, reqHeaders, uuidv4 } from "../../../../utils/main"
 import { cartClose } from "../../../../utils/menuSlide"
 import { ToggleButton } from "../../../elements/buttons/main"

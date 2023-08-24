@@ -1,18 +1,17 @@
-var express = require('express')
-var router = express.Router()
-var config = require('../utils/config.json')
-var pages = config.pages
-const kafka = require('../utils/kafka')
+import express from 'express'
+import * as kafka from '../utils/kafka.js'
+import { config } from '../utils/main.js'
 
-const PRODUCER = kafka.brokers.producer()
-
+const router = express.Router()
+const pages = config.pages
+const producer = kafka.brokers.producer()
 
 router.use(function (req, res, next) {
   next()
 })
 
 router.post('/event', function(req, res, next) {
-  kafka.sendToStream(PRODUCER, 'clicks', 'events', req.body)
+  kafka.sendToStream(producer, 'clicks', 'events', req.body)
   res.sendStatus(200)
 })
 
@@ -68,4 +67,4 @@ router.get('/:section', function(req, res, next) {
   }
 })
 
-module.exports = router
+export default router

@@ -1,4 +1,4 @@
-{
+const config = {
     "orders": {
         "shippingPrice": 7.99
     },
@@ -207,3 +207,5 @@
         "script": "'Satisfy', cursive;"
     }
 }
+
+export default config

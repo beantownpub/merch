@@ -1,5 +1,5 @@
 import React from "react"
-import { StyledMerchSection } from "./styles"
+import { StyledMerchSection } from "./styles.js"
 import { ProductCard } from "./product"
 
 const Product = (props) => (

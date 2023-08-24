@@ -6,6 +6,7 @@ export SELF ?= $(MAKE)
 
 MAKE_FILES = ${MAKE_PATH}/helm/**/Makefile ${MAKE_PATH}/Makefile
 
+aws_default_region ?= ${AWS_DEFAULT_REGION}
 dockerhub ?= jalgraves
 image_name ?= beantown
 name ?= beantown
@@ -47,6 +48,7 @@ build: sass
 	docker build \
 		--platform linux/x86_64 \
 		-t $(image_name):$(image_tag) \
+		--build-arg aws_default_region=$(aws_default_region) \
 		--build-arg square_app_id=$(square_app_id) \
 		--build-arg square_location_id=$(square_location_id) \
 		--build-arg static_path=${BEANTOWN_STATIC_PATH} \

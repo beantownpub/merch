@@ -1,13 +1,13 @@
 import React from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import { AboutInfo } from './components/content/about'
-import { ContactInfo } from './components/content/contact'
-import { MainInfo } from './components/content/main'
-import { PrivateParties } from './components/content/parties'
-import { FoodMenu } from './components/foodMenus/main'
-import { MerchDash } from './components/merch/index'
-import { PrivacyPolicy, ReturnPolicy } from './components/merch/content/index'
-import { ErrorPage } from './components/content/index'
+import { AboutInfo } from './components/content/about.js'
+import { ContactInfo } from './components/content/contact.js'
+import { MainInfo } from './components/content/main.js'
+import { PrivateParties } from './components/content/parties.js'
+import { FoodMenu } from './components/foodMenus/main.js'
+import { MerchDash } from './components/merch/index.js'
+import { PrivacyPolicy, ReturnPolicy } from './components/merch/content/index.js'
+import { ErrorPage } from './components/content/index.js'
 
 export default function ReactRoutes() {
   return (

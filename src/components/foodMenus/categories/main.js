@@ -1,7 +1,7 @@
 import React from 'react'
-import { CategoryCard } from './card'
-import { StyledContentContainer, StyledMenuWarning } from '../styles/main'
-import { Sides } from '../sides/main'
+import { CategoryCard } from './card.js'
+import { StyledContentContainer, StyledMenuWarning } from '../styles/main.js'
+import { Sides } from '../sides/main.js'
 
 
 export const CategoryCards = (props) => {

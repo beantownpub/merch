@@ -1,33 +1,35 @@
-const axios = require('axios')
-const authHeaders = require('./auth')
+import axios from 'axios'
+import secret from './secrets.js'
 
+const AUTH = 'Basic ' + Buffer.from(secret.api_user + ':' + secret.api_pass).toString('base64')
+let HEADERS = {'Content-Type': 'application/json', 'Authorization': AUTH}
 const OK_RESPONSES = Array.from({length: 300 - 200}, (v, k) => k + 200)
 
 const RESPONSES = {
-    apiError: {
-      'status': 500,
-      'message': 'Merch API Error'
-    },
-    axiosError: {
-      'status': 500,
-      'message': 'Axios Error'
-    },
-    authError: {
-      'status': 500,
-      'message': 'Auth Failure'
-    }
+  apiError: {
+    'status': 500,
+    'message': 'Merch API Error'
+  },
+  axiosError: {
+    'status': 500,
+    'message': 'Axios Error'
+  },
+  authError: {
+    'status': 500,
+    'message': 'Auth Failure'
+  }
 }
 
 function cartRequest(options, cartId, res) {
-  authHeaders['Content-Type'] = 'application/json'
+  HEADERS['Content-Type'] = 'application/json'
   // console.log(`Cart ID: ${cartId}`)
   if (cartId) {
-    authHeaders['Cart-ID'] = cartId
+    HEADERS['Cart-ID'] = cartId
   }
-  options.headers = authHeaders
+  options.headers = HEADERS
   // console.log(`makeRequest | METHOD: ${options.method} | URL | ${options.url}`)
   try {
-    axios(options)
+    axios.default(options)
     .then(response => {
       // console.log(`makeRequest | Response: ${response.status}`)
       if (OK_RESPONSES.includes(response.status)) {
@@ -48,8 +50,8 @@ function cartRequest(options, cartId, res) {
 }
 
 function slackRequest(options) {
-  authHeaders['Content-Type'] = 'application/json'
-  options.headers = authHeaders
+  HEADERS['Content-Type'] = 'application/json'
+  options.headers = HEADERS
   console.log(`slackRequest | Body: ${options.body} | URL | ${options.url}`)
   try {
     axios(options)
@@ -70,4 +72,4 @@ function slackRequest(options) {
   }
 }
 
-module.exports = { cartRequest, slackRequest }
+export { cartRequest, slackRequest }

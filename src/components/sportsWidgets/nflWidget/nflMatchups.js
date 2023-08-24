@@ -1,5 +1,5 @@
 import React from 'react'
-import NFLTeamStats from './nflTeamStats'
+import NFLTeamStats from './nflTeamStats.js'
 import styled from 'styled-components'
 
 const StyledMatchup = styled.div `

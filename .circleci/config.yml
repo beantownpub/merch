@@ -76,6 +76,7 @@ jobs:
             export VERSION=$(jq -r .version package.json | tr -d '"')
             docker build \
               -t beantown:$VERSION \
+              --build-arg aws_default_region=$AWS_DEFAULT_REGION \
               --build-arg square_app_id=$SQUARE_APP_ID \
               --build-arg square_location_id=$SQUARE_LOCATION_ID \
               --build-arg static_path=$BEANTOWN_STATIC_PATH \

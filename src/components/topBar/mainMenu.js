@@ -2,10 +2,10 @@ import React from 'react'
 import {
     StyledSlideMenu,
     StyledNavBar,
-    StyledLink } from './styles'
-import { Icon } from '../content/icons/index'
-import {toggleMenu, SlideMenuLogo } from './slide'
-import { NavBarLogo, navBar } from './navBar'
+    StyledLink } from './styles.js'
+import { Icon } from '../content/icons/index.js'
+import {toggleMenu, SlideMenuLogo } from './slide.js'
+import { NavBarLogo, navBar } from './navBar.js'
 
 export function linkProps(pages, menuType) {
   const pageProps = []

@@ -1,12 +1,12 @@
-var express = require('express')
-var router = express.Router()
-const getRequest = require('../utils/request')
-const network = require('../utils/network')
+import express from 'express'
+import makeRequest from '../utils/request.js'
+import network from '../utils/network.js'
+const router = express.Router()
 
-function makeRequest(uri, res) {
+function sendRequest(uri, res) {
   try {
     const apiUrl = `${network.urls.menuApi}${uri}`
-    getRequest(apiUrl, res)
+    makeRequest(apiUrl, res)
   } catch(error) {
     console.log('makeRequest Error: ' + error)
     res.status(500).json({
@@ -18,16 +18,16 @@ function makeRequest(uri, res) {
 
 router.get('/categories', function (req, res, next) {
   const uri = `/v1/menu?location=beantown`
-  makeRequest(uri, res)
+  sendRequest(uri, res)
 })
 
 router.get('/sides', function (req, res, next) {
   const uri = `/v1/menu?location=beantown`
-  makeRequest(uri, res)
+  sendRequest(uri, res)
 })
 
 router.get('/:page', function(req, res, next) {
   res.redirect(`/${req.params['page']}`)
 })
 
-module.exports = router
+export default router

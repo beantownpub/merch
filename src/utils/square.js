@@ -32,6 +32,4 @@ function parseError(error) {
     }
 }
 
-console.log(`Node Env: ${process.env.NODE_ENV}`)
-
-module.exports = { accessToken, squareRequestBody, url, parseError }
+export { accessToken, squareRequestBody, url, parseError }

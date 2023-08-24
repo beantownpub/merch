@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { useForm } from "react-hook-form"
 import { Icon } from "../../../content/icons/index"
 import { SubmitButton, ToggleButton } from "../../../elements/buttons/main"
-import { StyledCheckoutForm } from "./styles"
+import { StyledCheckoutForm } from "./styles.js"
 import { PaymentForm } from "../../square/forms/main"
 import { config } from "../../../../utils/main"
 

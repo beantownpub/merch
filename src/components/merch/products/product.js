@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { CartButton } from "../../elements/index"
-import { StyledMerchItem } from "./styles"
+import { StyledMerchItem } from "./styles.js"
 import { config } from "../../../utils/main"
 import { SizeSelect } from "./sizeSelect"
 import { ImageSlider } from "../../imageSliders/main"

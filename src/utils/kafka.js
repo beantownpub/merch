@@ -1,8 +1,8 @@
-const { Kafka } = require('kafkajs')
+import * as Kafka from 'kafkajs'
 // This creates a client instance that is configured to connect to the Kafka broker provided by
 // the environment variable KAFKA_BOOTSTRAP_SERVER
 const brokers = new Kafka({
-  clientId: 'jalbot',
+  clientId: process.env.KAFKA_CLIENT_ID || 'jalbot',
   brokers: [process.env.KAFKA_BOOTSTRAP_SERVER],
   ssl: true,
   sasl: {
@@ -31,4 +31,4 @@ async function sendToStream(producer, topic, key, data) {
   }
 }
 
-module.exports = { brokers, sendToStream }
+export { brokers, sendToStream }

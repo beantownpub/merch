@@ -1,15 +1,11 @@
-var express = require('express')
-var router = express.Router()
+import express from 'express'
+const router = express.Router()
 const axios = require('axios')
 const network = require('../utils/network')
 const authHeaders = require('../utils/auth')
 
 
-
-
 router.post('/send-message', function (req, res, next) {
-  console.log(req.url)
-  console.log(`Contact API: ${network.urls.contactApi}`)
   try {
     const api_url = `${network.urls.contactApi}/v1/contact/beantown`
     axios({
@@ -20,7 +16,6 @@ router.post('/send-message', function (req, res, next) {
     })
       .then(response => {
         if (response.status === 200) {
-          // console.log(response.data)
           res.status(200).json({
             'status': 200,
             'msg': 'Request Received! We will respond to you as soon as we can. Thanks!'
@@ -54,4 +49,4 @@ router.get('/:page', function(req, res, next) {
   res.redirect(`/${req.params['page']}`)
 })
 
-module.exports = router
+export default router

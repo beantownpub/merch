@@ -1,5 +1,5 @@
 import React from 'react'
-import SportsLink from './sportsLink'
+import SportsLink from './sportsLink.js'
 import styled from 'styled-components'
 
 const StyledLeagueLinks = styled.div `

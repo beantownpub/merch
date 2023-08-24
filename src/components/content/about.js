@@ -1,7 +1,7 @@
 import React from 'react'
-import { InfoSection } from './common'
-import { config } from '../../utils/main'
-import { sendEvent } from '../kafka/index'
+import { InfoSection } from './common.js'
+import { config } from '../../utils/main.js'
+import { sendEvent } from '../kafka/index.js'
 const COLORS = config.colors
 
 

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { config } from '../../utils/main'
+import { config } from '../../utils/main.js'
 const COLORS = config.colors
 
 export const StyledImageSlider = styled.div`

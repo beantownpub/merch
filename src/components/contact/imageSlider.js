@@ -1,5 +1,5 @@
 import React from 'react'
-import ImageSlider from '../imageSliders/main'
+import ImageSlider from '../imageSliders/main.js'
 
 const images = [
     "bt_pool_tables.jpeg",

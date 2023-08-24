@@ -1,7 +1,7 @@
 import React from 'react'
-import { linkProps } from './index'
-import { config } from '../../utils/main'
-import { StyledTopNav } from './styles'
+import { linkProps } from './index.js'
+import { config } from '../../utils/main.js'
+import { StyledTopNav } from './styles.js'
 
 const COLORS = config.colors
 const STATIC_URL = config.urls.static

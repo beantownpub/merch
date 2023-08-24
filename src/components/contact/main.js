@@ -1,9 +1,9 @@
-import React, { useState } from "react"
-import { useForm } from "react-hook-form"
-import { Icon } from '../content/icons/index'
-import { SubmitButton } from "../elements/buttons/main"
-import { StyledContactForm } from "./styles"
-import { config } from "../../utils/main"
+import React, { useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { Icon } from '../content/icons/index.js'
+import { SubmitButton } from '../elements/buttons/main.js'
+import { StyledContactForm } from './styles.js'
+import { config } from '../../utils/main.js'
 
 const COLORS = config.colors
 

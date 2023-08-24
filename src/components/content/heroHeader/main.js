@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyledHero } from './styles'
+import { StyledHero } from './styles.js'
 
 export const HeroHeader = (props) => {
     return (

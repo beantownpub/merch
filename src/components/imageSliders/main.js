@@ -1,6 +1,6 @@
 import React from "react"
 import Slider from "react-slick"
-import { StyledImageSlider } from "./styles"
+import { StyledImageSlider } from "./styles.js"
 
 export const SlideList = (props) => {
   const renderItems = (items) => {

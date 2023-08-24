@@ -1,11 +1,11 @@
 import React from 'react'
-import { InfoSection } from './common'
-import { GrubHub } from './grubHub/main'
-import { StyledContentContainer } from './styles'
-import { HeroHeader } from './heroHeader/main'
-import { config } from '../../utils/main'
-import { sendEvent } from '../kafka/index'
-import { ImageSlider } from '../imageSliders/main'
+import { InfoSection } from './common.js'
+import { GrubHub } from './grubHub/main.js'
+import { StyledContentContainer } from './styles.js'
+import { HeroHeader } from './heroHeader/main.js'
+import { config } from '../../utils/main.js'
+import { sendEvent } from '../kafka/index.js'
+import { ImageSlider } from '../imageSliders/main.js'
 const COLORS = config.colors
 const STATIC_PATH = `${config.urls.static}/img/merch`
 const SLIDER_STYLES = {

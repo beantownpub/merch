@@ -1,5 +1,5 @@
 import React from "react"
-import { StyledContentContainer } from "./styles"
+import { StyledContentContainer } from "./styles.js"
 
 export const ErrorPage = () => {
   return (
