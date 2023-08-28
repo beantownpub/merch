@@ -1,14 +1,15 @@
 import express from 'express'
 import * as squareConnect from 'square-connect'
 
-import cartRequest from '../utils/axios.js'
-import config from '../utils/main.js'
+import { cartRequest } from '../utils/axios.js'
+import { config } from '../utils/main.js'
 import network from '../utils/network.js'
 import * as squareUtils from '../utils/square.js'
+import * as  kafka from '../utils/kafka.js'
 
 const pages = config.pages
 const router = express.Router()
-const kafka = require('../utils/kafka')
+
 const producer = kafka.brokers.producer()
 
 router.post('/event', function(req, res, next) {
@@ -17,7 +18,7 @@ router.post('/event', function(req, res, next) {
 })
 
 router.get('/items', function(req, res, next) {
-  kafka.sendToStream(PRODUCER, 'requests', 'reqs', req.headers)
+  kafka.sendToStream(producer, 'requests', 'reqs', req.headers)
   const merch = pages['merch']
   res.render("main", merch.metadata)
 })

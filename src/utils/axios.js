@@ -1,7 +1,7 @@
-import axios from 'axios'
-import secret from './secrets.js'
+import * as axios from 'axios'
+import { appSecret } from './secrets.js'
 
-const AUTH = 'Basic ' + Buffer.from(secret.api_user + ':' + secret.api_pass).toString('base64')
+const AUTH = 'Basic ' + Buffer.from(appSecret.api_user + ':' + appSecret.api_pass).toString('base64')
 let HEADERS = {'Content-Type': 'application/json', 'Authorization': AUTH}
 const OK_RESPONSES = Array.from({length: 300 - 200}, (v, k) => k + 200)
 
@@ -54,7 +54,7 @@ function slackRequest(options) {
   options.headers = HEADERS
   console.log(`slackRequest | Body: ${options.body} | URL | ${options.url}`)
   try {
-    axios(options)
+    axios.default(options)
     .then(response => {
       console.log(`makeRequest | Response: ${response.status}`)
       if (OK_RESPONSES.includes(response.status)) {

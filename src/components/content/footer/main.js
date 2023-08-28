@@ -1,5 +1,5 @@
 import React from 'react'
-import { SocialNav } from '../social'
+import { SocialNav } from '../social.js'
 import { StyledFooter } from './styles.js'
 
 export const Footer = () => {

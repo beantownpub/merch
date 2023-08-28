@@ -1,10 +1,10 @@
-import React, { useState } from "react"
-import { useForm } from "react-hook-form"
-import { Icon } from "../../../content/icons/index"
-import { SubmitButton, ToggleButton } from "../../../elements/buttons/main"
-import { StyledCheckoutForm } from "./styles.js"
-import { PaymentForm } from "../../square/forms/main"
-import { config } from "../../../../utils/main"
+import React, { useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { Icon } from '../../../content/icons/index.js'
+import { SubmitButton, ToggleButton } from '../../../elements/buttons/main.js'
+import { StyledCheckoutForm } from './styles.js'
+import { PaymentForm } from '../../square/forms/main.js'
+import { config } from '../../../../utils/main.js'
 
 const COLORS = config.colors
 

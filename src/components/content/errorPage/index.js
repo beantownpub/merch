@@ -1,7 +1,7 @@
-import React from "react"
-import { StyledContentContainer } from "./styles.js"
+import React from 'react'
+import { StyledContentContainer } from './styles.js'
 
-export const ErrorPage = () => {
+const ErrorPage = () => {
   return (
     <StyledContentContainer aria-labelledby="Error page container">
       <h1>See Yah Laatah!&trade;</h1>
@@ -10,3 +10,5 @@ export const ErrorPage = () => {
     </StyledContentContainer>
   )
 }
+
+export { ErrorPage }

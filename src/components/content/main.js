@@ -55,8 +55,8 @@ export const MainInfo = () => {
         <InfoSection bgColor={COLORS.darkGray} fontColor={COLORS.yellow} slug="gift-cards-merch-section">
           <section id="giftCardsMerchSection">
             <h3>Gift Cards and Merchandise Available<br /></h3>
-            <ImageSlider images={SLIDER_IMAGES} imagePath={STATIC_PATH} sliderSettings={SLIDER_SETTINGS} sliderStyles={SLIDER_STYLES} />
-            <h4><a id="merchRef" href='/merch/items'><span>Shop now &#10148;</span></a></h4>
+            {/* <ImageSlider images={SLIDER_IMAGES} imagePath={STATIC_PATH} sliderSettings={SLIDER_SETTINGS} sliderStyles={SLIDER_STYLES} /> */}
+            <h4><a id="merchRef" href='/merch/items'></a></h4>
             <h4>Make your next private event a memorable one and book it at Beantown<br /><a id="partiesRef" href='/parties'>Learn more &#10148;</a></h4>
           </section>
         </InfoSection>

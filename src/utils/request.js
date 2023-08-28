@@ -1,7 +1,7 @@
-import axios from axios;
-import secret from './secrets.js'
+import * as axios from 'axios'
+import { appSecret } from './secrets.js'
 
-const AUTH = 'Basic ' + Buffer.from(secret.api_user + ':' + secret.api_pass).toString('base64')
+const AUTH = 'Basic ' + Buffer.from(appSecret.api_user + ':' + appSecret.api_pass).toString('base64')
 const OPTIONS = {
     method: 'get',
     headers: {'Content-Type': 'application/json', 'Authorization': AUTH},

@@ -3,13 +3,19 @@ import { StyledSideSection} from '../styles/main.js'
 import { StyledItem } from '../styles/items.js'
 
 export const Sides = (props) => {
-  // console.log(`SIDES: ${props.sides}`)
   const renderSides = (sides) => {
     const sideList = []
     let cnt = 1
     for (const side of Object.values(sides)) {
       sideList.push(
-        <StyledItem aria-labelledby="Side item" key={cnt} margin=".5rem" maxWidth="max-content"><p>{side}</p></StyledItem>
+        <StyledItem 
+          aria-labelledby="Side item"
+          key={cnt}
+          margin=".5rem"
+          maxWidth="max-content"
+        >
+            <p>{side}</p>
+        </StyledItem>
       )
       cnt++
     }

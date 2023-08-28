@@ -1,10 +1,8 @@
+import express from 'express'
 import * as axios from 'axios'
-import secret from '../utils/secrets.js'
-import { config } from '../utils/main.js'
+import { secret } from '../utils/secrets.js'
 import network from '../utils/network.js'
-const sections = config.default.sections
 const router = express.Router()
-
 
 router.post('/send-message', function (req, res, next) {
   try {

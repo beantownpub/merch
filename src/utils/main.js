@@ -1,4 +1,4 @@
-import * as configObj from "./config.js"
+import * as configObj from './config.js'
 
 const getOptions = {
   method: 'GET',

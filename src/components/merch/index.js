@@ -1,1 +1,1 @@
-export * from "./merchDash"
+export * from './merchDash.js'

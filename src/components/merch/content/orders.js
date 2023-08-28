@@ -1,6 +1,6 @@
-import React from "react"
-import { config } from "../../../utils/main"
-import { StyledContentContainer } from "./styles.js"
+import React from 'react'
+import { config } from '../../../utils/main.js'
+import { StyledContentContainer } from './styles.js'
 
 const Container = (props) => {
   return (

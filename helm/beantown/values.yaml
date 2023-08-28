@@ -1,3 +1,11 @@
+aws:
+  accessKeyId:
+  appSecretName:
+  region:
+  secretAccessKey:
+  secretName:
+
+env: dev
 image:
   repository: jalgraves/beantown
   pullPolicy: Always

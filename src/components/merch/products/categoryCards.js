@@ -1,6 +1,6 @@
-import React from "react"
-import { CategoryCard } from "./category"
-import { StyledContentContainer } from "../styles/index"
+import React from 'react'
+import { CategoryCard } from './category.js'
+import { StyledContentContainer } from '../styles/index.js'
 
 export const CategoryCards = (props) => {
   const categoryList = []

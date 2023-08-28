@@ -10,7 +10,7 @@ ifeq ($(env),dev)
 	context = ${DEV_CONTEXT}
 	namespace = ${DEV_NAMESPACE}
 	square_url = ${SQUARE_URL_DEV}
-	logLevel = tiny
+	logLevel = dev
 else ifeq ($(env), prod)
 	context = ${PROD_CONTEXT}
 	namespace = ${PROD_NAMESPACE}
@@ -55,12 +55,17 @@ helm/creds/services: context
 		--from-literal=users_api_port="${USERS_API_PORT}" \
 		--from-literal=users_api_protocol="${USERS_API_PROTOCOL}"
 
-## install beantown frontend in K8s cluster
-install:
-	kubectl config use-context $(context)
+## Install beantown frontend in K8s cluster
+helm/install:
+	kubectl config use-context $(context) && \
 	helm upgrade --install beantown helm/beantown/ \
 		--namespace $(namespace) \
 		--set image.tag=$(tag) \
+		--set aws.accessKeyId=${AWS_ACCESS_KEY_ID} \
+		--set aws.secretAccessKey=${AWS_SECRET_ACCESS_KEY} \
+		--set aws.secretName=${AWS_SECRET_NAME} \
+		--set aws.appSecretName=${AWS_APP_SECRET_NAME} \
+		--set aws.region=${AWS_REGION} \
 		--set global.env=$(env) \
 		--set kafka_bootstrap_server=${KAFKA_BOOTSTRAP_SERVER} \
 		--set kafka_password=${KAFKA_PASSWORD} \
@@ -73,11 +78,15 @@ install:
 		--set logLevel=$(logLevel) \
 		--debug
 
-delete:
-	kubectl config use-context $(context)
+## Uninstall beantown frontend from K8s cluster
+helm/delete:
+	kubectl config use-context $(context) && \
 	helm uninstall $(name) -n $(namespace)
 
-## run helm template
+## Delete Helm release and redeploy
+helm/redeploy: helm/delete helm/install
+
+## Run helm template
 template:
 	helm template helm/beantown/ \
 		--namespace $(namespace) \

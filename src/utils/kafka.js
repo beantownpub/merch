@@ -1,14 +1,16 @@
-import * as Kafka from 'kafkajs'
+import { Kafka } from 'kafkajs'
+import { secret } from './secrets.js'
 // This creates a client instance that is configured to connect to the Kafka broker provided by
-// the environment variable KAFKA_BOOTSTRAP_SERVER
+// the AWS secrets manager secret
+console.log(`KAFKA: ${Object.keys(Kafka)}`)
 const brokers = new Kafka({
   clientId: process.env.KAFKA_CLIENT_ID || 'jalbot',
-  brokers: [process.env.KAFKA_BOOTSTRAP_SERVER],
+  brokers: [secret.kafka_bootstrap_server],
   ssl: true,
   sasl: {
     mechanism: 'plain', // scram-sha-256 or scram-sha-512
-    username: process.env.KAFKA_USERNAME,
-    password: process.env.KAFKA_PASSWORD
+    username: secret.kafka_username,
+    password: secret.kafka_password
   }
 })
 

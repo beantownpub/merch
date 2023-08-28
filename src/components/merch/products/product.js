@@ -1,9 +1,9 @@
-import React, { useState } from "react"
-import { CartButton } from "../../elements/index"
-import { StyledMerchItem } from "./styles.js"
-import { config } from "../../../utils/main"
-import { SizeSelect } from "./sizeSelect"
-import { ImageSlider } from "../../imageSliders/main"
+import React, { useState } from 'react'
+import { CartButton } from '../../elements/index.js'
+import { StyledMerchItem } from './styles.js'
+import { config } from '../../../utils/main.js'
+import { SizeSelect } from './sizeSelect.js'
+import { ImageSlider } from '../../imageSliders/main.js'
 
 const COLORS = config.colors
 const STATIC_PATH = `${config.urls.static}/img/merch`

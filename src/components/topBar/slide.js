@@ -1,8 +1,8 @@
-import React from "react"
-import { config } from "../../utils/main.js"
-import { StyledCloseMenu, StyledHamburger } from "./styles.js"
-
+import React from 'react'
+import { config } from '../../utils/main.js'
+import { StyledCloseMenu, StyledHamburger } from './styles.js'
 import * as SLIDE from '../../utils/menuSlide.js'
+
 const STATIC_URL = config.urls.static
 
 export function toggleMenu(action) {
