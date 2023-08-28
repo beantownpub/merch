@@ -1,18 +1,20 @@
-import express from 'express'
+import * as axios from 'axios'
+import secret from '../utils/secrets.js'
+import { config } from '../utils/main.js'
+import network from '../utils/network.js'
+const sections = config.default.sections
 const router = express.Router()
-const axios = require('axios')
-const network = require('../utils/network')
-const authHeaders = require('../utils/auth')
 
 
 router.post('/send-message', function (req, res, next) {
   try {
     const api_url = `${network.urls.contactApi}/v1/contact/beantown`
+    const auth = 'Basic ' + Buffer.from(secret.api_user + ':' + secret.api_pass).toString('base64')
     axios({
       method: 'post',
       url: api_url,
       data: req.body,
-      headers: authHeaders
+      headers: {'Content-Type': 'application/json', 'Authorization': auth}
     })
       .then(response => {
         if (response.status === 200) {
