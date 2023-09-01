@@ -7,8 +7,8 @@ const COLORS = config.colors
 
 const iconStyle = {
 	padding: '0 .25em',
-    color: COLORS.yellow,
-    fontSize: '3rem'
+  color: COLORS.yellow,
+  fontSize: '3rem'
 }
 
 export const SocialNav = () => {

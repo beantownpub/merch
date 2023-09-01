@@ -58,7 +58,7 @@ build: sass
 		--build-arg git_hash=$(git_hash) \
 		--build-arg version=$(version) .
 
-publish: build
+publish:
 	@echo "\033[1;32m. . . Publishing $(image_name):$(image_tag) . . .\033[1;37m\n"
 	docker tag $(image_name):$(image_tag) $(dockerhub)/$(image_name):$(image_tag)
 	docker push $(dockerhub)/$(image_name):$(image_tag)
@@ -80,8 +80,12 @@ redeploy: build restart
 
 restart: kill_pod kill_port_forward
 
+docker/prune:
+	docker builder prune -a --force
+
 clean:
 	rm -rf node_modules/
+
 
 ## Show available commands
 help:

@@ -3,6 +3,7 @@ import { config } from '../../utils/main.js'
 const COLORS = config.colors
 
 export const StyledImageSlider = styled.div`
+  ${console.log(props => props.styles)}
   display: ${props => props.styles.display || "flex"};
   flex-flow: ${props => props.styles.flexFlow || "column nowrap"};
   margin: ${props => props.styles.margin || "auto"};
