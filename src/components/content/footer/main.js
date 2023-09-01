@@ -1,6 +1,6 @@
 import React from 'react'
-import { SocialNav } from '../social'
-import { StyledFooter } from './styles'
+import { SocialNav } from '../social.js'
+import { StyledFooter } from './styles.js'
 
 export const Footer = () => {
   const year = new Date().getFullYear()

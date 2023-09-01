@@ -1,8 +1,9 @@
 // Objects and functions for setting up Square API environment
+import { secret } from './secrets.js'
 
 const TOKENS = {
-    development: process.env.SQUARE_ACCESS_TOKEN_DEV,
-    production: process.env.SQUARE_ACCESS_TOKEN_PROD
+    development: secret.square_access_token_dev,
+    production: secret.square_access_token_prod
 }
 
 const URLS = {
@@ -14,7 +15,7 @@ const accessToken = TOKENS[process.env.NODE_ENV]
 const url = URLS[process.env.NODE_ENV]
 
 function squareRequestBody(params) {
-    const locationId = process.env.SQUARE_LOCATION_ID
+    const locationId = secret.square_location_id
     return {
         source_id: params.source_id,
         location_id: locationId,
@@ -32,6 +33,4 @@ function parseError(error) {
     }
 }
 
-console.log(`Node Env: ${process.env.NODE_ENV}`)
-
-module.exports = { accessToken, squareRequestBody, url, parseError }
+export { accessToken, squareRequestBody, url, parseError }

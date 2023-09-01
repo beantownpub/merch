@@ -1,7 +1,11 @@
-const path = require('path')
-const webpack = require('webpack')
+import path from 'path'
+import webpack from 'webpack'
+import { fileURLToPath } from 'url'
 
-module.exports = env => {
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
+export default env => {
   return {
     plugins: [
       new webpack.DefinePlugin({

@@ -1,26 +1,21 @@
-var express = require('express')
-var router = express.Router()
-const axios = require('axios')
-const network = require('../utils/network')
-const authHeaders = require('../utils/auth')
-
-
-
+import express from 'express'
+import * as axios from 'axios'
+import { secret } from '../utils/secrets.js'
+import network from '../utils/network.js'
+const router = express.Router()
 
 router.post('/send-message', function (req, res, next) {
-  console.log(req.url)
-  console.log(`Contact API: ${network.urls.contactApi}`)
   try {
     const api_url = `${network.urls.contactApi}/v1/contact/beantown`
+    const auth = 'Basic ' + Buffer.from(secret.api_user + ':' + secret.api_pass).toString('base64')
     axios({
       method: 'post',
       url: api_url,
       data: req.body,
-      headers: authHeaders
+      headers: {'Content-Type': 'application/json', 'Authorization': auth}
     })
       .then(response => {
         if (response.status === 200) {
-          // console.log(response.data)
           res.status(200).json({
             'status': 200,
             'msg': 'Request Received! We will respond to you as soon as we can. Thanks!'
@@ -54,4 +49,4 @@ router.get('/:page', function(req, res, next) {
   res.redirect(`/${req.params['page']}`)
 })
 
-module.exports = router
+export default router

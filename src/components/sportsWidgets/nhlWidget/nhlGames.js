@@ -1,41 +1,40 @@
 import React from 'react'
 import styled from 'styled-components'
-import NHLTeamCard from './nhlTeamCard'
-import NHLScoreCard from './nhlScoreCard'
-import SportsLink from '../sportsLink'
-
-const config = require('./nhlConfig.json')
+import NHLTeamCard from './nhlTeamCard.js'
+import NHLScoreCard from './nhlScoreCard.js'
+import SportsLink from '../sportsLink.js'
+import * as config from './nhlConfig.js'
 
 const StyledMatchup = styled.div `
-    margin: auto;
-    padding: 0 .25em;
-    display: flex;
-    flex-flow: column wrap;
-    height: min-content;
-    width: max-content;
-    h1 {
-        padding: .75em;
-        font-family: gotham-narrow-ultra;
-        font-size: 1.25em;
-        text-align: center;
-        text-transform: uppercase;
-        letter-spacing: .07em;
-    }
-    h3 {
-        font-family: Proxima Nova Bold,Helvetica Neue Bold,Helvetica Bold,Arial Bold,sans-serif;
-        font-size: 1em;
-        text-transform: uppercase;
-        letter-spacing: .1em;
-    }
-    span {
-        color: ${props => props.dataColor || "#C60C30"};
-    }
-    .match {
-        margin: auto;
-        display: inline-flex;
-        flex-flow: row nowrap;
-        width: min-content;
-    }
+  margin: auto;
+  padding: 0 .25em;
+  display: flex;
+  flex-flow: column wrap;
+  height: min-content;
+  width: max-content;
+  h1 {
+      padding: .75em;
+      font-family: gotham-narrow-ultra;
+      font-size: 1.25em;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+  }
+  h3 {
+      font-family: Proxima Nova Bold,Helvetica Neue Bold,Helvetica Bold,Arial Bold,sans-serif;
+      font-size: 1em;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+  }
+  span {
+      color: ${props => props.dataColor || "#C60C30"};
+  }
+  .match {
+      margin: auto;
+      display: inline-flex;
+      flex-flow: row nowrap;
+      width: min-content;
+  }
 
 `
 

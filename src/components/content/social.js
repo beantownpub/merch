@@ -1,15 +1,14 @@
 import React from 'react'
-import { Icon } from "./icons/index"
+import { Icon } from './icons/index.js'
+import { config } from '../../utils/main.js'
 
-// import { config } from '../../utils/main'
-const config = require('../../utils/config.json')
 const URLS = config.urls
 const COLORS = config.colors
 
 const iconStyle = {
 	padding: '0 .25em',
-    color: COLORS.yellow,
-    fontSize: '3rem'
+  color: COLORS.yellow,
+  fontSize: '3rem'
 }
 
 export const SocialNav = () => {

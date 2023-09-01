@@ -1,4 +1,4 @@
-{
+const config = {
     "team_ids": {
         "new jersey devils": 1,
         "new york islanders": 2,
@@ -656,3 +656,5 @@
         }
     }
 }
+
+export default config

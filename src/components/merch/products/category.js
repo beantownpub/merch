@@ -1,6 +1,6 @@
-import React from "react"
-import { StyledMerchSection } from "./styles"
-import { ProductCard } from "./product"
+import React from 'react'
+import { StyledMerchSection } from './styles.js'
+import { ProductCard } from './product.js'
 
 const Product = (props) => (
   <ProductCard

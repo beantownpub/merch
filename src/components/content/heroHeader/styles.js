@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { config } from '../../../utils/main'
+import { config } from '../../../utils/main.js'
 
 const COLORS = config.colors
 const FONTS = config.fonts
@@ -14,23 +14,23 @@ background-image: url(${props => `${STATIC_URL}/img/${props.image}`});
 background-size: cover;
 background-position: center;
 h1 {
-    margin: auto;
-    max-width: 80%;
-    font-family: ${FONTS.button};
-    font-size: 3.5rem;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: .2em;
-    color: ${COLORS.white};
-    text-shadow: 2px 2px 8px ${COLORS.black};
-    line-height: 150%;
+  margin: auto;
+  max-width: 80%;
+  font-family: ${FONTS.button};
+  font-size: 3.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  color: ${COLORS.white};
+  text-shadow: 2px 2px 8px ${COLORS.black};
+  line-height: 150%;
 }
 @media (min-width: 320px)
 and (max-width: 768px)
 and (orientation: portrait)
 and (-webkit-min-device-pixel-ratio: 2) {
-    h1 {
-        font-size: 2rem;
-    }
+  h1 {
+    font-size: 2rem;
+  }
 }
 `

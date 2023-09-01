@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import { ToggleButton } from '../../elements/buttons/main'
-import { StyledCartContainer } from './styles'
-import { CheckoutForm } from './forms/main'
-import { CartItem, ItemsContainer } from './items'
-import { OrderConfirmation, OrderFailed, ShippingInfo } from '../content/index'
-import { cartClose } from '../../../utils/menuSlide'
-import { config } from '../../../utils/main'
+import { ToggleButton } from '../../elements/buttons/main.js'
+import { StyledCartContainer } from './styles.js'
+import { CheckoutForm } from './forms/main.js'
+import { CartItem, ItemsContainer } from './items.js'
+import { OrderConfirmation, OrderFailed, ShippingInfo } from '../content/index.js'
+import { cartClose } from '../../../utils/menuSlide.js'
+import { config } from '../../../utils/main.js'
 
 const COLORS = config.colors
 

@@ -1,3 +1,11 @@
+aws:
+  accessKeyId:
+  appSecretName:
+  region:
+  secretAccessKey:
+  secretName:
+
+env: dev
 image:
   repository: jalgraves/beantown
   pullPolicy: Always
@@ -13,3 +21,9 @@ logLevel: tiny
 
 nodeEnv: ""
 regionCode:
+resources:
+  requests:
+    cpu: 50m
+    memory: 100Mi
+  limits:
+    memory: 350Mi

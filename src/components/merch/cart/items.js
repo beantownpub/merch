@@ -1,37 +1,37 @@
 import React from 'react'
-import { CartButton, ToggleButton } from '../../elements/buttons/main'
-import { StyledItemsTable, StyledNumCartItems } from './styles'
-import { cartOpen } from '../../../utils/menuSlide'
-import { config } from '../../../utils/main'
+import { CartButton, ToggleButton } from '../../elements/buttons/main.js'
+import { StyledItemsTable, StyledNumCartItems } from './styles.js'
+import { cartOpen } from '../../../utils/menuSlide.js'
+import { config } from '../../../utils/main.js'
 
 const COLORS = config.colors
 
 export const NumCartItems = (props) => {
-    return (
-        <StyledNumCartItems aria-labelledby="Number of items in cart">
-            <div className="merchNav">
-                <h3>Cart Items</h3>
-                <h3>{props.children}</h3>
-            </div>
-            <div className="merchNav">
-                <h3>Total</h3>
-                <h3>{`$${props.total}`}</h3>
-            </div>
-            <div className="numCartItemsButton">
-            <ToggleButton
-              hoverBackgroundColor={COLORS.darkGray}
-              bgColor={COLORS.white}
-              buttonText='view'
-              icon='faShoppingCart'
-              iconColor={COLORS.yellow}
-              runFunction={cartOpen}
-              slug="view-cart"
-              textColor={COLORS.black}
-              width='10rem'
-            />
-            </div>
-        </StyledNumCartItems>
-    )
+  return (
+    <StyledNumCartItems aria-labelledby="Number of items in cart">
+      <div className="merchNav">
+        <h3>Cart Items</h3>
+        <h3>{props.children}</h3>
+      </div>
+      <div className="merchNav">
+        <h3>Total</h3>
+        <h3>{`$${props.total}`}</h3>
+      </div>
+      <div className="numCartItemsButton">
+      <ToggleButton
+        hoverBackgroundColor={COLORS.darkGray}
+        bgColor={COLORS.white}
+        buttonText='view'
+        icon='faShoppingCart'
+        iconColor={COLORS.yellow}
+        runFunction={cartOpen}
+        slug="view-cart"
+        textColor={COLORS.black}
+        width='10rem'
+      />
+      </div>
+    </StyledNumCartItems>
+  )
 }
 
 export const CartItem = (props) => {

@@ -1,7 +1,7 @@
 import React from 'react'
-import { StyledButton } from './styles'
-import { Icon } from "../../content/icons/index"
-import { config } from '../../../utils/main'
+import { StyledButton } from './styles.js'
+import { Icon } from '../../content/icons/index.js'
+import { config } from '../../../utils/main.js'
 
 const COLORS = config.colors
 

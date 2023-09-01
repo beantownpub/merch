@@ -1,1 +1,1 @@
-export * from "./categoryCards"
+export * from './categoryCards.js'

@@ -1,7 +1,7 @@
 import React from 'react'
-import { InfoSection } from './common'
-import { config } from '../../utils/main'
-import { sendEvent } from '../kafka/index'
+import { InfoSection } from './common.js'
+import { config } from '../../utils/main.js'
+import { sendEvent } from '../kafka/index.js'
 
 const COLORS = config.colors
 
@@ -11,7 +11,7 @@ export const ContactInfo = () => {
   })
   return (
     <div id="contactInfo">
-      <InfoSection bgColor={COLORS.yellow} marginTop='3rem' slug="contact-info">
+      <InfoSection bgColor={COLORS.yellow} marginTop='3rem' slug='contact-info'>
         <section id="contactSection">
           <h1>Contact Beantown</h1>
           <h3>Call</h3>

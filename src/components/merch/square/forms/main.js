@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import { ApplePay, GooglePay, SquarePaymentsForm, CreditCardInput } from "react-square-web-payments-sdk"
-import { StyledPaymentContainer, StyledPaymentForm } from "./styles"
-import { config, reqHeaders, uuidv4 } from "../../../../utils/main"
-import { cartClose } from "../../../../utils/menuSlide"
-import { ToggleButton } from "../../../elements/buttons/main"
-import { TailSpin } from "react-loader-spinner"
-// import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
+import { ApplePay, GooglePay, SquarePaymentsForm, CreditCardInput } from 'react-square-web-payments-sdk'
+import { TailSpin } from 'react-loader-spinner'
+import { StyledPaymentContainer, StyledPaymentForm } from './styles.js'
+import { config, reqHeaders, uuidv4 } from '../../../../utils/main.js'
+import { cartClose } from '../../../../utils/menuSlide.js'
+import { ToggleButton } from '../../../elements/buttons/main.js'
+// import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
 
 const COLORS = config.colors
 

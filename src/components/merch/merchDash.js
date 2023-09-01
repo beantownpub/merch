@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { StyledNoInventoryContainer, StyledDashContainer, StyledMerchNav } from './styles/main'
-import { CategoryCards } from './products/index'
-import { Cart } from './cart/index'
-import { NumCartItems } from './cart/index'
-import { getOptions } from '../../utils/main'
-import { LinkButton } from '../elements/buttons/main'
-import { config } from '../../utils/main'
-import { sendEvent } from '../kafka/index'
+import { StyledNoInventoryContainer, StyledDashContainer, StyledMerchNav } from './styles/main.js'
+import { CategoryCards } from './products/index.js'
+import { Cart } from './cart/index.js'
+import { NumCartItems } from './cart/index.js'
+import { getOptions } from '../../utils/main.js'
+import { LinkButton } from '../elements/buttons/main.js'
+import { config } from '../../utils/main.js'
+import { sendEvent } from '../kafka/index.js'
 const COLORS = config.colors
 
 export const MerchDash = () => {

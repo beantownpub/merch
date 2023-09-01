@@ -1,23 +1,24 @@
-var express = require('express')
-var router = express.Router()
-const squareConnect = require('square-connect')
-const squareUtils = require('../utils/square')
-const network = require('../utils/network')
-const request = require("../utils/axios")
-var config = require('../utils/config.json')
-var pages = config.pages
-const kafka = require('../utils/kafka')
+import express from 'express'
+import * as squareConnect from 'square-connect'
 
-const PRODUCER = kafka.brokers.producer()
+import { cartRequest } from '../utils/axios.js'
+import { config } from '../utils/main.js'
+import network from '../utils/network.js'
+import * as squareUtils from '../utils/square.js'
+import * as  kafka from '../utils/kafka.js'
+
+const pages = config.pages
+const router = express.Router()
+
+const producer = kafka.brokers.producer()
 
 router.post('/event', function(req, res, next) {
-  kafka.sendToStream(PRODUCER, 'clicks', 'events', req.body)
+  kafka.sendToStream(producer, 'clicks', 'events', req.body)
   res.sendStatus(200)
 })
 
 router.get('/items', function(req, res, next) {
-  // console.log(req)
-  kafka.sendToStream(PRODUCER, 'requests', 'reqs', req.headers)
+  kafka.sendToStream(producer, 'requests', 'reqs', req.headers)
   const merch = pages['merch']
   res.render("main", merch.metadata)
 })
@@ -65,7 +66,7 @@ router.post('/process-payment', async (req, res) => {
 
 function sendRequest(options, cookie, res) {
   try {
-    request.cartRequest(options, cookie, res)
+    cartRequest(options, cookie, res)
   } catch(error) {
     console.log('Request Error: ' + error)
     res.status(500).json({
@@ -156,4 +157,4 @@ router.get('/:page', function(req, res, next) {
   res.redirect(`/${req.params['page']}`)
 })
 
-module.exports = router
+export default router

@@ -1,5 +1,5 @@
-import React from "react"
-import { StyledPolicyContainer } from "./styles"
+import React from 'react'
+import { StyledPolicyContainer } from './styles.js'
 
 export const ReturnPolicy = () => {
   return (

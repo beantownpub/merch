@@ -34,9 +34,11 @@ RUN npx webpack --config webpack.config.js && \
 
 FROM node:18.16.0-buster-slim
 
+ARG aws_default_region
 ARG node_env
 ARG square_app_id
 ARG square_location_id
+ENV AWS_DEFAULT_REGION=${aws_default_region}
 ENV SQUARE_APP_ID=${square_app_id}
 ENV SQUARE_LOCATION_ID=${square_location_id}
 ENV NODE_ENV=${node_env}
