@@ -1,11 +1,11 @@
 import express from 'express'
 import makeRequest from '../utils/request.js'
-import network from '../utils/network.js'
+import { urls } from '../utils/network.js'
 const router = express.Router()
 
 function sendRequest(uri, res) {
   try {
-    const apiUrl = `${network.urls.menuApi}${uri}`
+    const apiUrl = `${urls.menuApi}${uri}`
     makeRequest(apiUrl, res)
   } catch(error) {
     console.log('makeRequest Error: ' + error)

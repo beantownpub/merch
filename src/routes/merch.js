@@ -3,7 +3,7 @@ import * as squareConnect from 'square-connect'
 
 import { cartRequest } from '../utils/axios.js'
 import { config } from '../utils/main.js'
-import network from '../utils/network.js'
+import { urls } from '../utils/network.js'
 import * as squareUtils from '../utils/square.js'
 import * as  kafka from '../utils/kafka.js'
 
@@ -79,7 +79,7 @@ function sendRequest(options, cookie, res) {
 router.post('/process-order', function (req, res, next) {
   console.log("POST /process-order")
   console.log(req.body["order"])
-  const apiUrl = `${network.urls.merchApi}/v1/merch/orders?location=beantown`
+  const apiUrl = `${urls.merchApi}/v1/merch/orders?location=beantown`
   const options = {
     url: apiUrl,
     method: 'post',
@@ -94,7 +94,7 @@ router.get('/cart', function (req, res, next) {
       console.log(`Generating session ${err}`)
     })
   }
-  const apiUrl = `${network.urls.merchApi}/v1/merch/cart`
+  const apiUrl = `${urls.merchApi}/v1/merch/cart`
   const options = {
     url: apiUrl,
     method: 'get'
@@ -104,7 +104,7 @@ router.get('/cart', function (req, res, next) {
 
 router.post('/cart', function (req, res, next) {
   // console.log(req.cookie)
-  const apiUrl = `${network.urls.merchApi}/v1/merch/cart`
+  const apiUrl = `${urls.merchApi}/v1/merch/cart`
   // console.log(`Post Cart Session ID: ${req.sessionID}`)
   if (!req.sessionID) {
     // console.log('CART POST Generating new session')
@@ -122,7 +122,7 @@ router.post('/cart', function (req, res, next) {
 })
 
 router.delete('/cart', function (req, res, next) {
-  const apiUrl = `${network.urls.merchApi}/v1/merch/cart`
+  const apiUrl = `${urls.merchApi}/v1/merch/cart`
   // console.log(`Cart | DELETE | URL | ${apiUrl}`)
   const options = {
     url: apiUrl,
@@ -134,7 +134,7 @@ router.delete('/cart', function (req, res, next) {
 
 router.delete('/cart/empty', function (req, res, next) {
   const cartId = req.body['id']
-  const apiUrl = `${network.urls.merchApi}/v2/cart/empty?cart_id=${cartId}`
+  const apiUrl = `${urls.merchApi}/v2/cart/empty?cart_id=${cartId}`
   // console.log(`Cart | DELETE | ID: ${cartId}`)
   const options = {
     url: apiUrl,
@@ -144,7 +144,7 @@ router.delete('/cart/empty', function (req, res, next) {
 })
 
 router.get('/merchandise', function (req, res, next) {
-  const apiUrl = `${network.urls.merchApi}/v2/merch?location=beantown`
+  const apiUrl = `${urls.merchApi}/v2/merch?location=beantown`
   console.log('Merchandise | ' + apiUrl)
   const options = {
     url: apiUrl,

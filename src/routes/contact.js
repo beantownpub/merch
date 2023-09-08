@@ -1,12 +1,12 @@
 import express from 'express'
 import * as axios from 'axios'
 import { appSecret } from '../utils/secrets.js'
-import network from '../utils/network.js'
+import { urls } from '../utils/network.js'
 const router = express.Router()
 
 router.post('/send-message', function (req, res, next) {
   try {
-    const api_url = `${network.urls.contactApi}/v1/contact/beantown`
+    const api_url = `${urls.contactApi}/v1/contact/beantown`
     const auth = 'Basic ' + Buffer.from(appSecret.api_user + ':' + appSecret.api_pass).toString('base64')
     axios({
       method: 'post',
