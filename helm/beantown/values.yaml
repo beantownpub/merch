@@ -1,9 +1,10 @@
+appName: beantown
 aws:
-  accessKeyId:
-  appSecretName:
-  region:
-  secretAccessKey:
-  secretName:
+  accessKeyId: ""
+  appSecretName: ""
+  region: ""
+  secretAccessKey: ""
+  secretName: ""
 
 env: dev
 image:
@@ -13,14 +14,17 @@ image:
   tag: ""
 
 containerPort: 3000
-
+fullnameOverride: ""
 ingress:
   enabled: false
 
-logLevel: tiny
+istio:
+  enabled: false
 
+logLevel: tiny
+nameOverride: ""
 nodeEnv: ""
-regionCode:
+regionCode: ""
 replicaCount: 1
 resources:
   requests:

@@ -31,6 +31,10 @@ Create chart name and version as used by the chart label.
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
+{{- define "beantown.targetPort" -}}
+{{- printf "http-%s" (include "beantown.name" .) | trunc 15 | trimSuffix "-" -}}
+{{- end -}}
+
 {{/*
 Common labels
 */}}
@@ -49,7 +53,7 @@ Selector labels
 {{- define "beantown.selectorLabels" -}}
 app.kubernetes.io/name: {{ include "beantown.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
-app: {{ .Values.appName }}
+app: {{ include "beantown.fullname" . }}
 {{- end }}
 
 {{/*
@@ -60,13 +64,5 @@ Create the name of the service account to use
 {{- default (include "beantown.fullname" .) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
-{{- end }}
-{{- end }}
-
-{{- define "imageString" -}}
-{{- if eq .Values.global.env "dev" }}
-{{- default .Values.image.name }}
-{{- else }}
-{{- default "%s:%s" .Values.image.name .Values.image.tag }}
 {{- end }}
 {{- end }}

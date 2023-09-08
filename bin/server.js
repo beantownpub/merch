@@ -7,7 +7,7 @@
 import * as app from '../src/app.js'
 import http from 'http'
 import debugLib from 'debug'
-const debug = debugLib('thehubpub:server')
+const debug = debugLib('beantown:server')
 // const kafka = require('../src/utils/kafka')
 
 // const producer = kafka.producer()

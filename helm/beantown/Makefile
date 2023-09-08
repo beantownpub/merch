@@ -86,6 +86,10 @@ helm/delete:
 ## Delete Helm release and redeploy
 helm/redeploy: helm/delete helm/install
 
+## Create chart schema
+helm/schema_create:
+	cd helm/beantown && helm schema-gen values.yaml > values.schema.json
+
 ## Run helm template
 template:
 	helm template helm/beantown/ \
@@ -100,10 +104,8 @@ template:
 helm/port_forward:
 	kubectl port-forward --namespace $(namespace) svc/$(name) $(port):$(port)
 
-
 stop_pf:
 	~/github/beantown/helm/scripts/stop_port_forward.sh 3000
 
 logs:
 	~/github/beantown/helm/scripts/get_pod_logs.sh $(namespace) $(name)
-

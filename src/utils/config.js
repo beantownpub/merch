@@ -79,8 +79,8 @@ const config = {
             "name": "/merch/items",
             "icon": "faTshirt",
             "text": "Merch",
-            "menu_list": true,
-            "top_menu": true,
+            "menu_list": false,
+            "top_menu": false,
             "metadata": {
                 "title": "Beantown Merch",
                 "description": "Beantown Pub merchandise for online purchase",

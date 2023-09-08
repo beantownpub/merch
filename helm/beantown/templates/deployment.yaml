@@ -49,7 +49,7 @@ spec:
         name: {{ include "beantown.fullname" . }}
         ports:
         - containerPort: {{ .Values.containerPort }}
-          name: tcp-beantown
+          name: {{ include "beantown.targetPort" . }}
           protocol: TCP
         securityContext:
           allowPrivilegeEscalation: false
@@ -67,7 +67,7 @@ spec:
         readinessProbe:
           httpGet:
             path: /healthz
-            port: tcp-beantown
+            port: {{ include "beantown.targetPort" . }}
           initialDelaySeconds: 15
           failureThreshold: 3
           periodSeconds: 10

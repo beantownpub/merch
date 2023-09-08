@@ -1,4 +1,4 @@
-{{- if eq .Values.global.env "prod" }}
+{{- if .Values.istio.enabled }}
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
@@ -20,4 +20,10 @@ spec:
           number: {{ .Values.containerPort }}
         host: "{{ include "beantown.fullname" . }}.{{ .Release.Namespace }}.svc.cluster.local"
         subset: {{ include "beantown.fullname" . }}
+      headers:
+        response:
+          remove:
+          - "x-envoy-upstream-service-time"
+          - "x-powered-by"
+          - "x-envoy-upstream-service-time"
 {{- end }}

@@ -1,0 +1,34 @@
+default_stages: [commit, manual]
+
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.0.1
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-merge-conflict
+
+  - repo: https://github.com/hqoapp/pre-commit-hooks
+    rev: v1.3.2
+    hooks:
+      - id: validate-author-email
+      - id: add-msg-issue-prefix
+        stages: [prepare-commit-msg]
+      - id: circleci-config-validate
+
+  - repo: https://github.com/norwoodj/helm-docs
+    rev: v1.2.0
+    hooks:
+      - id: helm-docs
+        args:
+          # Make the tool search for charts only under the `example-charts` directory
+          - --chart-search-root=helm/beantown
+
+          # The `./` makes it relative to the chart-search-root set above
+          - --template-files=./_templates.gotmpl
+
+          # Repeating the flag adds this to the list, now [./_templates.gotmpl, README.md.gotmpl]
+          # A base filename makes it relative to each chart directory found
+          - --template-files=README.md.gotmpl

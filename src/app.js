@@ -3,32 +3,26 @@ import bodyParser from 'body-parser'
 import compression from 'compression'
 import express from 'express'
 import path from 'path'
-import * as uuid from 'uuid'
-// var cookieParser = require('cookie-parser')
 import cookieParser from 'cookie-parser'
 import morgan from 'morgan'
-// var sassMiddleware = require('node-sass-middleware')
-// var session = require('express-session')
 import session from 'express-session'
+import redis from 'redis'
+import redisStore from 'connect-redis'
+import { fileURLToPath } from 'url'
+import * as uuid from 'uuid'
 import * as indexRouter from './routes/index.js'
 import * as contactRouter from './routes/contact.js'
 import * as menuRouter from './routes/menu.js'
 import * as merchRouter from './routes/merch.js'
-import redis from 'redis'
-import redisStore from 'connect-redis'
-import { fileURLToPath } from 'url'
+
 const redisSession = redisStore(session)
 const app = express()
-console.log(`UUID: ${Object.keys(uuid)}`)
-console.log(`SESSION: ${Object.keys(session)}`)
-console.log(`REDIS SESSION: ${Object.keys(redisSession)}`)
-console.log(`REDIS STORE: ${Object.keys(redisStore)}`)
+
 let redisClient = redis.createClient({ legacyMode: true })
 redisClient.connect().catch(console.error)
 
 const { v4: uuidv4 } = uuid.v4
 const logLevel = process.env.LOG_LEVEL || 'dev'
-console.log(logLevel)
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 // view engine setup
@@ -48,12 +42,6 @@ if (process.env.NODE_ENV === "development") {
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
-// app.use(sassMiddleware({
-//   src: path.join(__dirname, '../dist/public'),
-//   dest: path.join(__dirname, '../dist/public'),
-//   indentedSyntax: true, // true = .sass and false = .scss
-//   sourceMap: false
-// }))
 app.use(session({
   genid: function(req) {
     return uuidv4() // use UUIDs for session IDs
@@ -66,7 +54,6 @@ app.use(session({
   store: new redisSession({ host: 'localhost', port: 6379, client: redisClient, ttl: 86400 }),
 }))
 app.use(express.static(path.join(__dirname, '../dist/public')))
-// app.use(express.static(staticUrl));
 
 const urlRoot = process.env.NODE_JAL_URL_ROOT || '/'
 
@@ -74,7 +61,6 @@ app.use(urlRoot, indexRouter.default)
 app.use(urlRoot + 'merch', merchRouter.default)
 app.use(urlRoot + 'contact', contactRouter.default)
 app.use(urlRoot + 'menu', menuRouter.default)
-// app.use(urlRoot + 'cart', cartRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

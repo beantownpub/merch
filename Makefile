@@ -42,6 +42,10 @@ context:
 sass:
 	sass ${PWD}/src/static/sass/style.sass ${PWD}/dist/public/css/style.css
 
+## Install pre-commit hooks
+pre-commit/install:
+	pre-commit install --install-hooks --allow-missing-config -t pre-commit -t prepare-commit-msg
+
 ## Build Docker image
 build: sass
 	@echo "\033[1;32m. . . Building $(image_name):$(image_tag)  . . .\033[1;37m\n"
@@ -58,7 +62,7 @@ build: sass
 		--build-arg git_hash=$(git_hash) \
 		--build-arg version=$(version) .
 
-publish:
+publish: build
 	@echo "\033[1;32m. . . Publishing $(image_name):$(image_tag) . . .\033[1;37m\n"
 	docker tag $(image_name):$(image_tag) $(dockerhub)/$(image_name):$(image_tag)
 	docker push $(dockerhub)/$(image_name):$(image_tag)
