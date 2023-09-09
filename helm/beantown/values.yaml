@@ -7,6 +7,8 @@ aws:
   secretName: ""
 
 env: dev
+externalSecrets:
+  enabled: false
 image:
   repository: jalgraves/beantown
   pullPolicy: Always

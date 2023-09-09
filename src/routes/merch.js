@@ -1,9 +1,9 @@
 import express from 'express'
 import * as squareConnect from 'square-connect'
 
-import { cartRequest } from '../utils/axios.js'
+import { cartRequest } from '../utils/axiosRequests.js'
 import { config } from '../utils/main.js'
-import { urls } from '../utils/network.js'
+import { urls } from '../utils/appUrls.js'
 import * as squareUtils from '../utils/square.js'
 import * as  kafka from '../utils/kafka.js'
 

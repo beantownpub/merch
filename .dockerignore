@@ -13,3 +13,4 @@ README.md
 .sass-cache/
 src/static/
 node_modules/
+helm/
