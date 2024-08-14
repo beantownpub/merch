@@ -9,9 +9,6 @@ export default env => {
   return {
     plugins: [
       new webpack.DefinePlugin({
-        "process.env.SQUARE_APP_ID": JSON.stringify(process.env.SQUARE_APP_ID),
-        "process.env.SQUARE_LOCATION_ID": JSON.stringify(process.env.SQUARE_LOCATION_ID),
-        "process.env.STATIC_PATH": JSON.stringify(process.env.STATIC_PATH),
         "process.env.ENV": JSON.stringify(process.env.NODE_ENV),
         "process.env.SUPPORT_EMAIL": JSON.stringify(process.env.SUPPORT_EMAIL),
         "process.env.GIT_HASH": JSON.stringify(process.env.GIT_HASH),

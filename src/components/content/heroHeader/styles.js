@@ -6,7 +6,7 @@ const FONTS = config.fonts
 const STATIC_URL = config.urls.static
 
 export const StyledHero = styled.div`
-margin: 5rem auto 0 auto;
+margin: ${props => props.$margin || "5rem auto 0 auto"};
 width: 100%;
 height: 420px;
 display: flex;

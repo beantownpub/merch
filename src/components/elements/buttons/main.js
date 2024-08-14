@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyledButton } from './styles.js'
-import { Icon } from '../../content/icons/index.js'
+import { Icon } from "@jalgraves/react-components-library"
 import { config } from '../../../utils/main.js'
 
 const COLORS = config.colors

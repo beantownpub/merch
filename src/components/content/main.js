@@ -1,12 +1,13 @@
 import React from 'react'
-import { InfoSection } from './common.js'
-import { GrubHub } from './grubHub/main.js'
-import { StyledContentContainer } from './styles.js'
+//import { GrubHub } from './grubHub/main.js'
+import { GrubHubLink } from './grubHub/index.js'
 import { HeroHeader } from './heroHeader/main.js'
 import { config } from '../../utils/main.js'
 import { sendEvent } from '../kafka/index.js'
-import { ImageSlider } from '../imageSliders/main.js'
+import { ContentContainer, PageContainer } from './container.js'
+// import { ImageSlider } from '../imageSliders/main.js'
 const COLORS = config.colors
+const FONTS = config.fonts
 const STATIC_PATH = `${config.urls.static}/img/merch`
 const SLIDER_STYLES = {
   buttonColor: COLORS.yellow,
@@ -39,48 +40,94 @@ export const MainInfo = () => {
     sendEvent(event)
   })
   return (
-    <div id="mainInfo">
-      <HeroHeader image="granary_heroheader.jpeg">The only pub in the world where you can drink a cold Sam Adams' while viewing a cold Sam Adams</HeroHeader>
-      <StyledContentContainer id="mainInfoContainer" aria-details="Content container" backgroundColor="beige">
-        <InfoSection bgColor={COLORS.yellow} slug="hours-section">
+    <PageContainer>
+      <HeroHeader 
+        image="granary_heroheader.jpeg"
+        margin="5rem 0 0 0"
+      >The only pub in the world where you can drink a cold Sam Adams' while viewing a cold Sam Adams</HeroHeader>
+        <ContentContainer
+          ariaDetails="BusinessHours"
+          aColor={COLORS.red}
+          aHoverColor={COLORS.dodgerBlue}
+          backgroundColor={COLORS.yellow}
+          h1FontFamily={FONTS.button}
+          h1TextAlign="left"
+          h2Margin="0"
+          h2Padding="1rem 0"
+          h2TextAlign="left"
+          h3Color={COLORS.black}
+          h3Margin="0"
+          h3TextAlign="left"
+          h5FontFamily={FONTS.script}
+          h5TextAlign="left"
+          h5TextTransform="none"
+          h5Color={COLORS.black}
+          margin="1%"
+        >
           <section id="hoursSection">
             <h1>Billiards, Cocktails, Beer, And Fine Pub Dining</h1>
             <h5>Serving the heart of historic downtown Boston</h5>
             <h2>Open Daily</h2>
             <h3>9:00 AM to 2:00 AM</h3>
-            <h2>Serving Food Late Night<br /><a href='/menu'><span>See menu &#10148;</span></a></h2>
-            <GrubHub/>
+            <h2>Serving Food Late Night</h2>
+            <h2><a href='/menu'>See menu &#10148;</a></h2>
+            <h2>Looking for takeout?</h2>
+            {/*<GrubHub/>*/}
+            <GrubHubLink/>
           </section>
-        </InfoSection>
-        <InfoSection bgColor={COLORS.darkGray} fontColor={COLORS.yellow} slug="gift-cards-merch-section">
+        </ContentContainer>
+        <ContentContainer
+          ariaDetails="GiftCardsMerch"
+          aColor={COLORS.dodgerBlue}
+          aHoverColor={COLORS.red}
+          backgroundColor={COLORS.darkGray}
+          h2TextAlign="left"
+          h3Color={COLORS.yellow}
+          h3TextAlign="left"
+          h4Color={COLORS.yellow}
+          h4FontSize="2rem"
+          h4TextAlign="left"
+          margin="1% 0"
+        >
           <section id="giftCardsMerchSection">
             <h3>Gift Cards and Merchandise Available<br /></h3>
             {/* <ImageSlider images={SLIDER_IMAGES} imagePath={STATIC_PATH} sliderSettings={SLIDER_SETTINGS} sliderStyles={SLIDER_STYLES} /> */}
             <h4><a id="merchRef" href='/merch/items'></a></h4>
             <h4>Make your next private event a memorable one and book it at Beantown<br /><a id="partiesRef" href='/parties'>Learn more &#10148;</a></h4>
           </section>
-        </InfoSection>
-        <InfoSection bgColor={COLORS.yellow} slug="faq-section">
+        </ContentContainer>
+        <ContentContainer
+          ariaDetails="InfoSection"
+          aColor={COLORS.red}
+          aHoverColor={COLORS.dodgerBlue} 
+          backgroundColor={COLORS.yellow}
+          h2Margin="0"
+          h2TextAlign="left"
+          h3Color={COLORS.black}
+          h3Margin="0"
+          h3TextAlign="left"
+          margin="2% 0"
+        >
           <section id="faqSection">
             <h3>Want more info?<br /></h3>
-            <h2>See our frequently asked questions<br /><a id="aboutRef" href='/about'><span>FAQ &#10148;</span></a></h2>
+            <h2>See our frequently asked questions</h2>
+            <h2><a id="aboutRef" href='/about'><span>FAQ &#10148;</span></a></h2>
           </section>
-        </InfoSection>
-      </StyledContentContainer>
-    </div>
+        </ContentContainer>
+    </PageContainer>
   )
 }
 
 export const ErrorPage = () => {
   return (
-    <StyledContentContainer aria-labelledby="Content container">
-      <InfoSection bgColor={COLORS.yellow}>
+    <PageContainer aria-labelledby="Content container">
+      <ContentContainer bgColor={COLORS.yellow}>
         <section>
           <h1>See Yah Laatah&trade;!</h1>
           <h2>Sorry, somethin' aint right</h2>
           <h2>Requested page is nowhere to be found on the server</h2>
         </section>
-      </InfoSection>
-    </StyledContentContainer>
+      </ContentContainer>
+    </PageContainer>
   )
 }

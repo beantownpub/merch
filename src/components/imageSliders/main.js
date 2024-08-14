@@ -2,8 +2,8 @@ import React from 'react'
 import * as Slick from 'react-slick'
 import { StyledImageSlider } from './styles.js'
 const Slider = Slick.default
-console.log("SLIDER")
-console.log(Object.keys(Slider.default))
+// console.log("SLIDER")
+// console.log(Object.keys(Slider.default))
 const SlideList = (props) => {
   console.log(`imagePath: ${props.imagePath}`)
   const renderItems = (items) => {

@@ -1,10 +1,8 @@
 import React from 'react'
-import { StyledPartiesContainer } from './styles.js'
-import { ContactForm } from '../contact/main.js'
-//import ImageSlider from '../imageSliders/main.js'
+import { ContentContainer } from './container.js'
+import { ContactBeantown } from '../contact/index.js'
 import { config } from '../../utils/main.js'
 import { sendEvent } from '../kafka/index.js'
-const COLORS = config.colors
 const STATIC_PATH = `${config.urls.static}/img/slider`
 
 const photoStyles = {
@@ -41,9 +39,9 @@ const PhotoGallery = (props) => {
     )
   }
   return (
-    <div className="photoGallery" aria-labelledby="PhotoGallery images container">
+    <ContentContainer margin="auto">
       {renderItems(props.images)}
-    </div>
+    </ContentContainer>
   )
 }
 
@@ -62,19 +60,15 @@ export const PrivateParties = () => {
     sendEvent(event)
   })
   return (
-    <StyledPartiesContainer
-      id="privatePartiesContainer"
-      backgroundColor={COLORS.yellow}
-      aria-details="Parties container"
-    >
+    <ContentContainer articleMargin="1rem auto">
       <h1>Private Parties</h1>
       <article id="privatePartiesArticle">
       Make your next private event a memorable one. Beantown Pub offers a variety of spaces that are perfect for accomadating small gatherings
       or corporate events. Choose from spaces with single, multiple, or no pool tables. Our private event menu offers a variety of freshly
       prepared delicious appetizers all the way up to a full buffet with several entrees.
       </article>
-      <ContactForm/>
+      <ContactBeantown/>
       <PhotoGallery images={images} />
-    </StyledPartiesContainer>
+    </ContentContainer>
   )
 }

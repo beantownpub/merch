@@ -84,7 +84,7 @@ helm/delete:
 	helm uninstall $(name) -n $(namespace)
 
 ## Delete Helm release and redeploy
-helm/redeploy: helm/delete helm/install
+helm/redeploy: helm/stop_pf helm/delete helm/install
 
 ## Create chart schema
 helm/schema_create:
@@ -104,8 +104,9 @@ template:
 helm/port_forward:
 	kubectl port-forward --namespace $(namespace) svc/$(name) $(port):$(port)
 
-stop_pf:
-	~/github/beantown/helm/scripts/stop_port_forward.sh 3000
+## Stop port forwarding
+helm/stop_pf:
+	./scripts/stop_port_forward.sh $(port)
 
 logs:
 	~/github/beantown/helm/scripts/get_pod_logs.sh $(namespace) $(name)

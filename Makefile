@@ -52,11 +52,9 @@ build: sass
 	@echo "\033[1;32mNode Env: $(node_env)\033[1;37m\n"
 	docker build \
 		--platform linux/x86_64 \
+		--secret id=npmrc,src=.npmrc \
 		-t $(image_name):$(image_tag) \
 		--build-arg aws_default_region=$(aws_default_region) \
-		--build-arg square_app_id=$(square_app_id) \
-		--build-arg square_location_id=$(square_location_id) \
-		--build-arg static_path=${BEANTOWN_STATIC_PATH} \
 		--build-arg support_email=$(support_email) \
 		--build-arg node_env=$(node_env) \
 		--build-arg git_hash=$(git_hash) \

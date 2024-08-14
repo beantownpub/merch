@@ -20,6 +20,7 @@ export default function ReactRoutes() {
         <Route path="/menu" element={<FoodMenu/>} />
         <Route path="/merch/items" element={<MerchDash/>} />
         <Route path="/parties" element={<PrivateParties/>} />
+        <Route path="/Private Parties" element={<PrivateParties/>} />
         <Route path="/returns" element={<ReturnPolicy/>} />
         <Route path="/privacy" element={<PrivacyPolicy/>} />
         <Route path="*" element={<ErrorPage/>} />

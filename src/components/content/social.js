@@ -1,5 +1,5 @@
 import React from 'react'
-import { Icon } from './icons/index.js'
+import { Icon } from "@jalgraves/react-components-library"
 import { config } from '../../utils/main.js'
 
 const URLS = config.urls

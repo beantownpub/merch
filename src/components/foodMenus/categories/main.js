@@ -32,6 +32,7 @@ export const CategoryCards = (props) => {
       <Sides sides={props.sides} />
       <StyledMenuWarning aria-labelledby="Menu warning">
         <h3><span>*</span>These items are cooked to order. There is a risk associated with consuming undercooked meat products</h3>
+        <h3>Prices subject to change without notice</h3>
       </StyledMenuWarning>
     </StyledContentContainer>
   )
