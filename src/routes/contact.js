@@ -44,6 +44,11 @@ router.post('/send-message', function (req, res, next) {
   }
 })
 
+router.get(/^\/Contact(.*)\/?$/i, function(req, res, next) {
+  res.redirect('/contact')
+})
+
+
 router.get('/:page', function(req, res, next) {
   console.log(`Redirecting /${req.params['page']}`)
   res.redirect(`/${req.params['page']}`)

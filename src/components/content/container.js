@@ -36,6 +36,7 @@ export const ContentContainer = (props) => {
       flexFlow="column wrap"
       fontColor={props.fontColor || COLORS.white}
       fontFamily={props.fontFamily || FONTS.content}
+
       h1Color={props.h1Color || COLORS.black}
       h1FontFamily={props.h1FontFamily || FONTS.headline}
       h1FontSize={props.h1 || "2.75rem"}
@@ -76,7 +77,6 @@ export const ContentContainer = (props) => {
       h4Margin={props.h4Margin}
       h4Padding={props.h4Padding || ".5rem 0"}
       h4TextAlign={props.h4TextAlign}
-
 
       h5Color={props.h5Color}
       h5FontFamily={props.h5FontFamily || FONTS.headline}

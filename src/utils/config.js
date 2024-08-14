@@ -39,7 +39,7 @@ const config = {
         "contact": {
             "name": "contact",
             "icon": "faEnvelope",
-            "text": "Contact",
+            "text": "contact",
             "menuList": true,
             "topMenu": true,
             "metadata": {
