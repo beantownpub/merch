@@ -1,6 +1,8 @@
 import React from 'react'
 import { sendEvent } from '../kafka/index.js'
 import { ContentContainer } from './container.js'
+import { config } from "../../utils/main.js"
+const COLORS = config.colors
 
 export const ContactInfo = () => {
   window.addEventListener('click', (event) => {
@@ -13,6 +15,8 @@ export const ContactInfo = () => {
       h2TextAlign="left" 
       h3TextAlign="left"
       h3Margin="unset"
+      h4Color={COLORS.black}
+      h4FontSize="1.75rem"
       maxWidth="500px"
     >
       <h1>Contact Beantown</h1>

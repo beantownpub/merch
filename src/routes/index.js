@@ -43,6 +43,9 @@ router.get('/event', function(req, res, next) {
 router.get(/^\/parties\.(.*)\/?$/i, function(req, res, next) {
   res.redirect('/parties')
 })
+router.get(/^\/Private(.*)\/?$/i, function(req, res, next) {
+  res.redirect('/parties')
+})
 
 router.get(/^\/merch\.(.*)\/?$/i, function(req, res, next) {
   res.redirect('/merch/items')

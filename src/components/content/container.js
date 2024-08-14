@@ -40,10 +40,12 @@ export const ContentContainer = (props) => {
       h1FontFamily={props.h1FontFamily || FONTS.headline}
       h1FontSize={props.h1 || "2.75rem"}
       h1FontWeight={props.h1FontWeight || "900"}
+      h1LetterSpacing={props.h1LetterSpacing}
       h1LineHeight={props.h1LineHeight || "150%"}
       h1Margin={props.h1Margin || "auto"}
       h1TextAlign={props.h1TextAlign}
       h1TextTransform={props.h1TextTransform || "uppercase"}
+
       h2Color={props.h2Color || COLORS.black}
       h2FontFamily={props.h2FontFamily || FONTS.content}
       h2FontSize={props.h2FontSize || "2rem"}
@@ -54,8 +56,9 @@ export const ContentContainer = (props) => {
       h2Padding={props.h2Padding}
       h2TextAlign={props.h2TextAlign}
       h2TextTransform={props.h2TextTransform}
+
       h3Color={props.h3Color || COLORS.dodgerBlue}
-      h3FontFamily={FONTS.headline}
+      h3FontFamily={props.h3FontFamily || FONTS.headline}
       h3FontSize="1.75rem"
       h3FontWeight="bold"
       h3LetterSpacing=".3rem"
@@ -64,21 +67,27 @@ export const ContentContainer = (props) => {
       h3Padding={props.h3Padding}
       h3TextAlign={props.h3TextAlign}
       h3TextTransform="uppercase"
+
       h4Color={props.h4Color}
-      h4FontFamily={FONTS.content}
+      h4FontFamily={props.h4FontFamily || FONTS.content}
       h4FontSize={props.h4FontSize || "1.25rem"}
       h4FontWeight={props.h4FontWeight}
       h4LineHeight="175%"
-      h4Padding=".5rem 0"
+      h4Margin={props.h4Margin}
+      h4Padding={props.h4Padding || ".5rem 0"}
+      h4TextAlign={props.h4TextAlign}
+
+
       h5Color={props.h5Color}
       h5FontFamily={props.h5FontFamily || FONTS.headline}
       h5FontSize={props.h5FontSize || "2rem"}
       h5FontWeight={props.h5FontWeight || "bold"}
-      h5LetterSpacing={props.h5LetterSpacing || ".5rem"}
+      h5LetterSpacing={props.h5LetterSpacing}
       h5LineHeight={props.h5LineHeight || "150%"}
       h5Padding={props.h5Padding}
       h5TextAlign={props.h5TextAlign}
       h5TextTransform={props.h5TextTransform || "uppercase"}
+
       lineHeight="150%"
       margin={props.margin || "15% auto 5% auto"}
       maxWidth={props.maxWidth}
