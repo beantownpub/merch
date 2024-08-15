@@ -44,6 +44,7 @@ export const ContentContainer = (props) => {
       h1LetterSpacing={props.h1LetterSpacing}
       h1LineHeight={props.h1LineHeight || "150%"}
       h1Margin={props.h1Margin || "auto"}
+      h1Padding={props.h1Padding}
       h1TextAlign={props.h1TextAlign}
       h1TextTransform={props.h1TextTransform || "uppercase"}
 
@@ -88,6 +89,7 @@ export const ContentContainer = (props) => {
       h5TextAlign={props.h5TextAlign}
       h5TextTransform={props.h5TextTransform || "uppercase"}
 
+      h6Color={props.h6Color}
       lineHeight="150%"
       margin={props.margin || "15% auto 5% auto"}
       maxWidth={props.maxWidth}

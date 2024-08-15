@@ -39,8 +39,8 @@ export const AboutInfo = () => {
     sendEvent(event)
   })
   return (
-    <ContentContainer>
-      <ContentContainer margin="5% auto">
+    <ContentContainer margin="5% auto 1% auto">
+      <ContentContainer margin="5% auto 1% auto">
         <section>
           <h1>See Yah Laatah&trade;!</h1>
           <article id="aboutBeantownArticle">
@@ -56,6 +56,7 @@ export const AboutInfo = () => {
         h4Color={COLORS.black}
         h4FontSize="1.5rem"
         h4FontWeight="900"
+        margin="5% auto 1% auto"
       >
         <FAQ/>
       </ContentContainer>

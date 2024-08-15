@@ -3,7 +3,7 @@ import { CartButton } from '../../elements/index.js'
 import { StyledMerchItem } from './styles.js'
 import { config } from '../../../utils/main.js'
 import { SizeSelect } from './sizeSelect.js'
-import ImageSlider from '../../imageSliders/main.js'
+// import ImageSlider from '../../imageSliders/main.js'
 
 const COLORS = config.colors
 const STATIC_PATH = `${config.urls.static}/img/merch`
@@ -100,7 +100,7 @@ export const ProductCard = (props) => {
   return (
     <StyledMerchItem aria-labelledby="Merch item container">
       <InfoTable name={props.name} price={props.price} slug={props.slug} />
-      <ImageSlider images={props.images} imagePath={STATIC_PATH} sliderSettings={sliderSettings} sliderStyles={sliderStyles} />
+      {/*<ImageSlider images={props.images} imagePath={STATIC_PATH} sliderSettings={sliderSettings} sliderStyles={sliderStyles} />*/}
       <p id={`${props.slug}-description`} aria-details="Merch item description">{props.description}</p>
       <SizeList onChange={handleSizeChange} inventory={props.inventory} size={size.size} hasSizes={props.sizes} slug={props.slug} />
       <Quantity onChange={handleQuantityChange} quanity={quantity.quantity} slug={props.slug} />
