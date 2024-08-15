@@ -1,10 +1,10 @@
 {
   "name": "beantown",
-  "version": "0.1.56",
+  "version": "0.1.57",
   "private": true,
   "type": "module",
   "engines": {
-    "node": "<18"
+    "node": "<20"
   },
   "scripts": {
     "start": "node --trace-warnings --unhandled-rejections=strict ./bin/server.js",
