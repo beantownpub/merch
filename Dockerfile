@@ -20,7 +20,7 @@ ENV VERSION=${version}
 
 COPY ./package* /app/
 WORKDIR /app
-RUN --mount=type=secret,id=npmrc,target=/app/.npmrc npm ci --save-dev --production=false
+RUN --mount=type=secret,id=npmrc,target=/app/.npmrc npm ci --save-dev --production=false --legacy-peer-deps
 
 COPY . ./
 
@@ -38,7 +38,7 @@ ENV TINI_VERSION v0.19.0
 RUN apt-get update && apt-get install -y curl
 COPY ./package* /app/
 WORKDIR /app
-RUN --mount=type=secret,id=npmrc,target=/app/.npmrc npm ci --production
+RUN --mount=type=secret,id=npmrc,target=/app/.npmrc npm ci --production --legacy-peer-deps
 #RUN npm ci --production || npm ci --production
 COPY . ./
 COPY --from=install /app/dist/public/js/main.js /app/dist/public/js/

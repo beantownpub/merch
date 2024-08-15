@@ -5,7 +5,7 @@ executors:
     - image: cimg/python:3.7
   node:
     docker:
-      - image: cimg/node:18.16.0
+      - image: cimg/node:20.9.0
 
 commands:
   install_k8s_dependencies:
@@ -58,7 +58,7 @@ jobs:
       - run:
           name: Install dependencies and run lint
           command: |
-            npm install
+            npm install --legacy-peer-deps
             npx eslint .
 
   build_and_publish:

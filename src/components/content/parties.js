@@ -60,7 +60,10 @@ export const PrivateParties = () => {
     sendEvent(event)
   })
   return (
-    <ContentContainer articleMargin="1rem auto">
+    <ContentContainer  
+      articleMargin="1rem auto"
+      margin="15% auto 1% auto"
+    >
       <h1>Private Parties</h1>
       <article id="privatePartiesArticle">
       Make your next private event a memorable one. Beantown Pub offers a variety of spaces that are perfect for accomadating small gatherings

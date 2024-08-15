@@ -26,7 +26,7 @@ const config = {
         "about": {
             "name": "about",
             "icon": "faInfo",
-            "text": "About",
+            "text": "about",
             "menuList": true,
             "topMenu": true,
             "metadata": {
