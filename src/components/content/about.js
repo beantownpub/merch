@@ -22,7 +22,7 @@ const FAQ = () => {
       <h4>How many t.v.s do you have?</h4>
       <p>A lot! There are two large projection screens in the main pool area and many big screens scattered throughout the rest of the bar.</p>
       <h4>Can you put my game on?</h4>
-      <p>Most likely, if it's available. Please keep in mind that we can only show three different at any given time.</p>
+      <p>Most likely, if it's available. Please keep in mind that we can only show three different games at any given time.</p>
       <h4>Do you have takeout?</h4>
       <p>Yes</p>
       <GrubHubLink/>

@@ -7,10 +7,14 @@ const FONTS = config.fonts
 export const PageContainer = (props) => {
   return (
     <ContentSection 
-      ariaDetails="PageContainer"
+      ariaDetails={props.ariaDetails || "PageContainer"}
+      backgroundColor={props.background}
       display="flex" 
       flexFlow="column wrap"
-    >{props.children}</ContentSection>
+      margin={props.margin}
+    >
+      {props.children}
+    </ContentSection>
   )
 }
 export const ContentContainer = (props) => {

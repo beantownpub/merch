@@ -88,6 +88,10 @@ docker/prune:
 clean:
 	rm -rf node_modules/
 
+## Update to latest version of @the-flagrant-fowl/react-components-library
+jal/update:
+	npm i --save-dev @jalgraves/react-components-library --legacy-peer-deps
+
 
 ## Show available commands
 help:

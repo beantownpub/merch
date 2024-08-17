@@ -70,6 +70,8 @@ helm/install:
 		--set kafka_bootstrap_server=${KAFKA_BOOTSTRAP_SERVER} \
 		--set kafka_password=${KAFKA_PASSWORD} \
 		--set kafka_username=${KAFKA_USERNAME} \
+		--set menuApi.host=${MENU_API_HOST} \
+		--set menuApi.protocol=${MENU_API_PROTOCOL} \
 		--set session_secret=${SESSION_SECRET} \
 		--set square_access_token_dev=${SQUARE_ACCESS_TOKEN_DEV} \
 		--set square_access_token_prod=${SQUARE_ACCESS_TOKEN_PROD} \

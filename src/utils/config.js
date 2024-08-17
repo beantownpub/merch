@@ -52,7 +52,7 @@ const config = {
         "menu": {
             "name": "menu",
             "icon": "faUtensils",
-            "text": "Menu",
+            "text": "menu",
             "menuList": true,
             "topMenu": true,
             "metadata": {
@@ -206,7 +206,8 @@ const config = {
         "content": "'Lato', sans-serif",
         "footer": "'Raleway', Arial, sans-serif",
         "headline": "'Poppins', sans-sefif",
-        "script": "'Satisfy', cursive;"
+        "script": "'Satisfy', cursive;",
+        "title": "'gotham-narrow-ultra', Poppins, sans-serif"
     }
 }
 

@@ -24,6 +24,9 @@ istio:
   enabled: false
 
 logLevel: tiny
+menuApi:
+  host:
+  protocol:
 nameOverride: ""
 nodeEnv: ""
 regionCode: ""
