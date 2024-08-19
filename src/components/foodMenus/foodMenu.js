@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import { PageContainer } from "../content/container.js"
+import React, { useState, useEffect } from "react"
+import { PageContainer } from "../containers/index.js"
 import { FoodMenu } from "@jalgraves/react-components-library"
-import { config, getOptions } from '../../utils/main.js'
+import { config, getOptions } from "../../utils/main.js"
 const COLORS = config.colors
 const FONTS = config.fonts
 
@@ -13,7 +13,7 @@ const BeantownMenu = () => {
   useEffect(() => {
     fetch(`/menu/categories`, getOptions)
       .then(response => response.json())
-      .then(data => setState({ categories: data.data['categories'], sides: data.data['sides'] }))
+      .then(data => setState({ categories: data.data["categories"], sides: data.data["sides"] }))
       .catch(error => console.log(error))
   }, [])
 

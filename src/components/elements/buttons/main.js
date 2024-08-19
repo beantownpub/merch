@@ -44,25 +44,25 @@ export const Button = (props) => {
 }
 
 export const ToggleButton = (props) => {
-    const handleClick = () => {
-        props.runFunction()
-    }
-    return (
-        <Button
-            clickHandler={handleClick}
-            buttonStyles={props}
-            buttonText={props.buttonText}
-            icon={props.icon}
-            iconColor={props.iconColor}
-            slug={props.slug}
-        />
-    )
+  const handleClick = () => {
+      props.runFunction()
+  }
+  return (
+    <Button
+      clickHandler={handleClick}
+      buttonStyles={props}
+      buttonText={props.buttonText}
+      icon={props.icon}
+      iconColor={props.iconColor}
+      slug={props.slug}
+    />
+  )
 }
 
 export const CartButton = (props) => {
   const handleClick = () => {
       if (props.runFunction) {
-          props.runFunction(props.sku, props.quantity, props.size, props.action)
+        props.runFunction(props.sku, props.quantity, props.size, props.action)
       }
   }
   return (
@@ -97,10 +97,10 @@ export const LinkButton = (props) => {
     }
     return (
         <Button
-            clickHandler={handleClick}
-            buttonStyles={props}
-            buttonText={props.buttonText}
-            slug={props.slug}
+          clickHandler={handleClick}
+          buttonStyles={props}
+          buttonText={props.buttonText}
+          slug={props.slug}
         />
     )
 }

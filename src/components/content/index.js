@@ -1,1 +1,5 @@
 export { ErrorPage } from './errorPage/index.js'
+export { MainInfo } from './home.js'
+export { AboutInfo } from './about.js'
+export { ContactInfo } from './contact.js'
+export { PrivateParties } from './parties.js'

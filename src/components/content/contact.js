@@ -1,11 +1,11 @@
-import React from 'react'
-import { sendEvent } from '../kafka/index.js'
-import { ContentContainer, PageContainer } from './container.js'
+import React from "react"
+import { sendEvent } from "../kafka/index.js"
+import { ContentContainer, PageContainer } from "../containers/index.js"
 import { config } from "../../utils/main.js"
 const COLORS = config.colors
 
 export const ContactInfo = () => {
-  window.addEventListener('click', (event) => {
+  window.addEventListener("click", (event) => {
     sendEvent(event)
   })
   return (

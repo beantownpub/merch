@@ -1,13 +1,15 @@
 import React from "react"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import { AboutInfo } from './components/content/about.js'
-import { ContactInfo } from './components/content/contact.js'
-import { MainInfo } from './components/content/main.js'
-import { PrivateParties } from './components/content/parties.js'
-import BeantownMenu from './components/foodMenus/index.js'
-import { MerchDash } from './components/merch/index.js'
-import { PrivacyPolicy, ReturnPolicy } from './components/merch/content/index.js'
-import { ErrorPage } from './components/content/index.js'
+import { 
+  AboutInfo,
+  ContactInfo,
+  ErrorPage,
+  MainInfo,
+  PrivateParties 
+} from "./components/content/index.js"
+import BeantownMenu from "./components/foodMenus/index.js"
+import { MerchDash } from "./components/merch/index.js"
+import { PrivacyPolicy, ReturnPolicy } from "./components/merch/content/index.js"
 
 export default function ReactRoutes() {
   return (

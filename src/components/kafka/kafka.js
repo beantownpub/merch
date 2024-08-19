@@ -7,10 +7,10 @@ export async function sendEvent(data) {
     id: data.target.id
   }
   try {
-    await fetch('/event', {method: "POST", credentials: "include", body: JSON.stringify(eventData), headers: {"Content-Type": "application/json"}})
+    await fetch("/event", {method: "POST", credentials: "include", body: JSON.stringify(eventData), headers: {"Content-Type": "application/json"}})
       .then(response => {})
       .catch(error => console.log(error))
   } catch (error) {
-    console.error('Error sending event ', error)
+    console.error("Error sending event", error)
   }
 }

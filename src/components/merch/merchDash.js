@@ -78,7 +78,7 @@ export const MerchDash = () => {
           <LinkButton url="/returns" buttonText="Return &amp; Refund Policy" textColor={COLORS.black} slug="returns" />
         </StyledDashContainer> :
         <StyledNoInventoryContainer aria-labelledby="No merchandise">
-            <h1>Online merchandise coming soon! For now stop by the pub and purchase in person!</h1>
+          <h1>Online merchandise coming soon! For now stop by the pub and purchase in person!</h1>
         </StyledNoInventoryContainer>
       }
     </div>

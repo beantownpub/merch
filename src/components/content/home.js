@@ -1,11 +1,11 @@
-import React from 'react'
-//import { GrubHub } from './grubHub/main.js'
-import { GrubHubLink } from './grubHub/index.js'
-import { HeroHeader } from './heroHeader/main.js'
-import { config } from '../../utils/main.js'
-import { sendEvent } from '../kafka/index.js'
-import { ContentContainer, PageContainer } from './container.js'
-// import { ImageSlider } from '../imageSliders/main.js'
+import React from "react"
+//import { GrubHub } from "./grubHub/main.js"
+import { GrubHubLink } from "./grubHub/index.js"
+import { HeroHeader } from "./heroHeader/main.js"
+import { config } from "../../utils/main.js"
+import { sendEvent } from "../kafka/index.js"
+import { ContentContainer, PageContainer } from "../containers/index.js"
+// import { ImageSlider } from "../imageSliders/main.js"
 const COLORS = config.colors
 const FONTS = config.fonts
 const STATIC_PATH = `${config.urls.static}/img/merch`
@@ -30,13 +30,15 @@ const SLIDER_SETTINGS = {
   slidesToShow: 1,
   slidesToScroll: 1
 }
+
 const SLIDER_IMAGES = [
   "new_sam_adams_shirt_back_small.png",
   "scripted_one_side_shirt_small.png",
   "old_sam_adams_shirt_back.png"
 ]
+
 export const MainInfo = () => {
-  window.addEventListener('click', (event) => {
+  window.addEventListener("click", (event) => {
     sendEvent(event)
   })
   return (
@@ -44,7 +46,7 @@ export const MainInfo = () => {
       <HeroHeader 
         image="granary_heroheader.jpeg"
         margin="5rem 0 0 0"
-      >The only pub in the world where you can drink a cold Sam Adams' while viewing a cold Sam Adams</HeroHeader>
+      >The only pub in the world where you can drink a cold Sam Adams&apos; while viewing a cold Sam Adams</HeroHeader>
         <ContentContainer
           ariaDetails="BusinessHours"
           aColor={COLORS.red}

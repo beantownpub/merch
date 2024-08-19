@@ -1,8 +1,8 @@
-import React from 'react'
-import { ContentContainer } from './container.js'
-import { ContactBeantown } from '../contact/index.js'
-import { config } from '../../utils/main.js'
-import { sendEvent } from '../kafka/index.js'
+import React from "react"
+import { ContentContainer } from "../containers/index.js"
+import { ContactBeantown } from "../contact/index.js"
+import { config } from "../../utils/main.js"
+import { sendEvent } from "../kafka/index.js"
 const STATIC_PATH = `${config.urls.static}/img/slider`
 
 const photoStyles = {
@@ -56,7 +56,7 @@ const images = [
 ]
 
 export const PrivateParties = () => {
-  window.addEventListener('click', (event) => {
+  window.addEventListener("click", (event) => {
     sendEvent(event)
   })
   return (
