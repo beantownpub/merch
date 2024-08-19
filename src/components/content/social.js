@@ -14,9 +14,9 @@ const iconStyle = {
 export const SocialNav = () => {
   return (
     <nav style={{margin: "1rem auto"}} id="socialNav">
-      <a id="facebookLink" href={URLS["facebook"]}><Icon iconName="faFacebook" style={iconStyle} /></a>
-      <a id="instagramLink" href={URLS["instagram"]}><Icon iconName="faInstagram" style={iconStyle} /></a>
-      <a id="twitterLink" href={URLS["twitter"]}><Icon iconName="faTwitter" style={iconStyle} /></a>
+      <a id="facebookLink" aria-label="Visit our Facebook page" href={URLS["facebook"]}><Icon iconName="faFacebook" style={iconStyle} /></a>
+      <a id="instagramLink" aria-label="See our posts on instagram" href={URLS["instagram"]}><Icon iconName="faInstagram" style={iconStyle} /></a>
+      <a id="twitterLink" aria-label="Visit our Twitter feed" href={URLS["twitter"]}><Icon iconName="faTwitter" style={iconStyle} /></a>
     </nav>
   )
 }

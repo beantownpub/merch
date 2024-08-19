@@ -1,6 +1,6 @@
-import React from 'react'
-import { SocialNav } from '../social.js'
-import { StyledFooter } from './styles.js'
+import React from "react"
+import { SocialNav } from "../social.js"
+import { StyledFooter } from "./styles.js"
 
 export const Footer = () => {
   const year = new Date().getFullYear()
@@ -15,8 +15,8 @@ export const Footer = () => {
         <h2>Call: 617-426-0111</h2>
         <h2>Stay Connected</h2>
         <SocialNav/>
-        <h2>{'© ' + year} Beantown Pub</h2>
-        <h4>Commit: {gitHash} Version: {version}</h4>
+        <h2>{"© " + year} Beantown Pub</h2>
+        <h5>Commit: {gitHash} Version: {version}</h5>
       </footer>
     </StyledFooter>
   )

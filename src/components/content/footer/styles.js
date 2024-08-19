@@ -41,10 +41,19 @@ export const StyledFooter = styled.div`
     margin: auto;
     padding: 1rem 0;
     font-family: ${FONTS.footer};
+    font-size: 1.5rem;
+    color: ${COLORS.yellow};
+    text-transform: capitalize;
+    letter-spacing: none;
+    text-shadow: none;
+  }
+  h5 {
+    margin: auto;
+    padding: 1rem 0;
+    font-family: ${FONTS.footer};
     font-size: 1rem;
     color: ${COLORS.darkGray};
     text-transform: capitalize;
-    letter-spacing: none;
     text-shadow: none;
   }
 `
