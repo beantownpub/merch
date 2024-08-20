@@ -91,7 +91,7 @@ jobs:
             if [ "$CIRCLE_BRANCH" = "main" ]; then
               export DOCKER_TAG="$VERSION"
             else
-              export DOCKER_TAG="$VERSION-$GIT_TAG"
+              export DOCKER_TAG="$VERSION-$GIT_HASH"
             fi
             docker build \
               -t beantown:$DOCKER_TAG \
