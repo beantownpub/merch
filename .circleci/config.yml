@@ -89,6 +89,7 @@ jobs:
             export VERSION=$(jq -r .version package.json | tr -d '"')
             docker build \
               -t beantown:$VERSION \
+              --secret id=npmrc,src=.npmrc \
               --build-arg aws_default_region=$AWS_DEFAULT_REGION \
               --build-arg support_email=$BEANTOWN_SUPPORT_EMAIL \
               --build-arg git_hash=$CIRCLE_SHA1 \
