@@ -42,7 +42,7 @@ commands:
       - run:
           name: Create .npmrc
           command: |
-            cat <<- EOF > .npmrc
+            cat \<<- EOF > .npmrc
             registry=https://registry.npmjs.org/
             @jalgraves:registry=https://npm.pkg.github.com/
             //npm.pkg.github.com/:_authToken=$GITHUB_TOKEN
