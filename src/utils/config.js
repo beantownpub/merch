@@ -182,7 +182,6 @@ const config = {
         "borderGray": "#dbd9d9",
         "borderShadow": "#383838",
         "boxShadowGray": "rgb(126 137 140 / 20%)",
-        "dodgerBlue": "#1e90ff",
         "gray": "#494040",
         "red": "#ed1c24",
         "navBarBlue": "rgba(5,46,102,0.90)",
