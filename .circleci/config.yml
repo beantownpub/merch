@@ -2,10 +2,10 @@ version: 2.1
 executors:
   debian:
     docker:
-    - image: cimg/python:3.7
+    - image: cimg/python:3.12
   node:
     docker:
-      - image: cimg/node:20.9.0
+      - image: cimg/node:20.16.0
 
 commands:
   install_k8s_dependencies:
