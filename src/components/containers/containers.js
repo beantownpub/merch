@@ -12,6 +12,7 @@ export const PageContainer = (props) => {
       display="flex" 
       flexFlow="column wrap"
       margin={props.margin}
+      padding={props.padding}
     >
       {props.children}
     </ContentSection>

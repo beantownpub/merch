@@ -22,7 +22,7 @@ const BeantownMenu = () => {
       ariaDetails="MenuPageContainer"
       margin="auto"
       background="beige"
-      padding="5% 0"
+      padding="5rem 0"
     >
       {state.categories ?
         <FoodMenu 
@@ -65,6 +65,7 @@ const BeantownMenu = () => {
         <h1>Error Loading Menu</h1>
       }
       <ContentContainer
+        ariaDetails="Additional pub menu info and warngings"
         backgroundColor="inherit"
         h3Color={COLORS.black}
         h3FontFamily={FONTS.content}
@@ -77,7 +78,6 @@ const BeantownMenu = () => {
         h3TextAlign="center"
         h3TextTransform="none"
         margin="1rem auto"
-        maxWidth="500px"
         padding="0"
       >
         <h3><span style={{color: COLORS.red}}>*</span>These items are cooked to order. There is a risk associated with consuming undercooked meat products</h3>
