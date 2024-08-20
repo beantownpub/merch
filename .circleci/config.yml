@@ -36,6 +36,17 @@ commands:
           name: Install dependencies
           command: |
             sudo apt-get update && sudo apt-get install -y git jq
+  add_npm_credentials:
+    description: Create the credentials file for accessing @jalgraves/react-components-library
+    steps:
+      - run:
+          name: Create .npmrc
+          command: |
+            cat <<- EOF > .npmrc
+            registry=https://registry.npmjs.org/
+            @jalgraves:registry=https://npm.pkg.github.com/
+            //npm.pkg.github.com/:_authToken=$GITHUB_TOKEN
+            EOF
   check_tags:
     description: Check if git tag matches package.json version
     steps:
@@ -55,6 +66,7 @@ jobs:
     resource_class: large
     steps:
       - checkout
+      - add_npm_credentials
       - run:
           name: Install dependencies and run lint
           command: |
@@ -69,6 +81,7 @@ jobs:
           version: 20.10.14
           docker_layer_caching: true
       - checkout
+      - add_npm_credentials
       - run:
           name: Build image
           command: |
@@ -77,9 +90,6 @@ jobs:
             docker build \
               -t beantown:$VERSION \
               --build-arg aws_default_region=$AWS_DEFAULT_REGION \
-              --build-arg square_app_id=$SQUARE_APP_ID \
-              --build-arg square_location_id=$SQUARE_LOCATION_ID \
-              --build-arg static_path=$BEANTOWN_STATIC_PATH \
               --build-arg support_email=$BEANTOWN_SUPPORT_EMAIL \
               --build-arg git_hash=$CIRCLE_SHA1 \
               --build-arg version=$VERSION \
