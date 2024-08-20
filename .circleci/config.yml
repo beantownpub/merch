@@ -112,7 +112,7 @@ jobs:
             if [ "$CIRCLE_BRANCH" = "main" ]; then
               export DOCKER_TAG="$VERSION"
             else
-              export DOCKER_TAG="$VERSION-$GIT_TAG"
+              circleci-agent step halt
             fi
             echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
             docker tag beantown:$DOCKER_TAG $DOCKER_USERNAME/beantown:$DOCKER_TAG
