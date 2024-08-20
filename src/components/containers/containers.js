@@ -67,12 +67,12 @@ export const ContentContainer = (props) => {
       h3FontFamily={props.h3FontFamily || FONTS.headline}
       h3FontSize="1.75rem"
       h3FontWeight="bold"
-      h3LetterSpacing=".3rem"
+      h3LetterSpacing={props.h3LetterSpacing || ".3rem"}
       h3LineHeight="150%"
       h3Margin={props.h3Margin || "auto"}
       h3Padding={props.h3Padding}
       h3TextAlign={props.h3TextAlign}
-      h3TextTransform="uppercase"
+      h3TextTransform={props.h3TextTransform || "uppercase"}
 
       h4Color={props.h4Color}
       h4FontFamily={props.h4FontFamily || FONTS.content}
@@ -94,7 +94,8 @@ export const ContentContainer = (props) => {
       h5TextTransform={props.h5TextTransform || "uppercase"}
 
       h6Color={props.h6Color}
-      lineHeight="150%"
+
+      lineHeight={props.lineHeight || "150%" }
       margin={props.margin || "15% auto 5% auto"}
       maxWidth={props.maxWidth}
       padding={props.padding || "5%"}

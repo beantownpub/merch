@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { PageContainer } from "../containers/index.js"
+import { PageContainer, ContentContainer } from "../containers/index.js"
 import { FoodMenu } from "@jalgraves/react-components-library"
 import { config, getOptions } from "../../utils/main.js"
 const COLORS = config.colors
@@ -22,13 +22,14 @@ const BeantownMenu = () => {
       ariaDetails="MenuPageContainer"
       margin="auto"
       background="beige"
+      padding="5% 0"
     >
       {state.categories ?
         <FoodMenu 
           categories={state.categories} 
           menuBackground="beige"
           menuMargin="auto"
-          menuPadding="10% 0"
+          menuPadding="5% 0"
           menuDisplay="flex"
           menuCategoryContainerDisplay="flex"
           menuCategoryContainerFlexFlow="column wrap"
@@ -60,12 +61,28 @@ const BeantownMenu = () => {
           sideItemPadding="1rem"
           sideItemWidth="max-content"
           sideItemMargin="1rem"
-          menuWarningFontFamily={FONTS.content}
-          menuWarningLineHeight="150%"
-          menuWarningMaxWidth="60%"
         /> :
         <h1>Error Loading Menu</h1>
       }
+      <ContentContainer
+        backgroundColor="inherit"
+        h3Color={COLORS.black}
+        h3FontFamily={FONTS.content}
+        h3FontSize="1.75rem"
+        h3FontWeight="bold"
+        h3LetterSpacing="unset"
+        h3LineHeight="150%"
+        h3Margin="auto"
+        h3Padding="1rem 0"
+        h3TextAlign="center"
+        h3TextTransform="none"
+        margin="1rem auto"
+        maxWidth="500px"
+        padding="0"
+      >
+        <h3><span style={{color: COLORS.red}}>*</span>These items are cooked to order. There is a risk associated with consuming undercooked meat products</h3>
+        <h3>Prices subject to change without notice</h3>
+      </ContentContainer>
     </PageContainer>
   )
 }
