@@ -5,7 +5,7 @@ executors:
     - image: cimg/python:3.12
   node:
     docker:
-      - image: cimg/node:20.16.0
+      - image: cimg/node:22.6.0
 
 commands:
   install_k8s_dependencies:
@@ -59,6 +59,15 @@ commands:
             if [ "$VERSION" != "$GIT_TAG" ]; then
                 circleci-agent step halt
             fi
+  check_branch:
+    description: Check if branch is main
+    steps:
+      - run:
+          name: Check branch
+          command: |
+            if [ "$CIRCLE_BRANCH" != "main" ]; then
+                circleci-agent step halt
+            fi
 
 jobs:
   lint:
@@ -87,24 +96,36 @@ jobs:
           command: |
             sudo apt-get update && sudo apt-get install -y git jq
             export VERSION=$(jq -r .version package.json | tr -d '"')
+            export GIT_HASH=$(git rev-parse --short HEAD)
+            if [ "$CIRCLE_BRANCH" = "main" ]; then
+              export DOCKER_TAG="$VERSION"
+            else
+              export DOCKER_TAG="$VERSION-$GIT_HASH"
+            fi
             docker build \
-              -t beantown:$VERSION \
+              -t beantown:$DOCKER_TAG \
               --secret id=npmrc,src=.npmrc \
               --build-arg aws_default_region=$AWS_DEFAULT_REGION \
               --build-arg support_email=$BEANTOWN_SUPPORT_EMAIL \
               --build-arg git_hash=$CIRCLE_SHA1 \
-              --build-arg version=$VERSION \
+              --build-arg version=$DOCKER_TAG \
               --build-arg node_env=production .
           environment:
             DOCKER_BUILDKIT: 1
-      - check_tags
+      - check_branch
       - run:
           name: Publish image
           command: |
             export VERSION=$(jq -r .version package.json | tr -d '"')
+            export GIT_HASH=$(git rev-parse --short HEAD)
+            if [ "$CIRCLE_BRANCH" = "main" ]; then
+              export DOCKER_TAG="$VERSION"
+            else
+              export DOCKER_TAG="$VERSION-$GIT_HASH"
+            fi
             echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
-            docker tag beantown:$VERSION $DOCKER_USERNAME/beantown:$VERSION
-            docker push $DOCKER_USERNAME/beantown:$VERSION
+            docker tag beantown:$DOCKER_TAG $DOCKER_USERNAME/beantown:$DOCKER_TAG
+            docker push $DOCKER_USERNAME/beantown:$DOCKER_TAG
 
   deploy:
     circleci_ip_ranges: false
