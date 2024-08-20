@@ -103,7 +103,6 @@ jobs:
               --build-arg node_env=production .
           environment:
             DOCKER_BUILDKIT: 1
-      - check_tags
       - run:
           name: Publish image
           command: |
