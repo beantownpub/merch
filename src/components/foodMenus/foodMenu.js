@@ -54,7 +54,10 @@ const BeantownMenu = () => {
           menuCategoryTitleTextTransform="uppercase"
           menuItemNameLineHeight="125%"
           sides={state.sides}
+          sidesContainerJustifyContent="center"
+          sideItemBorder=".1rem solid #dbd9d9"
           sideItemBorderRadius="5px"
+          sideItemBoxShadow="0px 5px 20px 0px rgb(126 137 140 / 20%)"
           sideItemFontFamily={FONTS.content}
           sideItemFontSize="1.5rem"
           sideItemFontWeight="900"
