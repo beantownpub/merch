@@ -33,7 +33,7 @@ ARG aws_default_region
 ARG node_env
 ENV AWS_DEFAULT_REGION=${aws_default_region}
 ENV NODE_ENV=${node_env}
-ENV TINI_VERSION v0.19.0
+ENV TINI_VERSION=v0.19.0
 
 RUN apt-get update && apt-get install -y curl
 COPY ./package* /app/

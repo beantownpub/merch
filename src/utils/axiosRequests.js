@@ -1,7 +1,9 @@
 import * as axios from 'axios'
-import { appSecret } from './secrets.js'
 
-const AUTH = 'Basic ' + Buffer.from(appSecret.api_user + ':' + appSecret.api_pass).toString('base64')
+const API_USERNAME = process.env.API_USERNAME
+const API_PASSWORD = process.env.API_PASSWORD
+
+const AUTH = 'Basic ' + Buffer.from(API_USERNAME + ':' + API_PASSWORD).toString('base64')
 let HEADERS = {'Content-Type': 'application/json', 'Authorization': AUTH}
 const OK_RESPONSES = Array.from({length: 300 - 200}, (v, k) => k + 200)
 

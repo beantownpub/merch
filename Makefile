@@ -23,6 +23,9 @@ ifeq ($(env),dev)
 	context = ${DEV_CONTEXT}
 	namespace = ${DEV_NAMESPACE}
 	support_email = ${TEST_SUPPORT_EMAIL}
+	region = ${DEV_REGION}
+	region_code = ${DEV_REGION_CODE}
+	logLevel = dev
 else ifeq ($(env), prod)
 	image_tag = $(version)
 	node_env = production
@@ -31,6 +34,9 @@ else ifeq ($(env), prod)
 	context = ${PROD_CONTEXT}
 	namespace = ${PROD_NAMESPACE}
 	support_email = ${BEANTOWN_SUPPORT_EMAIL}
+	region = ${PROD_REGION}
+	region_code = ${PROD_REGION_CODE}
+	logLevel = tiny
 endif
 
 lint:

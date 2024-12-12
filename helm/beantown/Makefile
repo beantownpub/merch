@@ -3,20 +3,7 @@
 name ?= beantown
 image ?= beantown
 env ?= dev
-tag ?= $(shell grep 'appVersion:' Chart.yaml | cut -f 2 -d' ')
 port ?= ${BEANTOWN_PORT}
-
-ifeq ($(env),dev)
-	context = ${DEV_CONTEXT}
-	namespace = ${DEV_NAMESPACE}
-	square_url = ${SQUARE_URL_DEV}
-	logLevel = dev
-else ifeq ($(env), prod)
-	context = ${PROD_CONTEXT}
-	namespace = ${PROD_NAMESPACE}
-	square_url = ${SQUARE_URL_PROD}
-	logLevel = tiny
-endif
 
 ## Publish beantown Helm chart
 helm/publish:
@@ -56,7 +43,7 @@ helm/creds/services: context
 		--from-literal=users_api_protocol="${USERS_API_PROTOCOL}"
 
 ## Install beantown frontend in K8s cluster
-helm/install:
+helm/install/development:
 	kubectl config use-context $(context) && \
 	helm upgrade --install beantown helm/beantown/ \
 		--namespace $(namespace) \
@@ -78,6 +65,19 @@ helm/install:
 		--set square_application_id_sandbox=${SQUARE_APPLICATION_ID_SANDBOX} \
 		--set square_url=$(square_url) \
 		--set logLevel=$(logLevel) \
+		--debug
+
+## Install beantown frontend in K8s production cluster
+helm/install/production:
+	helm upgrade --install beantown helm/beantown/ \
+		--kubeconfig="${HOME}"/.kube/$(kubeconfig) \
+		--namespace $(namespace) \
+		--set image.tag=$(image_tag) \
+		--set aws.region=$(region) \
+		--set aws.regionCode=$(region_code) \
+		--set global.env=$(env) \
+		--set logLevel=$(logLevel) \
+		--set istio.enabled=true \
 		--debug
 
 ## Uninstall beantown frontend from K8s cluster

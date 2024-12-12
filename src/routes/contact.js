@@ -1,13 +1,18 @@
 import express from 'express'
 import * as axios from 'axios'
-import { appSecret } from '../utils/secrets.js'
 import { urls } from '../utils/appUrls.js'
 const router = express.Router()
+
+const API_USERNAME = process.env.API_USERNAME
+const API_PASSWORD = process.env.API_PASSWORD
+console.log(`Username: ${API_USERNAME}`)
+console.log(`Password: ${API_PASSWORD}`)
+console.log(`Contact URL: ${urls.contactApi}`)
 
 router.post('/send-message', function (req, res, next) {
   try {
     const api_url = `${urls.contactApi}/v1/contact/beantown`
-    const auth = 'Basic ' + Buffer.from(appSecret.api_user + ':' + appSecret.api_pass).toString('base64')
+    const auth = 'Basic ' + Buffer.from(API_USERNAME + ':' + API_PASSWORD).toString('base64')
     axios.default({
       method: 'post',
       url: api_url,

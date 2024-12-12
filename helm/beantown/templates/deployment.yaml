@@ -27,19 +27,88 @@ spec:
       - env:
         - name: AWS_DEFAULT_REGION
           value: {{ .Values.aws.region }}
-        - name: AWS_SECRET_NAME
-          value: {{ .Values.aws.secretName }}
-        - name: AWS_APP_SECRET_NAME
-          value: {{ .Values.aws.secretName }}
+        {{- if .Values.externalSecrets.enabled }}
+        - name: API_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "beantown.fullname" . }}
+              key: API_USERNAME
+        - name: API_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "beantown.fullname" . }}
+              key: API_PASSWORD
+        - name: MENU_API_PROTOCOL
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "beantown.fullname" . }}
+              key: MENU_API_PROTOCOL
+        - name: MENU_API_PORT
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "beantown.fullname" . }}
+              key: MENU_API_PORT
+        - name: MENU_API_HOST
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "beantown.fullname" . }}
+              key: MENU_API_HOST
+        - name: MERCH_API_HOST
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "beantown.fullname" . }}
+              key: MERCH_API_HOST
+        - name: MERCH_API_PROTOCOL
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "beantown.fullname" . }}
+              key: MERCH_API_PROTOCOL
+        - name: MERCH_API_PORT
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "beantown.fullname" . }}
+              key: MERCH_API_PORT
+        - name: CONTACT_API_HOST
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "beantown.fullname" . }}
+              key: CONTACT_API_HOST
+        - name: CONTACT_API_PROTOCOL
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "beantown.fullname" . }}
+              key: CONTACT_API_PROTOCOL
+        - name: CONTACT_API_PORT
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "beantown.fullname" . }}
+              key: CONTACT_API_PORT
+        - name: KAFKA_CLIENT_ID
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "beantown.fullname" . }}
+              key: KAFKA_CLIENT_ID
+        - name: KAFKA_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "beantown.fullname" . }}
+              key: KAFKA_USERNAME
+        - name: KAFKA_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "beantown.fullname" . }}
+              key: KAFKA_PASSWORD
+        - name: KAFKA_BOOTSTRAP_SERVER
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "beantown.fullname" . }}
+              key: KAFKA_BOOTSTRAP_SERVER
+        {{- end }}
         {{- if eq .Values.env "dev" }}
         - name: AWS_ACCESS_KEY_ID
           value: {{ .Values.aws.accessKeyId }}
         - name: AWS_SECRET_ACCESS_KEY
           value: {{ .Values.aws.secretAccessKey }}
-        - name: MENU_API_HOST
-          value: {{ .Values.menuApi.host }}
-        - name: MENU_API_PROTOCOL
-          value: {{ .Values.menuApi.protocol }}
         {{- end }}
         - name: LOG_LEVEL
           value: {{ .Values.logLevel }}

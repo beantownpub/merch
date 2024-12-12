@@ -1,15 +1,14 @@
 import { Kafka } from 'kafkajs'
-import { appSecret } from './secrets.js'
 
 // This creates a client instance that is configured to connect to the Kafka broker provided by
 const brokers = new Kafka({
   clientId: process.env.KAFKA_CLIENT_ID || 'jalbot',
-  brokers: [appSecret.kafka_bootstrap_server],
+  brokers: [process.env.KAFKA_BOOTSTRAP_SERVER],
   ssl: true,
   sasl: {
     mechanism: 'plain', // scram-sha-256 or scram-sha-512
-    username: appSecret.kafka_username,
-    password: appSecret.kafka_password
+    username: process.env.KAFKA_USERNAME,
+    password: process.env.KAFKA_PASSWORD
   }
 })
 

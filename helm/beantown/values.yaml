@@ -3,12 +3,13 @@ aws:
   accessKeyId: ""
   appSecretName: ""
   region: ""
+  regionCode:
   secretAccessKey: ""
   secretName: ""
 
 env: dev
 externalSecrets:
-  enabled: false
+  enabled: true
 image:
   repository: jalgraves/beantown
   pullPolicy: Always
@@ -33,7 +34,7 @@ regionCode: ""
 replicaCount: 1
 resources:
   requests:
-    cpu: 50m
+    #cpu: 50m
     memory: 100Mi
   limits:
     memory: 1Gi

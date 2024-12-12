@@ -1,10 +1,11 @@
 import express from 'express'
 import * as axios from 'axios'
 import { urls } from '../utils/appUrls.js'
-import { appSecret } from '../utils/secrets.js'
 const router = express.Router()
-
-const AUTH = 'Basic ' + Buffer.from(appSecret.api_user + ':' + appSecret.api_pass).toString('base64')
+const API_USERNAME = process.env.API_USERNAME
+const API_PASSWORD = process.env.API_PASSWORD
+console.log(`Menu URL: ${urls.menuApi}`)
+const AUTH = 'Basic ' + Buffer.from(API_USERNAME + ':' + API_PASSWORD).toString('base64')
 const OPTIONS = {
   method: 'get',
   headers: {'Content-Type': 'application/json', 'Authorization': AUTH},
